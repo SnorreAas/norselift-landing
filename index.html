@@ -1,290 +1,643 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NorseLift — Track Your Strength Journey</title>
-  <meta name="description" content="The minimalist workout tracker built for serious lifters. Log workouts, track progress, and crush PRs with NorseLift." />
-  <meta name="theme-color" content="#0a0a0f" />
+  <title>NorseLift — Forge Your Strength</title>
+  <meta name="description" content="The workout tracker forged for serious lifters. Track workouts, crush PRs, and build legendary strength with NorseLift." />
+  <meta name="theme-color" content="#e6eef8" id="meta-theme" />
 
   <!-- Open Graph -->
-  <meta property="og:title" content="NorseLift — Track Your Strength Journey" />
-  <meta property="og:description" content="The minimalist workout tracker built for serious lifters. Log workouts, track progress, and crush PRs." />
+  <meta property="og:title" content="NorseLift — Forge Your Strength" />
+  <meta property="og:description" content="The workout tracker forged for serious lifters. Track workouts, crush PRs, and build legendary strength." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://norselift.com" />
 
   <!-- Favicon -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏋️</text></svg>" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%234a90d9'/%3E%3Ctext x='50' y='50' text-anchor='middle' dominant-baseline='central' font-family='system-ui,-apple-system,sans-serif' font-weight='800' font-size='42' fill='white' letter-spacing='-2'%3ENL%3C/text%3E%3C/svg%3E" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Prevent flash: apply saved theme before paint -->
+  <script>
+    (function() {
+      var saved = localStorage.getItem('norselift-theme');
+      var theme = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+      var mc = document.getElementById('meta-theme');
+      if (mc) mc.setAttribute('content', theme === 'dark' ? '#0a0e1a' : '#e6eef8');
+    })();
+  </script>
 
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    :root {
-      --bg: #0a0a0f;
-      --surface: #13131a;
-      --surface-2: #1a1a24;
-      --border: #2a2a36;
-      --text: #e8e8ed;
-      --text-secondary: #a0a0b0;
-      --text-muted: #6b6b7d;
-      --primary: #6366f1;
-      --primary-glow: rgba(99, 102, 241, 0.15);
-      --warning: #f59e0b;
-      --warning-glow: rgba(245, 158, 11, 0.15);
-      --success: #22c55e;
+    /* ============ LIGHT THEME (FROST) ============ */
+    :root, [data-theme="light"] {
+      --bg-deep: #dce6f2;
+      --bg: #e6eef8;
+      --bg-end: #f2f5fa;
+      --surface: #ffffff;
+      --surface-2: #edf2f9;
+      --border: #c8d4e4;
+      --border-accent: #4a90d9;
+      --text: #1a1e30;
+      --text-secondary: #4a5268;
+      --text-muted: #7e86a0;
+      --accent: #4a90d9;
+      --accent-light: #5ea0e8;
+      --accent-dark: #3670a8;
+      --accent-glow: rgba(74, 144, 217, 0.1);
+      --accent-glow-strong: rgba(74, 144, 217, 0.22);
+      --green: #16a34a;
+      --icon-stroke: #4a90d9;
+      --nav-bg: rgba(230, 238, 248, 0.8);
+      --nav-text: #1a1e30;
+      --card-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.03);
+      --card-shadow-hover: 0 4px 20px rgba(0,0,0,0.07);
+      --pro-bg: linear-gradient(160deg, #f0f6ff, rgba(74, 144, 217, 0.05));
+      --pro-shadow: 0 0 40px rgba(74, 144, 217, 0.08);
+      --noise-opacity: 0.015;
+      --aurora-blue: rgba(59, 107, 207, 0.08);
+      --aurora-purple: rgba(139, 92, 246, 0.04);
+      --aurora-green: rgba(45, 180, 140, 0.04);
+      --divider-opacity: 0.2;
+      --rune-opacity: 0.3;
+      --btn-accent-text: #fff;
+      --btn-outline-bg: transparent;
+      --feature-hover: #f0f5fc;
+    }
+
+    /* ============ DARK THEME (NORSE) ============ */
+    [data-theme="dark"] {
+      --bg-deep: #060a14;
+      --bg: #0a0e1a;
+      --bg-end: #0a0e1a;
+      --surface: #0f1424;
+      --surface-2: #151b2e;
+      --border: #1e2740;
+      --border-accent: #6aabef;
+      --text: #e4e4ef;
+      --text-secondary: #8e92a8;
+      --text-muted: #555a70;
+      --accent: #6aabef;
+      --accent-light: #8cc0f5;
+      --accent-dark: #4a8ec9;
+      --accent-glow: rgba(106, 171, 239, 0.12);
+      --accent-glow-strong: rgba(106, 171, 239, 0.25);
+      --green: #2dd4a0;
+      --icon-stroke: #6aabef;
+      --nav-bg: rgba(6, 10, 20, 0.8);
+      --nav-text: #e4e4ef;
+      --card-shadow: none;
+      --card-shadow-hover: none;
+      --pro-bg: linear-gradient(160deg, #0f1830, rgba(106, 171, 239, 0.04));
+      --pro-shadow: 0 0 60px rgba(106, 171, 239, 0.08);
+      --noise-opacity: 0.03;
+      --aurora-blue: rgba(59, 107, 207, 0.12);
+      --aurora-purple: rgba(139, 92, 246, 0.08);
+      --aurora-green: rgba(45, 212, 160, 0.06);
+      --divider-opacity: 0.15;
+      --rune-opacity: 0.5;
+      --btn-accent-text: #0a0e1a;
+      --btn-outline-bg: transparent;
+      --feature-hover: #151b2e;
     }
 
     html {
       scroll-behavior: smooth;
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
 
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: var(--bg);
+      background: linear-gradient(180deg, var(--bg) 0%, var(--bg-end) 100%);
       color: var(--text);
       line-height: 1.6;
       overflow-x: hidden;
+      width: 100%;
+      min-height: 100vh;
+      transition: background 0.4s, color 0.3s;
     }
 
-    /* Utility */
-    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    /* Noise texture */
+    body::after {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+      opacity: var(--noise-opacity);
+      pointer-events: none;
+      z-index: 9999;
+    }
 
-    /* Nav */
+    .container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+    .norse-heading { font-family: 'Cinzel', serif; letter-spacing: 0.02em; }
+
+    /* Smooth transitions for themed elements */
+    nav, .feature-cell, .pricing-card, .stats-bar, footer,
+    .btn-outline, .pricing-btn.ghost {
+      transition: background 0.4s, border-color 0.3s, color 0.3s, box-shadow 0.3s;
+    }
+
+    /* ============ NAV ============ */
     nav {
       position: fixed; top: 0; left: 0; right: 0;
       z-index: 50;
-      background: rgba(10, 10, 15, 0.85);
-      backdrop-filter: blur(20px);
+      background: var(--nav-bg);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
       border-bottom: 1px solid var(--border);
     }
     .nav-inner {
-      max-width: 1100px; margin: 0 auto; padding: 0 24px;
+      max-width: 1120px; margin: 0 auto; padding: 0 24px;
       display: flex; align-items: center; justify-content: space-between;
       height: 64px;
     }
     .logo {
-      font-size: 1.25rem; font-weight: 800;
-      display: flex; align-items: center; gap: 8px;
+      font-family: 'Cinzel', serif;
+      font-size: 1.2rem; font-weight: 800;
+      display: flex; align-items: center; gap: 10px;
       text-decoration: none; color: var(--text);
     }
-    .logo-icon { font-size: 1.5rem; }
+    .logo-mark {
+      width: 34px; height: 34px; border-radius: 10px;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Inter', sans-serif;
+      font-weight: 800; font-size: 14px; color: #fff;
+      letter-spacing: -1px;
+    }
+    .nav-right {
+      display: flex; align-items: center; gap: 12px;
+    }
+
+    /* Theme toggle */
+    .theme-toggle {
+      width: 38px; height: 38px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: border-color 0.2s, background 0.3s;
+      color: var(--text-muted);
+    }
+    .theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
+    .theme-toggle .icon-sun,
+    .theme-toggle .icon-moon { display: none; }
+    [data-theme="light"] .theme-toggle .icon-moon { display: block; }
+    [data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+
     .nav-cta {
       display: inline-flex; align-items: center; gap: 6px;
-      padding: 10px 20px; border-radius: 12px;
-      background: var(--primary); color: white;
-      font-size: 0.875rem; font-weight: 600;
+      padding: 10px 22px; border-radius: 10px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+      color: var(--btn-accent-text);
+      font-size: 0.85rem; font-weight: 700;
       text-decoration: none;
-      transition: transform 0.15s, box-shadow 0.15s;
+      transition: transform 0.15s, box-shadow 0.2s;
     }
-    .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 20px var(--primary-glow); }
+    .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 24px var(--accent-glow-strong); }
 
-    /* Hero */
+    /* ============ HERO ============ */
     .hero {
-      padding: 140px 0 80px;
-      text-align: center;
       position: relative;
+      padding: 160px 0 100px;
+      text-align: center;
+      overflow: hidden;
     }
-    .hero::before {
-      content: '';
-      position: absolute; top: 0; left: 50%; transform: translateX(-50%);
-      width: 600px; height: 600px;
-      background: radial-gradient(circle, var(--primary-glow) 0%, transparent 70%);
+
+    .hero-aurora {
+      position: absolute; inset: 0;
+      overflow: hidden;
       pointer-events: none;
     }
-    .hero-badge {
-      display: inline-flex; align-items: center; gap: 6px;
-      padding: 6px 14px; border-radius: 20px;
-      background: var(--surface-2); border: 1px solid var(--border);
-      font-size: 0.75rem; color: var(--text-secondary);
-      margin-bottom: 24px;
+    .hero-aurora::before {
+      content: '';
+      position: absolute;
+      top: -40%; left: 0; right: 0;
+      height: 140%;
+      background:
+        radial-gradient(ellipse 80% 60% at 20% 10%, var(--aurora-blue) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 70% 5%, var(--aurora-purple) 0%, transparent 50%),
+        radial-gradient(ellipse 50% 40% at 50% 20%, var(--aurora-green) 0%, transparent 50%);
+      animation: auroraShift 12s ease-in-out infinite alternate;
     }
-    .hero-badge-dot {
-      width: 6px; height: 6px; border-radius: 50%;
-      background: var(--success);
-      animation: pulse 2s infinite;
+    .hero-aurora::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 200px;
+      background: linear-gradient(to top, var(--bg-end), transparent);
     }
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.4; }
+    @keyframes auroraShift {
+      0% { transform: translateX(-2%) scale(1); }
+      100% { transform: translateX(2%) scale(1.03); }
     }
+
+    .rune-line {
+      display: flex; align-items: center; justify-content: center;
+      gap: 16px; margin-bottom: 28px;
+    }
+    .rune-line::before, .rune-line::after {
+      content: '';
+      height: 1px; width: 60px;
+      background: linear-gradient(90deg, transparent, var(--accent) 50%, transparent);
+      opacity: 0.4;
+    }
+    .rune-symbols {
+      font-size: 0.7rem;
+      color: var(--accent);
+      letter-spacing: 0.5em;
+      opacity: var(--rune-opacity);
+    }
+
     .hero h1 {
-      font-size: clamp(2.5rem, 6vw, 4rem);
-      font-weight: 800; line-height: 1.1;
-      margin-bottom: 20px;
+      font-size: clamp(2.8rem, 7vw, 5rem);
+      font-weight: 900;
+      line-height: 1.05;
+      margin-bottom: 24px;
       position: relative;
     }
-    .hero h1 span { color: var(--primary); }
-    .hero p {
-      font-size: 1.125rem; color: var(--text-secondary);
-      max-width: 520px; margin: 0 auto 36px;
-    }
-    .hero-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-    .btn-primary {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 14px 28px; border-radius: 14px;
-      background: var(--primary); color: white;
-      font-size: 1rem; font-weight: 600;
-      text-decoration: none; border: none; cursor: pointer;
-      transition: transform 0.15s, box-shadow 0.15s;
-    }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px var(--primary-glow); }
-    .btn-secondary {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 14px 28px; border-radius: 14px;
-      background: var(--surface-2); color: var(--text);
-      font-size: 1rem; font-weight: 500;
-      text-decoration: none; border: 1px solid var(--border);
-      transition: border-color 0.15s;
-    }
-    .btn-secondary:hover { border-color: var(--text-muted); }
-    .hero-note {
-      margin-top: 16px;
-      font-size: 0.75rem; color: var(--text-muted);
+    .hero h1 .gold { color: var(--accent); }
+
+    .hero-sub {
+      font-size: 1.15rem;
+      color: var(--text-secondary);
+      max-width: 480px;
+      margin: 0 auto 40px;
+      line-height: 1.7;
     }
 
-    /* Features */
-    .features { padding: 80px 0; }
-    .section-label {
-      font-size: 0.75rem; font-weight: 600;
-      color: var(--primary); text-transform: uppercase;
-      letter-spacing: 0.1em; margin-bottom: 12px;
+    .hero-actions {
+      display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;
+      position: relative;
+    }
+    .btn-gold {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 16px 36px; border-radius: 12px;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+      color: var(--btn-accent-text);
+      font-size: 1rem; font-weight: 700;
+      text-decoration: none; border: none; cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.2s;
+    }
+    .btn-gold:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 40px var(--accent-glow-strong);
+    }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 16px 32px; border-radius: 12px;
+      background: var(--btn-outline-bg);
+      color: var(--text);
+      font-size: 1rem; font-weight: 500;
+      text-decoration: none;
+      border: 1px solid var(--border);
+    }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+    .hero-note {
+      margin-top: 20px;
+      font-size: 0.75rem; color: var(--text-muted);
+      position: relative;
+    }
+
+    /* ============ RUNE DIVIDER ============ */
+    .rune-divider {
+      display: flex; align-items: center; justify-content: center;
+      padding: 24px 0;
+      overflow: hidden;
+      color: var(--accent);
+    }
+    .rune-divider svg { opacity: var(--divider-opacity); }
+
+    /* ============ FEATURES ============ */
+    .features {
+      padding: 60px 0 80px;
+    }
+    .section-eyebrow {
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      margin-bottom: 14px;
     }
     .section-title {
-      font-size: clamp(1.75rem, 4vw, 2.5rem);
-      font-weight: 800; line-height: 1.2;
-      margin-bottom: 16px;
+      font-size: clamp(1.75rem, 4vw, 2.75rem);
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 14px;
     }
     .section-desc {
-      font-size: 1rem; color: var(--text-secondary);
-      max-width: 500px; margin-bottom: 48px;
+      font-size: 1rem;
+      color: var(--text-secondary);
+      max-width: 460px;
+      margin-bottom: 52px;
+      line-height: 1.7;
     }
+
     .feature-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 16px;
-    }
-    .feature-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 28px 24px;
-      transition: border-color 0.2s, transform 0.2s;
-    }
-    .feature-card:hover { border-color: var(--primary); transform: translateY(-2px); }
-    .feature-icon {
-      width: 44px; height: 44px; border-radius: 12px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.25rem; margin-bottom: 16px;
-    }
-    .feature-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
-    .feature-card p { font-size: 0.875rem; color: var(--text-secondary); line-height: 1.5; }
-
-    /* Pricing */
-    .pricing { padding: 80px 0; }
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px;
-      max-width: 700px;
-      margin: 0 auto;
-    }
-    .pricing-card {
-      background: var(--surface);
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
       border: 1px solid var(--border);
       border-radius: 20px;
+      overflow: hidden;
+    }
+    .feature-cell {
+      background: var(--surface);
       padding: 32px 28px;
       position: relative;
     }
-    .pricing-card.featured {
-      border-color: var(--warning);
-      background: linear-gradient(135deg, var(--surface) 0%, rgba(245, 158, 11, 0.03) 100%);
+    .feature-cell:hover { background: var(--feature-hover); }
+    .feature-cell::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 28px; right: 28px;
+      height: 0;
+      transition: height 0.3s;
     }
-    .pricing-badge {
-      position: absolute; top: -10px; right: 20px;
-      background: var(--warning); color: #000;
-      font-size: 0.7rem; font-weight: 700;
-      padding: 4px 12px; border-radius: 8px;
+    .feature-cell:hover::before {
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
     }
-    .pricing-card h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 4px; }
-    .pricing-card .subtitle { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 20px; }
-    .pricing-price {
-      display: flex; align-items: baseline; gap: 4px;
-      margin-bottom: 24px;
+    .feature-icon-wrap { margin-bottom: 14px; }
+    .feature-icon-wrap svg { stroke: var(--icon-stroke); }
+    .feature-cell h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 0.95rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+      color: var(--text);
     }
-    .pricing-price .amount { font-size: 2.5rem; font-weight: 800; }
-    .pricing-price .period { font-size: 0.875rem; color: var(--text-muted); }
-    .pricing-features { list-style: none; margin-bottom: 28px; }
-    .pricing-features li {
-      display: flex; align-items: center; gap: 10px;
-      font-size: 0.875rem; color: var(--text-secondary);
-      padding: 6px 0;
-    }
-    .pricing-features .check { color: var(--success); font-weight: bold; }
-    .pricing-features .dim { color: var(--text-muted); }
-    .pricing-cta {
-      display: block; width: 100%; text-align: center;
-      padding: 14px; border-radius: 12px;
-      font-size: 0.875rem; font-weight: 600;
-      text-decoration: none;
-      transition: transform 0.15s;
-    }
-    .pricing-cta:hover { transform: translateY(-1px); }
-    .pricing-cta.primary { background: var(--warning); color: #000; }
-    .pricing-cta.secondary { background: var(--surface-2); color: var(--text); border: 1px solid var(--border); }
-
-    /* Social proof */
-    .social { padding: 60px 0; text-align: center; }
-    .social-stats {
-      display: flex; justify-content: center; gap: 48px; flex-wrap: wrap;
-    }
-    .social-stat .number {
-      font-size: 2rem; font-weight: 800; color: var(--primary);
-    }
-    .social-stat .label {
-      font-size: 0.8rem; color: var(--text-muted);
+    .feature-cell p {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
     }
 
-    /* CTA */
-    .final-cta {
-      padding: 80px 0;
-      text-align: center;
+    /* ============ STATS BAR ============ */
+    .stats-bar {
+      padding: 40px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: var(--surface);
+    }
+    .stats-inner {
+      display: flex;
+      justify-content: center;
+      gap: 64px;
+      flex-wrap: wrap;
+    }
+    .stat-item { text-align: center; }
+    .stat-value {
+      font-family: 'Cinzel', serif;
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* ============ PRICING ============ */
+    .pricing { padding: 80px 0; }
+    .pricing .section-eyebrow,
+    .pricing .section-title,
+    .pricing .section-desc { text-align: center; }
+    .pricing .section-desc { margin-left: auto; margin-right: auto; }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    /* Billing toggle in pricing section */
+    .billing-toggle {
+      display: flex;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 4px;
+      max-width: 380px;
+      margin: 0 auto 36px;
+    }
+    .billing-toggle button {
+      flex: 1;
+      padding: 10px 8px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 9px;
+      cursor: pointer;
+      background: transparent;
+      color: var(--text-muted);
+      transition: background 0.2s, color 0.2s, box-shadow 0.2s;
       position: relative;
     }
-    .final-cta::before {
-      content: '';
-      position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
-      width: 500px; height: 400px;
-      background: radial-gradient(circle, var(--warning-glow) 0%, transparent 70%);
+    .billing-toggle button.active {
+      background: var(--surface);
+      color: var(--text);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    }
+    .billing-toggle .toggle-badge {
+      position: absolute;
+      top: -7px; right: 2px;
+      font-size: 0.55rem;
+      font-weight: 800;
+      background: var(--green);
+      color: #fff;
+      padding: 2px 6px;
+      border-radius: 6px;
+    }
+    .intro-callout {
+      text-align: center;
+      margin-bottom: 28px;
+      padding: 10px 16px;
+      background: var(--accent-glow);
+      border: 1px solid var(--border-accent);
+      border-radius: 10px;
+      max-width: 380px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .intro-callout span {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--accent);
+    }
+    .price-struck {
+      text-decoration: line-through;
+      color: var(--text-muted);
+      font-size: 1.4rem;
+      margin-right: 6px;
+    }
+
+    .pricing-card {
+      border-radius: 20px;
+      padding: 36px 30px;
+      position: relative;
+      transition: transform 0.2s, box-shadow 0.3s;
+    }
+    .pricing-card:hover { transform: translateY(-3px); }
+
+    .pricing-card.free {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      box-shadow: var(--card-shadow);
+    }
+    .pricing-card.free:hover { box-shadow: var(--card-shadow-hover); }
+
+    .pricing-card.pro {
+      background: var(--pro-bg);
+      border: 1px solid var(--border-accent);
+      box-shadow: var(--pro-shadow), inset 0 1px 0 rgba(106, 171, 239, 0.1);
+    }
+
+    .pricing-badge {
+      position: absolute; top: -11px; right: 22px;
+      font-family: 'Cinzel', serif;
+      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+      color: #fff;
+      font-size: 0.65rem; font-weight: 800;
+      padding: 5px 14px; border-radius: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .pricing-card h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.3rem; font-weight: 800; margin-bottom: 4px;
+    }
+    .pricing-card .subtitle { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 22px; }
+    .pricing-price {
+      display: flex; align-items: baseline; gap: 4px;
+      margin-bottom: 26px;
+    }
+    .pricing-price .amount {
+      font-family: 'Cinzel', serif;
+      font-size: 2.8rem; font-weight: 900;
+    }
+    .pricing-price .period { font-size: 0.85rem; color: var(--text-muted); }
+    .pricing-list { list-style: none; margin-bottom: 28px; }
+    .pricing-list li {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 0.85rem; color: var(--text-secondary);
+      padding: 7px 0;
+    }
+    .pricing-list .check { color: var(--green); font-weight: bold; font-size: 0.9rem; }
+    .pricing-list .dim { color: var(--text-muted); }
+    .pricing-btn {
+      display: block; width: 100%; text-align: center;
+      padding: 14px; border-radius: 12px;
+      font-size: 0.85rem; font-weight: 700;
+      text-decoration: none;
+      transition: transform 0.15s, box-shadow 0.2s;
+    }
+    .pricing-btn:hover { transform: translateY(-1px); }
+    .pricing-btn.gold {
+      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+      color: var(--btn-accent-text);
+    }
+    .pricing-btn.gold:hover { box-shadow: 0 4px 24px var(--accent-glow-strong); }
+    .pricing-btn.ghost {
+      background: var(--surface-2);
+      color: var(--text-secondary);
+      border: 1px solid var(--border);
+    }
+
+    .pro-amount { color: var(--accent); }
+
+    /* ============ FINAL CTA ============ */
+    .final-cta {
+      padding: 100px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .final-cta-bg {
+      position: absolute; inset: 0;
       pointer-events: none;
+      overflow: hidden;
+    }
+    .final-cta-bg::before {
+      content: '';
+      position: absolute;
+      bottom: -50%; left: 10%; right: 10%;
+      height: 150%;
+      background: radial-gradient(ellipse 70% 50% at 50% 80%, var(--accent-glow) 0%, transparent 60%);
     }
     .final-cta h2 {
-      font-size: clamp(1.75rem, 4vw, 2.5rem);
-      font-weight: 800; margin-bottom: 16px;
+      font-size: clamp(1.8rem, 4vw, 2.75rem);
+      font-weight: 900;
+      margin-bottom: 16px;
       position: relative;
     }
     .final-cta p {
       font-size: 1rem; color: var(--text-secondary);
-      margin-bottom: 32px; position: relative;
+      margin-bottom: 36px; position: relative;
     }
 
-    /* Footer */
+    /* ============ FOOTER ============ */
     footer {
       border-top: 1px solid var(--border);
-      padding: 32px 0;
-      text-align: center;
+      padding: 36px 0;
+    }
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
     footer p { font-size: 0.75rem; color: var(--text-muted); }
-
-    /* Mobile */
-    @media (max-width: 640px) {
-      .hero { padding: 120px 0 60px; }
-      .hero-actions { flex-direction: column; align-items: center; }
-      .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
-      .social-stats { gap: 32px; }
+    .footer-links {
+      display: flex; gap: 20px;
     }
+    .footer-links a {
+      font-size: 0.75rem; color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .footer-links a:hover { color: var(--accent); }
+
+    /* ============ RESPONSIVE ============ */
+    @media (max-width: 768px) {
+      .feature-grid { grid-template-columns: 1fr; }
+      .pricing-grid { grid-template-columns: 1fr; max-width: 380px; }
+      .stats-inner { gap: 40px; }
+      .footer-inner { flex-direction: column; gap: 12px; text-align: center; }
+    }
+    @media (max-width: 640px) {
+      .hero { padding: 130px 0 70px; }
+      .hero-actions { flex-direction: column; align-items: center; }
+      .btn-gold, .btn-outline { width: 100%; justify-content: center; }
+      .rune-line::before, .rune-line::after { width: 40px; }
+    }
+
+    /* ============ ANIMATIONS ============ */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-in { animation: fadeUp 0.6s ease-out both; }
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; }
   </style>
 </head>
 <body>
@@ -293,168 +646,305 @@
   <nav>
     <div class="nav-inner">
       <a href="/" class="logo">
-        <span class="logo-icon">🏋️</span>
+        <div class="logo-mark">NL</div>
         NorseLift
       </a>
-      <a href="https://app.norselift.com" class="nav-cta">
-        Open App →
-      </a>
+      <div class="nav-right">
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+          <!-- Sun icon (shown in dark mode) -->
+          <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <!-- Moon icon (shown in light mode) -->
+          <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <a href="https://app.norselift.com" class="nav-cta">
+          Open App
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
     </div>
   </nav>
 
-  <!-- Hero -->
+  <!-- ============ HERO ============ -->
   <section class="hero">
-    <div class="container">
-      <div class="hero-badge">
-        <span class="hero-badge-dot"></span>
-        Now in beta — free to use
+    <div class="hero-aurora"></div>
+    <div class="container" style="position: relative;">
+
+      <div class="rune-line animate-in">
+        <span class="rune-symbols">&#5765; &#5768; &#5792; &#5800;</span>
       </div>
-      <h1>Track your strength.<br/><span>Crush your PRs.</span></h1>
-      <p>The minimalist workout tracker built for serious lifters. No clutter, no distractions — just you and the iron.</p>
-      <div class="hero-actions">
-        <a href="https://app.norselift.com" class="btn-primary">
-          Start Tracking — It's Free
+
+      <h1 class="norse-heading animate-in delay-1">
+        Forge Your<br/><span class="gold">Strength</span>
+      </h1>
+
+      <p class="hero-sub animate-in delay-2">
+        The workout tracker built for those who train with purpose.
+        No noise. No clutter. Just iron and progress.
+      </p>
+
+      <div class="hero-actions animate-in delay-3">
+        <a href="https://app.norselift.com" class="btn-gold">
+          Begin Your Journey
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
-        <a href="#features" class="btn-secondary">
-          See Features ↓
+        <a href="#features" class="btn-outline">
+          Explore
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
         </a>
       </div>
-      <p class="hero-note">Works on any device. No download required.</p>
+
+      <p class="hero-note">Free to use. No download required. Works on any device.</p>
     </div>
   </section>
 
-  <!-- Features -->
+  <!-- Rune Divider -->
+  <div class="rune-divider">
+    <svg width="200" height="20" viewBox="0 0 200 20" fill="none">
+      <line x1="0" y1="10" x2="70" y2="10" stroke="currentColor" stroke-width="0.5"/>
+      <polygon points="85,3 100,10 85,17" fill="none" stroke="currentColor" stroke-width="0.5"/>
+      <polygon points="115,3 100,10 115,17" fill="none" stroke="currentColor" stroke-width="0.5"/>
+      <line x1="130" y1="10" x2="200" y2="10" stroke="currentColor" stroke-width="0.5"/>
+    </svg>
+  </div>
+
+  <!-- ============ FEATURES ============ -->
   <section class="features" id="features">
     <div class="container">
-      <p class="section-label">Features</p>
-      <h2 class="section-title">Everything you need.<br/>Nothing you don't.</h2>
-      <p class="section-desc">Built by lifters, for lifters. NorseLift focuses on what matters — tracking your workouts efficiently so you can focus on training.</p>
+      <p class="section-eyebrow">Forged Features</p>
+      <h2 class="section-title norse-heading">Everything you need.<br/>Nothing you don't.</h2>
+      <p class="section-desc">Built by lifters who understand that the best tool is the one that gets out of your way.</p>
 
       <div class="feature-grid">
-        <div class="feature-card">
-          <div class="feature-icon" style="background: var(--primary-glow);">📋</div>
+        <div class="feature-cell">
+          <div class="feature-icon-wrap">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M15 3v18M3 9h18M3 15h18"/></svg>
+          </div>
           <h3>Custom Programs</h3>
-          <p>Build your own workout programs with flexible exercise ordering, sets, and rep schemes. Push/Pull/Legs, Upper/Lower, or your own split.</p>
+          <p>Build your own split with flexible exercise ordering. Push/Pull/Legs, Upper/Lower, or forge your own path.</p>
         </div>
-        <div class="feature-card">
-          <div class="feature-icon" style="background: var(--warning-glow);">⏱️</div>
-          <h3>Smart Rest Timer</h3>
-          <p>Built-in rest timer with haptic feedback. Never wonder if you've rested long enough between sets.</p>
+        <div class="feature-cell">
+          <div class="feature-icon-wrap">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <h3>Rest Timer</h3>
+          <p>Built-in timer with haptic feedback. Stay disciplined between sets without watching the clock.</p>
         </div>
-        <div class="feature-card">
-          <div class="feature-icon" style="background: rgba(34, 197, 94, 0.15);">📊</div>
+        <div class="feature-cell">
+          <div class="feature-icon-wrap">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 16l4-8 4 5 5-9"/></svg>
+          </div>
           <h3>Progress Stats</h3>
-          <p>Track volume, frequency, and strength over time. See your progress with clean charts and personal records.</p>
+          <p>Track volume, frequency, and strength over time. See your gains in clean charts and numbers.</p>
         </div>
-        <div class="feature-card">
-          <div class="feature-icon" style="background: rgba(168, 85, 247, 0.15);">🏆</div>
+        <div class="feature-cell">
+          <div class="feature-icon-wrap">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5C7 4 9 7 12 7s5-3 7.5-3a2.5 2.5 0 0 1 0 5H18"/><path d="M18 15h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M6 15H4.5a2.5 2.5 0 0 1 0-5H6"/><line x1="6" y1="9" x2="6" y2="15"/><line x1="18" y1="9" x2="18" y2="15"/><line x1="6" y1="12" x2="18" y2="12"/></svg>
+          </div>
           <h3>Personal Records</h3>
-          <p>Automatic PR tracking for every exercise. Get notified when you hit a new best — weight, reps, or volume.</p>
+          <p>Automatic PR detection for every exercise. Earn your place in the record books.</p>
         </div>
-        <div class="feature-card">
-          <div class="feature-icon" style="background: rgba(236, 72, 153, 0.15);">☁️</div>
+        <div class="feature-cell">
+          <div class="feature-icon-wrap">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>
+          </div>
           <h3>Cloud Sync</h3>
-          <p>Your data syncs across all your devices instantly. Start a workout on your phone, review stats on your laptop.</p>
+          <p>Your data follows you across all devices. Start on your phone, review on your laptop.</p>
         </div>
-        <div class="feature-card">
-          <div class="feature-icon" style="background: rgba(20, 184, 166, 0.15);">📱</div>
-          <h3>Works Everywhere</h3>
-          <p>Progressive Web App — install it on your phone like a native app. Works offline too. No app store needed.</p>
+        <div class="feature-cell">
+          <div class="feature-icon-wrap">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18.01"/></svg>
+          </div>
+          <h3>Install Anywhere</h3>
+          <p>Progressive Web App. Add to home screen like a native app. Works offline. No app store needed.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Pricing -->
+  <!-- Stats bar -->
+  <section class="stats-bar">
+    <div class="container">
+      <div class="stats-inner">
+        <div class="stat-item">
+          <div class="stat-value">100%</div>
+          <div class="stat-label">Free to start</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">Zero</div>
+          <div class="stat-label">Ads, ever</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">PWA</div>
+          <div class="stat-label">Any device</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">Norse</div>
+          <div class="stat-label">Built in Norway</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PRICING ============ -->
   <section class="pricing" id="pricing">
     <div class="container">
-      <p class="section-label" style="text-align:center;">Pricing</p>
-      <h2 class="section-title" style="text-align:center;">Simple pricing,<br/>serious value.</h2>
-      <p class="section-desc" style="text-align:center; margin-left:auto; margin-right:auto;">Start free, upgrade when you're ready. Less than the cost of a protein shake.</p>
+      <p class="section-eyebrow">Pricing</p>
+      <h2 class="section-title norse-heading">Simple pricing.<br/>Warrior value.</h2>
+      <p class="section-desc">Start free. Upgrade when you're ready. Less than a protein shake.</p>
+
+      <!-- Billing cycle toggle -->
+      <div class="billing-toggle" id="billingToggle">
+        <button class="active" data-plan="monthly" onclick="setPlan('monthly')">Monthly</button>
+        <button data-plan="quarterly" onclick="setPlan('quarterly')">
+          Quarterly
+          <span class="toggle-badge">-30%</span>
+        </button>
+        <button data-plan="yearly" onclick="setPlan('yearly')">
+          Yearly
+          <span class="toggle-badge">-50%</span>
+        </button>
+      </div>
+
+      <!-- Intro pricing callout (monthly only) -->
+      <div class="intro-callout" id="introCallout">
+        <span>&#10024; First month just $1.99 &mdash; then $4.99/mo</span>
+      </div>
 
       <div class="pricing-grid">
         <!-- Free -->
-        <div class="pricing-card">
+        <div class="pricing-card free">
           <h3>Free</h3>
           <p class="subtitle">Get started</p>
           <div class="pricing-price">
             <span class="amount">$0</span>
             <span class="period">/forever</span>
           </div>
-          <ul class="pricing-features">
-            <li><span class="check">✓</span> Up to 3 workout programs</li>
-            <li><span class="check">✓</span> Last 30 days of history</li>
-            <li><span class="check">✓</span> Exercise library</li>
-            <li><span class="check">✓</span> Cloud sync</li>
-            <li><span class="check">✓</span> Rest timer</li>
-            <li><span class="dim">—</span> <span class="dim">Progress stats & charts</span></li>
-            <li><span class="dim">—</span> <span class="dim">Personal records</span></li>
+          <ul class="pricing-list">
+            <li><span class="check">&#10003;</span> Up to 3 workout programs</li>
+            <li><span class="check">&#10003;</span> Last 30 days of history</li>
+            <li><span class="check">&#10003;</span> Exercise library</li>
+            <li><span class="check">&#10003;</span> Cloud sync</li>
+            <li><span class="check">&#10003;</span> Rest timer</li>
+            <li><span class="dim">&mdash;</span> <span class="dim">Progress stats & charts</span></li>
+            <li><span class="dim">&mdash;</span> <span class="dim">Personal records</span></li>
+            <li><span class="dim">&mdash;</span> <span class="dim">Training routines</span></li>
           </ul>
-          <a href="https://app.norselift.com" class="pricing-cta secondary">Get Started Free</a>
+          <a href="https://app.norselift.com" class="pricing-btn ghost">Get Started Free</a>
         </div>
 
         <!-- Pro -->
-        <div class="pricing-card featured">
+        <div class="pricing-card pro">
           <span class="pricing-badge">Most Popular</span>
           <h3>Pro</h3>
           <p class="subtitle">For serious lifters</p>
-          <div class="pricing-price">
-            <span class="amount">$4.99</span>
+          <div class="pricing-price" id="proPrice">
+            <span class="price-struck" id="proPriceStruck">$4.99</span>
+            <span class="amount pro-amount" id="proPriceAmount">$1.99</span>
             <span class="period">/month</span>
           </div>
-          <ul class="pricing-features">
-            <li><span class="check">✓</span> <strong>Unlimited</strong> workout programs</li>
-            <li><span class="check">✓</span> <strong>Full</strong> workout history</li>
-            <li><span class="check">✓</span> Exercise library</li>
-            <li><span class="check">✓</span> Cloud sync</li>
-            <li><span class="check">✓</span> Rest timer</li>
-            <li><span class="check">✓</span> Progress stats & charts</li>
-            <li><span class="check">✓</span> Personal records tracking</li>
+          <p id="proPriceSub" style="font-size:0.72rem; color:var(--text-muted); margin-top:-18px; margin-bottom:22px;">First month intro price</p>
+          <ul class="pricing-list">
+            <li><span class="check">&#10003;</span> <strong>Unlimited</strong> programs</li>
+            <li><span class="check">&#10003;</span> <strong>Full</strong> workout history</li>
+            <li><span class="check">&#10003;</span> Exercise library</li>
+            <li><span class="check">&#10003;</span> Cloud sync</li>
+            <li><span class="check">&#10003;</span> Rest timer</li>
+            <li><span class="check">&#10003;</span> Progress stats & charts</li>
+            <li><span class="check">&#10003;</span> Personal records tracking</li>
+            <li><span class="check">&#10003;</span> Training routines</li>
           </ul>
-          <a href="https://app.norselift.com/upgrade" class="pricing-cta primary">Start Pro — $4.99/mo</a>
-          <p style="text-align:center; font-size:0.7rem; color:var(--text-muted); margin-top:8px;">Or $29.99/year (save 50%)</p>
+          <a href="https://app.norselift.com/upgrade" class="pricing-btn gold" id="proCta">Start Pro &mdash; $1.99 first month</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Social proof stats -->
-  <section class="social">
-    <div class="container">
-      <div class="social-stats">
-        <div class="social-stat">
-          <div class="number">100%</div>
-          <div class="label">Free to start</div>
-        </div>
-        <div class="social-stat">
-          <div class="number">0</div>
-          <div class="label">Ads — ever</div>
-        </div>
-        <div class="social-stat">
-          <div class="number">∞</div>
-          <div class="label">Gains ahead</div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <!-- Rune Divider -->
+  <div class="rune-divider">
+    <svg width="200" height="20" viewBox="0 0 200 20" fill="none">
+      <line x1="0" y1="10" x2="70" y2="10" stroke="currentColor" stroke-width="0.5"/>
+      <polygon points="85,3 100,10 85,17" fill="none" stroke="currentColor" stroke-width="0.5"/>
+      <polygon points="115,3 100,10 115,17" fill="none" stroke="currentColor" stroke-width="0.5"/>
+      <line x1="130" y1="10" x2="200" y2="10" stroke="currentColor" stroke-width="0.5"/>
+    </svg>
+  </div>
 
-  <!-- Final CTA -->
+  <!-- ============ FINAL CTA ============ -->
   <section class="final-cta">
+    <div class="final-cta-bg"></div>
     <div class="container">
-      <h2>Ready to level up<br/>your training?</h2>
-      <p>Join NorseLift today. It takes 10 seconds to get started.</p>
-      <a href="https://app.norselift.com" class="btn-primary" style="position:relative;">
-        Start Tracking Now →
+
+      <div class="rune-line" style="margin-bottom: 32px;">
+        <span class="rune-symbols">&#5765; &#5768; &#5792;</span>
+      </div>
+
+      <h2 class="norse-heading" style="position:relative;">
+        Ready to forge<br/>your legacy?
+      </h2>
+      <p style="position:relative;">Your strength journey begins with a single rep.</p>
+      <a href="https://app.norselift.com" class="btn-gold" style="position:relative;">
+        Start Training Now
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
     </div>
   </section>
 
-  <!-- Footer -->
+  <!-- ============ FOOTER ============ -->
   <footer>
     <div class="container">
-      <p>© 2025 NorseLift. Built with 💪 in Norway.</p>
+      <div class="footer-inner">
+        <p>&copy; 2025 NorseLift. Forged in Norway.</p>
+        <div class="footer-links">
+          <a href="https://app.norselift.com">App</a>
+          <a href="#features">Features</a>
+          <a href="#pricing">Pricing</a>
+        </div>
+      </div>
     </div>
   </footer>
+
+  <!-- Theme toggle script -->
+  <script>
+    function toggleTheme() {
+      var html = document.documentElement;
+      var current = html.getAttribute('data-theme');
+      var next = current === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('norselift-theme', next);
+      // Update meta theme-color for mobile browser chrome
+      var meta = document.getElementById('meta-theme');
+      if (meta) meta.setAttribute('content', next === 'dark' ? '#0a0e1a' : '#e6eef8');
+    }
+
+    // Listen for system preference changes (only if user hasn't manually set)
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+      if (!localStorage.getItem('norselift-theme')) {
+        var theme = e.matches ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', theme);
+        var meta = document.getElementById('meta-theme');
+        if (meta) meta.setAttribute('content', theme === 'dark' ? '#0a0e1a' : '#e6eef8');
+      }
+    });
+
+    // Pricing plan toggle
+    var plans = {
+      monthly:   { display: '$1.99', struck: '$4.99', sub: 'First month intro price', cta: 'Start Pro — $1.99 first month', showIntro: true },
+      quarterly: { display: '$3.49', struck: null, sub: '$10.49 billed every 3 months', cta: 'Start Pro — $10.49/quarter', showIntro: false },
+      yearly:    { display: '$2.49', struck: null, sub: '$29.99 billed annually', cta: 'Start Pro — $29.99/year', showIntro: false },
+    };
+    function setPlan(plan) {
+      var p = plans[plan];
+      var btns = document.querySelectorAll('#billingToggle button');
+      btns.forEach(function(b) { b.classList.toggle('active', b.getAttribute('data-plan') === plan); });
+      document.getElementById('proPriceAmount').textContent = p.display;
+      document.getElementById('proPriceSub').textContent = p.sub;
+      document.getElementById('proCta').textContent = p.cta;
+      var struck = document.getElementById('proPriceStruck');
+      struck.textContent = p.struck || '';
+      struck.style.display = p.struck ? 'inline' : 'none';
+      document.getElementById('introCallout').style.display = p.showIntro ? 'block' : 'none';
+    }
+  </script>
 
 </body>
 </html>
