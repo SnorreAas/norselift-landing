@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NorseLift — Track Your Strength Journey</title>
+  <meta name="description" content="The minimalist workout tracker built for serious lifters. Log workouts, track progress, and crush PRs with NorseLift." />
+  <meta name="theme-color" content="#0a0a0f" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="NorseLift — Track Your Strength Journey" />
+  <meta property="og:description" content="The minimalist workout tracker built for serious lifters. Log workouts, track progress, and crush PRs." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://norselift.com" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏋️</text></svg>" />
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0f;
+      --surface: #13131a;
+      --surface-2: #1a1a24;
+      --border: #2a2a36;
+      --text: #e8e8ed;
+      --text-secondary: #a0a0b0;
+      --text-muted: #6b6b7d;
+      --primary: #6366f1;
+      --primary-glow: rgba(99, 102, 241, 0.15);
+      --warning: #f59e0b;
+      --warning-glow: rgba(245, 158, 11, 0.15);
+      --success: #22c55e;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Utility */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+    /* Nav */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 50;
+      background: rgba(10, 10, 15, 0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 1100px; margin: 0 auto; padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px;
+    }
+    .logo {
+      font-size: 1.25rem; font-weight: 800;
+      display: flex; align-items: center; gap: 8px;
+      text-decoration: none; color: var(--text);
+    }
+    .logo-icon { font-size: 1.5rem; }
+    .nav-cta {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 10px 20px; border-radius: 12px;
+      background: var(--primary); color: white;
+      font-size: 0.875rem; font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 20px var(--primary-glow); }
+
+    /* Hero */
+    .hero {
+      padding: 140px 0 80px;
+      text-align: center;
+      position: relative;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, var(--primary-glow) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 6px 14px; border-radius: 20px;
+      background: var(--surface-2); border: 1px solid var(--border);
+      font-size: 0.75rem; color: var(--text-secondary);
+      margin-bottom: 24px;
+    }
+    .hero-badge-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--success);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 800; line-height: 1.1;
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .hero h1 span { color: var(--primary); }
+    .hero p {
+      font-size: 1.125rem; color: var(--text-secondary);
+      max-width: 520px; margin: 0 auto 36px;
+    }
+    .hero-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 28px; border-radius: 14px;
+      background: var(--primary); color: white;
+      font-size: 1rem; font-weight: 600;
+      text-decoration: none; border: none; cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px var(--primary-glow); }
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 28px; border-radius: 14px;
+      background: var(--surface-2); color: var(--text);
+      font-size: 1rem; font-weight: 500;
+      text-decoration: none; border: 1px solid var(--border);
+      transition: border-color 0.15s;
+    }
+    .btn-secondary:hover { border-color: var(--text-muted); }
+    .hero-note {
+      margin-top: 16px;
+      font-size: 0.75rem; color: var(--text-muted);
+    }
+
+    /* Features */
+    .features { padding: 80px 0; }
+    .section-label {
+      font-size: 0.75rem; font-weight: 600;
+      color: var(--primary); text-transform: uppercase;
+      letter-spacing: 0.1em; margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 800; line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .section-desc {
+      font-size: 1rem; color: var(--text-secondary);
+      max-width: 500px; margin-bottom: 48px;
+    }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    }
+    .feature-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px 24px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .feature-card:hover { border-color: var(--primary); transform: translateY(-2px); }
+    .feature-icon {
+      width: 44px; height: 44px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.25rem; margin-bottom: 16px;
+    }
+    .feature-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
+    .feature-card p { font-size: 0.875rem; color: var(--text-secondary); line-height: 1.5; }
+
+    /* Pricing */
+    .pricing { padding: 80px 0; }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .pricing-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 32px 28px;
+      position: relative;
+    }
+    .pricing-card.featured {
+      border-color: var(--warning);
+      background: linear-gradient(135deg, var(--surface) 0%, rgba(245, 158, 11, 0.03) 100%);
+    }
+    .pricing-badge {
+      position: absolute; top: -10px; right: 20px;
+      background: var(--warning); color: #000;
+      font-size: 0.7rem; font-weight: 700;
+      padding: 4px 12px; border-radius: 8px;
+    }
+    .pricing-card h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 4px; }
+    .pricing-card .subtitle { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 20px; }
+    .pricing-price {
+      display: flex; align-items: baseline; gap: 4px;
+      margin-bottom: 24px;
+    }
+    .pricing-price .amount { font-size: 2.5rem; font-weight: 800; }
+    .pricing-price .period { font-size: 0.875rem; color: var(--text-muted); }
+    .pricing-features { list-style: none; margin-bottom: 28px; }
+    .pricing-features li {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 0.875rem; color: var(--text-secondary);
+      padding: 6px 0;
+    }
+    .pricing-features .check { color: var(--success); font-weight: bold; }
+    .pricing-features .dim { color: var(--text-muted); }
+    .pricing-cta {
+      display: block; width: 100%; text-align: center;
+      padding: 14px; border-radius: 12px;
+      font-size: 0.875rem; font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.15s;
+    }
+    .pricing-cta:hover { transform: translateY(-1px); }
+    .pricing-cta.primary { background: var(--warning); color: #000; }
+    .pricing-cta.secondary { background: var(--surface-2); color: var(--text); border: 1px solid var(--border); }
+
+    /* Social proof */
+    .social { padding: 60px 0; text-align: center; }
+    .social-stats {
+      display: flex; justify-content: center; gap: 48px; flex-wrap: wrap;
+    }
+    .social-stat .number {
+      font-size: 2rem; font-weight: 800; color: var(--primary);
+    }
+    .social-stat .label {
+      font-size: 0.8rem; color: var(--text-muted);
+    }
+
+    /* CTA */
+    .final-cta {
+      padding: 80px 0;
+      text-align: center;
+      position: relative;
+    }
+    .final-cta::before {
+      content: '';
+      position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+      width: 500px; height: 400px;
+      background: radial-gradient(circle, var(--warning-glow) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .final-cta h2 {
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 800; margin-bottom: 16px;
+      position: relative;
+    }
+    .final-cta p {
+      font-size: 1rem; color: var(--text-secondary);
+      margin-bottom: 32px; position: relative;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 0;
+      text-align: center;
+    }
+    footer p { font-size: 0.75rem; color: var(--text-muted); }
+
+    /* Mobile */
+    @media (max-width: 640px) {
+      .hero { padding: 120px 0 60px; }
+      .hero-actions { flex-direction: column; align-items: center; }
+      .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
+      .social-stats { gap: 32px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav>
+    <div class="nav-inner">
+      <a href="/" class="logo">
+        <span class="logo-icon">🏋️</span>
+        NorseLift
+      </a>
+      <a href="https://app.norselift.com" class="nav-cta">
+        Open App →
+      </a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        Now in beta — free to use
+      </div>
+      <h1>Track your strength.<br/><span>Crush your PRs.</span></h1>
+      <p>The minimalist workout tracker built for serious lifters. No clutter, no distractions — just you and the iron.</p>
+      <div class="hero-actions">
+        <a href="https://app.norselift.com" class="btn-primary">
+          Start Tracking — It's Free
+        </a>
+        <a href="#features" class="btn-secondary">
+          See Features ↓
+        </a>
+      </div>
+      <p class="hero-note">Works on any device. No download required.</p>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="features" id="features">
+    <div class="container">
+      <p class="section-label">Features</p>
+      <h2 class="section-title">Everything you need.<br/>Nothing you don't.</h2>
+      <p class="section-desc">Built by lifters, for lifters. NorseLift focuses on what matters — tracking your workouts efficiently so you can focus on training.</p>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon" style="background: var(--primary-glow);">📋</div>
+          <h3>Custom Programs</h3>
+          <p>Build your own workout programs with flexible exercise ordering, sets, and rep schemes. Push/Pull/Legs, Upper/Lower, or your own split.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background: var(--warning-glow);">⏱️</div>
+          <h3>Smart Rest Timer</h3>
+          <p>Built-in rest timer with haptic feedback. Never wonder if you've rested long enough between sets.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background: rgba(34, 197, 94, 0.15);">📊</div>
+          <h3>Progress Stats</h3>
+          <p>Track volume, frequency, and strength over time. See your progress with clean charts and personal records.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background: rgba(168, 85, 247, 0.15);">🏆</div>
+          <h3>Personal Records</h3>
+          <p>Automatic PR tracking for every exercise. Get notified when you hit a new best — weight, reps, or volume.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background: rgba(236, 72, 153, 0.15);">☁️</div>
+          <h3>Cloud Sync</h3>
+          <p>Your data syncs across all your devices instantly. Start a workout on your phone, review stats on your laptop.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background: rgba(20, 184, 166, 0.15);">📱</div>
+          <h3>Works Everywhere</h3>
+          <p>Progressive Web App — install it on your phone like a native app. Works offline too. No app store needed.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="pricing" id="pricing">
+    <div class="container">
+      <p class="section-label" style="text-align:center;">Pricing</p>
+      <h2 class="section-title" style="text-align:center;">Simple pricing,<br/>serious value.</h2>
+      <p class="section-desc" style="text-align:center; margin-left:auto; margin-right:auto;">Start free, upgrade when you're ready. Less than the cost of a protein shake.</p>
+
+      <div class="pricing-grid">
+        <!-- Free -->
+        <div class="pricing-card">
+          <h3>Free</h3>
+          <p class="subtitle">Get started</p>
+          <div class="pricing-price">
+            <span class="amount">$0</span>
+            <span class="period">/forever</span>
+          </div>
+          <ul class="pricing-features">
+            <li><span class="check">✓</span> Up to 3 workout programs</li>
+            <li><span class="check">✓</span> Last 30 days of history</li>
+            <li><span class="check">✓</span> Exercise library</li>
+            <li><span class="check">✓</span> Cloud sync</li>
+            <li><span class="check">✓</span> Rest timer</li>
+            <li><span class="dim">—</span> <span class="dim">Progress stats & charts</span></li>
+            <li><span class="dim">—</span> <span class="dim">Personal records</span></li>
+          </ul>
+          <a href="https://app.norselift.com" class="pricing-cta secondary">Get Started Free</a>
+        </div>
+
+        <!-- Pro -->
+        <div class="pricing-card featured">
+          <span class="pricing-badge">Most Popular</span>
+          <h3>Pro</h3>
+          <p class="subtitle">For serious lifters</p>
+          <div class="pricing-price">
+            <span class="amount">$4.99</span>
+            <span class="period">/month</span>
+          </div>
+          <ul class="pricing-features">
+            <li><span class="check">✓</span> <strong>Unlimited</strong> workout programs</li>
+            <li><span class="check">✓</span> <strong>Full</strong> workout history</li>
+            <li><span class="check">✓</span> Exercise library</li>
+            <li><span class="check">✓</span> Cloud sync</li>
+            <li><span class="check">✓</span> Rest timer</li>
+            <li><span class="check">✓</span> Progress stats & charts</li>
+            <li><span class="check">✓</span> Personal records tracking</li>
+          </ul>
+          <a href="https://app.norselift.com/upgrade" class="pricing-cta primary">Start Pro — $4.99/mo</a>
+          <p style="text-align:center; font-size:0.7rem; color:var(--text-muted); margin-top:8px;">Or $29.99/year (save 50%)</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social proof stats -->
+  <section class="social">
+    <div class="container">
+      <div class="social-stats">
+        <div class="social-stat">
+          <div class="number">100%</div>
+          <div class="label">Free to start</div>
+        </div>
+        <div class="social-stat">
+          <div class="number">0</div>
+          <div class="label">Ads — ever</div>
+        </div>
+        <div class="social-stat">
+          <div class="number">∞</div>
+          <div class="label">Gains ahead</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="final-cta">
+    <div class="container">
+      <h2>Ready to level up<br/>your training?</h2>
+      <p>Join NorseLift today. It takes 10 seconds to get started.</p>
+      <a href="https://app.norselift.com" class="btn-primary" style="position:relative;">
+        Start Tracking Now →
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>© 2025 NorseLift. Built with 💪 in Norway.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
