@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      width: 1200px;
+      height: 630px;
+      background: linear-gradient(160deg, #0a0e1a 0%, #111830 50%, #0a0e1a 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: system-ui, -apple-system, sans-serif;
+      color: #e4e4ef;
+      position: relative;
+      overflow: hidden;
+    }
+    /* Aurora glow */
+    body::before {
+      content: '';
+      position: absolute;
+      top: -20%; left: 20%; right: 20%;
+      height: 60%;
+      background: radial-gradient(ellipse 60% 50% at 50% 30%, rgba(106, 171, 239, 0.15) 0%, transparent 70%);
+    }
+    body::after {
+      content: '';
+      position: absolute;
+      bottom: -10%; left: 30%; right: 30%;
+      height: 40%;
+      background: radial-gradient(ellipse 50% 40% at 50% 80%, rgba(139, 92, 246, 0.08) 0%, transparent 60%);
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 32px;
+      position: relative;
+      z-index: 1;
+    }
+    .logo-mark {
+      width: 72px; height: 72px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #4a90d9 0%, #3670a8 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 30px;
+      color: #fff;
+      letter-spacing: -2px;
+    }
+    .logo-text {
+      font-family: 'Georgia', serif;
+      font-size: 48px;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+    }
+    .tagline {
+      font-size: 28px;
+      color: #8e92a8;
+      text-align: center;
+      max-width: 700px;
+      line-height: 1.4;
+      position: relative;
+      z-index: 1;
+      margin-bottom: 40px;
+    }
+    .badges {
+      display: flex;
+      gap: 16px;
+      position: relative;
+      z-index: 1;
+    }
+    .badge {
+      padding: 8px 20px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 600;
+      border: 1px solid rgba(106, 171, 239, 0.3);
+      color: #6aabef;
+      background: rgba(106, 171, 239, 0.08);
+    }
+    .url {
+      position: absolute;
+      bottom: 36px;
+      font-size: 18px;
+      color: #555a70;
+      letter-spacing: 0.05em;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+  <div class="logo">
+    <div class="logo-mark">NL</div>
+    <div class="logo-text">NorseLift</div>
+  </div>
+  <div class="tagline">The workout tracker forged<br/>for serious lifters</div>
+  <div class="badges">
+    <div class="badge">Free to Start</div>
+    <div class="badge">Works Offline</div>
+    <div class="badge">Any Device</div>
+  </div>
+  <div class="url">norselift.com</div>
+</body>
+</html>
