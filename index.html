@@ -279,17 +279,22 @@
       transform: rotateY(-6deg) rotateX(1deg) rotateZ(0deg);
     }
     [data-theme="light"] .phone-frame {
-      border-color: #c8d4e4;
+      border-color: #a8b8cc;
+      background: #e6eef8;
       box-shadow:
-        0 0 0 2px rgba(74, 144, 217, 0.08),
-        0 20px 60px rgba(0, 0, 0, 0.12),
-        0 0 80px rgba(74, 144, 217, 0.04);
+        0 0 0 2px rgba(74, 144, 217, 0.12),
+        0 20px 60px rgba(0, 0, 0, 0.18),
+        0 0 80px rgba(74, 144, 217, 0.06);
     }
     .phone-frame img {
-      display: block;
       width: 100%;
       height: auto;
     }
+    /* Theme-based screenshot swap */
+    .phone-frame .screenshot-light { display: none; }
+    .phone-frame .screenshot-dark { display: block; }
+    [data-theme="light"] .phone-frame .screenshot-dark { display: none; }
+    [data-theme="light"] .phone-frame .screenshot-light { display: block; }
     .hero-text .rune-line { justify-content: flex-start; }
     @media (max-width: 768px) {
       .hero-inner {
@@ -796,7 +801,8 @@
 
         <div class="hero-phone animate-in delay-2">
           <div class="phone-frame">
-            <img src="/app-screenshot.png" alt="NorseLift app dashboard showing workout tracking, weekly calendar, and progress stats" />
+            <img class="screenshot-dark" src="/app-screenshot.png" alt="NorseLift app dashboard showing workout tracking, weekly calendar, and progress stats" />
+            <img class="screenshot-light" src="/app-screenshot-light.png" alt="NorseLift app dashboard in light mode showing workout tracking, weekly calendar, and progress stats" />
           </div>
         </div>
       </div>
@@ -1008,6 +1014,7 @@
           <a href="https://app.norselift.com">App</a>
           <a href="#features">Features</a>
           <a href="#pricing">Pricing</a>
+          <a href="/privacy">Privacy</a>
         </div>
       </div>
     </div>
