@@ -247,6 +247,60 @@
       text-align: center;
       overflow: hidden;
     }
+    .hero-inner {
+      display: flex;
+      align-items: center;
+      gap: 60px;
+      position: relative;
+    }
+    .hero-text {
+      flex: 1;
+      text-align: left;
+    }
+    .hero-phone {
+      flex-shrink: 0;
+      perspective: 1200px;
+    }
+    .phone-frame {
+      width: 280px;
+      border-radius: 40px;
+      border: 6px solid #1e2740;
+      background: #0a0e1a;
+      overflow: hidden;
+      box-shadow:
+        0 0 0 2px rgba(106, 171, 239, 0.1),
+        0 20px 60px rgba(0, 0, 0, 0.4),
+        0 0 80px rgba(106, 171, 239, 0.06);
+      transform: rotateY(-12deg) rotateX(3deg) rotateZ(1deg);
+      transform-style: preserve-3d;
+      transition: transform 0.4s ease;
+    }
+    .phone-frame:hover {
+      transform: rotateY(-6deg) rotateX(1deg) rotateZ(0deg);
+    }
+    [data-theme="light"] .phone-frame {
+      border-color: #c8d4e4;
+      box-shadow:
+        0 0 0 2px rgba(74, 144, 217, 0.08),
+        0 20px 60px rgba(0, 0, 0, 0.12),
+        0 0 80px rgba(74, 144, 217, 0.04);
+    }
+    .phone-frame img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    .hero-text .rune-line { justify-content: flex-start; }
+    @media (max-width: 768px) {
+      .hero-inner {
+        flex-direction: column;
+        gap: 48px;
+      }
+      .hero-text { text-align: center; }
+      .hero-text .rune-line { justify-content: center; }
+      .hero-actions { justify-content: center; }
+      .phone-frame { width: 240px; }
+    }
 
     .hero-aurora {
       position: absolute; inset: 0;
@@ -306,13 +360,19 @@
       font-size: 1.15rem;
       color: var(--text-secondary);
       max-width: 480px;
-      margin: 0 auto 40px;
+      margin: 0 0 40px;
       line-height: 1.7;
+    }
+    @media (max-width: 768px) {
+      .hero-sub { margin: 0 auto 40px; }
     }
 
     .hero-actions {
-      display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;
+      display: flex; gap: 14px; justify-content: flex-start; flex-wrap: wrap;
       position: relative;
+    }
+    @media (max-width: 768px) {
+      .hero-actions { justify-content: center; }
     }
     .btn-gold {
       display: inline-flex; align-items: center; gap: 8px;
@@ -705,32 +765,41 @@
   <section class="hero">
     <div class="hero-aurora"></div>
     <div class="container" style="position: relative;">
+      <div class="hero-inner">
+        <div class="hero-text">
+          <div class="rune-line animate-in">
+            <span class="rune-symbols">&#5765; &#5768; &#5792; &#5800;</span>
+          </div>
 
-      <div class="rune-line animate-in">
-        <span class="rune-symbols">&#5765; &#5768; &#5792; &#5800;</span>
+          <h1 class="norse-heading animate-in delay-1">
+            Forge Your<br/><span class="gold">Strength</span>
+          </h1>
+
+          <p class="hero-sub animate-in delay-2">
+            The workout tracker built for those who train with purpose.
+            No noise. No clutter. Just iron and progress.
+          </p>
+
+          <div class="hero-actions animate-in delay-3">
+            <a href="https://app.norselift.com" class="btn-gold">
+              Begin Your Journey
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="#features" class="btn-outline">
+              Explore
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+            </a>
+          </div>
+
+          <p class="hero-note">Free to use. No download required. Works on any device.</p>
+        </div>
+
+        <div class="hero-phone animate-in delay-2">
+          <div class="phone-frame">
+            <img src="/app-screenshot.png" alt="NorseLift app dashboard showing workout tracking, weekly calendar, and progress stats" />
+          </div>
+        </div>
       </div>
-
-      <h1 class="norse-heading animate-in delay-1">
-        Forge Your<br/><span class="gold">Strength</span>
-      </h1>
-
-      <p class="hero-sub animate-in delay-2">
-        The workout tracker built for those who train with purpose.
-        No noise. No clutter. Just iron and progress.
-      </p>
-
-      <div class="hero-actions animate-in delay-3">
-        <a href="https://app.norselift.com" class="btn-gold">
-          Begin Your Journey
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
-        <a href="#features" class="btn-outline">
-          Explore
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-        </a>
-      </div>
-
-      <p class="hero-note">Free to use. No download required. Works on any device.</p>
     </div>
   </section>
 

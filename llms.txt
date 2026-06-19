@@ -1,0 +1,49 @@
+# NorseLift
+
+> NorseLift is a free workout tracker built as a Progressive Web App (PWA). It helps lifters track workouts, build custom programs, monitor progress, and crush personal records — on any device, with no app store download required.
+
+## Overview
+
+NorseLift is a gym and strength training tracker designed for serious lifters who want a clean, focused tool without ads or clutter. It works on any device (phone, tablet, desktop) through the browser and can be installed to the home screen like a native app. It also works offline.
+
+## Key Features
+
+- **Custom workout programs**: Build your own training split (Push/Pull/Legs, Upper/Lower, or custom)
+- **Workout logging**: Log sets, reps, and weight during your session with a clean interface
+- **Rest timer**: Built-in timer with haptic feedback between sets
+- **Progress stats & charts**: Track volume, frequency, and strength over time (Pro)
+- **Personal records**: Automatic PR detection for every exercise (Pro)
+- **Training cycle planning**: Schedule and rotate through training blocks (Pro)
+- **Exercise library**: Browse and search exercises by muscle group
+- **Cloud sync**: Data syncs across all your devices
+- **Offline support**: Works without an internet connection
+- **PWA**: Install to home screen, no app store needed
+
+## Pricing
+
+- **Free tier**: Up to 3 programs, 7 days of history, 1 scheduled routine, exercise library, cloud sync, rest timer
+- **Pro Monthly**: $4.99/month (intro: $1.99 first month)
+- **Pro Quarterly**: $10.49/quarter ($3.49/month)
+- **Pro Yearly**: $29.99/year ($2.49/month)
+
+## Links
+
+- Website: https://norselift.com
+- App: https://app.norselift.com
+- Upgrade to Pro: https://app.norselift.com/upgrade
+
+## Technical Details
+
+- Built with React, TypeScript, and Vite
+- Firebase for authentication and cloud sync
+- Stripe for subscription billing
+- Hosted on Vercel
+- Progressive Web App with service worker for offline use
+
+## Target Audience
+
+NorseLift is for gym-goers and strength athletes who want a simple, focused workout tracker. It's especially suited for people who follow structured programs (like PPL, Upper/Lower, or custom splits) and want to track their progress over time without the bloat of larger fitness apps.
+
+## Company
+
+NorseLift is an independent product built in Norway.
