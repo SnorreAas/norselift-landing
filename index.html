@@ -56,7 +56,7 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
   <!-- Prevent flash: apply saved theme before paint -->
   <script>
@@ -172,7 +172,7 @@
     }
 
     .container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
-    .norse-heading { font-family: 'Cinzel', serif; letter-spacing: 0.02em; }
+    .norse-heading { font-family: 'Crimson Pro', serif; letter-spacing: -0.01em; }
 
     /* Smooth transitions for themed elements */
     nav, .feature-cell, .pricing-card, .stats-bar, footer,
@@ -195,7 +195,7 @@
       height: 64px;
     }
     .logo {
-      font-family: 'Cinzel', serif;
+      font-family: 'Crimson Pro', serif;
       font-size: 1.2rem; font-weight: 800;
       display: flex; align-items: center; gap: 10px;
       text-decoration: none; color: var(--text);
@@ -423,12 +423,12 @@
       padding: 60px 0 80px;
     }
     .section-eyebrow {
-      font-family: 'Cinzel', serif;
-      font-size: 0.7rem;
+      font-family: 'Crimson Pro', serif;
+      font-size: 0.75rem;
       font-weight: 700;
       color: var(--accent);
       text-transform: uppercase;
-      letter-spacing: 0.25em;
+      letter-spacing: 0.2em;
       margin-bottom: 14px;
     }
     .section-title {
@@ -474,7 +474,7 @@
     .feature-icon-wrap { margin-bottom: 14px; }
     .feature-icon-wrap svg { stroke: var(--icon-stroke); }
     .feature-cell h3 {
-      font-family: 'Cinzel', serif;
+      font-family: 'Crimson Pro', serif;
       font-size: 0.95rem;
       font-weight: 800;
       margin-bottom: 8px;
@@ -501,7 +501,7 @@
     }
     .stat-item { text-align: center; }
     .stat-value {
-      font-family: 'Cinzel', serif;
+      font-family: 'Crimson Pro', serif;
       font-size: 2rem;
       font-weight: 900;
       color: var(--accent);
@@ -614,7 +614,7 @@
 
     .pricing-badge {
       position: absolute; top: -11px; right: 22px;
-      font-family: 'Cinzel', serif;
+      font-family: 'Crimson Pro', serif;
       background: linear-gradient(135deg, var(--accent), var(--accent-dark));
       color: #fff;
       font-size: 0.65rem; font-weight: 800;
@@ -624,7 +624,7 @@
     }
 
     .pricing-card h3 {
-      font-family: 'Cinzel', serif;
+      font-family: 'Crimson Pro', serif;
       font-size: 1.3rem; font-weight: 800; margin-bottom: 4px;
     }
     .pricing-card .subtitle { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 22px; }
@@ -633,7 +633,7 @@
       margin-bottom: 26px;
     }
     .pricing-price .amount {
-      font-family: 'Cinzel', serif;
+      font-family: 'Crimson Pro', serif;
       font-size: 2.8rem; font-weight: 900;
     }
     .pricing-price .period { font-size: 0.85rem; color: var(--text-muted); }
@@ -729,6 +729,209 @@
       .hero-actions { flex-direction: column; align-items: center; }
       .btn-gold, .btn-outline { width: 100%; justify-content: center; }
       .rune-line::before, .rune-line::after { width: 40px; }
+    }
+
+    /* ============ FEATURE SHOWCASE (Screenshots) ============ */
+    .showcase {
+      padding: 80px 0 60px;
+    }
+    .showcase .section-eyebrow,
+    .showcase .section-title,
+    .showcase .section-desc { text-align: center; }
+    .showcase .section-desc { margin-left: auto; margin-right: auto; }
+    .showcase-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      margin-top: 48px;
+    }
+    .showcase-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: transform 0.25s, box-shadow 0.3s, border-color 0.3s;
+    }
+    .showcase-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--card-shadow-hover);
+      border-color: var(--border-accent);
+    }
+    [data-theme="dark"] .showcase-card:hover {
+      box-shadow: 0 8px 40px rgba(106, 171, 239, 0.08);
+    }
+    .showcase-screenshot {
+      width: 100%;
+      padding: 24px 20px 24px;
+      display: flex;
+      justify-content: center;
+      background: var(--surface-2);
+    }
+    .showcase-screenshot img {
+      width: 75%;
+      max-width: 220px;
+      height: auto;
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+    }
+    /* Theme-based screenshot swap in showcase */
+    .showcase-screenshot .screenshot-light { display: none; }
+    .showcase-screenshot .screenshot-dark { display: block; }
+    [data-theme="light"] .showcase-screenshot .screenshot-dark { display: none; }
+    [data-theme="light"] .showcase-screenshot .screenshot-light { display: block; }
+    .showcase-info {
+      padding: 24px 24px 28px;
+    }
+    .showcase-info h3 {
+      font-family: 'Crimson Pro', serif;
+      font-size: 1.05rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+    .showcase-info p {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+    @media (max-width: 768px) {
+      .showcase-grid {
+        grid-template-columns: 1fr;
+        max-width: 380px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+
+    /* ============ SPLIT SECTION (Text + Phone) ============ */
+    .split-section {
+      padding: 80px 0;
+    }
+    .split-inner {
+      display: flex;
+      align-items: center;
+      gap: 64px;
+    }
+    .split-text {
+      flex: 1;
+    }
+    .split-text .section-eyebrow { margin-bottom: 14px; }
+    .split-text .section-title { margin-bottom: 16px; }
+    .split-text .section-desc { margin-bottom: 28px; }
+    .split-highlights {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .split-highlights li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+    .highlight-icon {
+      flex-shrink: 0;
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: var(--accent-glow);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .highlight-icon svg {
+      stroke: var(--accent);
+    }
+    .split-phone {
+      flex-shrink: 0;
+      perspective: 1200px;
+    }
+    .split-phone .phone-frame {
+      width: 260px;
+      transform: rotateY(8deg) rotateX(2deg) rotateZ(-1deg);
+    }
+    .split-phone .phone-frame:hover {
+      transform: rotateY(4deg) rotateX(1deg) rotateZ(0deg);
+    }
+    @media (max-width: 768px) {
+      .split-inner {
+        flex-direction: column;
+        gap: 48px;
+      }
+      .split-text { text-align: center; }
+      .split-text .section-desc { margin-left: auto; margin-right: auto; }
+      .split-highlights { align-items: center; }
+      .split-phone .phone-frame { width: 240px; }
+    }
+
+    /* ============ FAQ ACCORDION ============ */
+    .faq {
+      padding: 80px 0;
+    }
+    .faq .section-eyebrow,
+    .faq .section-title,
+    .faq .section-desc { text-align: center; }
+    .faq .section-desc { margin-left: auto; margin-right: auto; }
+    .faq-list {
+      max-width: 680px;
+      margin: 48px auto 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .faq-item {
+      background: var(--surface);
+    }
+    .faq-question {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 20px 24px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--text);
+      transition: color 0.2s;
+    }
+    .faq-question:hover { color: var(--accent); }
+    .faq-chevron {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      stroke: var(--text-muted);
+      transition: transform 0.3s ease, stroke 0.2s;
+    }
+    .faq-item.open .faq-chevron {
+      transform: rotate(180deg);
+      stroke: var(--accent);
+    }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.35s ease;
+    }
+    .faq-item.open .faq-answer {
+      max-height: 300px;
+    }
+    .faq-answer-inner {
+      padding: 0 24px 20px;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
     }
 
     /* ============ ANIMATIONS ============ */
@@ -897,6 +1100,102 @@
     </div>
   </section>
 
+  <!-- ============ FEATURE SHOWCASE ============ -->
+  <section class="showcase" id="showcase">
+    <div class="container">
+      <p class="section-eyebrow">See It In Action</p>
+      <h2 class="section-title norse-heading">Built for the way<br/>you train.</h2>
+      <p class="section-desc">Three views. Everything you need to plan, execute, and track your progress.</p>
+
+      <div class="showcase-grid">
+        <!-- Schedule -->
+        <div class="showcase-card">
+          <div class="showcase-screenshot">
+            <img class="screenshot-dark" src="/screenshot-schedule-dark.png" alt="NorseLift schedule view in dark mode" loading="lazy" />
+            <img class="screenshot-light" src="/screenshot-schedule-light.png" alt="NorseLift schedule view in light mode" loading="lazy" />
+          </div>
+          <div class="showcase-info">
+            <h3>Plan Your Week</h3>
+            <p>Schedule routines across your week with a visual calendar. See what's coming and stay consistent.</p>
+          </div>
+        </div>
+
+        <!-- Workout -->
+        <div class="showcase-card">
+          <div class="showcase-screenshot">
+            <img class="screenshot-dark" src="/screenshot-workout-dark.png" alt="NorseLift active workout in dark mode" loading="lazy" />
+            <img class="screenshot-light" src="/screenshot-workout-light.png" alt="NorseLift active workout in light mode" loading="lazy" />
+          </div>
+          <div class="showcase-info">
+            <h3>Track Every Set</h3>
+            <p>Log weight and reps with smart suggestions based on your history. See your last performance and beat it.</p>
+          </div>
+        </div>
+
+        <!-- Progress -->
+        <div class="showcase-card">
+          <div class="showcase-screenshot">
+            <img class="screenshot-dark" src="/screenshot-progress-dark.png" alt="NorseLift progress stats in dark mode" loading="lazy" />
+            <img class="screenshot-light" src="/screenshot-progress-light.png" alt="NorseLift progress stats in light mode" loading="lazy" />
+          </div>
+          <div class="showcase-info">
+            <h3>Measure Your Gains</h3>
+            <p>Strength gains by muscle group, weekly consistency, and total volume — all in one clear dashboard.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SPLIT SECTION: Workout Experience ============ -->
+  <section class="split-section">
+    <div class="container">
+      <div class="split-inner">
+        <div class="split-text">
+          <p class="section-eyebrow">The Workout Experience</p>
+          <h2 class="section-title norse-heading">Less tapping.<br/>More lifting.</h2>
+          <p class="section-desc">NorseLift remembers how you train. Every set shows your last performance and suggests what to aim for next.</p>
+          <ul class="split-highlights">
+            <li>
+              <div class="highlight-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+              </div>
+              <span><strong>Smart suggestions</strong> — auto-filled weight and reps based on your history, so you just confirm and go.</span>
+            </li>
+            <li>
+              <div class="highlight-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </div>
+              <span><strong>Built-in rest timer</strong> — counts down between sets with haptic feedback so you can keep your phone in your pocket.</span>
+            </li>
+            <li>
+              <div class="highlight-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 16l4-8 4 5 5-9"/></svg>
+              </div>
+              <span><strong>Instant PR detection</strong> — hit a personal record and NorseLift celebrates it the moment it happens.</span>
+            </li>
+          </ul>
+        </div>
+        <div class="split-phone">
+          <div class="phone-frame">
+            <img class="screenshot-dark" src="/screenshot-workout-dark.png" alt="NorseLift workout logging view" loading="lazy" />
+            <img class="screenshot-light" src="/screenshot-workout-light.png" alt="NorseLift workout logging view in light mode" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rune Divider -->
+  <div class="rune-divider">
+    <svg width="200" height="20" viewBox="0 0 200 20" fill="none">
+      <line x1="0" y1="10" x2="70" y2="10" stroke="currentColor" stroke-width="0.5"/>
+      <polygon points="85,3 100,10 85,17" fill="none" stroke="currentColor" stroke-width="0.5"/>
+      <polygon points="115,3 100,10 115,17" fill="none" stroke="currentColor" stroke-width="0.5"/>
+      <line x1="130" y1="10" x2="200" y2="10" stroke="currentColor" stroke-width="0.5"/>
+    </svg>
+  </div>
+
   <!-- ============ PRICING ============ -->
   <section class="pricing" id="pricing">
     <div class="container">
@@ -975,6 +1274,77 @@
     </div>
   </section>
 
+  <!-- ============ FAQ ============ -->
+  <section class="faq" id="faq">
+    <div class="container">
+      <p class="section-eyebrow">Questions</p>
+      <h2 class="section-title norse-heading">Frequently asked.</h2>
+      <p class="section-desc">Everything you need to know before you start training with NorseLift.</p>
+
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Is NorseLift really free?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Yes. The free plan gives you 3 workout programs, 7 days of history, scheduling, cloud sync, and the full exercise library. No credit card required. Pro unlocks unlimited programs, full history, progress stats, personal records, and more.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Do I need to download anything?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Nope. NorseLift is a Progressive Web App (PWA) — open it in your browser and add it to your home screen for a native app experience. It works offline, loads instantly, and doesn't take up storage like traditional apps.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            What devices does it work on?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Any device with a modern browser — iPhone, Android, iPad, laptop, desktop. Your data syncs automatically across all of them via cloud sync, so you can log a workout on your phone and review your progress on your laptop.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Can I create my own workout programs?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Absolutely. Build custom routines with any exercises you want — Push/Pull/Legs, Upper/Lower, full body, or your own split. Add rest days, schedule them across the week, and NorseLift handles the rotation automatically.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            How does the smart suggestion feature work?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">NorseLift looks at your recent performance for each exercise and suggests weight and reps for your next set. It factors in your consistency to recommend either building on what you've done or pushing for more. You can accept the suggestion with one tap or enter your own numbers.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Can I cancel Pro anytime?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Yes. Cancel anytime from your account settings — no contracts, no hidden fees. You'll keep Pro access until the end of your billing period, then your account reverts to the free plan. Your data is never deleted.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Rune Divider -->
   <div class="rune-divider">
     <svg width="200" height="20" viewBox="0 0 200 20" fill="none">
@@ -1014,6 +1384,8 @@
           <a href="https://app.norselift.com">App</a>
           <a href="#features">Features</a>
           <a href="#pricing">Pricing</a>
+          <a href="#faq">FAQ</a>
+          <a href="mailto:support@norselift.com">Support</a>
           <a href="/privacy">Privacy</a>
         </div>
       </div>
@@ -1060,6 +1432,20 @@
       struck.textContent = p.struck || '';
       struck.style.display = p.struck ? 'inline' : 'none';
       document.getElementById('introCallout').style.display = p.showIntro ? 'block' : 'none';
+    }
+  </script>
+
+  <!-- FAQ toggle -->
+  <script>
+    function toggleFaq(btn) {
+      var item = btn.parentElement;
+      var wasOpen = item.classList.contains('open');
+      // Close all
+      document.querySelectorAll('.faq-item.open').forEach(function(el) {
+        el.classList.remove('open');
+      });
+      // Toggle clicked (open if it was closed)
+      if (!wasOpen) item.classList.add('open');
     }
   </script>
 
