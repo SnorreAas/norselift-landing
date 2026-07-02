@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Progressive Overload: The Only Rule You Need to Build Muscle — NorseLift</title>
+  <meta name="description" content="What progressive overload is, how to apply it (weight, reps, volume, frequency), common mistakes to avoid, and when to deload. The essential guide to building muscle." />
+  <meta name="theme-color" content="#e6eef8" id="meta-theme" />
+  <link rel="canonical" href="https://norselift.com/blog/progressive-overload-guide" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Progressive Overload: The Only Rule You Need to Build Muscle" />
+  <meta property="og:description" content="What progressive overload is, how to apply it, common mistakes, and when to deload. The essential guide to building muscle." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://norselift.com/blog/progressive-overload-guide" />
+  <meta property="og:image" content="https://norselift.com/og-image.png" />
+  <meta property="og:site_name" content="NorseLift" />
+
+  <!-- Twitter/X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Progressive Overload: The Only Rule You Need to Build Muscle" />
+  <meta name="twitter:description" content="What progressive overload is, how to apply it, common mistakes, and when to deload." />
+  <meta name="twitter:image" content="https://norselift.com/og-image.png" />
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Progressive Overload: The Only Rule You Need to Build Muscle",
+    "description": "What progressive overload is, how to apply it (weight, reps, volume, frequency), common mistakes to avoid, and when to deload.",
+    "author": {
+      "@type": "Organization",
+      "name": "NorseLift"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "NorseLift",
+      "url": "https://norselift.com"
+    },
+    "datePublished": "2026-07-02",
+    "dateModified": "2026-07-02",
+    "mainEntityOfPage": "https://norselift.com/blog/progressive-overload-guide",
+    "url": "https://norselift.com/blog/progressive-overload-guide"
+  }
+  </script>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-YJ8DCEJGHD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-YJ8DCEJGHD');
+  </script>
+
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico" sizes="48x48" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Prevent flash: apply saved theme before paint -->
+  <script>
+    (function() {
+      var saved = localStorage.getItem('norselift-theme');
+      var theme = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+      var mc = document.getElementById('meta-theme');
+      if (mc) mc.setAttribute('content', theme === 'dark' ? '#0a0e1a' : '#e6eef8');
+    })();
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root, [data-theme="light"] {
+      --bg: #e6eef8;
+      --bg-end: #f2f5fa;
+      --surface: #ffffff;
+      --border: #c8d4e4;
+      --text: #1a1e30;
+      --text-secondary: #4a5268;
+      --text-muted: #7e86a0;
+      --accent: #4a90d9;
+      --accent-dark: #3670a8;
+      --accent-glow-strong: rgba(74, 144, 217, 0.22);
+      --nav-bg: rgba(230, 238, 248, 0.8);
+      --btn-accent-text: #fff;
+    }
+
+    [data-theme="dark"] {
+      --bg: #0a0e1a;
+      --bg-end: #0a0e1a;
+      --surface: #0f1424;
+      --border: #1e2740;
+      --text: #e4e4ef;
+      --text-secondary: #8e92a8;
+      --text-muted: #555a70;
+      --accent: #6aabef;
+      --accent-dark: #4a8ec9;
+      --accent-glow-strong: rgba(106, 171, 239, 0.25);
+      --nav-bg: rgba(6, 10, 20, 0.8);
+      --btn-accent-text: #0a0e1a;
+    }
+
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: linear-gradient(180deg, var(--bg) 0%, var(--bg-end) 100%);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      transition: background 0.4s, color 0.3s;
+    }
+
+    .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+
+    /* Nav */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+      background: var(--nav-bg);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 1120px; margin: 0 auto; padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 72px;
+    }
+    .nav-left {
+      display: flex; align-items: center; gap: 24px;
+    }
+    .logo {
+      font-family: 'Crimson Pro', serif;
+      font-size: 1.4rem; font-weight: 800;
+      display: flex; align-items: center; gap: 12px;
+      text-decoration: none; color: var(--text);
+    }
+    .logo-mark {
+      width: 40px; height: 40px; border-radius: 10px;
+      overflow: hidden;
+    }
+    .logo-mark img {
+      width: 100%; height: 100%; object-fit: cover;
+    }
+    .nav-link {
+      font-size: 0.9rem; font-weight: 500;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .nav-link:hover { color: var(--accent); }
+    .theme-toggle {
+      width: 38px; height: 38px; border-radius: 10px;
+      border: 1px solid var(--border); background: var(--surface);
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      transition: border-color 0.2s, background 0.3s;
+      color: var(--text-muted);
+    }
+    .theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
+    .theme-toggle .icon-sun, .theme-toggle .icon-moon { display: none; }
+    [data-theme="light"] .theme-toggle .icon-moon { display: block; }
+    [data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+
+    /* Content */
+    .content {
+      padding: 120px 0 80px;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--accent);
+      text-decoration: none;
+      margin-bottom: 24px;
+      transition: opacity 0.15s;
+    }
+    .back-link:hover { opacity: 0.8; }
+    .content h1 {
+      font-family: 'Crimson Pro', serif;
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+    .blog-meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 40px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .blog-meta span {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .content h2 {
+      font-family: 'Crimson Pro', serif;
+      font-size: 1.3rem;
+      font-weight: 800;
+      margin-top: 40px;
+      margin-bottom: 14px;
+      color: var(--accent);
+    }
+    .content h3 {
+      font-family: 'Crimson Pro', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-top: 32px;
+      margin-bottom: 10px;
+      color: var(--text);
+    }
+    .content p {
+      margin-bottom: 16px;
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+    .content ul, .content ol {
+      margin-bottom: 16px;
+      padding-left: 24px;
+    }
+    .content li {
+      color: var(--text-secondary);
+      margin-bottom: 8px;
+      line-height: 1.7;
+    }
+    .content a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .content a:hover {
+      text-decoration: underline;
+    }
+    .content strong {
+      color: var(--text);
+    }
+
+    /* Progress Table */
+    .progress-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0 8px;
+      font-size: 0.85rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .progress-table th {
+      text-align: left;
+      padding: 12px 14px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--text);
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .progress-table td {
+      padding: 10px 14px;
+      color: var(--text-secondary);
+      border-bottom: 1px solid var(--border);
+    }
+    .progress-table tr:last-child td { border-bottom: none; }
+    .progress-table td:first-child { font-weight: 600; color: var(--text); }
+    .progress-table .bump { color: var(--accent); font-weight: 600; }
+    @media (max-width: 640px) {
+      .progress-table th, .progress-table td { padding: 8px 10px; font-size: 0.8rem; }
+    }
+
+    /* Bar Chart */
+    .bar-chart {
+      display: flex;
+      align-items: flex-end;
+      gap: 8px;
+      height: 120px;
+      margin: 24px 0;
+      padding: 0 4px;
+    }
+    .bar-col {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      height: 100%;
+      justify-content: flex-end;
+    }
+    .bar {
+      width: 100%;
+      max-width: 48px;
+      border-radius: 6px 6px 0 0;
+      background: var(--accent);
+      opacity: 0.7;
+      transition: opacity 0.2s;
+      position: relative;
+    }
+    .bar:hover { opacity: 1; }
+    .bar-val {
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .bar-label {
+      font-size: 0.65rem;
+      color: var(--text-muted);
+    }
+
+    /* CTA Box */
+    .cta-box {
+      margin-top: 48px;
+      padding: 32px;
+      background: var(--surface);
+      border: 1px solid var(--accent);
+      border-radius: 16px;
+      text-align: center;
+    }
+    .cta-box h3 {
+      font-family: 'Crimson Pro', serif;
+      font-size: 1.3rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+      margin-top: 0;
+      color: var(--text);
+    }
+    .cta-box p {
+      font-size: 0.95rem;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 32px;
+      border-radius: 12px;
+      background: #f0f4f8;
+      color: #1a1e30;
+      border: 1px solid #c8d4e4;
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform 0.15s, box-shadow 0.2s;
+    }
+    [data-theme="dark"] .cta-btn {
+      background: #1a2236;
+      color: #e4e4ef;
+      border-color: #2a3654;
+    }
+    .cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+      text-decoration: none;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 36px 0;
+    }
+    .footer-inner {
+      max-width: 1120px; margin: 0 auto; padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    footer p { font-size: 0.75rem; color: var(--text-muted); }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-links a {
+      font-size: 0.75rem; color: var(--text-muted);
+      text-decoration: none; transition: color 0.15s;
+    }
+    .footer-links a:hover { color: var(--accent); }
+
+    @media (max-width: 640px) {
+      .footer-inner { flex-direction: column; gap: 12px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <div class="nav-left">
+        <a href="/" class="logo">
+          <div class="logo-mark"><img src="/norselift-icon-192.png" alt="NorseLift" /></div>
+          NorseLift
+        </a>
+        <a href="/blog" class="nav-link">Blog</a>
+      </div>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+        <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <div class="content">
+    <div class="container">
+      <a href="/blog" class="back-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Back to blog
+      </a>
+
+      <h1>Progressive Overload: The Only Rule You Need to Build Muscle</h1>
+      <div class="blog-meta">
+        <span>July 2, 2026</span>
+        <span>9 min read</span>
+      </div>
+
+      <p>There are thousands of workout programs, diet plans, and supplement stacks out there. Most of them overcomplicate things. If you strip training down to its most fundamental principle, you're left with one concept: progressive overload.</p>
+
+      <p>It's the single most important factor in building muscle and getting stronger. Everything else is details.</p>
+
+      <h2>What Is Progressive Overload?</h2>
+
+      <p>Progressive overload means gradually increasing the demands you place on your muscles over time. Your body adapts to stress, so if you keep doing the same weight for the same reps, you stop growing. To build muscle, you need to consistently give your body a reason to adapt by making your workouts slightly harder than before.</p>
+
+      <p>This doesn't mean you need to add weight every single session. It means that over weeks and months, the trend should be upward. Your training needs to get progressively harder for your body to keep responding.</p>
+
+      <h2>The 5 Methods of Progressive Overload</h2>
+
+      <p>Adding weight to the bar is the most obvious form of progressive overload, but it's not the only one. Here are all the levers you can pull:</p>
+
+      <h3>1. Increase Weight</h3>
+
+      <p>The most straightforward method. If you benched 80kg for 3 sets of 8 last week, try 82.5kg this week. Small jumps of 1-2.5kg per session are sustainable for months on most compound lifts.</p>
+
+      <p>This works best for beginners and intermediate lifters on compound exercises. Advanced lifters may only add weight every few weeks.</p>
+
+      <h3>2. Increase Reps</h3>
+
+      <p>Keep the weight the same but do more reps. If you got 80kg for 3x8 last week, aim for 3x9 or 3x10 this week. Once you hit the top of your target rep range, increase the weight and drop the reps back down.</p>
+
+      <p>This is often the most practical method for isolation exercises and accessories, where tiny weight increments aren't available.</p>
+
+      <h3>3. Increase Volume (Sets)</h3>
+
+      <p>Add more sets over time. If you've been doing 3 sets of bench press, move to 4 sets. More total work means more stimulus for growth.</p>
+
+      <p>Be careful with this one. Volume is effective but recovery-expensive. Adding a set every few weeks is plenty. Don't jump from 12 to 20 weekly sets overnight.</p>
+
+      <h3>4. Increase Frequency</h3>
+
+      <p>Train a muscle group more often. Going from hitting chest once per week to twice per week essentially doubles your weekly stimulus without necessarily increasing session volume. Research consistently shows that training each muscle group at least twice per week is superior to once per week for hypertrophy.</p>
+
+      <h3>5. Improve Technique</h3>
+
+      <p>Better form means more tension on the target muscle with the same weight. Slower eccentrics, longer pauses at the bottom, fuller range of motion. This is progressive overload that doesn't show up in your training log, but it's real.</p>
+
+      <p>A 70kg squat with proper depth and control builds more muscle than a 100kg half-squat. Never sacrifice form for numbers.</p>
+
+      <h2>How to Track Progressive Overload</h2>
+
+      <p>Here's the uncomfortable truth: if you're not tracking your workouts, you're not doing progressive overload. You're guessing. And guessing leads to stagnation.</p>
+
+      <p>You need to know what you lifted last time so you can beat it this time. That's the entire game.</p>
+
+      <p>At minimum, record the exercise, weight, sets, and reps for every workout. Before each session, review what you did last time and set a target to beat it by at least one rep or a small weight increment.</p>
+
+      <p>This is where a workout tracker like NorseLift makes a real difference. It shows your last performance for every exercise right on the logging screen, and the smart suggestion feature automatically calculates what you should aim for based on your history. Instead of flipping through a notebook or trying to remember what you did last Tuesday, the target is right there waiting for you.</p>
+
+      <h2>A Practical Example</h2>
+
+      <p>Here's what progressive overload looks like in practice over 6 weeks for a single exercise, say the barbell bench press:</p>
+
+      <table class="progress-table">
+        <thead>
+          <tr><th>Week</th><th>Weight</th><th>Sets x Reps</th><th>Total Volume</th><th>Note</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>70 kg</td><td>3 x 6</td><td>1,260 kg</td><td></td></tr>
+          <tr><td>2</td><td>70 kg</td><td>3 x 7</td><td>1,470 kg</td><td>+1 rep per set</td></tr>
+          <tr><td>3</td><td>70 kg</td><td>3 x 8</td><td>1,680 kg</td><td>Top of range hit</td></tr>
+          <tr><td>4</td><td><span class="bump">72.5 kg</span></td><td>3 x 6</td><td>1,305 kg</td><td class="bump">Weight up, reps reset</td></tr>
+          <tr><td>5</td><td>72.5 kg</td><td>3 x 7</td><td>1,522 kg</td><td>+1 rep per set</td></tr>
+          <tr><td>6</td><td>72.5 kg</td><td>3 x 8</td><td>1,740 kg</td><td>Top of range again</td></tr>
+        </tbody>
+      </table>
+
+      <!-- Volume trend bar chart -->
+      <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:4px; font-weight:600;">Total volume per week (kg)</p>
+      <div class="bar-chart">
+        <div class="bar-col"><span class="bar-val">1,260</span><div class="bar" style="height:58%;"></div><span class="bar-label">W1</span></div>
+        <div class="bar-col"><span class="bar-val">1,470</span><div class="bar" style="height:70%;"></div><span class="bar-label">W2</span></div>
+        <div class="bar-col"><span class="bar-val">1,680</span><div class="bar" style="height:82%;"></div><span class="bar-label">W3</span></div>
+        <div class="bar-col"><span class="bar-val">1,305</span><div class="bar" style="height:62%; opacity:0.5;"></div><span class="bar-label">W4</span></div>
+        <div class="bar-col"><span class="bar-val">1,522</span><div class="bar" style="height:74%;"></div><span class="bar-label">W5</span></div>
+        <div class="bar-col"><span class="bar-val">1,740</span><div class="bar" style="height:88%;"></div><span class="bar-label">W6</span></div>
+      </div>
+
+      <p>Notice the pattern: build reps within a range, then add weight and reset the reps. The dip in week 4 is expected — you traded reps for heavier weight. By week 6 you've surpassed your previous best volume at a higher load. This is sometimes called "double progression" and it works incredibly well for most lifters.</p>
+
+      <h2>Common Mistakes</h2>
+
+      <h3>Adding weight too fast</h3>
+      <p>Adding 5kg per week sounds great until your form breaks down in week three and you tweak your shoulder. Small increments (1-2.5kg) applied consistently lead to massive gains over months. You don't need to rush.</p>
+
+      <h3>Chasing numbers over quality</h3>
+      <p>If you added 2.5kg but your reps got sloppier, shorter, and faster, you didn't actually progress. True progressive overload means doing more work with the same quality of movement.</p>
+
+      <h3>Ignoring recovery</h3>
+      <p>Progressive overload only works if you can recover from it. If you're sleeping 5 hours a night, eating poorly, and training 6 days a week, your body can't adapt. Training is the stimulus. Food and sleep are the response.</p>
+
+      <h3>Not tracking</h3>
+      <p>Walking into the gym without knowing what you need to beat is the most common reason people spin their wheels for years without making progress. Write it down. Every workout.</p>
+
+      <h3>Expecting linear progress forever</h3>
+      <p>Beginners can add weight almost every session. Intermediate lifters might progress every week or two. Advanced lifters might need a month to add 2.5kg to a lift. As you get stronger, progress slows. That's normal, not a sign something is wrong.</p>
+
+      <h2>When to Deload</h2>
+
+      <p>A deload is a planned reduction in training intensity or volume, usually lasting one week. It gives your body time to fully recover and often leads to a performance boost when you return to normal training.</p>
+
+      <p>Consider a deload when:</p>
+
+      <ul>
+        <li>You've been training hard for 4-8 weeks straight without a break</li>
+        <li>You feel consistently fatigued, sore, or unmotivated</li>
+        <li>Your lifts have stalled for two or more sessions in a row</li>
+        <li>Sleep quality has dropped or you're getting nagging joint pain</li>
+      </ul>
+
+      <p>During a deload, reduce your working weight by about 40-50% and cut volume in half. Keep showing up to the gym, but treat it as active recovery. Most lifters find they come back stronger after a deload.</p>
+
+      <h2>The Bottom Line</h2>
+
+      <p>Progressive overload isn't complicated. Do a little more than last time. Track what you do so you know what "last time" was. Recover enough to actually adapt. Repeat for months and years.</p>
+
+      <p>There's no secret program, no magic exercise, no shortcut. Just consistent effort, applied progressively, over time. That's the entire recipe for building muscle.</p>
+
+      <div class="cta-box">
+        <h3>Track your progressive overload with NorseLift</h3>
+        <p>See your last performance, get smart suggestions, and track your PRs automatically. Free to use, no download required.</p>
+        <a href="https://app.norselift.com" class="cta-btn">
+          Start Tracking Free
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <p>&copy; 2026 NorseLift. Forged in Norway.</p>
+      <div class="footer-links">
+        <a href="/">Home</a>
+        <a href="https://app.norselift.com">App</a>
+        <a href="/blog">Blog</a>
+        <a href="/privacy">Privacy</a>
+        <a href="mailto:support@norselift.com">Support</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleTheme() {
+      var html = document.documentElement;
+      var current = html.getAttribute('data-theme');
+      var next = current === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('norselift-theme', next);
+      var meta = document.getElementById('meta-theme');
+      if (meta) meta.setAttribute('content', next === 'dark' ? '#0a0e1a' : '#e6eef8');
+    }
+  </script>
+
+  <script defer src="/_vercel/insights/script.js"></script>
+
+</body>
+</html>

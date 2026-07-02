@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The 5 Best Free Workout Tracker Apps in 2026 — NorseLift</title>
+  <meta name="description" content="Comparing the best free workout tracker apps in 2026: NorseLift, Strong, Hevy, JEFIT, and FitNotes. Honest pros, cons, and pricing for each." />
+  <meta name="theme-color" content="#e6eef8" id="meta-theme" />
+  <link rel="canonical" href="https://norselift.com/blog/best-free-workout-tracker-app" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="The 5 Best Free Workout Tracker Apps in 2026" />
+  <meta property="og:description" content="Comparing the best free workout tracker apps in 2026: NorseLift, Strong, Hevy, JEFIT, and FitNotes. Honest pros, cons, and pricing for each." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://norselift.com/blog/best-free-workout-tracker-app" />
+  <meta property="og:image" content="https://norselift.com/og-image.png" />
+  <meta property="og:site_name" content="NorseLift" />
+
+  <!-- Twitter/X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="The 5 Best Free Workout Tracker Apps in 2026" />
+  <meta name="twitter:description" content="Comparing the best free workout tracker apps in 2026: NorseLift, Strong, Hevy, JEFIT, and FitNotes." />
+  <meta name="twitter:image" content="https://norselift.com/og-image.png" />
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "The 5 Best Free Workout Tracker Apps in 2026",
+    "description": "Comparing the best free workout tracker apps in 2026: NorseLift, Strong, Hevy, JEFIT, and FitNotes. Honest pros, cons, and pricing for each.",
+    "author": {
+      "@type": "Organization",
+      "name": "NorseLift"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "NorseLift",
+      "url": "https://norselift.com"
+    },
+    "datePublished": "2026-07-02",
+    "dateModified": "2026-07-02",
+    "mainEntityOfPage": "https://norselift.com/blog/best-free-workout-tracker-app",
+    "url": "https://norselift.com/blog/best-free-workout-tracker-app"
+  }
+  </script>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-YJ8DCEJGHD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-YJ8DCEJGHD');
+  </script>
+
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico" sizes="48x48" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Prevent flash: apply saved theme before paint -->
+  <script>
+    (function() {
+      var saved = localStorage.getItem('norselift-theme');
+      var theme = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+      var mc = document.getElementById('meta-theme');
+      if (mc) mc.setAttribute('content', theme === 'dark' ? '#0a0e1a' : '#e6eef8');
+    })();
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root, [data-theme="light"] {
+      --bg: #e6eef8;
+      --bg-end: #f2f5fa;
+      --surface: #ffffff;
+      --border: #c8d4e4;
+      --text: #1a1e30;
+      --text-secondary: #4a5268;
+      --text-muted: #7e86a0;
+      --accent: #4a90d9;
+      --accent-dark: #3670a8;
+      --accent-glow-strong: rgba(74, 144, 217, 0.22);
+      --nav-bg: rgba(230, 238, 248, 0.8);
+      --btn-accent-text: #fff;
+    }
+
+    [data-theme="dark"] {
+      --bg: #0a0e1a;
+      --bg-end: #0a0e1a;
+      --surface: #0f1424;
+      --border: #1e2740;
+      --text: #e4e4ef;
+      --text-secondary: #8e92a8;
+      --text-muted: #555a70;
+      --accent: #6aabef;
+      --accent-dark: #4a8ec9;
+      --accent-glow-strong: rgba(106, 171, 239, 0.25);
+      --nav-bg: rgba(6, 10, 20, 0.8);
+      --btn-accent-text: #0a0e1a;
+    }
+
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: linear-gradient(180deg, var(--bg) 0%, var(--bg-end) 100%);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      transition: background 0.4s, color 0.3s;
+    }
+
+    .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+
+    /* Nav */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+      background: var(--nav-bg);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 1120px; margin: 0 auto; padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 72px;
+    }
+    .nav-left {
+      display: flex; align-items: center; gap: 24px;
+    }
+    .logo {
+      font-family: 'Crimson Pro', serif;
+      font-size: 1.4rem; font-weight: 800;
+      display: flex; align-items: center; gap: 12px;
+      text-decoration: none; color: var(--text);
+    }
+    .logo-mark {
+      width: 40px; height: 40px; border-radius: 10px;
+      overflow: hidden;
+    }
+    .logo-mark img {
+      width: 100%; height: 100%; object-fit: cover;
+    }
+    .nav-link {
+      font-size: 0.9rem; font-weight: 500;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .nav-link:hover { color: var(--accent); }
+    .theme-toggle {
+      width: 38px; height: 38px; border-radius: 10px;
+      border: 1px solid var(--border); background: var(--surface);
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      transition: border-color 0.2s, background 0.3s;
+      color: var(--text-muted);
+    }
+    .theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
+    .theme-toggle .icon-sun, .theme-toggle .icon-moon { display: none; }
+    [data-theme="light"] .theme-toggle .icon-moon { display: block; }
+    [data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+
+    /* Content */
+    .content {
+      padding: 120px 0 80px;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--accent);
+      text-decoration: none;
+      margin-bottom: 24px;
+      transition: opacity 0.15s;
+    }
+    .back-link:hover { opacity: 0.8; }
+    .content h1 {
+      font-family: 'Crimson Pro', serif;
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+    .blog-meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 40px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .blog-meta span {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .content h2 {
+      font-family: 'Crimson Pro', serif;
+      font-size: 1.3rem;
+      font-weight: 800;
+      margin-top: 40px;
+      margin-bottom: 14px;
+      color: var(--accent);
+    }
+    .content h3 {
+      font-family: 'Crimson Pro', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-top: 32px;
+      margin-bottom: 10px;
+      color: var(--text);
+    }
+    .content p {
+      margin-bottom: 16px;
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+    .content ul, .content ol {
+      margin-bottom: 16px;
+      padding-left: 24px;
+    }
+    .content li {
+      color: var(--text-secondary);
+      margin-bottom: 8px;
+      line-height: 1.7;
+    }
+    .content a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .content a:hover {
+      text-decoration: underline;
+    }
+    .content strong {
+      color: var(--text);
+    }
+
+    /* Comparison Table */
+    .compare-table-wrap {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin: 20px 0 28px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+      background: var(--surface);
+      min-width: 480px;
+    }
+    .compare-table th {
+      text-align: left;
+      padding: 12px 14px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--text);
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .compare-table td {
+      padding: 10px 14px;
+      color: var(--text-secondary);
+      border-bottom: 1px solid var(--border);
+    }
+    .compare-table tr:last-child td { border-bottom: none; }
+    .compare-table td:first-child { font-weight: 600; color: var(--text); }
+    .compare-table .highlight { color: var(--accent); font-weight: 700; }
+    .compare-table .check { color: #22c55e; font-weight: 700; }
+    .compare-table .muted { color: var(--text-muted); }
+    @media (max-width: 640px) {
+      .compare-table th, .compare-table td { padding: 8px 8px; font-size: 0.72rem; }
+    }
+
+    /* CTA Box */
+    .cta-box {
+      margin-top: 48px;
+      padding: 32px;
+      background: var(--surface);
+      border: 1px solid var(--accent);
+      border-radius: 16px;
+      text-align: center;
+    }
+    .cta-box h3 {
+      font-family: 'Crimson Pro', serif;
+      font-size: 1.3rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+      margin-top: 0;
+      color: var(--text);
+    }
+    .cta-box p {
+      font-size: 0.95rem;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 32px;
+      border-radius: 12px;
+      background: #f0f4f8;
+      color: #1a1e30;
+      border: 1px solid #c8d4e4;
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform 0.15s, box-shadow 0.2s;
+    }
+    [data-theme="dark"] .cta-btn {
+      background: #1a2236;
+      color: #e4e4ef;
+      border-color: #2a3654;
+    }
+    .cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+      text-decoration: none;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 36px 0;
+    }
+    .footer-inner {
+      max-width: 1120px; margin: 0 auto; padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    footer p { font-size: 0.75rem; color: var(--text-muted); }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-links a {
+      font-size: 0.75rem; color: var(--text-muted);
+      text-decoration: none; transition: color 0.15s;
+    }
+    .footer-links a:hover { color: var(--accent); }
+
+    @media (max-width: 640px) {
+      .footer-inner { flex-direction: column; gap: 12px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <div class="nav-left">
+        <a href="/" class="logo">
+          <div class="logo-mark"><img src="/norselift-icon-192.png" alt="NorseLift" /></div>
+          NorseLift
+        </a>
+        <a href="/blog" class="nav-link">Blog</a>
+      </div>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+        <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <div class="content">
+    <div class="container">
+      <a href="/blog" class="back-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Back to blog
+      </a>
+
+      <h1>The 5 Best Free Workout Tracker Apps in 2026</h1>
+      <div class="blog-meta">
+        <span>July 2, 2026</span>
+        <span>8 min read</span>
+      </div>
+
+      <p>If you've spent any time looking for a workout tracker, you know the landscape is crowded. Most apps claim to be "free" but hit you with paywalls the moment you try to do anything useful. Others drown you in social features you never asked for.</p>
+
+      <p>I've used all five of these apps in real training sessions. Here's an honest breakdown of what each one does well, where they fall short, and what they actually cost.</p>
+
+      <h2>1. NorseLift</h2>
+
+      <p>NorseLift is a Progressive Web App (PWA), which means it runs in your browser and works on any device without downloading anything from an app store. You can add it to your home screen and it behaves like a native app, including offline support.</p>
+
+      <p>The free tier gives you 3 workout programs, 7 days of history, a full exercise library with 100+ exercises, cloud sync, and a rest timer. That's more than enough to run a solid training program without paying a cent.</p>
+
+      <p><strong>Pros:</strong></p>
+      <ul>
+        <li>Genuinely useful free tier with cloud sync included</li>
+        <li>Works on any device (phone, tablet, laptop) with no download</li>
+        <li>Clean, fast UI with no ads ever</li>
+        <li>Smart weight suggestions based on your history</li>
+        <li>Built-in rest timer with haptic feedback</li>
+      </ul>
+
+      <p><strong>Cons:</strong></p>
+      <ul>
+        <li>Smaller exercise library than some competitors (100+ vs 300+)</li>
+        <li>No social features yet (coming soon)</li>
+        <li>Free tier limited to 7 days of workout history</li>
+      </ul>
+
+      <p><strong>Pricing:</strong> Free forever. Pro from $4.99/mo ($1.99 first month), or $29.99/year ($2.49/mo) for unlimited programs, full history, progress charts, and personal records.</p>
+
+      <h2>2. Strong</h2>
+
+      <p>Strong has been around for years and has earned its reputation as a reliable workout tracker. The interface is polished and the workout logging experience is smooth. It's a native iOS and Android app with a large exercise database.</p>
+
+      <p><strong>Pros:</strong></p>
+      <ul>
+        <li>Mature, well-designed app with years of refinement</li>
+        <li>Large exercise library with video demonstrations</li>
+        <li>Solid workout logging flow</li>
+        <li>Apple Watch support</li>
+      </ul>
+
+      <p><strong>Cons:</strong></p>
+      <ul>
+        <li>Free tier is extremely limited (3 routines, no sync)</li>
+        <li>Cloud sync requires a paid subscription</li>
+        <li>No web version, so you can't use it on a desktop or laptop</li>
+        <li>Pricing can be confusing with multiple tiers</li>
+      </ul>
+
+      <p><strong>Pricing:</strong> Limited free tier. Pro costs $4.99-$9.99/month depending on the plan.</p>
+
+      <h2>3. Hevy</h2>
+
+      <p>Hevy has grown quickly by combining workout tracking with social features. If you want to follow friends, share workouts, and browse what other people are doing, Hevy is built for that. The workout logging itself is decent, though the social feed can feel distracting when you're mid-set.</p>
+
+      <p><strong>Pros:</strong></p>
+      <ul>
+        <li>Free cloud sync on the free tier</li>
+        <li>Social features if you enjoy that community aspect</li>
+        <li>Large exercise library</li>
+        <li>Routine sharing with friends</li>
+      </ul>
+
+      <p><strong>Cons:</strong></p>
+      <ul>
+        <li>Ads on the free tier</li>
+        <li>The social feed can clutter the experience</li>
+        <li>Some advanced features locked behind Pro</li>
+        <li>No web app, mobile only</li>
+      </ul>
+
+      <p><strong>Pricing:</strong> Free with ads. Pro at $8.99/month removes ads and unlocks advanced analytics.</p>
+
+      <h2>4. JEFIT</h2>
+
+      <p>JEFIT has been around since the early days of fitness apps. It has a massive exercise database with animated demonstrations, and it's popular with bodybuilders who like detailed workout plans. The interface feels dated compared to newer apps, but it's functional.</p>
+
+      <p><strong>Pros:</strong></p>
+      <ul>
+        <li>Huge exercise database with animations</li>
+        <li>Detailed body measurement tracking</li>
+        <li>Large community with shared workout plans</li>
+        <li>Available on web and mobile</li>
+      </ul>
+
+      <p><strong>Cons:</strong></p>
+      <ul>
+        <li>The interface feels outdated</li>
+        <li>Ads on the free tier are aggressive</li>
+        <li>Can feel bloated with features you don't need</li>
+        <li>Workout logging flow is clunkier than competitors</li>
+      </ul>
+
+      <p><strong>Pricing:</strong> Free with ads. Elite at $6.99/month or $39.99/year.</p>
+
+      <h2>5. FitNotes</h2>
+
+      <p>FitNotes is the minimalist's choice. It's Android-only, completely free, and has no ads. If you want a straightforward tool to log sets and reps without any fluff, FitNotes delivers. The tradeoff is that it doesn't have cloud sync, progress analytics, or a large exercise library.</p>
+
+      <p><strong>Pros:</strong></p>
+      <ul>
+        <li>Completely free with no ads</li>
+        <li>Simple, no-nonsense interface</li>
+        <li>Lightweight and fast</li>
+        <li>Good for lifters who just want to log and go</li>
+      </ul>
+
+      <p><strong>Cons:</strong></p>
+      <ul>
+        <li>Android only, no iOS or web version</li>
+        <li>No cloud sync, so data is trapped on one device</li>
+        <li>No smart suggestions or advanced tracking</li>
+        <li>Limited development and updates</li>
+      </ul>
+
+      <p><strong>Pricing:</strong> Completely free.</p>
+
+      <h2>Quick Comparison</h2>
+
+      <div class="compare-table-wrap">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>App</th>
+            <th>Free Sync</th>
+            <th>Platforms</th>
+            <th>Ads</th>
+            <th>Pro Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="highlight">NorseLift</span></td>
+            <td><span class="check">&#10003;</span></td>
+            <td>Any device (PWA)</td>
+            <td><span class="check">Never</span></td>
+            <td>From $2.49/mo</td>
+          </tr>
+          <tr>
+            <td>Strong</td>
+            <td><span class="muted">No</span></td>
+            <td>iOS, Android</td>
+            <td>No</td>
+            <td>$4.99-9.99/mo</td>
+          </tr>
+          <tr>
+            <td>Hevy</td>
+            <td><span class="check">&#10003;</span></td>
+            <td>iOS, Android</td>
+            <td>Yes (free tier)</td>
+            <td>$8.99/mo</td>
+          </tr>
+          <tr>
+            <td>JEFIT</td>
+            <td><span class="muted">No</span></td>
+            <td>iOS, Android, Web</td>
+            <td>Yes (aggressive)</td>
+            <td>$6.99/mo</td>
+          </tr>
+          <tr>
+            <td>FitNotes</td>
+            <td><span class="muted">No sync</span></td>
+            <td>Android only</td>
+            <td>No</td>
+            <td>Free</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+
+      <h2>The Verdict</h2>
+
+      <p>If you want a workout tracker that's genuinely free, works on every device, and doesn't try to sell you something every time you open it, NorseLift is the strongest option. Cloud sync on the free tier is a big deal since most competitors charge for it, and the PWA approach means you can use the same app on your phone, tablet, and laptop.</p>
+
+      <p>Strong remains excellent if you're willing to pay for a premium native app experience. Hevy is good if you want social features. JEFIT works if you need a massive exercise library. And FitNotes is solid for Android users who want absolute simplicity.</p>
+
+      <p>The best app is the one you'll actually use consistently. Try a few and stick with whatever makes logging your workouts feel effortless.</p>
+
+      <div class="cta-box">
+        <h3>Try NorseLift — it's free</h3>
+        <p>No download required. Open it in your browser and start tracking your workouts in seconds.</p>
+        <a href="https://app.norselift.com" class="cta-btn">
+          Start Tracking
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <p>&copy; 2026 NorseLift. Forged in Norway.</p>
+      <div class="footer-links">
+        <a href="/">Home</a>
+        <a href="https://app.norselift.com">App</a>
+        <a href="/blog">Blog</a>
+        <a href="/privacy">Privacy</a>
+        <a href="mailto:support@norselift.com">Support</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleTheme() {
+      var html = document.documentElement;
+      var current = html.getAttribute('data-theme');
+      var next = current === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('norselift-theme', next);
+      var meta = document.getElementById('meta-theme');
+      if (meta) meta.setAttribute('content', next === 'dark' ? '#0a0e1a' : '#e6eef8');
+    }
+  </script>
+
+  <script defer src="/_vercel/insights/script.js"></script>
+
+</body>
+</html>

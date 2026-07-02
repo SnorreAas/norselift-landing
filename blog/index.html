@@ -3,10 +3,27 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Privacy Policy — NorseLift</title>
-  <meta name="description" content="NorseLift privacy policy. How we handle your data." />
+  <title>Blog — NorseLift</title>
+  <meta name="description" content="Workout tips, training guides, and app updates from NorseLift. Learn about progressive overload, workout routines, and how to track your gains." />
   <meta name="theme-color" content="#e6eef8" id="meta-theme" />
-  <link rel="canonical" href="https://norselift.com/privacy" />
+  <link rel="canonical" href="https://norselift.com/blog" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Blog — NorseLift" />
+  <meta property="og:description" content="Workout tips, training guides, and app updates from NorseLift." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://norselift.com/blog" />
+  <meta property="og:image" content="https://norselift.com/og-image.png" />
+  <meta property="og:site_name" content="NorseLift" />
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-YJ8DCEJGHD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-YJ8DCEJGHD');
+  </script>
 
   <!-- Favicon -->
   <link rel="icon" href="/favicon.ico" sizes="48x48" />
@@ -44,6 +61,8 @@
       --accent-dark: #3670a8;
       --nav-bg: rgba(230, 238, 248, 0.8);
       --btn-accent-text: #fff;
+      --card-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.03);
+      --card-shadow-hover: 0 4px 20px rgba(0,0,0,0.07);
     }
 
     [data-theme="dark"] {
@@ -58,6 +77,8 @@
       --accent-dark: #4a8ec9;
       --nav-bg: rgba(6, 10, 20, 0.8);
       --btn-accent-text: #0a0e1a;
+      --card-shadow: none;
+      --card-shadow-hover: 0 4px 20px rgba(106, 171, 239, 0.08);
     }
 
     html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
@@ -86,6 +107,9 @@
       display: flex; align-items: center; justify-content: space-between;
       height: 72px;
     }
+    .nav-left {
+      display: flex; align-items: center; gap: 24px;
+    }
     .logo {
       font-family: 'Crimson Pro', serif;
       font-size: 1.4rem; font-weight: 800;
@@ -99,6 +123,13 @@
     .logo-mark img {
       width: 100%; height: 100%; object-fit: cover;
     }
+    .nav-link {
+      font-size: 0.9rem; font-weight: 500;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .nav-link:hover { color: var(--accent); }
     .theme-toggle {
       width: 38px; height: 38px; border-radius: 10px;
       border: 1px solid var(--border); background: var(--surface);
@@ -121,39 +152,66 @@
       font-weight: 800;
       margin-bottom: 8px;
     }
-    .content .updated {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      margin-bottom: 40px;
-    }
-    .content h2 {
-      font-family: 'Crimson Pro', serif;
-      font-size: 1.2rem;
-      font-weight: 800;
-      margin-top: 36px;
-      margin-bottom: 12px;
-      color: var(--accent);
-    }
-    .content p {
-      margin-bottom: 16px;
+    .content .subtitle {
+      font-size: 1rem;
       color: var(--text-secondary);
-      line-height: 1.8;
-    }
-    .content ul {
-      margin-bottom: 16px;
-      padding-left: 24px;
-    }
-    .content li {
-      color: var(--text-secondary);
-      margin-bottom: 8px;
+      margin-bottom: 48px;
       line-height: 1.7;
     }
-    .content a {
-      color: var(--accent);
-      text-decoration: none;
+
+    /* Blog Grid */
+    .blog-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
     }
-    .content a:hover {
-      text-decoration: underline;
+    @media (min-width: 640px) {
+      .blog-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .blog-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px 24px;
+      text-decoration: none;
+      display: block;
+      transition: transform 0.2s, box-shadow 0.3s, border-color 0.3s;
+      box-shadow: var(--card-shadow);
+    }
+    .blog-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--card-shadow-hover);
+      border-color: var(--accent);
+    }
+    .blog-card-date {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+    .blog-card h2 {
+      font-family: 'Crimson Pro', serif;
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 10px;
+      line-height: 1.35;
+    }
+    .blog-card p {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      margin-bottom: 16px;
+    }
+    .blog-card .read-more {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--accent);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
     }
 
     /* Footer */
@@ -182,10 +240,13 @@
 
   <nav>
     <div class="nav-inner">
-      <a href="/" class="logo">
-        <div class="logo-mark"><img src="/norselift-icon-192.png" alt="NorseLift" /></div>
-        NorseLift
-      </a>
+      <div class="nav-left">
+        <a href="/" class="logo">
+          <div class="logo-mark"><img src="/norselift-icon-192.png" alt="NorseLift" /></div>
+          NorseLift
+        </a>
+        <a href="/blog" class="nav-link">Blog</a>
+      </div>
       <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
         <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
         <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
@@ -195,65 +256,33 @@
 
   <div class="content">
     <div class="container">
-      <h1>Privacy Policy</h1>
-      <p class="updated">Last updated: July 2, 2026</p>
+      <h1>Blog</h1>
+      <p class="subtitle">Training guides, app tips, and honest advice for lifters who care about progress.</p>
 
-      <h2>Overview</h2>
-      <p>NorseLift is a workout tracking application. We respect your privacy and are committed to protecting your personal data. This policy explains what data we collect, how we use it, and your rights.</p>
+      <div class="blog-grid">
 
-      <h2>Data We Collect</h2>
-      <p>When you use NorseLift, we collect and store the following data:</p>
-      <ul>
-        <li><strong>Account information</strong> — Your name and email address from Google Sign-In or email/password registration, used to create and identify your account.</li>
-        <li><strong>Workout data</strong> — Exercises, sets, reps, weights, workout history, programs, personal records, and body weight entries you create in the app.</li>
-        <li><strong>Subscription data</strong> — If you subscribe to Pro, we store your subscription status and billing cycle. Payment processing is handled entirely by Stripe — we never see or store your credit card details.</li>
-        <li><strong>Analytics data</strong> — We use Google Analytics 4 (GA4) to collect anonymous usage data such as page views and button clicks on our landing page and blog. No personal information is tied to this data.</li>
-      </ul>
+        <a href="/blog/best-free-workout-tracker-app" class="blog-card">
+          <div class="blog-card-date">July 2, 2026</div>
+          <h2>The 5 Best Free Workout Tracker Apps in 2026</h2>
+          <p>An honest comparison of NorseLift, Strong, Hevy, JEFIT, and FitNotes. What each does well, where they fall short, and which one is actually free.</p>
+          <span class="read-more">Read more <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </a>
 
-      <h2>How We Use Your Data</h2>
-      <p>Your data is used solely to provide the NorseLift service:</p>
-      <ul>
-        <li>Sync your workouts across devices</li>
-        <li>Track your progress and personal records</li>
-        <li>Manage your subscription status</li>
-      </ul>
-      <p>We do not sell, share, or provide your data to third parties for marketing or advertising purposes.</p>
+        <a href="/blog/push-pull-legs-routine-guide" class="blog-card">
+          <div class="blog-card-date">July 2, 2026</div>
+          <h2>The Complete Push Pull Legs (PPL) Routine Guide for 2026</h2>
+          <p>Everything you need to know about the PPL split: who it's for, a sample 6-day program, exercise selection, and how to progress over time.</p>
+          <span class="read-more">Read more <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </a>
 
-      <h2>Third-Party Services</h2>
-      <p>NorseLift uses the following third-party services:</p>
-      <ul>
-        <li><strong>Google Firebase</strong> — Authentication (Google Sign-In) and data storage (Firestore). Your workout data is stored securely on Google Cloud infrastructure. <a href="https://firebase.google.com/support/privacy">Firebase Privacy Policy</a></li>
-        <li><strong>Stripe</strong> — Payment processing for Pro subscriptions. Stripe handles all payment data directly. <a href="https://stripe.com/privacy">Stripe Privacy Policy</a></li>
-        <li><strong>Vercel</strong> — Application hosting and analytics. We collect anonymous usage analytics (page views, no personal data). <a href="https://vercel.com/legal/privacy-policy">Vercel Privacy Policy</a></li>
-        <li><strong>Google Analytics 4</strong> — Anonymous analytics on our landing page and blog to understand how visitors use the site. No personal data is collected. <a href="https://policies.google.com/privacy">Google Privacy Policy</a></li>
-      </ul>
+        <a href="/blog/progressive-overload-guide" class="blog-card">
+          <div class="blog-card-date">July 2, 2026</div>
+          <h2>Progressive Overload: The Only Rule You Need to Build Muscle</h2>
+          <p>What progressive overload actually means, the different ways to apply it, common mistakes, and how tracking your workouts makes it automatic.</p>
+          <span class="read-more">Read more <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </a>
 
-      <h2>Data Storage & Security</h2>
-      <p>Your data is stored in Google Firebase (Firestore) with encryption at rest and in transit. Authentication is handled via Google Sign-In with secure token-based sessions. We follow industry-standard security practices to protect your data.</p>
-
-      <h2>Data Retention</h2>
-      <p>Your workout data is retained as long as your account is active. You can delete your account and all associated data at any time from the app's Settings menu, or by contacting us at <a href="mailto:privacy@norselift.com">privacy@norselift.com</a>.</p>
-
-      <h2>Your Rights</h2>
-      <p>You have the right to:</p>
-      <ul>
-        <li>Access your personal data</li>
-        <li>Request correction of inaccurate data</li>
-        <li>Request deletion of your data</li>
-        <li>Export your workout data</li>
-      </ul>
-
-      <h2>Cookies</h2>
-      <p>NorseLift uses essential cookies and local storage for authentication and app functionality. Google Analytics 4 may use cookies for anonymous usage analytics on our landing page. We do not use third-party advertising cookies.</p>
-
-      <h2>Children's Privacy</h2>
-      <p>NorseLift is not directed at children under 13. We do not knowingly collect data from children under 13.</p>
-
-      <h2>Changes to This Policy</h2>
-      <p>We may update this privacy policy from time to time. Changes will be posted on this page with an updated date.</p>
-
-      <h2>Contact</h2>
-      <p>If you have questions about this privacy policy or your data, contact us at <a href="mailto:privacy@norselift.com">privacy@norselift.com</a>.</p>
+      </div>
     </div>
   </div>
 

@@ -56,9 +56,6 @@ Plan and manage training cycles/blocks. Schedule deload weeks, progression phase
 **Edit & Delete Sessions**
 Full editing capability for past workout sessions. Fix mistakes or add notes after the fact.
 
-**Priority Support**
-Pro subscribers receive priority support for any issues or feature requests.
-
 ### Intro Pricing
 New Pro subscribers get their first month for $1.99 (regular price $4.99/month). This applies to monthly billing only.
 
