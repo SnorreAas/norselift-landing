@@ -14,7 +14,10 @@ NorseLift is a gym and strength training tracker designed for serious lifters wh
 - **Progress stats & charts**: Track volume, frequency, and strength over time (Pro)
 - **Personal records**: Automatic PR detection for every exercise (Pro)
 - **Training cycle planning**: Schedule and rotate through training blocks (Pro)
-- **Exercise library**: Browse and search exercises by muscle group
+- **Exercise library**: 100+ built-in exercises, browse and search by muscle group
+- **Body weight tracking**: Log body weight, see trends and charts over time
+- **Workout sharing**: Generate branded share cards after completing a workout
+- **Warm-up sets**: Mark sets as warm-up to exclude them from volume and PR calculations
 - **Cloud sync**: Data syncs across all your devices
 - **Offline support**: Works without an internet connection
 - **PWA**: Install to home screen, no app store needed

@@ -41,16 +41,12 @@
       z-index: 1;
     }
     .logo-mark {
-      width: 72px; height: 72px;
+      width: 80px; height: 80px;
       border-radius: 18px;
-      background: linear-gradient(135deg, #4a90d9 0%, #3670a8 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 800;
-      font-size: 30px;
-      color: #fff;
-      letter-spacing: -2px;
+      overflow: hidden;
+    }
+    .logo-mark img {
+      width: 100%; height: 100%; object-fit: cover;
     }
     .logo-text {
       font-family: 'Georgia', serif;
@@ -95,7 +91,7 @@
 </head>
 <body>
   <div class="logo">
-    <div class="logo-mark">NL</div>
+    <div class="logo-mark"><img src="norselift-icon-192.png" alt="NorseLift" /></div>
     <div class="logo-text">NorseLift</div>
   </div>
   <div class="tagline">The workout tracker forged<br/>for serious lifters</div>
