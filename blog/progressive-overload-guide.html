@@ -205,6 +205,17 @@
       align-items: center;
       gap: 4px;
     }
+    .hero-image {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 3 / 2;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      margin-bottom: 40px;
+      display: block;
+    }
+
     .content h2 {
       font-family: 'Crimson Pro', serif;
       font-size: 1.3rem;
@@ -417,6 +428,15 @@
         <span>July 2, 2026</span>
         <span>9 min read</span>
       </div>
+
+      <img
+        class="hero-image"
+        src="/blog/images/progressive-overload-hero.jpg"
+        alt="Loaded barbell plate on a gym floor next to a spare weight plate"
+        width="1400"
+        height="933"
+        fetchpriority="high"
+      />
 
       <p>There are thousands of workout programs, diet plans, and supplement stacks out there. Most of them overcomplicate things. If you strip training down to its most fundamental principle, you're left with one concept: progressive overload.</p>
 

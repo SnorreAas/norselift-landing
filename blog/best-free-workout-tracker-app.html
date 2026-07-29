@@ -205,6 +205,17 @@
       align-items: center;
       gap: 4px;
     }
+    .hero-image {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 3 / 2;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      margin-bottom: 40px;
+      display: block;
+    }
+
     .content h2 {
       font-family: 'Crimson Pro', serif;
       font-size: 1.3rem;
@@ -385,6 +396,15 @@
         <span>July 2, 2026</span>
         <span>8 min read</span>
       </div>
+
+      <img
+        class="hero-image"
+        src="/blog/images/best-workout-app-hero.jpg"
+        alt="Pink flat-lay of workout gear — dumbbells, a hand gripper, a water bottle, and a phone showing the NorseLift app home screen"
+        width="1400"
+        height="934"
+        fetchpriority="high"
+      />
 
       <p>If you've spent any time looking for a workout tracker, you know the landscape is crowded. Most apps claim to be "free" but hit you with paywalls the moment you try to do anything useful. Others drown you in social features you never asked for.</p>
 
