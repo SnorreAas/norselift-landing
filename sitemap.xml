@@ -1,10 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://norselift.com</loc>
-    <lastmod>2026-06-20</lastmod>
+    <lastmod>2026-07-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://norselift.com/blog/images/best-workout-app-thumb.jpg</image:loc>
+      <image:caption>Pink flat-lay of workout gear with a phone showing the NorseLift workout tracker app</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://norselift.com/blog/images/push-pull-legs-thumb.jpg</image:loc>
+      <image:caption>Lifter gripping a loaded barbell in a deadlift setup, part of a push pull legs (PPL) routine</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://norselift.com/blog/images/progressive-overload-thumb.jpg</image:loc>
+      <image:caption>Loaded barbell plate on a gym floor next to a spare weight plate, representing progressive overload training</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://norselift.com/privacy</loc>
@@ -14,26 +27,50 @@
   </url>
   <url>
     <loc>https://norselift.com/blog</loc>
-    <lastmod>2026-07-02</lastmod>
+    <lastmod>2026-07-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://norselift.com/blog/images/best-workout-app-thumb.jpg</image:loc>
+      <image:caption>Pink flat-lay of workout gear with a phone showing the NorseLift workout tracker app</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://norselift.com/blog/images/push-pull-legs-thumb.jpg</image:loc>
+      <image:caption>Lifter gripping a loaded barbell in a deadlift setup, part of a push pull legs (PPL) routine</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://norselift.com/blog/images/progressive-overload-thumb.jpg</image:loc>
+      <image:caption>Loaded barbell plate on a gym floor next to a spare weight plate, representing progressive overload training</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://norselift.com/blog/best-free-workout-tracker-app</loc>
-    <lastmod>2026-07-02</lastmod>
+    <lastmod>2026-07-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://norselift.com/blog/images/best-workout-app-hero.jpg</image:loc>
+      <image:caption>Pink flat-lay of workout gear — dumbbells, a hand gripper, a water bottle, and a phone showing the NorseLift workout tracker app home screen</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://norselift.com/blog/push-pull-legs-routine-guide</loc>
-    <lastmod>2026-07-02</lastmod>
+    <lastmod>2026-07-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://norselift.com/blog/images/push-pull-legs-hero.jpg</image:loc>
+      <image:caption>Lifter gripping a loaded barbell in a deadlift setup, part of a push pull legs (PPL) routine</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://norselift.com/blog/progressive-overload-guide</loc>
-    <lastmod>2026-07-02</lastmod>
+    <lastmod>2026-07-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://norselift.com/blog/images/progressive-overload-hero.jpg</image:loc>
+      <image:caption>Loaded barbell plate on a gym floor next to a spare weight plate, representing progressive overload training</image:caption>
+    </image:image>
   </url>
 </urlset>
