@@ -175,7 +175,8 @@
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 16px;
-      padding: 28px 24px;
+      padding: 0;
+      overflow: hidden;
       text-decoration: none;
       display: block;
       transition: transform 0.2s, box-shadow 0.3s, border-color 0.3s;
@@ -185,6 +186,16 @@
       transform: translateY(-3px);
       box-shadow: var(--card-shadow-hover);
       border-color: var(--accent);
+    }
+    .blog-card-thumb {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 3 / 2;
+      object-fit: cover;
+      display: block;
+    }
+    .blog-card-body {
+      padding: 20px 24px 24px;
     }
     .blog-card-date {
       font-size: 0.75rem;
@@ -262,24 +273,33 @@
       <div class="blog-grid">
 
         <a href="/blog/best-free-workout-tracker-app" class="blog-card">
-          <div class="blog-card-date">July 2, 2026</div>
-          <h2>The 5 Best Free Workout Tracker Apps in 2026</h2>
-          <p>An honest comparison of NorseLift, Strong, Hevy, JEFIT, and FitNotes. What each does well, where they fall short, and which one is actually free.</p>
-          <span class="read-more">Read more <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+          <img class="blog-card-thumb" src="/blog/images/best-workout-app-thumb.jpg" alt="Pink flat-lay of workout gear with a phone showing the NorseLift app" width="700" height="467" loading="lazy" />
+          <div class="blog-card-body">
+            <div class="blog-card-date">July 2, 2026</div>
+            <h2>The 5 Best Free Workout Tracker Apps in 2026</h2>
+            <p>An honest comparison of NorseLift, Strong, Hevy, JEFIT, and FitNotes. What each does well, where they fall short, and which one is actually free.</p>
+            <span class="read-more">Read more <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+          </div>
         </a>
 
         <a href="/blog/push-pull-legs-routine-guide" class="blog-card">
-          <div class="blog-card-date">July 2, 2026</div>
-          <h2>The Complete Push Pull Legs (PPL) Routine Guide for 2026</h2>
-          <p>Everything you need to know about the PPL split: who it's for, a sample 6-day program, exercise selection, and how to progress over time.</p>
-          <span class="read-more">Read more <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+          <img class="blog-card-thumb" src="/blog/images/push-pull-legs-thumb.jpg" alt="Lifter gripping a loaded barbell mid-deadlift setup on a gym floor" width="700" height="466" loading="lazy" />
+          <div class="blog-card-body">
+            <div class="blog-card-date">July 2, 2026</div>
+            <h2>The Complete Push Pull Legs (PPL) Routine Guide for 2026</h2>
+            <p>Everything you need to know about the PPL split: who it's for, a sample 6-day program, exercise selection, and how to progress over time.</p>
+            <span class="read-more">Read more <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+          </div>
         </a>
 
         <a href="/blog/progressive-overload-guide" class="blog-card">
-          <div class="blog-card-date">July 2, 2026</div>
-          <h2>Progressive Overload: The Only Rule You Need to Build Muscle</h2>
-          <p>What progressive overload actually means, the different ways to apply it, common mistakes, and how tracking your workouts makes it automatic.</p>
-          <span class="read-more">Read more <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+          <img class="blog-card-thumb" src="/blog/images/progressive-overload-thumb.jpg" alt="Loaded barbell plate on a gym floor next to a spare weight plate" width="700" height="466" loading="lazy" />
+          <div class="blog-card-body">
+            <div class="blog-card-date">July 2, 2026</div>
+            <h2>Progressive Overload: The Only Rule You Need to Build Muscle</h2>
+            <p>What progressive overload actually means, the different ways to apply it, common mistakes, and how tracking your workouts makes it automatic.</p>
+            <span class="read-more">Read more <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+          </div>
         </a>
 
       </div>
