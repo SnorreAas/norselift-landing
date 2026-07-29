@@ -102,7 +102,32 @@
           "@type": "Answer",
           "text": "Yes. Cancel anytime from your account settings — no contracts, no hidden fees. You'll keep Pro access until the end of your billing period, then your account reverts to the free plan. Your data is never deleted."
         }
+      },
+      {
+        "@type": "Question",
+        "name": "Is NorseLift related to Nordic Lift AS?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. NorseLift is an independent workout and gym tracker app, unrelated to Nordic Lift AS, a Norwegian company that sells automotive workshop equipment and vehicle lifts. If you're looking for a free app to log workouts, track PRs, and build training programs, you're in the right place."
+        }
       }
+    ]
+  }
+  </script>
+
+  <!-- Organization / brand entity data (helps disambiguate NorseLift from unrelated companies) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "NorseLift",
+    "alternateName": "NorseLift Workout Tracker",
+    "url": "https://norselift.com",
+    "logo": "https://norselift.com/norselift-icon-192.png",
+    "description": "NorseLift is a free workout and gym tracker app for logging exercises, tracking personal records, and building custom training programs.",
+    "sameAs": [
+      "https://x.com/NorseLift",
+      "https://www.instagram.com/norselift/"
     ]
   }
   </script>
@@ -1672,6 +1697,16 @@
           </button>
           <div class="faq-answer">
             <div class="faq-answer-inner">Yes. Cancel anytime from your account settings — no contracts, no hidden fees. You'll keep Pro access until the end of your billing period, then your account reverts to the free plan. Your data is never deleted.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Is NorseLift related to Nordic Lift AS?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">No. NorseLift is an independent workout and gym tracker app, unrelated to Nordic Lift AS, a Norwegian company that sells automotive workshop equipment and vehicle lifts. If you're looking for a free app to log workouts, track PRs, and build training programs, you're in the right place.</div>
           </div>
         </div>
       </div>
