@@ -205,6 +205,16 @@
       align-items: center;
       gap: 4px;
     }
+    .hero-image {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 3 / 2;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      margin-bottom: 40px;
+      display: block;
+    }
     .content h2 {
       font-family: 'Crimson Pro', serif;
       font-size: 1.3rem;
@@ -430,6 +440,15 @@
         <span>July 2, 2026</span>
         <span>10 min read</span>
       </div>
+
+      <img
+        class="hero-image"
+        src="/blog/images/push-pull-legs-hero.jpg"
+        alt="Lifter gripping a loaded barbell mid-deadlift setup on a gym floor"
+        width="1400"
+        height="933"
+        fetchpriority="high"
+      />
 
       <p>Push Pull Legs is one of the most popular training splits for a reason: it works. It organizes your training around movement patterns instead of individual muscles, which means less overlap, better recovery, and more efficient workouts. Whether you're an intermediate lifter looking for structure or an advanced trainee wanting to increase frequency, PPL is worth understanding.</p>
 
