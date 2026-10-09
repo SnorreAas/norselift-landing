@@ -10,7 +10,7 @@ NorseLift is a gym and strength training tracker designed for serious lifters wh
 
 - **Custom workout programs**: Build your own training split (Push/Pull/Legs, Upper/Lower, or custom)
 - **Workout logging**: Log sets, reps, and weight during your session with a clean interface
-- **Rest timer**: Built-in timer with haptic feedback between sets
+- **Rest timer**: Starts automatically when you complete a set (vibration on supported Android devices)
 - **Progress stats & charts**: Track volume, frequency, and strength over time (Pro)
 - **Personal records**: Automatic PR detection for every exercise (Pro)
 - **Training cycle planning**: Schedule and rotate through training blocks (Pro)
@@ -24,7 +24,7 @@ NorseLift is a gym and strength training tracker designed for serious lifters wh
 
 ## Pricing
 
-- **Free tier**: Up to 3 programs, 7 days of history, 1 scheduled routine, exercise library, cloud sync, rest timer
+- **Free tier**: Up to 3 programs, 1 scheduled routine, full workout history (editing limited to the last 7 days), exercise library, smart suggestions, rest timer, PR celebrations, body weight, cardio, training blocks, cloud sync
 - **Pro Monthly**: $4.99/month (intro: $1.99 first month)
 - **Pro Quarterly**: $10.49/quarter ($3.49/month)
 - **Pro Yearly**: $29.99/year ($2.49/month)

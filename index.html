@@ -35,14 +35,14 @@
     "name": "NorseLift",
     "applicationCategory": "HealthApplication",
     "applicationSubCategory": "Fitness",
-    "operatingSystem": "Web, iOS, Android",
+    "operatingSystem": "Web (PWA): iOS, Android, Windows, macOS, Linux",
     "url": "https://norselift.com",
     "description": "Free gym and workout tracker app. Log exercises, track personal records, build custom workout programs, and sync across all devices. Works on iPhone, Android, and desktop — no download required.",
-    "screenshot": "https://norselift.com/og-image.png",
-    "featureList": "Workout logging, Personal records tracking, Custom workout programs, Exercise library, Smart weight suggestions, Rest timer, Progress charts, Cloud sync, Workout scheduling, Progressive overload tracking, Body weight tracking, Workout sharing, Warm-up sets",
+    "screenshot": ["https://norselift.com/og-image.png", "https://norselift.com/app-screenshot.png", "https://norselift.com/screenshot-desktop-dark.png"],
+    "featureList": "Workout logging, Smart weight and rep suggestions, Rest timer, Personal record detection, Custom workout programs, Workout scheduling, Training blocks, Cardio logging, Body weight tracking, Streak calendar, Exercise progression charts, Weekly volume, Workout sharing, Warm-up sets, Cloud sync, Offline support, Desktop layout",
     "offers": [
       { "@type": "Offer", "price": "0", "priceCurrency": "USD", "name": "Free" },
-      { "@type": "Offer", "price": "4.99", "priceCurrency": "USD", "name": "Pro Monthly" },
+      { "@type": "Offer", "price": "4.99", "priceCurrency": "USD", "name": "Pro Monthly", "description": "$1.99 first month for new subscribers" },
       { "@type": "Offer", "price": "10.49", "priceCurrency": "USD", "name": "Pro Quarterly" },
       { "@type": "Offer", "price": "29.99", "priceCurrency": "USD", "name": "Pro Yearly" }
     ]
@@ -60,7 +60,7 @@
         "name": "Is NorseLift really free?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. The free plan gives you 3 workout programs, 7 days of history, scheduling, cloud sync, and the full exercise library. No credit card required. Pro unlocks unlimited programs, full history, progress stats, personal records, and more."
+          "text": "Yes. Free includes up to 3 programs, 1 scheduled routine, your full workout history, smart suggestions, the rest timer, PR celebrations, streaks, body weight, cardio and cloud sync. No credit card needed. Pro adds unlimited programs, editing of older sessions, backfill and deeper insights like exercise progression, records and weekly volume."
         }
       },
       {
@@ -76,7 +76,7 @@
         "name": "What devices does NorseLift work on?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Any device with a modern browser — iPhone, Android, iPad, laptop, desktop. Your data syncs automatically across all of them via cloud sync, so you can log a workout on your phone and review your progress on your laptop."
+          "text": "Any device with a modern browser — iPhone, Android, iPad, laptop, desktop (with a dedicated desktop layout). Your data syncs automatically across all of them via cloud sync, so you can log a workout on your phone and review your progress on your laptop."
         }
       },
       {
@@ -100,7 +100,7 @@
         "name": "Can I cancel Pro anytime?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. Cancel anytime from your account settings — no contracts, no hidden fees. You'll keep Pro access until the end of your billing period, then your account reverts to the free plan. Your data is never deleted."
+          "text": "Yes. Cancel anytime from your account settings — no contracts, no hidden fees. You'll keep Pro access until the end of your billing period, then your account reverts to the free plan. Cancelling never deletes your workouts; you can delete your account yourself at any time."
         }
       }
     ]
@@ -156,1713 +156,687 @@
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    /* ============ LIGHT THEME (FROST) ============ */
+    /* Tokens mirror gym-tracker src/index.css (light = [data-theme="light"], dark = @theme) */
     :root, [data-theme="light"] {
-      --bg-deep: #dce6f2;
-      --bg: #e6eef8;
-      --bg-end: #f2f5fa;
-      --surface: #ffffff;
-      --surface-2: #edf2f9;
-      --border: #c8d4e4;
-      --border-accent: #4a90d9;
-      --text: #1a1e30;
-      --text-secondary: #4a5268;
-      --text-muted: #7e86a0;
-      --accent: #4a90d9;
-      --accent-light: #5ea0e8;
-      --accent-dark: #3670a8;
-      --accent-glow: rgba(74, 144, 217, 0.1);
-      --accent-glow-strong: rgba(74, 144, 217, 0.22);
-      --green: #16a34a;
-      --icon-stroke: #4a90d9;
-      --nav-bg: rgba(230, 238, 248, 0.8);
-      --nav-text: #1a1e30;
-      --card-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.03);
-      --card-shadow-hover: 0 4px 20px rgba(0,0,0,0.07);
-      --pro-bg: linear-gradient(160deg, #f0f6ff, rgba(74, 144, 217, 0.05));
-      --pro-shadow: 0 0 40px rgba(74, 144, 217, 0.08);
-      --noise-opacity: 0.015;
-      --aurora-blue: rgba(59, 107, 207, 0.08);
-      --aurora-purple: rgba(139, 92, 246, 0.04);
-      --aurora-green: rgba(45, 180, 140, 0.04);
-      --divider-opacity: 0.2;
-      --rune-opacity: 0.3;
-      --btn-accent-text: #fff;
-      --btn-outline-bg: transparent;
-      --feature-hover: #f0f5fc;
+      --bg: #e6eef8; --bg-2: #dce6f2; --surface: #ffffff; --surface-2: #edf2f9; --surface-3: #dce6f2;
+      --border: #c8d4e4; --text: #1a1e30; --text-2: #4a5268; --muted: #6b7390;
+      --accent: #4a90d9; --accent-2: #3670a8; --accent-soft: rgba(74,144,217,.12);
+      --grad: linear-gradient(135deg, #5a9de6 0%, #7b8fd9 100%);
+      --gold: #9a6a00; --gold-bg: rgba(217,160,30,.16); --green: #0f7a55;
+      --shadow: 0 1px 2px rgba(20,30,60,.05), 0 8px 24px rgba(20,30,60,.06);
+      --shadow-lg: 0 30px 60px -20px rgba(30,50,90,.35);
+      --frame: #1c2130; --nav-bg: rgba(230,238,248,.82); --btn-text: #fff;
+      --glow-a: rgba(90,157,230,.28); --glow-b: rgba(123,143,217,.22);
     }
-
-    /* ============ DARK THEME (NORSE) ============ */
     [data-theme="dark"] {
-      --bg-deep: #060a14;
-      --bg: #0a0e1a;
-      --bg-end: #0a0e1a;
-      --surface: #0f1424;
-      --surface-2: #151b2e;
-      --border: #1e2740;
-      --border-accent: #6aabef;
-      --text: #e4e4ef;
-      --text-secondary: #8e92a8;
-      --text-muted: #555a70;
-      --accent: #6aabef;
-      --accent-light: #8cc0f5;
-      --accent-dark: #4a8ec9;
-      --accent-glow: rgba(106, 171, 239, 0.12);
-      --accent-glow-strong: rgba(106, 171, 239, 0.25);
-      --green: #2dd4a0;
-      --icon-stroke: #6aabef;
-      --nav-bg: rgba(6, 10, 20, 0.8);
-      --nav-text: #e4e4ef;
-      --card-shadow: none;
-      --card-shadow-hover: none;
-      --pro-bg: linear-gradient(160deg, #0f1830, rgba(106, 171, 239, 0.04));
-      --pro-shadow: 0 0 60px rgba(106, 171, 239, 0.08);
-      --noise-opacity: 0.03;
-      --aurora-blue: rgba(59, 107, 207, 0.12);
-      --aurora-purple: rgba(139, 92, 246, 0.08);
-      --aurora-green: rgba(45, 212, 160, 0.06);
-      --divider-opacity: 0.15;
-      --rune-opacity: 0.5;
-      --btn-accent-text: #0a0e1a;
-      --btn-outline-bg: transparent;
-      --feature-hover: #151b2e;
+      --bg: #0a0e1a; --bg-2: #060a14; --surface: #0f1424; --surface-2: #151b2e; --surface-3: #1e2740;
+      --border: #1e2740; --text: #e4e4ef; --text-2: #a3a7bd; --muted: #7a7f98;
+      --accent: #6aabef; --accent-2: #8cc0f5; --accent-soft: rgba(106,171,239,.12);
+      --gold: #f5c451; --gold-bg: rgba(245,196,81,.14); --green: #2dd4a0;
+      --shadow: none; --shadow-lg: 0 30px 80px -20px rgba(0,0,0,.7);
+      --frame: #2a3146; --nav-bg: rgba(6,10,20,.8); --btn-text: #0a0e1a;
+      --glow-a: rgba(59,107,207,.30); --glow-b: rgba(139,92,246,.16);
     }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; transition: background .3s, color .3s; }
+    [hidden] { display: none !important; }
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; }
+    .skip { position: absolute; left: -999px; top: 8px; background: var(--surface); padding: 8px 12px; border-radius: 8px; z-index: 200; }
+    .skip:focus { left: 8px; }
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+    .container.narrow { max-width: 760px; }
+    .center { text-align: center; }
+    .norse { font-family: 'Crimson Pro', Georgia, serif; font-weight: 700; letter-spacing: -.01em; line-height: 1.08; }
+    .accent { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    [data-theme="light"] .accent { background: linear-gradient(135deg,#3670a8,#5a6fc9); -webkit-background-clip: text; background-clip: text; }
+    .eyebrow { font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+    .section-head { margin-bottom: 48px; }
+    .section-head h2 { font-size: clamp(32px, 4.4vw, 48px); margin-bottom: 14px; }
+    .lead { color: var(--text-2); font-size: 18px; max-width: 640px; }
+    .section-head.center .lead { margin: 0 auto; }
+    section { padding: 96px 0; }
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; box-shadow: var(--shadow); }
 
-    html {
-      scroll-behavior: smooth;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-    }
+    /* Buttons */
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font: 600 15px/1 'Inter', sans-serif; padding: 15px 24px; border-radius: 14px; text-decoration: none; border: 1px solid transparent; cursor: pointer; transition: transform .15s, box-shadow .2s, background .2s; }
+    .btn:hover { transform: translateY(-1px); }
+    .btn:focus-visible, .faq-q:focus-visible, .billing-toggle button:focus-visible, .theme-toggle:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+    .btn-primary { background: var(--grad); color: #fff; box-shadow: 0 8px 24px -8px rgba(90,157,230,.7); }
+    .btn-ghost { background: var(--surface); border-color: var(--border); color: var(--text); }
+    .btn-sm { padding: 10px 16px; font-size: 14px; border-radius: 12px; }
+    .btn.block { width: 100%; }
+    .link { color: var(--accent); font-weight: 600; text-decoration: none; }
+    .pro-pill { display: inline-flex; align-items: center; gap: 3px; font: 700 11px/1 'Inter', sans-serif; letter-spacing: .04em; color: var(--gold); background: var(--gold-bg); padding: 5px 9px; border-radius: 999px; vertical-align: middle; }
 
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: linear-gradient(180deg, var(--bg) 0%, var(--bg-end) 100%);
-      color: var(--text);
-      line-height: 1.6;
-      overflow-x: hidden;
-      width: 100%;
-      min-height: 100vh;
-      transition: background 0.4s, color 0.3s;
-    }
+    /* Nav */
+    .nav { position: sticky; top: 0; z-index: 100; background: var(--nav-bg); backdrop-filter: saturate(160%) blur(14px); -webkit-backdrop-filter: saturate(160%) blur(14px); border-bottom: 1px solid var(--border); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 24px; }
+    .logo { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 18px; text-decoration: none; }
+    .logo img { border-radius: 8px; }
+    .nav-links { display: flex; gap: 28px; }
+    .nav-links a { text-decoration: none; color: var(--text-2); font-size: 14px; font-weight: 500; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-right { display: flex; align-items: center; gap: 10px; }
+    .theme-toggle { width: 40px; height: 40px; border-radius: 12px; border: 1px solid var(--border); background: var(--surface); color: var(--text-2); display: grid; place-items: center; cursor: pointer; }
+    [data-theme="light"] .icon-sun, [data-theme="dark"] .icon-moon { display: none; }
 
-    /* Noise texture */
-    body::after {
-      content: '';
-      position: fixed; inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-      opacity: var(--noise-opacity);
-      pointer-events: none;
-      z-index: 9999;
-    }
+    /* Theme-aware screenshots (same swap mechanism as before) */
+    [data-theme="dark"] .screenshot-light, [data-theme="light"] .screenshot-dark { display: none; }
 
-    .container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
-    .norse-heading { font-family: 'Crimson Pro', serif; letter-spacing: -0.01em; }
+    /* Hero */
+    .hero { position: relative; padding: 72px 0 88px; overflow: hidden; }
+    .hero-glow { position: absolute; inset: -20% -10% auto; height: 120%; background: radial-gradient(40% 50% at 75% 35%, var(--glow-a), transparent 70%), radial-gradient(35% 45% at 20% 10%, var(--glow-b), transparent 70%); pointer-events: none; }
+    .hero-inner { position: relative; display: grid; grid-template-columns: 1.05fr 1fr; gap: 48px; align-items: center; }
+    .pill-new { display: inline-flex; align-items: center; gap: 10px; padding: 6px 14px 6px 6px; border-radius: 999px; background: var(--surface); border: 1px solid var(--border); font-size: 13px; color: var(--text-2); text-decoration: none; margin-bottom: 24px; }
+    .pill-new span { background: var(--grad); color: #fff; font-weight: 700; font-size: 11px; padding: 4px 9px; border-radius: 999px; text-transform: uppercase; letter-spacing: .06em; }
+    .hero h1 { font-size: clamp(48px, 7vw, 84px); margin-bottom: 22px; }
+    .hero-sub { font-size: 19px; color: var(--text-2); max-width: 520px; margin-bottom: 32px; }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 24px; }
+    .hero-checks { list-style: none; display: flex; flex-wrap: wrap; gap: 8px 20px; font-size: 14px; color: var(--text-2); margin-bottom: 28px; }
+    .hero-checks li::before { content: '✓'; color: var(--green); font-weight: 700; margin-right: 6px; }
+    .store-row { display: flex; gap: 10px; flex-wrap: wrap; }
+    .store-badge { display: inline-flex; align-items: center; gap: 10px; padding: 8px 14px; border-radius: 12px; background: var(--text); color: var(--bg); text-decoration: none; min-width: 150px; }
+    .store-badge span { display: flex; flex-direction: column; font-weight: 600; font-size: 15px; line-height: 1.15; }
+    .store-badge small { font-size: 10px; font-weight: 500; opacity: .8; }
+    .store-badge.placeholder { background: transparent; color: var(--muted); border: 1.5px dashed var(--muted); }
+    .placeholder small { color: #d97706; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; opacity: 1; }
+    .hero-visual { position: relative; height: 640px; }
+    .phone { position: relative; border-radius: 46px; padding: 9px; background: var(--frame); box-shadow: var(--shadow-lg), inset 0 0 0 1.5px rgba(255,255,255,.08); }
+    .phone img { border-radius: 38px; width: 100%; }
+    .phone::after { content: ''; position: absolute; top: 19px; left: 50%; transform: translateX(-50%); width: 30%; height: 3.4%; max-height: 30px; background: #000; border-radius: 999px; }
+    .hero-visual .phone { position: absolute; width: 290px; }
+    .phone-front { right: 150px; top: 0; z-index: 2; }
+    .phone-back { right: 0; top: 60px; transform: scale(.88); opacity: .95; }
+    .float-chip { position: absolute; z-index: 3; display: flex; align-items: center; gap: 10px; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 10px 14px; box-shadow: 0 12px 30px -10px rgba(0,0,0,.35); font-size: 14px; }
+    .float-chip span:last-child { display: flex; flex-direction: column; line-height: 1.25; }
+    .float-chip small { color: var(--text-2); font-size: 12px; }
+    .chip-ico { width: 34px; height: 34px; border-radius: 10px; display: grid; place-items: center; background: var(--gold-bg); font-size: 18px; }
+    .chip-ico.flame { background: rgba(234,88,12,.15); }
+    .chip-pr { left: 0; top: 150px; }
+    .chip-streak { right: 0; bottom: 40px; }
 
-    /* Smooth transitions for themed elements */
-    nav, .feature-cell, .pricing-card, .stats-bar, footer,
-    .btn-outline, .pricing-btn.ghost {
-      transition: background 0.4s, border-color 0.3s, color 0.3s, box-shadow 0.3s;
-    }
+    /* Strip */
+    .strip { padding: 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: var(--surface-2); }
+    .strip-inner { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 16px; padding: 26px 24px; }
+    .strip-item { display: flex; flex-direction: column; align-items: center; text-align: center; }
+    .strip-item b { font-size: 22px; font-weight: 700; }
+    .strip-item span { font-size: 13px; color: var(--text-2); }
 
-    /* ============ NAV ============ */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0;
-      z-index: 50;
-      background: var(--nav-bg);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      border-bottom: 1px solid var(--border);
-    }
-    .nav-inner {
-      max-width: 1120px; margin: 0 auto; padding: 0 24px;
-      display: flex; align-items: center; justify-content: space-between;
-      height: 72px;
-    }
-    .logo {
-      font-family: 'Crimson Pro', serif;
-      font-size: 1.4rem; font-weight: 800;
-      display: flex; align-items: center; gap: 12px;
-      text-decoration: none; color: var(--text);
-    }
-    .logo-mark {
-      width: 40px; height: 40px; border-radius: 10px;
-      overflow: hidden;
-    }
-    .logo-mark img {
-      width: 100%; height: 100%; object-fit: cover;
-    }
-    .nav-right {
-      display: flex; align-items: center; gap: 12px;
-    }
+    /* Showcase rows */
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; padding: 48px 0; }
+    .row.reverse .row-text { order: 2; }
+    .row-text h3 { font-size: clamp(30px, 3.6vw, 42px); margin: 10px 0 16px; }
+    .row-text p { color: var(--text-2); font-size: 17px; margin-bottom: 22px; }
+    .step { font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); display: inline-flex; gap: 10px; align-items: center; }
+    .ticks { list-style: none; display: grid; gap: 10px; }
+    .ticks li { position: relative; padding-left: 30px; color: var(--text-2); }
+    .ticks li b { color: var(--text); font-weight: 600; }
+    .ticks li::before { content: ''; position: absolute; left: 0; top: 3px; width: 20px; height: 20px; border-radius: 6px; background: var(--accent-soft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235a9de6' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center/12px no-repeat; }
+    .row-visual { display: flex; justify-content: center; position: relative; }
+    .row-visual::before { content: ''; position: absolute; inset: 10% 5%; background: radial-gradient(closest-side, var(--glow-a), transparent); filter: blur(10px); }
+    .row-visual .phone { width: 300px; }
+    .row-visual.duo { gap: 20px; align-items: flex-start; }
+    .row-visual.duo .phone { width: 250px; }
+    .row-visual.duo .phone:last-child { margin-top: 60px; }
 
-    /* Theme toggle */
-    .theme-toggle {
-      width: 38px; height: 38px;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      background: var(--surface);
-      cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-      transition: border-color 0.2s, background 0.3s;
-      color: var(--text-muted);
-    }
-    .theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
-    .theme-toggle .icon-sun,
-    .theme-toggle .icon-moon { display: none; }
-    [data-theme="light"] .theme-toggle .icon-moon { display: block; }
-    [data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+    /* Bento */
+    .bento-section { background: var(--surface-2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .bento { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .tile { background: var(--surface); border: 1px solid var(--border); border-radius: 18px; padding: 20px; box-shadow: var(--shadow); }
+    .tile .ti { width: 38px; height: 38px; border-radius: 11px; background: var(--accent-soft); display: grid; place-items: center; font-size: 18px; margin-bottom: 14px; }
+    .tile h4 { font-size: 15px; margin-bottom: 4px; }
+    .tile p { font-size: 14px; color: var(--text-2); line-height: 1.5; }
 
-    .nav-cta {
-      display: inline-flex; align-items: center; gap: 6px;
-      padding: 11px 24px; border-radius: 10px;
-      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
-      color: var(--btn-accent-text);
-      font-size: 0.9rem; font-weight: 700;
-      text-decoration: none;
-      transition: transform 0.15s, box-shadow 0.2s;
-    }
-    .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 24px var(--accent-glow-strong); }
+    /* Desktop */
+    .browser { border-radius: 16px; overflow: hidden; border: 1px solid var(--border); box-shadow: var(--shadow-lg); background: var(--surface); max-width: 1040px; margin: 0 auto; }
+    .browser-bar { display: flex; align-items: center; gap: 7px; padding: 12px 16px; background: var(--surface-2); border-bottom: 1px solid var(--border); }
+    .browser-bar i { width: 11px; height: 11px; border-radius: 50%; background: var(--surface-3); }
+    .browser-bar span { margin: 0 auto; font-size: 12px; color: var(--muted); background: var(--surface); border: 1px solid var(--border); padding: 3px 40px; border-radius: 8px; }
 
-    /* ============ HERO ============ */
-    .hero {
-      position: relative;
-      padding: 160px 0 100px;
-      text-align: center;
-      overflow: hidden;
-    }
-    .hero-inner {
-      display: flex;
-      align-items: center;
-      gap: 60px;
-      position: relative;
-    }
-    .hero-text {
-      flex: 1;
-      text-align: left;
-    }
-    .hero-phone {
-      flex-shrink: 0;
-      perspective: 1200px;
-    }
-    .phone-frame {
-      width: 280px;
-      border-radius: 40px;
-      border: 6px solid #1e2740;
-      background: #0a0e1a;
-      overflow: hidden;
-      box-shadow:
-        0 0 0 2px rgba(106, 171, 239, 0.1),
-        0 20px 60px rgba(0, 0, 0, 0.4),
-        0 0 80px rgba(106, 171, 239, 0.06);
-      transform: rotateY(-12deg) rotateX(3deg) rotateZ(1deg);
-      transform-style: preserve-3d;
-      transition: transform 0.4s ease;
-    }
-    .phone-frame:hover {
-      transform: rotateY(-6deg) rotateX(1deg) rotateZ(0deg);
-    }
-    [data-theme="light"] .phone-frame {
-      border-color: #a8b8cc;
-      background: #e6eef8;
-      box-shadow:
-        0 0 0 2px rgba(74, 144, 217, 0.12),
-        0 20px 60px rgba(0, 0, 0, 0.18),
-        0 0 80px rgba(74, 144, 217, 0.06);
-    }
-    .phone-frame img {
-      width: 100%;
-      height: auto;
-    }
-    /* Theme-based screenshot swap */
-    .phone-frame .screenshot-light { display: none; }
-    .phone-frame .screenshot-dark { display: block; }
-    [data-theme="light"] .phone-frame .screenshot-dark { display: none; }
-    [data-theme="light"] .phone-frame .screenshot-light { display: block; }
-    .hero-text .rune-line { justify-content: flex-start; }
-    @media (max-width: 768px) {
-      .hero-inner {
-        flex-direction: column;
-        gap: 48px;
-      }
-      .hero-text { text-align: center; }
-      .hero-text .rune-line { justify-content: center; }
-      .hero-actions { justify-content: center; }
-      .phone-frame { width: 240px; }
-    }
+    /* Install */
+    .install-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 24px; }
+    .install-card { padding: 26px; }
+    .install-card h4 { font-size: 17px; margin-bottom: 12px; }
+    .install-card ol { padding-left: 20px; color: var(--text-2); display: grid; gap: 6px; }
+    .placeholder-note { border: 1.5px dashed #d97706; color: #b45309; background: rgba(217,119,6,.07); border-radius: 12px; padding: 10px 14px; font-size: 13px; text-align: center; margin: 0 auto 28px; max-width: 760px; }
+    [data-theme="dark"] .placeholder-note { color: #fbbf24; }
 
-    .hero-aurora {
-      position: absolute; inset: 0;
-      overflow: hidden;
-      pointer-events: none;
-    }
-    .hero-aurora::before {
-      content: '';
-      position: absolute;
-      top: -40%; left: 0; right: 0;
-      height: 140%;
-      background:
-        radial-gradient(ellipse 80% 60% at 20% 10%, var(--aurora-blue) 0%, transparent 60%),
-        radial-gradient(ellipse 60% 50% at 70% 5%, var(--aurora-purple) 0%, transparent 50%),
-        radial-gradient(ellipse 50% 40% at 50% 20%, var(--aurora-green) 0%, transparent 50%);
-      animation: auroraShift 12s ease-in-out infinite alternate;
-    }
-    .hero-aurora::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 200px;
-      background: linear-gradient(to top, var(--bg-end), transparent);
-    }
-    @keyframes auroraShift {
-      0% { transform: translateX(-2%) scale(1); }
-      100% { transform: translateX(2%) scale(1.03); }
-    }
+    /* Pricing */
+    .billing-toggle { display: flex; gap: 4px; width: fit-content; margin: 0 auto 36px; padding: 4px; border-radius: 14px; background: var(--surface-2); border: 1px solid var(--border); }
+    .billing-toggle button { font: 600 14px 'Inter', sans-serif; padding: 9px 18px; border-radius: 10px; border: 0; background: transparent; color: var(--text-2); cursor: pointer; display: inline-flex; align-items: center; gap: 6px; }
+    .billing-toggle button.active { background: var(--surface); color: var(--text); box-shadow: 0 1px 4px rgba(0,0,0,.12); }
+    .save { font-size: 11px; color: var(--green); background: rgba(16,185,129,.14); padding: 2px 6px; border-radius: 6px; }
+    .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 860px; margin: 0 auto; }
+    .plan { padding: 32px; position: relative; }
+    .plan h3 { font-size: 22px; display: flex; gap: 10px; align-items: center; }
+    .plan-sub { color: var(--text-2); font-size: 14px; margin-bottom: 18px; }
+    .price { display: flex; align-items: baseline; gap: 8px; margin-bottom: 4px; }
+    .price b { font-size: 48px; font-weight: 800; letter-spacing: -.02em; }
+    .price s { color: var(--muted); font-size: 20px; }
+    .price span { color: var(--text-2); }
+    .price-note { font-size: 13px; color: var(--text-2); min-height: 20px; margin-bottom: 18px; }
+    .plan:not(.pro) .price { margin-bottom: 42px; }
+    .plan-list { list-style: none; display: grid; gap: 10px; margin-top: 24px; font-size: 15px; }
+    .plan-list li { padding-left: 26px; position: relative; color: var(--text-2); }
+    .plan-list li::before { content: '✓'; position: absolute; left: 0; color: var(--green); font-weight: 700; }
+    .plan-list li.em { padding-left: 0; color: var(--text); font-weight: 600; }
+    .plan-list li.em::before { content: none; }
+    .plan.pro { border: 1.5px solid var(--accent); background: linear-gradient(170deg, var(--accent-soft), var(--surface) 45%); }
+    .plan-badge { position: absolute; top: -12px; right: 24px; background: var(--grad); color: #fff; font-size: 12px; font-weight: 700; padding: 5px 12px; border-radius: 999px; }
+    .fine { text-align: center; color: var(--muted); font-size: 13px; max-width: 720px; margin: 28px auto 0; }
 
-    .rune-line {
-      display: flex; align-items: center; justify-content: center;
-      gap: 16px; margin-bottom: 28px;
-    }
-    .rune-line::before, .rune-line::after {
-      content: '';
-      height: 1px; width: 60px;
-      background: linear-gradient(90deg, transparent, var(--accent) 50%, transparent);
-      opacity: 0.4;
-    }
-    .rune-symbols {
-      font-size: 0.7rem;
-      color: var(--accent);
-      letter-spacing: 0.5em;
-      opacity: var(--rune-opacity);
-    }
+    /* Proof */
+    .quote-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 20px; }
+    .quote { padding: 24px; }
+    .quote blockquote { font-family: 'Crimson Pro', serif; font-size: 20px; line-height: 1.35; margin-bottom: 14px; }
+    .quote figcaption { font-size: 13px; color: var(--muted); }
+    .quote.placeholder { border: 1.5px dashed #d97706; background: rgba(217,119,6,.05); }
+    .quote.placeholder blockquote { color: #b45309; }
+    [data-theme="dark"] .quote.placeholder blockquote { color: #fbbf24; }
 
-    .hero h1 {
-      font-size: clamp(2.8rem, 7vw, 5rem);
-      font-weight: 900;
-      line-height: 1.05;
-      margin-bottom: 24px;
-      position: relative;
-    }
-    .hero h1 .gold { color: var(--accent); }
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-q { width: 100%; text-align: left; background: none; border: 0; color: var(--text); font: 600 17px 'Inter', sans-serif; padding: 20px 36px 20px 0; cursor: pointer; position: relative; }
+    .faq-q::after { content: '+'; position: absolute; right: 4px; top: 50%; transform: translateY(-50%); font-size: 22px; color: var(--accent); transition: transform .2s; }
+    .faq-item.open .faq-q::after { transform: translateY(-50%) rotate(45deg); }
+    .faq-a { display: none; padding: 0 0 20px; color: var(--text-2); }
+    .faq-item.open .faq-a { display: block; }
 
-    .hero-sub {
-      font-size: 1.2rem;
-      color: var(--text-secondary);
-      max-width: 500px;
-      margin: 0 0 40px;
-      line-height: 1.7;
-    }
-    @media (max-width: 768px) {
-      .hero-sub { margin: 0 auto 40px; }
-    }
+    /* Blog */
+    .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-bottom: 28px; }
+    .blog-card { overflow: hidden; text-decoration: none; transition: transform .2s; }
+    .blog-card:hover { transform: translateY(-3px); }
+    .blog-card img { aspect-ratio: 3/2; object-fit: cover; width: 100%; }
+    .blog-card div { padding: 18px 20px 22px; }
+    .blog-card time { font-size: 12px; color: var(--muted); }
+    .blog-card h4 { font-size: 17px; margin: 4px 0 6px; line-height: 1.35; }
+    .blog-card p { font-size: 14px; color: var(--text-2); }
 
-    .hero-actions {
-      display: flex; gap: 14px; justify-content: flex-start; flex-wrap: wrap;
-      position: relative;
-    }
-    @media (max-width: 768px) {
-      .hero-actions { justify-content: center; }
-    }
-    .btn-gold {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 16px 36px; border-radius: 12px;
-      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
-      color: var(--btn-accent-text);
-      font-size: 1rem; font-weight: 700;
-      text-decoration: none; border: none; cursor: pointer;
-      transition: transform 0.15s, box-shadow 0.2s;
-    }
-    .btn-gold:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 40px var(--accent-glow-strong);
-    }
-    .btn-outline {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 16px 32px; border-radius: 12px;
-      background: var(--btn-outline-bg);
-      color: var(--text);
-      font-size: 1rem; font-weight: 500;
-      text-decoration: none;
-      border: 1px solid var(--border);
-    }
-    .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+    /* Final CTA + footer */
+    .final { text-align: center; }
+    .final-inner { background: var(--surface); border: 1px solid var(--border); border-radius: 28px; padding: 64px 24px; position: relative; overflow: hidden; }
+    .final-inner::before { content: ''; position: absolute; inset: 0; background: radial-gradient(60% 80% at 50% 0%, var(--glow-a), transparent 70%); }
+    .final-inner > * { position: relative; }
+    .runes { display: block; letter-spacing: .5em; color: var(--accent); opacity: .6; margin-bottom: 16px; }
+    .final h2 { font-size: clamp(34px, 5vw, 54px); margin-bottom: 12px; }
+    .final p { color: var(--text-2); margin-bottom: 28px; font-size: 17px; }
+    .footer { border-top: 1px solid var(--border); padding: 28px 0; }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; font-size: 14px; color: var(--text-2); }
+    .footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
+    .footer-links a { text-decoration: none; }
+    .footer-links a:hover { color: var(--text); }
 
-    .hero-note {
-      margin-top: 20px;
-      font-size: 0.75rem; color: var(--text-muted);
-      position: relative;
-    }
-
-    /* ============ RUNE DIVIDER ============ */
-    .rune-divider {
-      display: flex; align-items: center; justify-content: center;
-      padding: 24px 0;
-      overflow: hidden;
-      color: var(--accent);
-    }
-    .rune-divider svg { opacity: var(--divider-opacity); }
-
-    /* ============ FEATURES ============ */
-    .features {
-      padding: 60px 0 80px;
-    }
-    .section-eyebrow {
-      font-family: 'Crimson Pro', serif;
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-      margin-bottom: 14px;
-    }
-    .section-title {
-      font-size: clamp(2rem, 5vw, 3rem);
-      font-weight: 900;
-      line-height: 1.15;
-      margin-bottom: 16px;
-    }
-    .section-desc {
-      font-size: 1.1rem;
-      color: var(--text-secondary);
-      max-width: 480px;
-      margin-bottom: 52px;
-      line-height: 1.7;
-    }
-
-    .feature-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      overflow: hidden;
-    }
-    .feature-cell {
-      background: var(--surface);
-      padding: 32px 28px;
-      position: relative;
-    }
-    .feature-cell:hover { background: var(--feature-hover); }
-    .feature-cell::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 28px; right: 28px;
-      height: 0;
-      transition: height 0.3s;
-    }
-    .feature-cell:hover::before {
-      height: 2px;
-      background: linear-gradient(90deg, transparent, var(--accent), transparent);
-    }
-    .feature-icon-wrap { margin-bottom: 14px; }
-    .feature-icon-wrap svg { stroke: var(--icon-stroke); }
-    .feature-cell h3 {
-      font-family: 'Crimson Pro', serif;
-      font-size: 1.05rem;
-      font-weight: 800;
-      margin-bottom: 8px;
-      color: var(--text);
-    }
-    .feature-cell p {
-      font-size: 0.9rem;
-      color: var(--text-secondary);
-      line-height: 1.65;
-    }
-
-    /* ============ STATS BAR ============ */
-    .stats-bar {
-      padding: 40px 0;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      background: var(--surface);
-    }
-    .stats-inner {
-      display: flex;
-      justify-content: center;
-      gap: 64px;
-      flex-wrap: wrap;
-    }
-    .stat-item { text-align: center; }
-    .stat-value {
-      font-family: 'Crimson Pro', serif;
-      font-size: 2rem;
-      font-weight: 900;
-      color: var(--accent);
-      line-height: 1;
-      margin-bottom: 6px;
-    }
-    .stat-label {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-
-    /* ============ PRICING ============ */
-    .pricing { padding: 80px 0; }
-    .pricing .section-eyebrow,
-    .pricing .section-title,
-    .pricing .section-desc { text-align: center; }
-    .pricing .section-desc { margin-left: auto; margin-right: auto; }
-
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-      max-width: 720px;
-      margin: 0 auto;
-    }
-
-    /* Billing toggle in pricing section */
-    .billing-toggle {
-      display: flex;
-      background: var(--surface-2);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 4px;
-      max-width: 380px;
-      margin: 0 auto 36px;
-    }
-    .billing-toggle button {
-      flex: 1;
-      padding: 10px 8px;
-      font-size: 0.82rem;
-      font-weight: 600;
-      border: none;
-      border-radius: 9px;
-      cursor: pointer;
-      background: transparent;
-      color: var(--text-muted);
-      transition: background 0.2s, color 0.2s, box-shadow 0.2s;
-      position: relative;
-    }
-    .billing-toggle button.active {
-      background: var(--surface);
-      color: var(--text);
-      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
-    }
-    .billing-toggle .toggle-badge {
-      position: absolute;
-      top: -7px; right: 2px;
-      font-size: 0.55rem;
-      font-weight: 800;
-      background: var(--green);
-      color: #fff;
-      padding: 2px 6px;
-      border-radius: 6px;
-    }
-    .intro-callout {
-      text-align: center;
-      margin-bottom: 28px;
-      padding: 10px 16px;
-      background: var(--accent-glow);
-      border: 1px solid var(--border-accent);
-      border-radius: 10px;
-      max-width: 380px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .intro-callout span {
-      font-size: 0.82rem;
-      font-weight: 600;
-      color: var(--accent);
-    }
-    .price-struck {
-      text-decoration: line-through;
-      color: var(--text-muted);
-      font-size: 1.4rem;
-      margin-right: 6px;
-    }
-
-    .pricing-card {
-      border-radius: 20px;
-      padding: 36px 30px;
-      position: relative;
-      transition: transform 0.2s, box-shadow 0.3s;
-    }
-    .pricing-card:hover { transform: translateY(-3px); }
-
-    .pricing-card.free {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      box-shadow: var(--card-shadow);
-    }
-    .pricing-card.free:hover { box-shadow: var(--card-shadow-hover); }
-
-    .pricing-card.pro {
-      background: var(--pro-bg);
-      border: 1px solid var(--border-accent);
-      box-shadow: var(--pro-shadow), inset 0 1px 0 rgba(106, 171, 239, 0.1);
-    }
-
-    .pricing-badge {
-      position: absolute; top: -11px; right: 22px;
-      font-family: 'Crimson Pro', serif;
-      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
-      color: #fff;
-      font-size: 0.65rem; font-weight: 800;
-      padding: 5px 14px; border-radius: 8px;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-
-    .pricing-card h3 {
-      font-family: 'Crimson Pro', serif;
-      font-size: 1.3rem; font-weight: 800; margin-bottom: 4px;
-    }
-    .pricing-card .subtitle { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 22px; }
-    .pricing-price {
-      display: flex; align-items: baseline; gap: 4px;
-      margin-bottom: 26px;
-    }
-    .pricing-price .amount {
-      font-family: 'Crimson Pro', serif;
-      font-size: 2.8rem; font-weight: 900;
-    }
-    .pricing-price .period { font-size: 0.85rem; color: var(--text-muted); }
-    .pricing-list { list-style: none; margin-bottom: 28px; }
-    .pricing-list li {
-      display: flex; align-items: center; gap: 10px;
-      font-size: 0.9rem; color: var(--text-secondary);
-      padding: 7px 0;
-    }
-    .pricing-list .check { color: var(--green); font-weight: bold; font-size: 0.9rem; }
-    .pricing-list .dim { color: var(--text-muted); }
-    .pricing-btn {
-      display: block; width: 100%; text-align: center;
-      padding: 14px; border-radius: 12px;
-      font-size: 0.9rem; font-weight: 700;
-      text-decoration: none;
-      transition: transform 0.15s, box-shadow 0.2s;
-    }
-    .pricing-btn:hover { transform: translateY(-1px); }
-    .pricing-btn.gold {
-      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
-      color: var(--btn-accent-text);
-    }
-    .pricing-btn.gold:hover { box-shadow: 0 4px 24px var(--accent-glow-strong); }
-    .pricing-btn.ghost {
-      background: var(--surface-2);
-      color: var(--text-secondary);
-      border: 1px solid var(--border);
-    }
-
-    .pro-amount { color: var(--accent); }
-
-    /* ============ FINAL CTA ============ */
-    .final-cta {
-      padding: 100px 0;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .final-cta-bg {
-      position: absolute; inset: 0;
-      pointer-events: none;
-      overflow: hidden;
-    }
-    .final-cta-bg::before {
-      content: '';
-      position: absolute;
-      bottom: -50%; left: 10%; right: 10%;
-      height: 150%;
-      background: radial-gradient(ellipse 70% 50% at 50% 80%, var(--accent-glow) 0%, transparent 60%);
-    }
-    .final-cta h2 {
-      font-size: clamp(2rem, 5vw, 3rem);
-      font-weight: 900;
-      margin-bottom: 16px;
-      position: relative;
-    }
-    .final-cta p {
-      font-size: 1.1rem; color: var(--text-secondary);
-      margin-bottom: 36px; position: relative;
-    }
-
-    /* ============ FOOTER ============ */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 36px 0;
-    }
-    .footer-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    footer p { font-size: 0.75rem; color: var(--text-muted); }
-    .footer-links {
-      display: flex; gap: 20px;
-    }
-    .footer-links a {
-      font-size: 0.75rem; color: var(--text-muted);
-      text-decoration: none;
-      transition: color 0.15s;
-    }
-    .footer-links a:hover { color: var(--accent); }
-
-    /* ============ RESPONSIVE ============ */
-    @media (max-width: 768px) {
-      .feature-grid { grid-template-columns: 1fr; }
-      .pricing-grid { grid-template-columns: 1fr; max-width: 380px; }
-      .stats-inner { gap: 40px; }
-      .footer-inner { flex-direction: column; gap: 12px; text-align: center; }
-    }
-    @media (max-width: 640px) {
-      .hero { padding: 130px 0 70px; }
-      .hero-actions { flex-direction: column; align-items: center; }
-      .btn-gold, .btn-outline { width: 100%; justify-content: center; }
-      .rune-line::before, .rune-line::after { width: 40px; }
-    }
-
-    /* ============ FEATURE SHOWCASE (Screenshots) ============ */
-    .showcase {
-      padding: 80px 0 60px;
-    }
-    .showcase .section-eyebrow,
-    .showcase .section-title,
-    .showcase .section-desc { text-align: center; }
-    .showcase .section-desc { margin-left: auto; margin-right: auto; }
-    .showcase-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
-      margin-top: 48px;
-    }
-    .showcase-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      overflow: hidden;
-      transition: transform 0.25s, box-shadow 0.3s, border-color 0.3s;
-    }
-    .showcase-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--card-shadow-hover);
-      border-color: var(--border-accent);
-    }
-    [data-theme="dark"] .showcase-card:hover {
-      box-shadow: 0 8px 40px rgba(106, 171, 239, 0.08);
-    }
-    .showcase-screenshot {
-      width: 100%;
-      padding: 24px 20px 24px;
-      display: flex;
-      justify-content: center;
-      background: var(--surface-2);
-    }
-    .showcase-screenshot img {
-      width: 75%;
-      max-width: 220px;
-      height: auto;
-      border-radius: 16px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
-    }
-    /* Theme-based screenshot swap in showcase */
-    .showcase-screenshot .screenshot-light { display: none; }
-    .showcase-screenshot .screenshot-dark { display: block; }
-    [data-theme="light"] .showcase-screenshot .screenshot-dark { display: none; }
-    [data-theme="light"] .showcase-screenshot .screenshot-light { display: block; }
-    .showcase-info {
-      padding: 24px 24px 28px;
-    }
-    .showcase-info h3 {
-      font-family: 'Crimson Pro', serif;
-      font-size: 1.1rem;
-      font-weight: 800;
-      margin-bottom: 8px;
-      color: var(--text);
-    }
-    .showcase-info p {
-      font-size: 0.9rem;
-      color: var(--text-secondary);
-      line-height: 1.65;
-    }
-    @media (max-width: 768px) {
-      .showcase-grid {
-        grid-template-columns: 1fr;
-        max-width: 380px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-    }
-
-    /* ============ SPLIT SECTION (Text + Phone) ============ */
-    .split-section {
-      padding: 80px 0;
-    }
-    .split-inner {
-      display: flex;
-      align-items: center;
-      gap: 64px;
-    }
-    .split-text {
-      flex: 1;
-    }
-    .split-text .section-eyebrow { margin-bottom: 14px; }
-    .split-text .section-title { margin-bottom: 16px; }
-    .split-text .section-desc { margin-bottom: 28px; }
-    .split-highlights {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-    .split-highlights li {
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-      font-size: 0.95rem;
-      color: var(--text-secondary);
-      line-height: 1.6;
-    }
-    .highlight-icon {
-      flex-shrink: 0;
-      width: 36px;
-      height: 36px;
-      border-radius: 10px;
-      background: var(--accent-glow);
-      border: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .highlight-icon svg {
-      stroke: var(--accent);
-    }
-    .split-phone {
-      flex-shrink: 0;
-      perspective: 1200px;
-    }
-    .split-phone .phone-frame {
-      width: 260px;
-      transform: rotateY(8deg) rotateX(2deg) rotateZ(-1deg);
-    }
-    .split-phone .phone-frame:hover {
-      transform: rotateY(4deg) rotateX(1deg) rotateZ(0deg);
-    }
-    @media (max-width: 768px) {
-      .split-inner {
-        flex-direction: column;
-        gap: 48px;
-      }
-      .split-text { text-align: center; }
-      .split-text .section-desc { margin-left: auto; margin-right: auto; }
-      .split-highlights { align-items: center; }
-      .split-phone .phone-frame { width: 240px; }
-    }
-
-    /* ============ FAQ ACCORDION ============ */
-    .faq {
-      padding: 80px 0;
-    }
-    .faq .section-eyebrow,
-    .faq .section-title,
-    .faq .section-desc { text-align: center; }
-    .faq .section-desc { margin-left: auto; margin-right: auto; }
-    .faq-list {
-      max-width: 680px;
-      margin: 48px auto 0;
-      display: flex;
-      flex-direction: column;
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      overflow: hidden;
-    }
-    .faq-item {
-      background: var(--surface);
-    }
-    .faq-question {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      padding: 20px 24px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      text-align: left;
-      font-family: 'Inter', sans-serif;
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--text);
-      transition: color 0.2s;
-    }
-    .faq-question:hover { color: var(--accent); }
-    .faq-chevron {
-      flex-shrink: 0;
-      width: 20px;
-      height: 20px;
-      stroke: var(--text-muted);
-      transition: transform 0.3s ease, stroke 0.2s;
-    }
-    .faq-item.open .faq-chevron {
-      transform: rotate(180deg);
-      stroke: var(--accent);
-    }
-    .faq-answer {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.35s ease, padding 0.35s ease;
-    }
-    .faq-item.open .faq-answer {
-      max-height: 300px;
-    }
-    .faq-answer-inner {
-      padding: 0 24px 20px;
-      font-size: 0.9rem;
-      color: var(--text-secondary);
-      line-height: 1.7;
-    }
-
-    /* ============ COMPARISON TABLE ============ */
-    .comparison {
-      padding: 80px 0;
-    }
-    .comparison .section-eyebrow,
-    .comparison .section-title,
-    .comparison .section-desc { text-align: center; }
-    .comparison .section-desc { margin-left: auto; margin-right: auto; }
-    .comparison-table-wrap {
-      max-width: 820px;
-      margin: 48px auto 0;
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      overflow: hidden;
-      background: var(--surface);
-    }
-    .comparison-table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-    .comparison-table thead th {
-      padding: 20px 16px;
-      font-family: 'Crimson Pro', serif;
-      font-size: 1rem;
-      font-weight: 800;
-      color: var(--text);
-      text-align: center;
-      border-bottom: 1px solid var(--border);
-      background: var(--surface-2);
-    }
-    .comparison-table thead th:first-child {
-      text-align: left;
-      padding-left: 28px;
-    }
-    .comparison-table thead th.col-norselift {
-      color: var(--accent);
-      background: var(--accent-glow);
-    }
-    .comparison-table tbody td {
-      padding: 14px 16px;
-      font-size: 0.9rem;
-      color: var(--text-secondary);
-      text-align: center;
-      border-bottom: 1px solid var(--border);
-    }
-    .comparison-table tbody tr:last-child td {
-      border-bottom: none;
-    }
-    .comparison-table tbody td:first-child {
-      text-align: left;
-      padding-left: 28px;
-      font-weight: 600;
-      color: var(--text);
-    }
-    .comparison-table tbody td.col-norselift {
-      background: var(--accent-glow);
-      font-weight: 600;
-    }
-    .comparison-table tbody tr:hover {
-      background: var(--feature-hover);
-    }
-    .comparison-table tbody tr:hover td.col-norselift {
-      background: var(--accent-glow-strong);
-    }
-    .comp-check {
-      color: var(--green);
-      font-weight: 700;
-      font-size: 1.05rem;
-    }
-    .comp-accent {
-      color: var(--accent);
-      font-weight: 700;
-    }
-    .comp-muted {
-      color: var(--text-muted);
-    }
-    @media (max-width: 640px) {
-      .comparison-table thead th,
-      .comparison-table tbody td {
-        padding: 12px 10px;
-        font-size: 0.8rem;
-      }
-      .comparison-table tbody td:first-child,
-      .comparison-table thead th:first-child {
-        padding-left: 14px;
-      }
-    }
-
-    /* ============ BLOG PREVIEW ============ */
-    .blog-preview {
-      padding: 80px 0;
-    }
-    .blog-preview .section-eyebrow,
-    .blog-preview .section-title,
-    .blog-preview .section-desc { text-align: center; }
-    .blog-preview .section-desc { margin-left: auto; margin-right: auto; }
-    .blog-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      max-width: 900px;
-      margin: 48px auto 0;
-    }
-    .blog-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 0;
-      overflow: hidden;
-      text-decoration: none;
-      display: flex;
-      flex-direction: column;
-      transition: transform 0.2s, box-shadow 0.3s, border-color 0.3s;
-    }
-    .blog-card:hover {
-      transform: translateY(-3px);
-      border-color: var(--accent);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-    }
-    .blog-card-thumb {
-      width: 100%;
-      height: auto;
-      aspect-ratio: 3 / 2;
-      object-fit: cover;
-      display: block;
-    }
-    .blog-card-body {
-      padding: 20px 20px 24px;
-      display: flex;
-      flex-direction: column;
-      flex: 1;
-    }
-    .blog-card-date {
-      font-size: 0.72rem;
-      color: var(--text-muted);
-      margin-bottom: 8px;
-    }
-    .blog-card h3 {
-      font-family: 'Crimson Pro', serif;
-      font-size: 1.05rem;
-      font-weight: 800;
-      color: var(--text);
-      margin-bottom: 8px;
-      line-height: 1.3;
-    }
-    .blog-card p {
-      font-size: 0.82rem;
-      color: var(--text-secondary);
-      line-height: 1.6;
-      margin-bottom: 12px;
-      flex: 1;
-    }
-    .blog-card .read-more {
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: var(--accent);
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-    }
-    .blog-see-all {
-      text-align: center;
-      margin-top: 32px;
-    }
-    .blog-see-all a {
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: var(--accent);
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      transition: opacity 0.15s;
-    }
-    .blog-see-all a:hover { opacity: 0.8; }
-    @media (max-width: 768px) {
-      .blog-grid { grid-template-columns: 1fr; max-width: 440px; }
-    }
-
-    /* ============ ANIMATIONS ============ */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .animate-in { animation: fadeUp 0.6s ease-out both; }
-    .delay-1 { animation-delay: 0.1s; }
-    .delay-2 { animation-delay: 0.2s; }
-    .delay-3 { animation-delay: 0.3s; }
+    /* Responsive */
+    @media (max-width: 960px) {
+      section { padding: 72px 0; }
+      .nav-links { display: none; }
+      .hero { padding: 40px 0 56px; }
+      .hero-inner { grid-template-columns: 1fr; gap: 32px; text-align: center; }
+      .hero-sub { margin-left: auto; margin-right: auto; }
+      .hero-actions, .hero-checks, .store-row { justify-content: center; }
+      .hero-visual { height: 520px; max-width: 420px; width: 100%; margin: 0 auto; }
+      .hero-visual .phone { width: 228px; }
+      .phone-front { right: auto; left: 8%; }
+      .phone-back { right: 2%; top: 46px; }
+      .chip-pr { left: -2%; top: 300px; }
+      .chip-streak { right: -2%; bottom: 10px; }
+      .row { grid-template-columns: 1fr; gap: 36px; padding: 32px 0; }
+      .row.reverse .row-text { order: 0; }
+      .row-visual .phone { width: 260px; }
+      .row-visual.duo .phone { width: 46%; }
+      .bento { grid-template-columns: repeat(2, 1fr); }
+      .install-grid, .quote-grid, .blog-grid, .pricing-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .container { padding: 0 18px; }
+      .hero h1 { font-size: 52px; }
+      .hero-sub { font-size: 17px; }
+      .btn { width: 100%; }
+      .nav .btn { width: auto; }
+      .store-badge { min-width: 0; flex: 1 1 100%; justify-content: center; }
+      .float-chip { font-size: 12px; padding: 8px 10px; }
+      .chip-ico { width: 28px; height: 28px; font-size: 15px; }
+      .strip-inner { display: grid; grid-template-columns: 1fr 1fr; }
+      .tile { padding: 16px; }
+      .plan { padding: 26px 22px; }
+      .billing-toggle button { padding: 9px 12px; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .btn, .blog-card { transition: none; } }
   </style>
 </head>
 <body>
+  <a class="skip" href="#main">Skip to content</a>
 
-  <!-- Nav -->
-  <nav>
-    <div class="nav-inner">
-      <a href="/" class="logo">
-        <div class="logo-mark"><img src="/norselift-icon-192.png" alt="NorseLift" /></div>
-        NorseLift
-      </a>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a href="/" class="logo"><img src="/norselift-icon-192.png" alt="" width="30" height="30" />NorseLift</a>
+      <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#desktop">Desktop</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+        <a href="/blog">Blog</a>
+      </div>
       <div class="nav-right">
-        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
-          <!-- Sun icon (shown in dark mode) -->
-          <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-          <!-- Moon icon (shown in light mode) -->
-          <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle light/dark theme">
+          <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/></svg>
+          <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></svg>
         </button>
-        <a href="https://app.norselift.com" class="nav-cta" onclick="gtag('event','cta_click',{button_name:'open_app'})">
-          Open App
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
+        <a href="https://app.norselift.com" class="btn btn-primary btn-sm" onclick="gtag('event','cta_click',{button_name:'open_app'})">Open App</a>
       </div>
     </div>
   </nav>
 
+  <main id="main">
   <!-- ============ HERO ============ -->
   <section class="hero">
-    <div class="hero-aurora"></div>
-    <div class="container" style="position: relative;">
-      <div class="hero-inner">
-        <div class="hero-text">
-          <div class="rune-line animate-in">
-            <span class="rune-symbols">&#5765; &#5768; &#5792; &#5800;</span>
-          </div>
-
-          <h1 class="norse-heading animate-in delay-1">
-            Forge Your<br/><span class="gold">Strength</span>
-          </h1>
-
-          <p class="hero-sub animate-in delay-2">
-            The workout tracker built for those who train with purpose.
-            No noise. No clutter. Just iron and progress.
-          </p>
-
-          <div class="hero-actions animate-in delay-3">
-            <a href="https://app.norselift.com" class="btn-gold" onclick="gtag('event','cta_click',{button_name:'begin_journey'})">
-              Begin Your Journey
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </a>
-            <a href="#features" class="btn-outline">
-              Explore
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-            </a>
-          </div>
-
-          <p class="hero-note">Free to use. No download required. Works on any device.</p>
+    <div class="hero-glow" aria-hidden="true"></div>
+    <div class="container hero-inner">
+      <div class="hero-text">
+        <a href="#desktop" class="pill-new"><span>New</span> Desktop layout, cardio &amp; training blocks →</a>
+        <h1 class="norse">Forge your<br/><span class="accent">strength.</span></h1>
+        <p class="hero-sub">The workout tracker for people who train with purpose. Log sets in seconds, see what to beat next time, and watch every lift move up. No noise, no ads.</p>
+        <div class="hero-actions">
+          <a href="https://app.norselift.com" class="btn btn-primary" onclick="gtag('event','cta_click',{button_name:'hero_start_free'})">
+            Start free in your browser
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#pricing" class="btn btn-ghost">See Pro</a>
         </div>
-
-        <div class="hero-phone animate-in delay-2">
-          <div class="phone-frame">
-            <img class="screenshot-dark" src="/app-screenshot.png" alt="NorseLift app dashboard showing workout tracking, weekly calendar, and progress stats" />
-            <img class="screenshot-light" src="/app-screenshot-light.png" alt="NorseLift app dashboard in light mode showing workout tracking, weekly calendar, and progress stats" />
-          </div>
+        <ul class="hero-checks">
+          <li>No download needed</li>
+          <li>Works offline</li>
+          <li>Syncs phone ↔ desktop</li>
+        </ul>
+        <div class="store-row">
+          <a class="store-badge real" href="#install">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="3"/><path d="M12 18h.01"/></svg>
+            <span><small>Install from</small>Your browser</span>
+          </a>
+          <span class="store-badge placeholder" data-placeholder="app-store-link" title="Placeholder: no App Store listing exists yet">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16.4 12.6c0-2.4 2-3.5 2-3.6-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9s-1.9-.9-3.1-.8c-1.6 0-3 .9-3.9 2.3-1.6 2.8-.4 7 1.2 9.3.8 1.1 1.7 2.4 2.9 2.3 1.2 0 1.6-.7 3-.7s1.8.7 3.1.7c1.3 0 2.1-1.1 2.9-2.3.9-1.3 1.2-2.5 1.3-2.6-.1 0-2.5-.9-2.5-3.7zM14.1 5.6c.6-.8 1.1-1.9 1-3-.9 0-2.1.6-2.7 1.4-.6.7-1.1 1.8-1 2.9 1 .1 2.1-.5 2.7-1.3z"/></svg>
+            <span><small>Placeholder</small>App Store</span>
+          </span>
+          <span class="store-badge placeholder" data-placeholder="play-store-link" title="Placeholder: no Google Play listing exists yet">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M4 2.5v19l10-9.5L4 2.5zm11.4 10.8L6.6 21.8l11.6-6.7-2.8-1.8zm0-2.6l2.8-1.8L6.6 2.2l8.8 8.5zm4.1.1l-2.5-1.5-3 2.7 3 2.7 2.5-1.5c.9-.6.9-1.8 0-2.4z"/></svg>
+            <span><small>Placeholder</small>Google Play</span>
+          </span>
         </div>
+      </div>
+      <div class="hero-visual">
+        <div class="phone phone-back">
+          <img class="screenshot-dark" src="/screenshot-progress-dark.png" alt="" width="393" height="852" />
+          <img class="screenshot-light" src="/screenshot-progress-light.png" alt="" width="393" height="852" />
+        </div>
+        <div class="phone phone-front">
+          <img class="screenshot-dark" src="/app-screenshot.png" alt="NorseLift home screen: weekly schedule, strength trend and today's workout" width="393" height="852" />
+          <img class="screenshot-light" src="/app-screenshot-light.png" alt="NorseLift home screen in light mode: weekly schedule, strength trend and today's workout" width="393" height="852" />
+        </div>
+        <div class="float-chip chip-pr" aria-hidden="true"><span class="chip-ico">🏆</span><span><b>New PR</b><small>Bench Press · 85 kg × 6</small></span></div>
+        <div class="float-chip chip-streak" aria-hidden="true"><span class="chip-ico flame">🔥</span><span><b>6 weeks</b><small>training streak</small></span></div>
       </div>
     </div>
   </section>
 
-  <!-- Rune Divider -->
-  <div class="rune-divider">
-    <svg width="200" height="20" viewBox="0 0 200 20" fill="none">
-      <line x1="0" y1="10" x2="70" y2="10" stroke="currentColor" stroke-width="0.5"/>
-      <polygon points="85,3 100,10 85,17" fill="none" stroke="currentColor" stroke-width="0.5"/>
-      <polygon points="115,3 100,10 115,17" fill="none" stroke="currentColor" stroke-width="0.5"/>
-      <line x1="130" y1="10" x2="200" y2="10" stroke="currentColor" stroke-width="0.5"/>
-    </svg>
-  </div>
-
-  <!-- ============ FEATURES ============ -->
-  <section class="features" id="features">
-    <div class="container">
-      <p class="section-eyebrow">Forged Features</p>
-      <h2 class="section-title norse-heading">Everything you need.<br/>Nothing you don't.</h2>
-      <p class="section-desc">Built by lifters who understand that the best tool is the one that gets out of your way.</p>
-
-      <div class="feature-grid">
-        <div class="feature-cell">
-          <div class="feature-icon-wrap">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M15 3v18M3 9h18M3 15h18"/></svg>
-          </div>
-          <h3>Custom Programs</h3>
-          <p>Build your own split with flexible exercise ordering. Push/Pull/Legs, Upper/Lower, or forge your own path.</p>
-        </div>
-        <div class="feature-cell">
-          <div class="feature-icon-wrap">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          </div>
-          <h3>Rest Timer</h3>
-          <p>Built-in timer with haptic feedback. Stay disciplined between sets without watching the clock.</p>
-        </div>
-        <div class="feature-cell">
-          <div class="feature-icon-wrap">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 16l4-8 4 5 5-9"/></svg>
-          </div>
-          <h3>Progress Stats</h3>
-          <p>Track volume, frequency, and strength over time. See your gains in clean charts and numbers.</p>
-        </div>
-        <div class="feature-cell">
-          <div class="feature-icon-wrap">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5C7 4 9 7 12 7s5-3 7.5-3a2.5 2.5 0 0 1 0 5H18"/><path d="M18 15h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M6 15H4.5a2.5 2.5 0 0 1 0-5H6"/><line x1="6" y1="9" x2="6" y2="15"/><line x1="18" y1="9" x2="18" y2="15"/><line x1="6" y1="12" x2="18" y2="12"/></svg>
-          </div>
-          <h3>Personal Records</h3>
-          <p>Automatic PR detection for every exercise. Earn your place in the record books.</p>
-        </div>
-        <div class="feature-cell">
-          <div class="feature-icon-wrap">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>
-          </div>
-          <h3>Cloud Sync</h3>
-          <p>Your data follows you across all devices. Start on your phone, review on your laptop.</p>
-        </div>
-        <div class="feature-cell">
-          <div class="feature-icon-wrap">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18.01"/></svg>
-          </div>
-          <h3>Install Anywhere</h3>
-          <p>Progressive Web App. Add to home screen like a native app. Works offline. No app store needed.</p>
-        </div>
-      </div>
+  <!-- ============ PROOF STRIP ============ -->
+  <section class="strip" aria-label="NorseLift at a glance">
+    <div class="container strip-inner">
+      <div class="strip-item" id="stat-workouts-item" hidden><b id="stat-workouts">—</b><span>workouts logged</span></div>
+      <div class="strip-item"><b>100+</b><span>exercises built in</span></div>
+      <div class="strip-item"><b>0</b><span>ads, ever</span></div>
+      <div class="strip-item"><b>Phone + desktop</b><span>one account, synced</span></div>
+      <div class="strip-item"><b>🇳🇴</b><span>built in Norway</span></div>
     </div>
   </section>
 
-  <!-- Stats bar -->
-  <section class="stats-bar">
+  <!-- ============ SHOWCASE ROWS ============ -->
+  <section class="rows" id="features">
     <div class="container">
-      <div class="stats-inner">
-        <div class="stat-item">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:6px;"><path d="M6.5 6.5a3.5 3.5 0 1 0 7 0 3.5 3.5 0 1 0-7 0"/><path d="M2 12h4l1.5 6L10 10l3 8 1.5-6H20"/></svg>
-          <div class="stat-value" id="stat-workouts">—</div>
-          <div class="stat-label">Workouts tracked</div>
-        </div>
-        <div class="stat-item">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:6px;"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="9" y1="7" x2="16" y2="7"/><line x1="9" y1="11" x2="14" y2="11"/></svg>
-          <div class="stat-value">100+</div>
-          <div class="stat-label">Exercises</div>
-        </div>
-        <div class="stat-item">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:6px;"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"/><line x1="12" y1="2" x2="12" y2="12"/></svg>
-          <div class="stat-value">Zero</div>
-          <div class="stat-label">Ads, ever</div>
-        </div>
-        <div class="stat-item">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:6px;"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-          <div class="stat-value">Norse</div>
-          <div class="stat-label">Built in Norway</div>
-        </div>
+      <div class="section-head center">
+        <p class="eyebrow">Built for the way you train</p>
+        <h2 class="norse">Less tapping. More lifting.</h2>
+        <p class="lead">Everything in NorseLift is designed to stay out of your way between sets, and to show you exactly how you're progressing after.</p>
       </div>
-    </div>
-  </section>
 
-  <!-- ============ FEATURE SHOWCASE ============ -->
-  <section class="showcase" id="showcase">
-    <div class="container">
-      <p class="section-eyebrow">See It In Action</p>
-      <h2 class="section-title norse-heading">Built for the way<br/>you train.</h2>
-      <p class="section-desc">Three views. Everything you need to plan, execute, and track your progress.</p>
-
-      <div class="showcase-grid">
-        <!-- Schedule -->
-        <div class="showcase-card">
-          <div class="showcase-screenshot">
-            <img class="screenshot-dark" src="/screenshot-schedule-dark.png" alt="NorseLift schedule view in dark mode" loading="lazy" />
-            <img class="screenshot-light" src="/screenshot-schedule-light.png" alt="NorseLift schedule view in light mode" loading="lazy" />
-          </div>
-          <div class="showcase-info">
-            <h3>Plan Your Week</h3>
-            <p>Schedule routines across your week with a visual calendar. See what's coming and stay consistent.</p>
-          </div>
-        </div>
-
-        <!-- Workout -->
-        <div class="showcase-card">
-          <div class="showcase-screenshot">
-            <img class="screenshot-dark" src="/screenshot-workout-dark.png" alt="NorseLift active workout in dark mode" loading="lazy" />
-            <img class="screenshot-light" src="/screenshot-workout-light.png" alt="NorseLift active workout in light mode" loading="lazy" />
-          </div>
-          <div class="showcase-info">
-            <h3>Track Every Set</h3>
-            <p>Log weight and reps with smart suggestions based on your history. See your last performance and beat it.</p>
-          </div>
-        </div>
-
-        <!-- Progress -->
-        <div class="showcase-card">
-          <div class="showcase-screenshot">
-            <img class="screenshot-dark" src="/screenshot-progress-dark.png" alt="NorseLift progress stats in dark mode" loading="lazy" />
-            <img class="screenshot-light" src="/screenshot-progress-light.png" alt="NorseLift progress stats in light mode" loading="lazy" />
-          </div>
-          <div class="showcase-info">
-            <h3>Measure Your Gains</h3>
-            <p>Strength gains by muscle group, weekly consistency, and total volume — all in one clear dashboard.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ SPLIT SECTION: Workout Experience ============ -->
-  <section class="split-section">
-    <div class="container">
-      <div class="split-inner">
-        <div class="split-text">
-          <p class="section-eyebrow">The Workout Experience</p>
-          <h2 class="section-title norse-heading">Less tapping.<br/>More lifting.</h2>
-          <p class="section-desc">NorseLift remembers how you train. Every set shows your last performance and suggests what to aim for next.</p>
-          <ul class="split-highlights">
-            <li>
-              <div class="highlight-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-              </div>
-              <span><strong>Smart suggestions</strong> — auto-filled weight and reps based on your history, so you just confirm and go.</span>
-            </li>
-            <li>
-              <div class="highlight-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-              </div>
-              <span><strong>Built-in rest timer</strong> — counts down between sets with haptic feedback so you can keep your phone in your pocket.</span>
-            </li>
-            <li>
-              <div class="highlight-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 16l4-8 4 5 5-9"/></svg>
-              </div>
-              <span><strong>Instant PR detection</strong> — hit a personal record and NorseLift celebrates it the moment it happens.</span>
-            </li>
+      <div class="row">
+        <div class="row-text">
+          <span class="step">01 · Log</span>
+          <h3 class="norse">Every set, three taps.</h3>
+          <p>Your last session sits right above each exercise, with a nudge on what to beat: “+1 rep” or a little more weight. Tick a set and the rest timer starts on its own.</p>
+          <ul class="ticks">
+            <li><b>Smart suggestions</b>: weight and reps pre-filled from your history</li>
+            <li><b>Auto rest timer</b>: +30s or skip; vibrates on supported Android devices</li>
+            <li><b>Warm-up sets</b> that don't pollute your stats</li>
+            <li><b>Swap exercises</b> mid-workout without losing your plan</li>
           </ul>
         </div>
-        <div class="split-phone">
-          <div class="phone-frame">
-            <img class="screenshot-dark" src="/screenshot-workout-dark.png" alt="NorseLift workout logging view" loading="lazy" />
-            <img class="screenshot-light" src="/screenshot-workout-light.png" alt="NorseLift workout logging view in light mode" loading="lazy" />
+        <div class="row-visual">
+          <div class="phone">
+            <img class="screenshot-dark" src="/screenshot-workout-dark.png" alt="Active workout: Bench Press sets with rest timer running" width="393" height="852" loading="lazy" />
+            <img class="screenshot-light" src="/screenshot-workout-light.png" alt="Active workout in light mode: Bench Press sets with rest timer running" width="393" height="852" loading="lazy" />
+          </div>
+        </div>
+      </div>
+
+      <div class="row reverse">
+        <div class="row-text">
+          <span class="step">02 · Plan</span>
+          <h3 class="norse">Your week, on rails.</h3>
+          <p>Build your own routines (Push/Pull/Legs, Upper/Lower, full body or anything else) and schedule them across the week. NorseLift handles the rotation, so “what am I doing today?” is always one tap away.</p>
+          <ul class="ticks">
+            <li><b>Custom programs</b> with any exercises from a 100+ library, or your own</li>
+            <li><b>Training blocks</b>: label a bulk, cut or peak and track how it's going</li>
+            <li><b>Cardio too</b>: log runs, rides and more next to your lifts</li>
+          </ul>
+        </div>
+        <div class="row-visual">
+          <div class="phone">
+            <img class="screenshot-dark" src="/screenshot-schedule-dark.png" alt="Training schedule calendar for October" width="393" height="852" loading="lazy" />
+            <img class="screenshot-light" src="/screenshot-schedule-light.png" alt="Training schedule calendar for October in light mode" width="393" height="852" loading="lazy" />
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-text">
+          <span class="step">03 · Progress</span>
+          <h3 class="norse">Your whole training picture. One page.</h3>
+          <p>Your profile turns your logs into a dashboard: streak calendar, body weight, strength trend, weekly volume per muscle, records and a monthly recap. You can see at a glance whether this block is working.</p>
+          <ul class="ticks">
+            <li><b>PR celebrations</b> at the end of every workout, free</li>
+            <li><b>Streaks &amp; calendar</b> that make consistency visible</li>
+            <li><b>Body weight</b> trend alongside your lifts</li>
+            <li><b>Share card</b> to post a finished workout</li>
+          </ul>
+        </div>
+        <div class="row-visual">
+          <div class="phone">
+            <img class="screenshot-dark" src="/screenshot-progress-dark.png" alt="Profile dashboard with streak, calendar, body weight and strength tiles" width="393" height="852" loading="lazy" />
+            <img class="screenshot-light" src="/screenshot-progress-light.png" alt="Profile dashboard in light mode with streak, calendar, body weight and strength tiles" width="393" height="852" loading="lazy" />
+          </div>
+        </div>
+      </div>
+
+      <div class="row reverse">
+        <div class="row-text">
+          <span class="step">04 · Insights <span class="pro-pill">⚡ PRO</span></span>
+          <h3 class="norse">Know exactly what to lift next.</h3>
+          <p>Exercise Progression charts your estimated 1RM, top set and volume per lift, and sets a target for your next session. Records collects every PR you've hit, and weekly volume shows which muscles are on target.</p>
+          <ul class="ticks">
+            <li><b>Exercise progression</b> with next-session targets</li>
+            <li><b>Records</b>: every PR, sorted by what's new</li>
+            <li><b>Weekly volume</b>, <b>strength details</b>, <b>cardio trend</b> &amp; <b>monthly recap</b></li>
+          </ul>
+        </div>
+        <div class="row-visual duo">
+          <div class="phone">
+            <img class="screenshot-dark" src="/screenshot-charts-dark.png" alt="Exercise progression chart for Bench Press" width="393" height="852" loading="lazy" />
+            <img class="screenshot-light" src="/screenshot-charts-light.png" alt="Exercise progression chart for Bench Press in light mode" width="393" height="852" loading="lazy" />
+          </div>
+          <div class="phone">
+            <img class="screenshot-dark" src="/screenshot-records-dark.png" alt="Records list with recent personal records" width="393" height="852" loading="lazy" />
+            <img class="screenshot-light" src="/screenshot-records-light.png" alt="Records list with recent personal records in light mode" width="393" height="852" loading="lazy" />
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ COMPETITOR COMPARISON ============ -->
-  <section class="comparison" id="compare">
+  <!-- ============ FEATURE BENTO ============ -->
+  <section class="bento-section">
     <div class="container">
-      <p class="section-eyebrow">The Landscape</p>
-      <h2 class="section-title norse-heading">How NorseLift Compares</h2>
-      <p class="section-desc">An honest look at how we stack up against the most popular workout trackers.</p>
-
-      <div class="comparison-table-wrap">
-        <table class="comparison-table">
-          <thead>
-            <tr>
-              <th>Feature</th>
-              <th class="col-norselift">NorseLift</th>
-              <th>Strong</th>
-              <th>Hevy</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Price</td>
-              <td class="col-norselift"><span class="comp-accent">Free</span></td>
-              <td>$4.99&ndash;9.99/mo</td>
-              <td>Free w/ $8.99/mo</td>
-            </tr>
-            <tr>
-              <td>Custom Routines</td>
-              <td class="col-norselift"><span class="comp-check">&#10003;</span> Yes</td>
-              <td>Yes</td>
-              <td>Yes</td>
-            </tr>
-            <tr>
-              <td>Cloud Sync</td>
-              <td class="col-norselift"><span class="comp-check">&#10003;</span> Free</td>
-              <td>Pro only</td>
-              <td>Free</td>
-            </tr>
-            <tr>
-              <td>Offline Support</td>
-              <td class="col-norselift"><span class="comp-check">&#10003;</span> Full</td>
-              <td>Full</td>
-              <td><span class="comp-muted">Limited</span></td>
-            </tr>
-            <tr>
-              <td>Works on Any Device</td>
-              <td class="col-norselift"><span class="comp-check">&#10003;</span> Yes &mdash; PWA</td>
-              <td>iOS + Android</td>
-              <td>iOS + Android</td>
-            </tr>
-            <tr>
-              <td>No Download Required</td>
-              <td class="col-norselift"><span class="comp-check">&#10003;</span> Yes</td>
-              <td><span class="comp-muted">No</span></td>
-              <td><span class="comp-muted">No</span></td>
-            </tr>
-            <tr>
-              <td>Exercise Library</td>
-              <td class="col-norselift">100+</td>
-              <td>300+</td>
-              <td>300+</td>
-            </tr>
-            <tr>
-              <td>Social Features</td>
-              <td class="col-norselift"><span class="comp-muted">Coming soon</span></td>
-              <td><span class="comp-muted">No</span></td>
-              <td>Yes</td>
-            </tr>
-            <tr>
-              <td>Ads</td>
-              <td class="col-norselift"><span class="comp-accent">Never</span></td>
-              <td>No</td>
-              <td>Yes (free tier)</td>
-            </tr>
-            <tr>
-              <td>Open Pricing</td>
-              <td class="col-norselift"><span class="comp-check">&#10003;</span> Yes</td>
-              <td><span class="comp-muted">Complex tiers</span></td>
-              <td><span class="comp-muted">Freemium + ads</span></td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="section-head center">
+        <p class="eyebrow">Everything included</p>
+        <h2 class="norse">Everything you need. Nothing you don't.</h2>
+      </div>
+      <div class="bento">
+        <div class="tile"><span class="ti">⚡</span><h4>Smart suggestions</h4><p>Last performance and a target on every exercise.</p></div>
+        <div class="tile"><span class="ti">⏱</span><h4>Rest timer</h4><p>Starts when you tick a set. +30s or skip.</p></div>
+        <div class="tile"><span class="ti">🏆</span><h4>PR detection</h4><p>New records celebrated when you finish.</p></div>
+        <div class="tile"><span class="ti">🔥</span><h4>Streaks &amp; calendar</h4><p>Weeks in a row, strength and cardio days.</p></div>
+        <div class="tile"><span class="ti">🏃</span><h4>Cardio logging</h4><p>Distance and time next to your lifts.</p></div>
+        <div class="tile"><span class="ti">📚</span><h4>Training blocks</h4><p>Bulk, cut or peak. Know which day you're on.</p></div>
+        <div class="tile"><span class="ti">⚖️</span><h4>Body weight</h4><p>Quick log with a 30-day trend.</p></div>
+        <div class="tile"><span class="ti">☁️</span><h4>Cloud sync + offline</h4><p>Logs locally, syncs when you're back online.</p></div>
+        <div class="tile"><span class="ti">🖥</span><h4>Desktop layout</h4><p>A full sidebar layout for planning on a big screen.</p></div>
+        <div class="tile"><span class="ti">🎨</span><h4>Light, dark &amp; Maiden</h4><p>Three themes. Pick your vibe.</p></div>
+        <div class="tile"><span class="ti">📤</span><h4>Share card</h4><p>Turn a finished workout into a postable image.</p></div>
+        <div class="tile"><span class="ti">🎁</span><h4>Invite friends, earn Pro</h4><p>Referral rewards built into your profile.</p></div>
       </div>
     </div>
   </section>
 
-  <!-- Rune Divider -->
-  <div class="rune-divider">
-    <svg width="200" height="20" viewBox="0 0 200 20" fill="none">
-      <line x1="0" y1="10" x2="70" y2="10" stroke="currentColor" stroke-width="0.5"/>
-      <polygon points="85,3 100,10 85,17" fill="none" stroke="currentColor" stroke-width="0.5"/>
-      <polygon points="115,3 100,10 115,17" fill="none" stroke="currentColor" stroke-width="0.5"/>
-      <line x1="130" y1="10" x2="200" y2="10" stroke="currentColor" stroke-width="0.5"/>
-    </svg>
-  </div>
+  <!-- ============ DESKTOP ============ -->
+  <section class="desktop" id="desktop">
+    <div class="container">
+      <div class="section-head center">
+        <p class="eyebrow">New · October 2026</p>
+        <h2 class="norse">Log on your phone. Plan on your desktop.</h2>
+        <p class="lead">Open NorseLift on a laptop and you get a full desktop layout with a sidebar and a wide dashboard. Same account, same data, synced automatically.</p>
+      </div>
+      <div class="browser">
+        <div class="browser-bar" aria-hidden="true"><i></i><i></i><i></i><span>app.norselift.com</span></div>
+        <img class="screenshot-dark" src="/screenshot-desktop-dark.png" alt="NorseLift desktop layout: sidebar navigation and profile dashboard" width="1440" height="900" loading="lazy" />
+        <img class="screenshot-light" src="/screenshot-desktop-light.png" alt="NorseLift desktop layout in light mode: sidebar navigation and profile dashboard" width="1440" height="900" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ INSTALL ============ -->
+  <section class="install" id="install">
+    <div class="container">
+      <div class="section-head center">
+        <p class="eyebrow">Get the app</p>
+        <h2 class="norse">Install in 10 seconds. No app store.</h2>
+        <p class="lead">NorseLift is a Progressive Web App: it installs from your browser, launches full-screen from your home screen and keeps working offline.</p>
+      </div>
+      <div class="install-grid">
+        <div class="card install-card">
+          <h4>iPhone &amp; iPad</h4>
+          <ol><li>Open <b>app.norselift.com</b> in Safari</li><li>Tap <b>Share</b></li><li>Tap <b>Add to Home Screen</b></li></ol>
+        </div>
+        <div class="card install-card">
+          <h4>Android</h4>
+          <ol><li>Open <b>app.norselift.com</b> in Chrome</li><li>Tap <b>⋮</b> menu</li><li>Tap <b>Install app</b></li></ol>
+        </div>
+        <div class="card install-card">
+          <h4>Mac, Windows &amp; Linux</h4>
+          <ol><li>Open <b>app.norselift.com</b></li><li>Click the <b>install</b> icon in the address bar</li><li>Or just keep it in a tab</li></ol>
+        </div>
+      </div>
+      <p class="placeholder-note" data-placeholder="store-availability">PLACEHOLDER: App Store / Google Play availability. Add the store badges and links here once listings are live, or delete this line.</p>
+      <div class="center"><a href="https://app.norselift.com" class="btn btn-primary" onclick="gtag('event','cta_click',{button_name:'install_open_app'})">Open app.norselift.com</a></div>
+    </div>
+  </section>
 
   <!-- ============ PRICING ============ -->
   <section class="pricing" id="pricing">
     <div class="container">
-      <p class="section-eyebrow">Pricing</p>
-      <h2 class="section-title norse-heading">Simple pricing.<br/>Warrior value.</h2>
-      <p class="section-desc">Start free. Upgrade when you're ready. Less than a protein shake.</p>
-
-      <!-- Billing cycle toggle -->
-      <div class="billing-toggle" id="billingToggle">
-        <button class="active" data-plan="monthly" onclick="setPlan('monthly')">Monthly</button>
-        <button data-plan="quarterly" onclick="setPlan('quarterly')">
-          Quarterly
-          <span class="toggle-badge">-30%</span>
-        </button>
-        <button data-plan="yearly" onclick="setPlan('yearly')">
-          Yearly
-          <span class="toggle-badge">-50%</span>
-        </button>
+      <div class="section-head center">
+        <p class="eyebrow">Pricing</p>
+        <h2 class="norse">Free to train. Pro to go deeper.</h2>
+        <p class="lead">Free has everything you need to log and stay consistent. Pro unlocks the insights. It costs less than a protein shake.</p>
       </div>
 
-      <!-- Intro pricing callout (monthly only) -->
-      <div class="intro-callout" id="introCallout">
-        <span>&#10024; First month just $1.99 &mdash; then $4.99/mo</span>
+      <div class="billing-toggle" id="billingToggle" role="tablist" aria-label="Billing period">
+        <button class="active" data-plan="monthly" onclick="setPlan('monthly')" role="tab">Monthly</button>
+        <button data-plan="quarterly" onclick="setPlan('quarterly')" role="tab">Quarterly <span class="save">−30%</span></button>
+        <button data-plan="yearly" onclick="setPlan('yearly')" role="tab">Yearly <span class="save">−50%</span></button>
       </div>
 
       <div class="pricing-grid">
-        <!-- Free -->
-        <div class="pricing-card free">
+        <div class="card plan">
           <h3>Free</h3>
-          <p class="subtitle">Get started</p>
-          <div class="pricing-price">
-            <span class="amount">$0</span>
-            <span class="period">/forever</span>
-          </div>
-          <ul class="pricing-list">
-            <li><span class="check">&#10003;</span> Up to 3 workout programs</li>
-            <li><span class="check">&#10003;</span> Last 7 days of history</li>
-            <li><span class="check">&#10003;</span> 1 scheduled routine</li>
-            <li><span class="check">&#10003;</span> Exercise library</li>
-            <li><span class="check">&#10003;</span> Cloud sync</li>
-            <li><span class="check">&#10003;</span> Rest timer</li>
-            <li><span class="dim">&mdash;</span> <span class="dim">Progress stats & charts</span></li>
-            <li><span class="dim">&mdash;</span> <span class="dim">Personal records</span></li>
-            <li><span class="dim">&mdash;</span> <span class="dim">Training cycle planning</span></li>
+          <p class="plan-sub">Forever. No card needed.</p>
+          <div class="price"><b>$0</b></div>
+          <a href="https://app.norselift.com" class="btn btn-ghost block" onclick="gtag('event','cta_click',{button_name:'pricing_free'})">Start free</a>
+          <ul class="plan-list">
+            <li>Up to 3 programs, 1 scheduled routine</li>
+            <li>Full workout history</li>
+            <li>Edit sessions from the last 7 days</li>
+            <li>Smart suggestions &amp; rest timer</li>
+            <li>PR celebrations after each workout</li>
+            <li>Streak calendar, body weight, training blocks</li>
+            <li>Cardio logging, share card, warm-up sets</li>
+            <li>Cloud sync, offline, phone + desktop</li>
           </ul>
-          <a href="https://app.norselift.com" class="pricing-btn ghost" onclick="gtag('event','cta_click',{button_name:'get_started_free'})">Get Started Free</a>
         </div>
-
-        <!-- Pro -->
-        <div class="pricing-card pro">
-          <span class="pricing-badge">Most Popular</span>
-          <h3>Pro</h3>
-          <p class="subtitle">For serious lifters</p>
-          <div class="pricing-price" id="proPrice">
-            <span class="price-struck" id="proPriceStruck">$4.99</span>
-            <span class="amount pro-amount" id="proPriceAmount">$1.99</span>
-            <span class="period">/month</span>
-          </div>
-          <p id="proPriceSub" style="font-size:0.72rem; color:var(--text-muted); margin-top:-18px; margin-bottom:22px;">First month intro price</p>
-          <ul class="pricing-list">
-            <li><span class="check">&#10003;</span> <strong>Unlimited</strong> programs</li>
-            <li><span class="check">&#10003;</span> <strong>Full</strong> workout history</li>
-            <li><span class="check">&#10003;</span> <strong>Unlimited</strong> scheduled routines</li>
-            <li><span class="check">&#10003;</span> Edit & delete any session</li>
-            <li><span class="check">&#10003;</span> Exercise library</li>
-            <li><span class="check">&#10003;</span> Cloud sync</li>
-            <li><span class="check">&#10003;</span> Rest timer</li>
-            <li><span class="check">&#10003;</span> Progress stats & charts</li>
-            <li><span class="check">&#10003;</span> Personal records tracking</li>
-            <li><span class="check">&#10003;</span> Training cycle planning</li>
+        <div class="card plan pro">
+          <div class="plan-badge">Full insights</div>
+          <h3>Pro <span class="pro-pill">⚡ PRO</span></h3>
+          <p class="plan-sub" id="proPlanSub">Billed monthly</p>
+          <div class="price"><s id="proPriceStruck">$4.99</s><b id="proPriceAmount">$1.99</b><span>/mo</span></div>
+          <p class="price-note" id="proPriceSub">First month for new subscribers, then $4.99/mo</p>
+          <a href="https://app.norselift.com/upgrade" class="btn btn-primary block" id="proCta" onclick="gtag('event','cta_click',{button_name:'pricing_pro'})">Start Pro, $1.99 first month</a>
+          <ul class="plan-list">
+            <li class="em">Everything in Free, plus:</li>
+            <li>Unlimited programs &amp; scheduled routines</li>
+            <li>Edit &amp; delete any past session</li>
+            <li>Backfill workouts you forgot to log</li>
+            <li>Exercise progression with next-session targets</li>
+            <li>Records collection</li>
+            <li>Weekly volume &amp; strength details</li>
+            <li>Monthly recap &amp; cardio trend</li>
+            <li>Training-block history</li>
+            <li>Duplicate routines</li>
           </ul>
-          <a href="https://app.norselift.com/upgrade" class="pricing-btn gold" id="proCta" onclick="gtag('event','cta_click',{button_name:'start_pro'})">Start Pro &mdash; $1.99 first month</a>
         </div>
       </div>
+      <p class="fine">Prices in USD. Quarterly: $10.49 every 3 months. Yearly: $29.99 per year. The $1.99 intro applies to the first month of a new monthly subscription. Cancel anytime: you keep Pro until the end of the period, and your logs stay in your account.</p>
+    </div>
+  </section>
+
+  <!-- ============ SOCIAL PROOF (PLACEHOLDERS) ============ -->
+  <section class="proof">
+    <div class="container">
+      <div class="section-head center">
+        <p class="eyebrow">From lifters</p>
+        <h2 class="norse">What people say</h2>
+      </div>
+      <div class="quote-grid">
+        <figure class="card quote placeholder" data-placeholder="testimonial-1"><blockquote>PLACEHOLDER: real, consented user quote goes here.</blockquote><figcaption>Name · how they train</figcaption></figure>
+        <figure class="card quote placeholder" data-placeholder="testimonial-2"><blockquote>PLACEHOLDER: real, consented user quote goes here.</blockquote><figcaption>Name · how they train</figcaption></figure>
+        <figure class="card quote placeholder" data-placeholder="testimonial-3"><blockquote>PLACEHOLDER: real, consented user quote goes here.</blockquote><figcaption>Name · how they train</figcaption></figure>
+      </div>
+      <p class="placeholder-note" data-placeholder="proof-note">Placeholders: do not ship with invented quotes or numbers. Replace these with real reviews, or remove the section.</p>
     </div>
   </section>
 
   <!-- ============ FAQ ============ -->
   <section class="faq" id="faq">
-    <div class="container">
-      <p class="section-eyebrow">Questions</p>
-      <h2 class="section-title norse-heading">Frequently asked.</h2>
-      <p class="section-desc">Everything you need to know before you start training with NorseLift.</p>
-
-      <div class="faq-list">
-        <div class="faq-item">
-          <button class="faq-question" onclick="toggleFaq(this)">
-            Is NorseLift really free?
-            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-          </button>
-          <div class="faq-answer">
-            <div class="faq-answer-inner">Yes. The free plan gives you 3 workout programs, 7 days of history, scheduling, cloud sync, and the full exercise library. No credit card required. Pro unlocks unlimited programs, full history, progress stats, personal records, and more.</div>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-question" onclick="toggleFaq(this)">
-            Do I need to download anything?
-            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-          </button>
-          <div class="faq-answer">
-            <div class="faq-answer-inner">Nope. NorseLift is a Progressive Web App (PWA) — open it in your browser and add it to your home screen for a native app experience. It works offline, loads instantly, and doesn't take up storage like traditional apps.</div>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-question" onclick="toggleFaq(this)">
-            What devices does it work on?
-            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-          </button>
-          <div class="faq-answer">
-            <div class="faq-answer-inner">Any device with a modern browser — iPhone, Android, iPad, laptop, desktop. Your data syncs automatically across all of them via cloud sync, so you can log a workout on your phone and review your progress on your laptop.</div>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-question" onclick="toggleFaq(this)">
-            Can I create my own workout programs?
-            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-          </button>
-          <div class="faq-answer">
-            <div class="faq-answer-inner">Absolutely. Build custom routines with any exercises you want — Push/Pull/Legs, Upper/Lower, full body, or your own split. Add rest days, schedule them across the week, and NorseLift handles the rotation automatically.</div>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-question" onclick="toggleFaq(this)">
-            How does the smart suggestion feature work?
-            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-          </button>
-          <div class="faq-answer">
-            <div class="faq-answer-inner">NorseLift looks at your recent performance for each exercise and suggests weight and reps for your next set. It factors in your consistency to recommend either building on what you've done or pushing for more. You can accept the suggestion with one tap or enter your own numbers.</div>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-question" onclick="toggleFaq(this)">
-            Can I cancel Pro anytime?
-            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-          </button>
-          <div class="faq-answer">
-            <div class="faq-answer-inner">Yes. Cancel anytime from your account settings — no contracts, no hidden fees. You'll keep Pro access until the end of your billing period, then your account reverts to the free plan. Your data is never deleted.</div>
-          </div>
-        </div>
+    <div class="container narrow">
+      <div class="section-head center">
+        <p class="eyebrow">FAQ</p>
+        <h2 class="norse">Frequently asked</h2>
       </div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Is NorseLift really free?</button><div class="faq-a"><p>Yes. Free includes up to 3 programs, 1 scheduled routine, your full workout history, smart suggestions, the rest timer, PR celebrations, streaks, body weight, cardio and cloud sync. No credit card needed. Pro adds unlimited programs, editing of older sessions, backfill and the deeper insights (exercise progression, records, weekly volume and more).</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Do I need to download anything?</button><div class="faq-a"><p>No. NorseLift is a Progressive Web App. Open app.norselift.com and add it to your home screen (Safari: Share → Add to Home Screen; Chrome: Install app). It launches full-screen and works offline.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Does it work on desktop?</button><div class="faq-a"><p>Yes. On a laptop or desktop NorseLift switches to a full desktop layout with a sidebar. Your data syncs between all your devices.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Can I create my own workout programs?</button><div class="faq-a"><p>Absolutely. Build routines with any exercises (Push/Pull/Legs, Upper/Lower, full body or your own split), schedule them across the week, and NorseLift handles the rotation.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">How do smart suggestions work?</button><div class="faq-a"><p>NorseLift looks at your recent sets for each exercise and suggests weight and reps for the next session, either building on what you did or pushing for a little more. Accept with a tap or type your own.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Can I log cardio?</button><div class="faq-a"><p>Yes. Log running and other cardio with time and distance. Cardio days show on your calendar and streak, and Pro adds a pace trend.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Can I cancel Pro anytime?</button><div class="faq-a"><p>Yes. No contracts. You keep Pro until the end of your billing period, then your account returns to Free. Cancelling never deletes your workouts. You can delete your account yourself at any time from settings.</p></div></div>
     </div>
   </section>
 
-  <!-- ============ BLOG PREVIEW ============ -->
-  <section class="blog-preview">
+  <!-- ============ BLOG ============ -->
+  <section class="blog" id="blog">
     <div class="container">
-      <div class="section-eyebrow">From the Blog</div>
-      <h2 class="norse-heading section-title">Training Knowledge</h2>
-      <p class="section-desc">Guides and tips to help you train smarter.</p>
-
+      <div class="section-head center">
+        <p class="eyebrow">From the blog</p>
+        <h2 class="norse">Train smarter</h2>
+      </div>
       <div class="blog-grid">
-        <a href="/blog/best-free-workout-tracker-app" class="blog-card">
-          <img class="blog-card-thumb" src="/blog/images/best-workout-app-thumb.jpg" alt="Pink flat-lay of workout gear with a phone showing the NorseLift workout tracker app" width="700" height="467" loading="lazy" />
-          <div class="blog-card-body">
-            <div class="blog-card-date">July 2, 2026</div>
-            <h3>The 5 Best Free Workout Tracker Apps in 2026</h3>
-            <p>An honest comparison of NorseLift, Strong, Hevy, JEFIT, and FitNotes.</p>
-            <span class="read-more">Read more <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-          </div>
+        <a href="/blog/best-free-workout-tracker-app" class="card blog-card">
+          <img src="/blog/images/best-workout-app-thumb.jpg" alt="Pink flat-lay of workout gear with a phone showing the NorseLift workout tracker app" width="700" height="467" loading="lazy" />
+          <div><time>July 2, 2026</time><h4>The 5 Best Free Workout Tracker Apps in 2026</h4><p>An honest comparison of NorseLift, Strong, Hevy, JEFIT, and FitNotes.</p></div>
         </a>
-        <a href="/blog/push-pull-legs-routine-guide" class="blog-card">
-          <img class="blog-card-thumb" src="/blog/images/push-pull-legs-thumb.jpg" alt="Lifter gripping a loaded barbell in a deadlift setup, part of a push pull legs (PPL) routine" width="700" height="466" loading="lazy" />
-          <div class="blog-card-body">
-            <div class="blog-card-date">July 2, 2026</div>
-            <h3>The Complete Push Pull Legs Routine Guide</h3>
-            <p>Who PPL is for, how to structure it, and a full 6-day program.</p>
-            <span class="read-more">Read more <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-          </div>
+        <a href="/blog/push-pull-legs-routine-guide" class="card blog-card">
+          <img src="/blog/images/push-pull-legs-thumb.jpg" alt="Lifter gripping a loaded barbell in a deadlift setup, part of a push pull legs (PPL) routine" width="700" height="466" loading="lazy" />
+          <div><time>July 2, 2026</time><h4>The Complete Push Pull Legs Routine Guide</h4><p>Who PPL is for, how to structure it, and a full 6-day program.</p></div>
         </a>
-        <a href="/blog/progressive-overload-guide" class="blog-card">
-          <img class="blog-card-thumb" src="/blog/images/progressive-overload-thumb.jpg" alt="Loaded barbell plate on a gym floor next to a spare weight plate, representing progressive overload training" width="700" height="466" loading="lazy" />
-          <div class="blog-card-body">
-            <div class="blog-card-date">July 2, 2026</div>
-            <h3>Progressive Overload: The Only Rule for Muscle</h3>
-            <p>What it means, 5 ways to apply it, and why tracking makes it automatic.</p>
-            <span class="read-more">Read more <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-          </div>
+        <a href="/blog/progressive-overload-guide" class="card blog-card">
+          <img src="/blog/images/progressive-overload-thumb.jpg" alt="Loaded barbell plate on a gym floor next to a spare weight plate, representing progressive overload training" width="700" height="466" loading="lazy" />
+          <div><time>July 2, 2026</time><h4>Progressive Overload: The Only Rule for Muscle</h4><p>What it means, 5 ways to apply it, and why tracking makes it automatic.</p></div>
         </a>
       </div>
-
-      <div class="blog-see-all">
-        <a href="/blog">
-          View all articles
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
-      </div>
+      <div class="center"><a class="link" href="/blog">View all articles →</a></div>
     </div>
   </section>
-
-  <!-- Rune Divider -->
-  <div class="rune-divider">
-    <svg width="200" height="20" viewBox="0 0 200 20" fill="none">
-      <line x1="0" y1="10" x2="70" y2="10" stroke="currentColor" stroke-width="0.5"/>
-      <polygon points="85,3 100,10 85,17" fill="none" stroke="currentColor" stroke-width="0.5"/>
-      <polygon points="115,3 100,10 115,17" fill="none" stroke="currentColor" stroke-width="0.5"/>
-      <line x1="130" y1="10" x2="200" y2="10" stroke="currentColor" stroke-width="0.5"/>
-    </svg>
-  </div>
 
   <!-- ============ FINAL CTA ============ -->
-  <section class="final-cta">
-    <div class="final-cta-bg"></div>
-    <div class="container">
-
-      <div class="rune-line" style="margin-bottom: 32px;">
-        <span class="rune-symbols">&#5765; &#5768; &#5792;</span>
-      </div>
-
-      <h2 class="norse-heading" style="position:relative;">
-        Ready to forge<br/>your legacy?
-      </h2>
-      <p style="position:relative;">Your strength journey begins with a single rep.</p>
-      <a href="https://app.norselift.com" class="btn-gold" style="position:relative;" onclick="gtag('event','cta_click',{button_name:'start_training_now'})">
-        Start Training Now
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
+  <section class="final">
+    <div class="container final-inner">
+      <span class="runes" aria-hidden="true">&#5765; &#5768; &#5792;</span>
+      <h2 class="norse">Ready to forge your legacy?</h2>
+      <p>Your next PR starts with the next set. Free, in your browser, in ten seconds.</p>
+      <a href="https://app.norselift.com" class="btn btn-primary" onclick="gtag('event','cta_click',{button_name:'start_training_now'})">Start training free</a>
     </div>
   </section>
+  </main>
 
-  <!-- ============ FOOTER ============ -->
-  <footer>
-    <div class="container">
-      <div class="footer-inner">
-        <p>&copy; 2026 NorseLift. Forged in Norway.</p>
-        <div class="footer-links">
-          <a href="https://app.norselift.com">App</a>
-          <a href="#features">Features</a>
-          <a href="#pricing">Pricing</a>
-          <a href="#faq">FAQ</a>
-          <a href="mailto:support@norselift.com">Support</a>
-          <a href="/blog">Blog</a>
-          <a href="/privacy">Privacy</a>
-        </div>
-      </div>
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>&copy; 2026 NorseLift. Forged in Norway.</p>
+      <nav class="footer-links" aria-label="Footer">
+        <a href="https://app.norselift.com">App</a>
+        <a href="#features">Features</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+        <a href="mailto:support@norselift.com">Support</a>
+        <a href="/blog">Blog</a>
+        <a href="/privacy">Privacy</a>
+      </nav>
     </div>
   </footer>
 
-  <!-- Theme toggle script -->
   <script>
+    function setMeta(theme) { var m = document.getElementById('meta-theme'); if (m) m.setAttribute('content', theme === 'dark' ? '#0a0e1a' : '#e6eef8'); }
     function toggleTheme() {
-      var html = document.documentElement;
-      var current = html.getAttribute('data-theme');
-      var next = current === 'dark' ? 'light' : 'dark';
-      html.setAttribute('data-theme', next);
+      var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
       localStorage.setItem('norselift-theme', next);
-      // Update meta theme-color for mobile browser chrome
-      var meta = document.getElementById('meta-theme');
-      if (meta) meta.setAttribute('content', next === 'dark' ? '#0a0e1a' : '#e6eef8');
+      setMeta(next);
     }
-
-    // Listen for system preference changes (only if user hasn't manually set)
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
-      if (!localStorage.getItem('norselift-theme')) {
-        var theme = e.matches ? 'dark' : 'light';
-        document.documentElement.setAttribute('data-theme', theme);
-        var meta = document.getElementById('meta-theme');
-        if (meta) meta.setAttribute('content', theme === 'dark' ? '#0a0e1a' : '#e6eef8');
-      }
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function (e) {
+      if (!localStorage.getItem('norselift-theme')) { var t = e.matches ? 'dark' : 'light'; document.documentElement.setAttribute('data-theme', t); setMeta(t); }
     });
 
-    // Pricing plan toggle
+    // Prices mirror gym-tracker src/pages/UpgradePage.tsx; intro coupon = monthly + first subscription only (api/_lib/checkout.mjs)
     var plans = {
-      monthly:   { display: '$1.99', struck: '$4.99', sub: 'First month intro price', cta: 'Start Pro — $1.99 first month', showIntro: true },
-      quarterly: { display: '$3.49', struck: null, sub: '$10.49 billed every 3 months', cta: 'Start Pro — $10.49/quarter', showIntro: false },
-      yearly:    { display: '$2.49', struck: null, sub: '$29.99 billed annually', cta: 'Start Pro — $29.99/year', showIntro: false },
+      monthly:   { amount: '$1.99', struck: '$4.99', sub: 'Billed monthly', note: 'First month for new subscribers, then $4.99/mo', cta: 'Start Pro, $1.99 first month' },
+      quarterly: { amount: '$3.49', struck: null, sub: 'Billed every 3 months', note: '$10.49 every 3 months', cta: 'Start Pro, $10.49/quarter' },
+      yearly:    { amount: '$2.49', struck: null, sub: 'Billed yearly', note: '$29.99 per year: best value', cta: 'Start Pro, $29.99/year' }
     };
     function setPlan(plan) {
       var p = plans[plan];
-      var btns = document.querySelectorAll('#billingToggle button');
-      btns.forEach(function(b) { b.classList.toggle('active', b.getAttribute('data-plan') === plan); });
-      document.getElementById('proPriceAmount').textContent = p.display;
-      document.getElementById('proPriceSub').textContent = p.sub;
+      document.querySelectorAll('#billingToggle button').forEach(function (b) { var on = b.getAttribute('data-plan') === plan; b.classList.toggle('active', on); b.setAttribute('aria-selected', on); });
+      document.getElementById('proPriceAmount').textContent = p.amount;
+      var s = document.getElementById('proPriceStruck'); s.textContent = p.struck || ''; s.style.display = p.struck ? '' : 'none';
+      document.getElementById('proPlanSub').textContent = p.sub;
+      document.getElementById('proPriceSub').textContent = p.note;
       document.getElementById('proCta').textContent = p.cta;
-      var struck = document.getElementById('proPriceStruck');
-      struck.textContent = p.struck || '';
-      struck.style.display = p.struck ? 'inline' : 'none';
-      document.getElementById('introCallout').style.display = p.showIntro ? 'block' : 'none';
     }
-  </script>
 
-  <!-- FAQ toggle -->
-  <script>
     function toggleFaq(btn) {
-      var item = btn.parentElement;
-      var wasOpen = item.classList.contains('open');
-      // Close all
-      document.querySelectorAll('.faq-item.open').forEach(function(el) {
-        el.classList.remove('open');
-      });
-      // Toggle clicked (open if it was closed)
-      if (!wasOpen) item.classList.add('open');
+      var item = btn.parentElement, open = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(function (el) { el.classList.remove('open'); el.querySelector('.faq-q').setAttribute('aria-expanded', 'false'); });
+      if (!open) { item.classList.add('open'); btn.setAttribute('aria-expanded', 'true'); }
     }
-  </script>
 
-  <!-- Live stats -->
-  <script>
-    (function() {
-      fetch('https://app.norselift.com/api/public-stats')
-        .then(function(r) { return r.json(); })
-        .then(function(d) {
-          var el = document.getElementById('stat-workouts');
-          if (el && d.totalWorkouts > 0) {
-            el.textContent = d.totalWorkouts.toLocaleString() + '+';
-          }
-        })
-        .catch(function() {});
+    // Live counter: only shown once the number is meaningful (threshold is a decision for Snorre)
+    (function () {
+      var MIN_TO_SHOW = 1000;
+      fetch('https://app.norselift.com/api/public-stats').then(function (r) { return r.json(); }).then(function (d) {
+        if (d && d.totalWorkouts >= MIN_TO_SHOW) {
+          document.getElementById('stat-workouts').textContent = d.totalWorkouts.toLocaleString() + '+';
+          document.getElementById('stat-workouts-item').hidden = false;
+        }
+      }).catch(function () {});
     })();
   </script>
 
-  <!-- Vercel Analytics -->
   <script defer src="/_vercel/insights/script.js"></script>
-
 </body>
 </html>
