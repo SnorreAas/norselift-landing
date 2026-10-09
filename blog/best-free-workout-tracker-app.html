@@ -46,24 +46,18 @@
   }
   </script>
 
-  <!-- Google Analytics 4 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-YJ8DCEJGHD"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-YJ8DCEJGHD');
-  </script>
 
   <!-- Favicon -->
   <link rel="icon" href="/favicon.ico" sizes="48x48" />
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- Self-hosted fonts (no Google Fonts requests) -->
+  <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/crimson-pro-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/fonts/fonts.css" />
+  <!-- Analytics consent: Google Analytics loads only after "Accept" -->
+  <script src="/consent.js"></script>
 
   <!-- Prevent flash: apply saved theme before paint -->
   <script>
@@ -355,12 +349,12 @@
       display: flex; align-items: center; justify-content: space-between;
     }
     footer p { font-size: 0.75rem; color: var(--text-muted); }
-    .footer-links { display: flex; gap: 20px; }
-    .footer-links a {
+    .footer-links { display: flex; gap: 12px 20px; flex-wrap: wrap; justify-content: center; }
+    .footer-links a, .footer-links button {
       font-size: 0.75rem; color: var(--text-muted);
       text-decoration: none; transition: color 0.15s;
     }
-    .footer-links a:hover { color: var(--accent); }
+    .footer-links a:hover, .footer-links button:hover { color: var(--accent); }
 
     @media (max-width: 640px) {
       .footer-inner { flex-direction: column; gap: 12px; text-align: center; }
@@ -603,6 +597,7 @@
         <a href="/blog">Blog</a>
         <a href="/privacy">Privacy</a>
         <a href="mailto:support@norselift.com">Support</a>
+        <button type="button" data-cookie-settings>Cookie settings</button>
       </div>
     </div>
   </footer>
