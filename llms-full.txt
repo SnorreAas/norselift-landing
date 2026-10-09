@@ -51,7 +51,7 @@ Exercise progression charts (estimated 1RM, top set, volume) with next-session t
 A Records view collecting every personal record. (PR detection and the post-workout PR celebration are free.)
 
 **Training Block History**
-Creating training blocks (bulk, cut, peak) is free; Pro adds block history and comparisons.
+Creating training blocks (bulk, cut, maintain) is free; Pro adds block history and comparisons.
 
 **Duplicate Routines**
 Copy an existing routine as a starting point for a new one.
