@@ -242,7 +242,7 @@
       <li><strong>Account deletion record:</strong> when you delete your account, a minimal record of the deletion (your user ID, dates, status and the number of items deleted). It contains no name, email address or training data.</li>
       <li><strong>Support data:</strong> the emails you send us and our replies.</li>
       <li><strong>Technical data:</strong> IP address, browser and device information and server logs created when you use the website or app.</li>
-      <li><strong>Analytics data:</strong> page views and clicks on the website (Google Analytics, only if you accept), and cookieless, aggregated page-view statistics on the website and in the app (Vercel Web Analytics).</li>
+      <li><strong>Analytics data:</strong> page views and clicks on the website (Google Analytics, only if you accept); product analytics on the website and in the app with PostHog, <strong>only if you accept</strong>: a random visitor ID, and in the app your pseudonymous user ID (never your name or email address), the pages you visit, the referring site and campaign (UTM) parameters, actions such as starting a workout, finishing a workout, viewing the upgrade page, starting checkout and subscription events (plan, amount and currency, cancellation, renewal, failed payment), browser and device information, and your IP address (used to derive an approximate location); in the app also session recordings with everything you type masked; and cookieless, aggregated page-view statistics on the website and in the app (Vercel Web Analytics).</li>
       </ul>
       <p>Body weight and training data can say something about your health. We only use it to provide the features you use, you decide what you log, and you can delete it at any time.</p>
       <h2 id="purposes">3. Why we use it, and our legal basis</h2>
@@ -305,6 +305,11 @@
       <td data-label="Data">Analytics, technical</td>
       <td data-label="Legal basis (GDPR)">Consent, Art. 6(1)(a)</td>
       </tr>
+      <tr>
+      <td data-label="Purpose">Product analytics and session recordings with PostHog, to understand how NorseLift is used and improve it</td>
+      <td data-label="Data">Analytics, technical</td>
+      <td data-label="Legal basis (GDPR)">Consent, Art. 6(1)(a)</td>
+      </tr>
       </tbody>
       </table></div>
       <p>We do not sell your data and we do not use it for advertising. We do not make decisions about you based solely on automated processing.</p>
@@ -324,6 +329,7 @@
       <li><strong>Support emails:</strong> as long as needed to handle your request and any follow-up.</li>
       <li><strong>Server logs:</strong> a short period, as set by our hosting provider.</li>
       <li><strong>Google Analytics data:</strong> no longer than 14 months. If you withdraw consent, the cookies on your device are deleted.</li>
+      <li><strong>PostHog data:</strong> events are kept for 1 year and session recordings for 1 month (PostHog's standard retention for our plan). If you withdraw consent, no new data is collected and the PostHog cookie and local storage on your device are deleted. We delete the PostHog data about you on request; email <a href="mailto:support@norselift.com">support@norselift.com</a>.</li>
       <li><strong>Your consent choice and theme preference:</strong> stored in your own browser until you clear it.</li>
       </ul>
       <h2 id="recipients">5. Who we share it with</h2>
@@ -334,12 +340,13 @@
       <li><strong>Vercel</strong>: hosting of the website, app and server functions, and Vercel Web Analytics on the website and in the app (cookieless). <a href="https://vercel.com/legal/privacy-policy">Privacy</a></li>
       <li><strong>Resend</strong>: sending service emails, such as Pro gift and referral reward emails. <a href="https://resend.com/legal/privacy-policy">Privacy</a></li>
       <li><strong>Google Analytics 4</strong>: website analytics on norselift.com, <strong>only if you accept</strong> in the cookie banner. <a href="https://policies.google.com/privacy">Privacy</a></li>
+      <li><strong>PostHog Inc.</strong> (PostHog EU Cloud, data stored in Frankfurt, Germany): product analytics and session recordings on norselift.com and in the app, <strong>only if you accept</strong>. <a href="https://posthog.com/privacy">Privacy</a></li>
       </ul>
       <p>We may also share data when the law requires it, for example with public authorities.</p>
       <h2 id="transfers">6. Transfers outside the EEA</h2>
       <p>Some of these providers are based in, or process data in, the United States or other countries outside the EEA. When this happens, the transfer is protected by the EU-US Data Privacy Framework (for certified providers) and/or the European Commission's Standard Contractual Clauses, with additional safeguards where needed. Contact us if you want more information.</p>
       <h2 id="cookies">7. Cookies and local storage</h2>
-      <p>We only use storage that is needed to run the website and app, plus Google Analytics if you accept it. You can change your choice at any time: <button type="button" data-cookie-settings class="inline-btn">Cookie settings</button>.</p>
+      <p>We only use storage that is needed to run the website and app, plus Google Analytics and PostHog if you accept them. You can change your choice at any time: on the website with <button type="button" data-cookie-settings class="inline-btn">Cookie settings</button>, and in the app under Settings &gt; Your data &amp; legal &gt; Analytics.</p>
       <div class="table-wrap"><table>
       <thead>
       <tr>
@@ -373,6 +380,20 @@
       <td data-label="Duration">Up to 2 years</td>
       </tr>
       <tr>
+      <td data-label="Name"><code>ph_&lt;project key&gt;_posthog</code></td>
+      <td data-label="Where">norselift.com, app.norselift.com</td>
+      <td data-label="Type">Cookie and local storage (PostHog)</td>
+      <td data-label="Purpose">Random visitor ID and session for product analytics. <strong>Only set if you accept</strong></td>
+      <td data-label="Duration">Up to 1 year</td>
+      </tr>
+      <tr>
+      <td data-label="Name"><code>gym-tracker-analytics-consent</code></td>
+      <td data-label="Where">app.norselift.com</td>
+      <td data-label="Type">Local storage</td>
+      <td data-label="Purpose">Remembers your analytics choice in the app</td>
+      <td data-label="Duration">Until you clear it</td>
+      </tr>
+      <tr>
       <td data-label="Name">Firebase Authentication</td>
       <td data-label="Where">app.norselift.com</td>
       <td data-label="Type">IndexedDB</td>
@@ -404,7 +425,7 @@
       <li><strong>delete</strong> your data. You can delete your account in the app's Settings at any time. Deletion is permanent and is described <a href="#retention">above</a>. Pro ends immediately and the current paid period is not refunded, unless you still have a right of withdrawal (see our <a href="/terms#refunds">Terms</a>);</li>
       <li><strong>data portability</strong>: download your data as a JSON file with <strong>Download my data</strong> in the app's Settings, or ask us for a copy at <a href="mailto:support@norselift.com">support@norselift.com</a>;</li>
       <li><strong>restrict</strong> or <strong>object to</strong> processing based on legitimate interests;</li>
-      <li><strong>withdraw your consent</strong> at any time (for Google Analytics, use Cookie settings). This does not affect processing before you withdrew it.</li>
+      <li><strong>withdraw your consent</strong> at any time: on the website with Cookie settings in the footer (Google Analytics and PostHog), and in the app under Settings &gt; Your data &amp; legal &gt; Analytics (PostHog). This does not affect processing before you withdrew it.</li>
       </ul>
       <p>Email <a href="mailto:support@norselift.com">support@norselift.com</a> to use your rights. We reply within one month. We may need to confirm your identity first.</p>
       <p>You also have the right to complain to the Norwegian Data Protection Authority, <a href="https://www.datatilsynet.no">Datatilsynet</a>. We would appreciate the chance to help first.</p>

@@ -1,6 +1,6 @@
 /* NorseLift analytics consent.
- * Google Analytics is NOT loaded (no gtag script, no cookies) unless the
- * visitor clicks "Accept". The choice is stored in localStorage
+ * Google Analytics and PostHog (EU Cloud) are NOT loaded (no scripts, no
+ * cookies, no requests) unless the visitor clicks "Accept". The choice is stored in localStorage
  * ("norselift-consent") and can be changed via any [data-cookie-settings]
  * element (footer "Cookie settings").
  */
@@ -8,6 +8,11 @@
   var GA_ID = 'G-YJ8DCEJGHD';
   var KEY = 'norselift-consent';
   var gaLoaded = false;
+  // PostHog EU Cloud (project 300104). Public client token; safe to ship.
+  var PH_KEY = 'phc_opjgdtLqGm6coVoydUJqxm4L2BQ4DV3rRxGjbSW4vy3X';
+  var PH_HOST = 'https://eu.i.posthog.com';
+  var APP_HOST = 'app.norselift.com';
+  var phLoaded = false;
 
   // Until consent, gtag() is a no-op so existing onclick handlers are safe.
   window.gtag = function () {};
@@ -33,12 +38,79 @@
     document.head.appendChild(s);
   }
 
+  function loadPostHog() {
+    if (phLoaded) return;
+    phLoaded = true;
+    /* eslint-disable */
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags on onFeatureFlags onSessionId identify setPersonProperties group resetGroups reset get_distinct_id getGroups get_session_id alias set_config startSessionRecording stopSessionRecording get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+    /* eslint-enable */
+    window.posthog.init(PH_KEY, {
+      api_host: PH_HOST,
+      person_profiles: 'identified_only',
+      capture_pageview: true,
+      capture_pageleave: true,
+      disable_session_recording: true,
+      mask_all_text: false,
+      mask_all_element_attributes: false,
+    });
+    watchPricing();
+  }
+
+  function phCapture(name, props, beacon) {
+    // Beacon for clicks that navigate away, so the event survives the unload.
+    if (phLoaded && window.posthog) window.posthog.capture(name, props || {}, beacon ? { transport: 'sendBeacon', send_instantly: true } : undefined);
+  }
+
+  // 'pricing_viewed' once per page view, when the pricing section scrolls into view.
+  function watchPricing() {
+    var el = document.getElementById('pricing');
+    if (!el || !('IntersectionObserver' in window)) return;
+    var io = new IntersectionObserver(function (entries) {
+      if (entries.some(function (e) { return e.isIntersecting; })) { io.disconnect(); phCapture('pricing_viewed'); }
+    }, { threshold: 0.3 });
+    io.observe(el);
+  }
+
+  // Start-free CTA clicks, and (consented visitors only) carry the PostHog
+  // distinct_id + session id + consent over to app.norselift.com so the app
+  // can continue the same anonymous person. Links are only rewritten at
+  // click time, so nothing is appended without consent.
+  function onLinkClick(e) {
+    if (!phLoaded || !window.posthog || read() !== 'granted') return;
+    var a = e.target.closest && e.target.closest('a[href]');
+    if (!a) return;
+    var cta = a.getAttribute('data-ph-cta');
+    if (cta) phCapture('cta_start_free_clicked', { location: cta }, true);
+    var url;
+    try { url = new URL(a.href, location.href); } catch (err) { return; }
+    if (url.hostname !== APP_HOST || typeof window.posthog.get_distinct_id !== 'function') return;
+    var did = window.posthog.get_distinct_id(), sid = window.posthog.get_session_id && window.posthog.get_session_id();
+    if (!did) return;
+    url.searchParams.set('__ph_distinct_id', did);
+    if (sid) url.searchParams.set('__ph_session_id', sid);
+    url.searchParams.set('__ph_consent', 'granted');
+    a.href = url.toString();
+  }
+
+  function clearPostHogStorage() {
+    try {
+      for (var i = localStorage.length - 1; i >= 0; i--) {
+        var k = localStorage.key(i);
+        if (k && /^(ph_|__ph)/.test(k)) localStorage.removeItem(k);
+      }
+      for (var j = sessionStorage.length - 1; j >= 0; j--) {
+        var sk = sessionStorage.key(j);
+        if (sk && /^(ph_|__ph)/.test(sk)) sessionStorage.removeItem(sk);
+      }
+    } catch (e) {}
+  }
+
   function clearGACookies() {
     var host = location.hostname, parts = host.split('.'), domains = ['', host];
     for (var i = 0; i < parts.length - 1; i++) domains.push('.' + parts.slice(i).join('.'));
     document.cookie.split(';').forEach(function (c) {
       var name = c.split('=')[0].trim();
-      if (/^_ga/.test(name) || name === '_gid' || /^_gat/.test(name)) {
+      if (/^_ga/.test(name) || name === '_gid' || /^_gat/.test(name) || /^ph_/.test(name)) {
         domains.forEach(function (d) {
           document.cookie = name + '=; Max-Age=0; path=/' + (d ? '; domain=' + d : '');
         });
@@ -74,7 +146,7 @@
     banner.setAttribute('aria-describedby', 'nl-consent-desc');
     banner.innerHTML =
       '<h2 id="nl-consent-title">Cookies &amp; analytics</h2>' +
-      '<p id="nl-consent-desc">We\'d like to use Google Analytics, which sets cookies, to see how visitors use this site. It only runs if you accept. ' +
+      '<p id="nl-consent-desc">We\'d like to use Google Analytics and PostHog, which set cookies, to see how visitors use NorseLift. They only run if you accept. ' +
       'You can change your choice anytime under <em>Cookie settings</em> in the footer. <a href="/privacy#cookies">Privacy policy</a></p>' +
       '<div class="nl-consent-actions">' +
       '<button type="button" data-consent="denied">Decline</button>' +
@@ -94,10 +166,12 @@
     var previous = read();
     write(value);
     hide();
-    if (value === 'granted') loadGA();
-    else if (previous === 'granted' || gaLoaded) {
+    if (value === 'granted') { loadGA(); loadPostHog(); }
+    else if (previous === 'granted' || gaLoaded || phLoaded) {
       window['ga-disable-' + GA_ID] = true; // stop gtag from re-writing cookies
+      if (phLoaded && window.posthog && window.posthog.opt_out_capturing) window.posthog.opt_out_capturing();
       clearGACookies();
+      clearPostHogStorage();
       location.reload();
     }
   }
@@ -111,10 +185,12 @@
   function init() {
     var style = document.createElement('style'); style.textContent = css; document.head.appendChild(style);
     wireSettings();
+    document.addEventListener('click', onLinkClick, true);
     var choice = read();
-    if (choice === 'granted') loadGA();
+    if (choice === 'granted') { loadGA(); loadPostHog(); }
     else {
-      clearGACookies(); // remove any leftover Google Analytics cookies
+      clearGACookies(); // remove any leftover Google Analytics / PostHog cookies
+      clearPostHogStorage();
       if (choice === null) show(false);
     }
   }
