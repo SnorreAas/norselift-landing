@@ -6,7 +6,7 @@
 
 NorseLift is a workout tracking application designed with a Norse-inspired aesthetic and a focus on simplicity. Unlike large fitness platforms that try to be everything — social network, meal planner, video library — NorseLift focuses on what matters in the gym: logging your work, tracking your progress, and getting stronger.
 
-The app runs entirely in the browser as a Progressive Web App. Users can install it to their phone's home screen and use it like a native app, including offline. No app store download is required, and it works on iOS, Android, and desktop.
+The app runs entirely in the browser as a Progressive Web App. Users can install it to their phone's home screen and use it like a native app, including offline. It installs straight from the browser and works on phones, tablets and desktop computers.
 
 ## Detailed Feature Breakdown
 
@@ -56,20 +56,8 @@ Creating training blocks (bulk, cut, peak) is free; Pro adds block history and c
 **Duplicate Routines**
 Copy an existing routine as a starting point for a new one.
 
-### Intro Pricing
-New Pro subscribers (first subscription) get their first month for $1.99 (regular price $4.99/month). This applies to monthly billing only.
-
-## Comparison with Alternatives
-
-| Feature | NorseLift | Strong | JEFIT | Hevy |
-|---------|-----------|--------|-------|------|
-| Free tier | Yes | Limited | Yes (ads) | Yes |
-| No ads | Yes | Yes | No | Yes |
-| PWA (no download) | Yes | No | No | No |
-| Offline support | Yes | Yes | Yes | Yes |
-| Custom programs | Yes | Yes | Yes | Yes |
-| Works on any device | Yes | Mobile only | Mobile only | Mobile + Web |
-| Price (monthly) | $4.99 | $9.99 | $12.99 | $8.99 |
+### Newcomer Offer
+New subscribers only: the first month of a monthly Pro subscription is $1.99 (the "Newcomer offer"), then $4.99/month. The Newcomer offer applies to the monthly plan only.
 
 ## Use Cases
 
@@ -89,6 +77,9 @@ A: Yes. The app caches your data locally and syncs when you're back online.
 
 **Q: What devices does it support?**
 A: Any device with a modern web browser — iPhone, Android, iPad, laptop, desktop.
+
+**Q: How much is Pro?**
+A: Pro is $4.99/month, $10.49 every 3 months, or $29.99/year (USD). New subscribers get their first month for $1.99 with the Newcomer offer, then $4.99/mo. Cancel anytime.
 
 **Q: Can I cancel my Pro subscription anytime?**
 A: Yes. You can cancel anytime through the subscription management page. Your Pro features remain active until the end of your billing period.

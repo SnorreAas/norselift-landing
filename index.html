@@ -35,16 +35,19 @@
     "name": "NorseLift",
     "applicationCategory": "HealthApplication",
     "applicationSubCategory": "Fitness",
-    "operatingSystem": "Web (PWA): iOS, Android, Windows, macOS, Linux",
+    "operatingSystem": "Web browser (Progressive Web App)",
+    "browserRequirements": "Requires a modern web browser with JavaScript enabled",
+    "installUrl": "https://app.norselift.com",
     "url": "https://norselift.com",
     "description": "Free gym and workout tracker app. Log exercises, track personal records, build custom workout programs, and sync across all devices. Works on iPhone, Android, and desktop — no download required.",
     "screenshot": ["https://norselift.com/og-image.png", "https://norselift.com/app-screenshot.png", "https://norselift.com/screenshot-desktop-dark.png"],
     "featureList": "Workout logging, Smart weight and rep suggestions, Rest timer, Personal record detection, Custom workout programs, Workout scheduling, Training blocks, Cardio logging, Body weight tracking, Streak calendar, Exercise progression charts, Weekly volume, Workout sharing, Warm-up sets, Cloud sync, Offline support, Desktop layout",
     "offers": [
       { "@type": "Offer", "price": "0", "priceCurrency": "USD", "name": "Free" },
-      { "@type": "Offer", "price": "4.99", "priceCurrency": "USD", "name": "Pro Monthly", "description": "$1.99 first month for new subscribers" },
-      { "@type": "Offer", "price": "10.49", "priceCurrency": "USD", "name": "Pro Quarterly" },
-      { "@type": "Offer", "price": "29.99", "priceCurrency": "USD", "name": "Pro Yearly" }
+      { "@type": "Offer", "price": "4.99", "priceCurrency": "USD", "name": "Pro Monthly", "description": "$1.99 first month for new subscribers (Newcomer offer), then $4.99/mo" },
+      { "@type": "Offer", "price": "10.49", "priceCurrency": "USD", "name": "Pro Quarterly", "description": "$10.49 every 3 months" },
+      { "@type": "Offer", "price": "29.99", "priceCurrency": "USD", "name": "Pro Yearly", "description": "$29.99 per year" },
+      { "@type": "Offer", "price": "1.99", "priceCurrency": "USD", "name": "Pro Monthly: Newcomer offer", "description": "First month of a new monthly subscription, new subscribers only; renews at $4.99/mo" }
     ]
   }
   </script>
@@ -97,6 +100,14 @@
       },
       {
         "@type": "Question",
+        "name": "How much is Pro?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Pro is $4.99/month, $10.49 every 3 months, or $29.99/year (USD). New subscribers get their first month for $1.99 with the Newcomer offer, then $4.99/mo. Cancel anytime."
+        }
+      },
+      {
+        "@type": "Question",
         "name": "Can I cancel Pro anytime?",
         "acceptedAnswer": {
           "@type": "Answer",
@@ -141,7 +152,7 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
   <!-- Prevent flash: apply saved theme before paint -->
   <script>
@@ -159,10 +170,11 @@
     /* Tokens mirror gym-tracker src/index.css (light = [data-theme="light"], dark = @theme) */
     :root, [data-theme="light"] {
       --bg: #e6eef8; --bg-2: #dce6f2; --surface: #ffffff; --surface-2: #edf2f9; --surface-3: #dce6f2;
-      --border: #c8d4e4; --text: #1a1e30; --text-2: #4a5268; --muted: #6b7390;
-      --accent: #4a90d9; --accent-2: #3670a8; --accent-soft: rgba(74,144,217,.12);
-      --grad: linear-gradient(135deg, #5a9de6 0%, #7b8fd9 100%);
-      --gold: #9a6a00; --gold-bg: rgba(217,160,30,.16); --green: #0f7a55;
+      --border: #c8d4e4; --text: #1a1e30; --text-2: #4a5268; --muted: #5c6480;
+      --accent: #4a90d9; --accent-2: #3670a8; --accent-soft: rgba(74,144,217,.12); --accent-text: #2f6aa8;
+      --grad: linear-gradient(135deg, #2f6fb8 0%, #4b5fc0 100%);
+      --grad-text: linear-gradient(135deg, #5a9de6 0%, #7b8fd9 100%);
+      --gold: #7a5200; --gold-bg: rgba(217,160,30,.16); --green: #0b6646;
       --shadow: 0 1px 2px rgba(20,30,60,.05), 0 8px 24px rgba(20,30,60,.06);
       --shadow-lg: 0 30px 60px -20px rgba(30,50,90,.35);
       --frame: #1c2130; --nav-bg: rgba(230,238,248,.82); --btn-text: #fff;
@@ -171,7 +183,7 @@
     [data-theme="dark"] {
       --bg: #0a0e1a; --bg-2: #060a14; --surface: #0f1424; --surface-2: #151b2e; --surface-3: #1e2740;
       --border: #1e2740; --text: #e4e4ef; --text-2: #a3a7bd; --muted: #7a7f98;
-      --accent: #6aabef; --accent-2: #8cc0f5; --accent-soft: rgba(106,171,239,.12);
+      --accent: #6aabef; --accent-2: #8cc0f5; --accent-soft: rgba(106,171,239,.12); --accent-text: #6aabef;
       --gold: #f5c451; --gold-bg: rgba(245,196,81,.14); --green: #2dd4a0;
       --shadow: none; --shadow-lg: 0 30px 80px -20px rgba(0,0,0,.7);
       --frame: #2a3146; --nav-bg: rgba(6,10,20,.8); --btn-text: #0a0e1a;
@@ -187,10 +199,10 @@
     .container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
     .container.narrow { max-width: 760px; }
     .center { text-align: center; }
-    .norse { font-family: 'Crimson Pro', Georgia, serif; font-weight: 700; letter-spacing: -.01em; line-height: 1.08; }
-    .accent { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .norse { font-family: 'Crimson Pro', Georgia, serif; font-weight: 700; letter-spacing: -.01em; line-height: 1.12; }
+    .accent { background: var(--grad-text); -webkit-background-clip: text; background-clip: text; color: transparent; }
     [data-theme="light"] .accent { background: linear-gradient(135deg,#3670a8,#5a6fc9); -webkit-background-clip: text; background-clip: text; }
-    .eyebrow { font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+    .eyebrow { font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--accent-text); margin-bottom: 12px; }
     .section-head { margin-bottom: 48px; }
     .section-head h2 { font-size: clamp(32px, 4.4vw, 48px); margin-bottom: 14px; }
     .lead { color: var(--text-2); font-size: 18px; max-width: 640px; }
@@ -206,8 +218,8 @@
     .btn-ghost { background: var(--surface); border-color: var(--border); color: var(--text); }
     .btn-sm { padding: 10px 16px; font-size: 14px; border-radius: 12px; }
     .btn.block { width: 100%; }
-    .link { color: var(--accent); font-weight: 600; text-decoration: none; }
-    .pro-pill { display: inline-flex; align-items: center; gap: 3px; font: 700 11px/1 'Inter', sans-serif; letter-spacing: .04em; color: var(--gold); background: var(--gold-bg); padding: 5px 9px; border-radius: 999px; vertical-align: middle; }
+    .link { color: var(--accent-text); font-weight: 600; text-decoration: none; }
+    .pro-pill { display: inline-flex; align-items: center; gap: 3px; font: 700 12px/1 'Inter', sans-serif; letter-spacing: .04em; color: var(--gold); background: var(--gold-bg); padding: 5px 9px; border-radius: 999px; vertical-align: middle; }
 
     /* Nav */
     .nav { position: sticky; top: 0; z-index: 100; background: var(--nav-bg); backdrop-filter: saturate(160%) blur(14px); -webkit-backdrop-filter: saturate(160%) blur(14px); border-bottom: 1px solid var(--border); }
@@ -233,14 +245,12 @@
     .hero h1 { font-size: clamp(48px, 7vw, 84px); margin-bottom: 22px; }
     .hero-sub { font-size: 19px; color: var(--text-2); max-width: 520px; margin-bottom: 32px; }
     .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 24px; }
-    .hero-checks { list-style: none; display: flex; flex-wrap: wrap; gap: 8px 20px; font-size: 14px; color: var(--text-2); margin-bottom: 28px; }
+    .hero-checks { list-style: none; display: flex; flex-wrap: wrap; gap: 8px 20px; font-size: 15px; color: var(--text-2); margin-bottom: 28px; }
     .hero-checks li::before { content: '✓'; color: var(--green); font-weight: 700; margin-right: 6px; }
     .store-row { display: flex; gap: 10px; flex-wrap: wrap; }
     .store-badge { display: inline-flex; align-items: center; gap: 10px; padding: 8px 14px; border-radius: 12px; background: var(--text); color: var(--bg); text-decoration: none; min-width: 150px; }
     .store-badge span { display: flex; flex-direction: column; font-weight: 600; font-size: 15px; line-height: 1.15; }
-    .store-badge small { font-size: 10px; font-weight: 500; opacity: .8; }
-    .store-badge.placeholder { background: transparent; color: var(--muted); border: 1.5px dashed var(--muted); }
-    .placeholder small { color: #d97706; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; opacity: 1; }
+    .store-badge small { font-size: 11px; font-weight: 500; opacity: .8; }
     .hero-visual { position: relative; height: 640px; }
     .phone { position: relative; border-radius: 46px; padding: 9px; background: var(--frame); box-shadow: var(--shadow-lg), inset 0 0 0 1.5px rgba(255,255,255,.08); }
     .phone img { border-radius: 38px; width: 100%; }
@@ -261,14 +271,14 @@
     .strip-inner { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 16px; padding: 26px 24px; }
     .strip-item { display: flex; flex-direction: column; align-items: center; text-align: center; }
     .strip-item b { font-size: 22px; font-weight: 700; }
-    .strip-item span { font-size: 13px; color: var(--text-2); }
+    .strip-item span { font-size: 14px; color: var(--text-2); }
 
     /* Showcase rows */
     .row { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; padding: 48px 0; }
     .row.reverse .row-text { order: 2; }
-    .row-text h3 { font-size: clamp(30px, 3.6vw, 42px); margin: 10px 0 16px; }
+    .row-text h3 { font-family: 'Inter', sans-serif; font-weight: 700; font-size: clamp(26px, 3vw, 34px); line-height: 1.2; letter-spacing: -.02em; margin: 10px 0 16px; }
     .row-text p { color: var(--text-2); font-size: 17px; margin-bottom: 22px; }
-    .step { font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); display: inline-flex; gap: 10px; align-items: center; }
+    .step { font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--accent-text); display: inline-flex; gap: 10px; align-items: center; }
     .ticks { list-style: none; display: grid; gap: 10px; }
     .ticks li { position: relative; padding-left: 30px; color: var(--text-2); }
     .ticks li b { color: var(--text); font-weight: 600; }
@@ -285,8 +295,8 @@
     .bento { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
     .tile { background: var(--surface); border: 1px solid var(--border); border-radius: 18px; padding: 20px; box-shadow: var(--shadow); }
     .tile .ti { width: 38px; height: 38px; border-radius: 11px; background: var(--accent-soft); display: grid; place-items: center; font-size: 18px; margin-bottom: 14px; }
-    .tile h4 { font-size: 15px; margin-bottom: 4px; }
-    .tile p { font-size: 14px; color: var(--text-2); line-height: 1.5; }
+    .tile h4 { font-size: 16px; margin-bottom: 4px; }
+    .tile p { font-size: 15px; color: var(--text-2); line-height: 1.5; }
 
     /* Desktop */
     .browser { border-radius: 16px; overflow: hidden; border: 1px solid var(--border); box-shadow: var(--shadow-lg); background: var(--surface); max-width: 1040px; margin: 0 auto; }
@@ -299,48 +309,37 @@
     .install-card { padding: 26px; }
     .install-card h4 { font-size: 17px; margin-bottom: 12px; }
     .install-card ol { padding-left: 20px; color: var(--text-2); display: grid; gap: 6px; }
-    .placeholder-note { border: 1.5px dashed #d97706; color: #b45309; background: rgba(217,119,6,.07); border-radius: 12px; padding: 10px 14px; font-size: 13px; text-align: center; margin: 0 auto 28px; max-width: 760px; }
-    [data-theme="dark"] .placeholder-note { color: #fbbf24; }
 
     /* Pricing */
     .billing-toggle { display: flex; gap: 4px; width: fit-content; margin: 0 auto 36px; padding: 4px; border-radius: 14px; background: var(--surface-2); border: 1px solid var(--border); }
     .billing-toggle button { font: 600 14px 'Inter', sans-serif; padding: 9px 18px; border-radius: 10px; border: 0; background: transparent; color: var(--text-2); cursor: pointer; display: inline-flex; align-items: center; gap: 6px; }
     .billing-toggle button.active { background: var(--surface); color: var(--text); box-shadow: 0 1px 4px rgba(0,0,0,.12); }
-    .save { font-size: 11px; color: var(--green); background: rgba(16,185,129,.14); padding: 2px 6px; border-radius: 6px; }
+    .save { font-size: 12px; color: var(--green); background: rgba(16,185,129,.14); padding: 2px 6px; border-radius: 6px; }
     .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 860px; margin: 0 auto; }
     .plan { padding: 32px; position: relative; }
     .plan h3 { font-size: 22px; display: flex; gap: 10px; align-items: center; }
-    .plan-sub { color: var(--text-2); font-size: 14px; margin-bottom: 18px; }
+    .plan-sub { color: var(--text-2); font-size: 15px; margin-bottom: 18px; }
     .price { display: flex; align-items: baseline; gap: 8px; margin-bottom: 4px; }
     .price b { font-size: 48px; font-weight: 800; letter-spacing: -.02em; }
     .price s { color: var(--muted); font-size: 20px; }
     .price span { color: var(--text-2); }
-    .price-note { font-size: 13px; color: var(--text-2); min-height: 20px; margin-bottom: 18px; }
+    .price-note { font-size: 14px; color: var(--text-2); min-height: 20px; margin-bottom: 18px; }
     .plan:not(.pro) .price { margin-bottom: 42px; }
-    .plan-list { list-style: none; display: grid; gap: 10px; margin-top: 24px; font-size: 15px; }
+    .plan-list { list-style: none; display: grid; gap: 10px; margin-top: 24px; font-size: 16px; line-height: 1.5; }
     .plan-list li { padding-left: 26px; position: relative; color: var(--text-2); }
     .plan-list li::before { content: '✓'; position: absolute; left: 0; color: var(--green); font-weight: 700; }
     .plan-list li.em { padding-left: 0; color: var(--text); font-weight: 600; }
     .plan-list li.em::before { content: none; }
     .plan.pro { border: 1.5px solid var(--accent); background: linear-gradient(170deg, var(--accent-soft), var(--surface) 45%); }
     .plan-badge { position: absolute; top: -12px; right: 24px; background: var(--grad); color: #fff; font-size: 12px; font-weight: 700; padding: 5px 12px; border-radius: 999px; }
-    .fine { text-align: center; color: var(--muted); font-size: 13px; max-width: 720px; margin: 28px auto 0; }
-
-    /* Proof */
-    .quote-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 20px; }
-    .quote { padding: 24px; }
-    .quote blockquote { font-family: 'Crimson Pro', serif; font-size: 20px; line-height: 1.35; margin-bottom: 14px; }
-    .quote figcaption { font-size: 13px; color: var(--muted); }
-    .quote.placeholder { border: 1.5px dashed #d97706; background: rgba(217,119,6,.05); }
-    .quote.placeholder blockquote { color: #b45309; }
-    [data-theme="dark"] .quote.placeholder blockquote { color: #fbbf24; }
+    .fine { text-align: center; color: var(--muted); font-size: 14px; max-width: 720px; margin: 28px auto 0; }
 
     /* FAQ */
     .faq-item { border-bottom: 1px solid var(--border); }
-    .faq-q { width: 100%; text-align: left; background: none; border: 0; color: var(--text); font: 600 17px 'Inter', sans-serif; padding: 20px 36px 20px 0; cursor: pointer; position: relative; }
+    .faq-q { width: 100%; text-align: left; background: none; border: 0; color: var(--text); font: 600 17px/1.4 'Inter', sans-serif; padding: 20px 36px 20px 0; cursor: pointer; position: relative; }
     .faq-q::after { content: '+'; position: absolute; right: 4px; top: 50%; transform: translateY(-50%); font-size: 22px; color: var(--accent); transition: transform .2s; }
     .faq-item.open .faq-q::after { transform: translateY(-50%) rotate(45deg); }
-    .faq-a { display: none; padding: 0 0 20px; color: var(--text-2); }
+    .faq-a { display: none; padding: 0 0 20px; color: var(--text-2); max-width: 68ch; }
     .faq-item.open .faq-a { display: block; }
 
     /* Blog */
@@ -351,14 +350,14 @@
     .blog-card div { padding: 18px 20px 22px; }
     .blog-card time { font-size: 12px; color: var(--muted); }
     .blog-card h4 { font-size: 17px; margin: 4px 0 6px; line-height: 1.35; }
-    .blog-card p { font-size: 14px; color: var(--text-2); }
+    .blog-card p { font-size: 15px; color: var(--text-2); }
 
     /* Final CTA + footer */
     .final { text-align: center; }
     .final-inner { background: var(--surface); border: 1px solid var(--border); border-radius: 28px; padding: 64px 24px; position: relative; overflow: hidden; }
     .final-inner::before { content: ''; position: absolute; inset: 0; background: radial-gradient(60% 80% at 50% 0%, var(--glow-a), transparent 70%); }
     .final-inner > * { position: relative; }
-    .runes { display: block; letter-spacing: .5em; color: var(--accent); opacity: .6; margin-bottom: 16px; }
+    .runes { display: block; letter-spacing: .5em; color: var(--accent-text); opacity: .6; margin-bottom: 16px; }
     .final h2 { font-size: clamp(34px, 5vw, 54px); margin-bottom: 12px; }
     .final p { color: var(--text-2); margin-bottom: 28px; font-size: 17px; }
     .footer { border-top: 1px solid var(--border); padding: 28px 0; }
@@ -392,6 +391,7 @@
       .container { padding: 0 18px; }
       .hero h1 { font-size: 52px; }
       .hero-sub { font-size: 17px; }
+      .row-text p, .lead { font-size: 16px; }
       .btn { width: 100%; }
       .nav .btn { width: auto; }
       .store-badge { min-width: 0; flex: 1 1 100%; justify-content: center; }
@@ -450,18 +450,10 @@
           <li>Syncs phone ↔ desktop</li>
         </ul>
         <div class="store-row">
-          <a class="store-badge real" href="#install">
+          <a class="store-badge" href="#install">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="3"/><path d="M12 18h.01"/></svg>
             <span><small>Install from</small>Your browser</span>
           </a>
-          <span class="store-badge placeholder" data-placeholder="app-store-link" title="Placeholder: no App Store listing exists yet">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16.4 12.6c0-2.4 2-3.5 2-3.6-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9s-1.9-.9-3.1-.8c-1.6 0-3 .9-3.9 2.3-1.6 2.8-.4 7 1.2 9.3.8 1.1 1.7 2.4 2.9 2.3 1.2 0 1.6-.7 3-.7s1.8.7 3.1.7c1.3 0 2.1-1.1 2.9-2.3.9-1.3 1.2-2.5 1.3-2.6-.1 0-2.5-.9-2.5-3.7zM14.1 5.6c.6-.8 1.1-1.9 1-3-.9 0-2.1.6-2.7 1.4-.6.7-1.1 1.8-1 2.9 1 .1 2.1-.5 2.7-1.3z"/></svg>
-            <span><small>Placeholder</small>App Store</span>
-          </span>
-          <span class="store-badge placeholder" data-placeholder="play-store-link" title="Placeholder: no Google Play listing exists yet">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M4 2.5v19l10-9.5L4 2.5zm11.4 10.8L6.6 21.8l11.6-6.7-2.8-1.8zm0-2.6l2.8-1.8L6.6 2.2l8.8 8.5zm4.1.1l-2.5-1.5-3 2.7 3 2.7 2.5-1.5c.9-.6.9-1.8 0-2.4z"/></svg>
-            <span><small>Placeholder</small>Google Play</span>
-          </span>
         </div>
       </div>
       <div class="hero-visual">
@@ -502,7 +494,7 @@
       <div class="row">
         <div class="row-text">
           <span class="step">01 · Log</span>
-          <h3 class="norse">Every set, three taps.</h3>
+          <h3>Every set, three taps.</h3>
           <p>Your last session sits right above each exercise, with a nudge on what to beat: “+1 rep” or a little more weight. Tick a set and the rest timer starts on its own.</p>
           <ul class="ticks">
             <li><b>Smart suggestions</b>: weight and reps pre-filled from your history</li>
@@ -522,7 +514,7 @@
       <div class="row reverse">
         <div class="row-text">
           <span class="step">02 · Plan</span>
-          <h3 class="norse">Your week, on rails.</h3>
+          <h3>Your week, on rails.</h3>
           <p>Build your own routines (Push/Pull/Legs, Upper/Lower, full body or anything else) and schedule them across the week. NorseLift handles the rotation, so “what am I doing today?” is always one tap away.</p>
           <ul class="ticks">
             <li><b>Custom programs</b> with any exercises from a 100+ library, or your own</li>
@@ -541,7 +533,7 @@
       <div class="row">
         <div class="row-text">
           <span class="step">03 · Progress</span>
-          <h3 class="norse">Your whole training picture. One page.</h3>
+          <h3>Your whole training picture. One page.</h3>
           <p>Your profile turns your logs into a dashboard: streak calendar, body weight, strength trend, weekly volume per muscle, records and a monthly recap. You can see at a glance whether this block is working.</p>
           <ul class="ticks">
             <li><b>PR celebrations</b> at the end of every workout, free</li>
@@ -561,7 +553,7 @@
       <div class="row reverse">
         <div class="row-text">
           <span class="step">04 · Insights <span class="pro-pill">⚡ PRO</span></span>
-          <h3 class="norse">Know exactly what to lift next.</h3>
+          <h3>Know exactly what to lift next.</h3>
           <p>Exercise Progression charts your estimated 1RM, top set and volume per lift, and sets a target for your next session. Records collects every PR you've hit, and weekly volume shows which muscles are on target.</p>
           <ul class="ticks">
             <li><b>Exercise progression</b> with next-session targets</li>
@@ -628,7 +620,7 @@
     <div class="container">
       <div class="section-head center">
         <p class="eyebrow">Get the app</p>
-        <h2 class="norse">Install in 10 seconds. No app store.</h2>
+        <h2 class="norse">Install in 10 seconds, right from your browser.</h2>
         <p class="lead">NorseLift is a Progressive Web App: it installs from your browser, launches full-screen from your home screen and keeps working offline.</p>
       </div>
       <div class="install-grid">
@@ -645,7 +637,6 @@
           <ol><li>Open <b>app.norselift.com</b></li><li>Click the <b>install</b> icon in the address bar</li><li>Or just keep it in a tab</li></ol>
         </div>
       </div>
-      <p class="placeholder-note" data-placeholder="store-availability">PLACEHOLDER: App Store / Google Play availability. Add the store badges and links here once listings are live, or delete this line.</p>
       <div class="center"><a href="https://app.norselift.com" class="btn btn-primary" onclick="gtag('event','cta_click',{button_name:'install_open_app'})">Open app.norselift.com</a></div>
     </div>
   </section>
@@ -687,7 +678,7 @@
           <h3>Pro <span class="pro-pill">⚡ PRO</span></h3>
           <p class="plan-sub" id="proPlanSub">Billed monthly</p>
           <div class="price"><s id="proPriceStruck">$4.99</s><b id="proPriceAmount">$1.99</b><span>/mo</span></div>
-          <p class="price-note" id="proPriceSub">First month for new subscribers, then $4.99/mo</p>
+          <p class="price-note" id="proPriceSub">First month for new subscribers (Newcomer offer), then $4.99/mo</p>
           <a href="https://app.norselift.com/upgrade" class="btn btn-primary block" id="proCta" onclick="gtag('event','cta_click',{button_name:'pricing_pro'})">Start Pro, $1.99 first month</a>
           <ul class="plan-list">
             <li class="em">Everything in Free, plus:</li>
@@ -703,23 +694,7 @@
           </ul>
         </div>
       </div>
-      <p class="fine">Prices in USD. Quarterly: $10.49 every 3 months. Yearly: $29.99 per year. The $1.99 intro applies to the first month of a new monthly subscription. Cancel anytime: you keep Pro until the end of the period, and your logs stay in your account.</p>
-    </div>
-  </section>
-
-  <!-- ============ SOCIAL PROOF (PLACEHOLDERS) ============ -->
-  <section class="proof">
-    <div class="container">
-      <div class="section-head center">
-        <p class="eyebrow">From lifters</p>
-        <h2 class="norse">What people say</h2>
-      </div>
-      <div class="quote-grid">
-        <figure class="card quote placeholder" data-placeholder="testimonial-1"><blockquote>PLACEHOLDER: real, consented user quote goes here.</blockquote><figcaption>Name · how they train</figcaption></figure>
-        <figure class="card quote placeholder" data-placeholder="testimonial-2"><blockquote>PLACEHOLDER: real, consented user quote goes here.</blockquote><figcaption>Name · how they train</figcaption></figure>
-        <figure class="card quote placeholder" data-placeholder="testimonial-3"><blockquote>PLACEHOLDER: real, consented user quote goes here.</blockquote><figcaption>Name · how they train</figcaption></figure>
-      </div>
-      <p class="placeholder-note" data-placeholder="proof-note">Placeholders: do not ship with invented quotes or numbers. Replace these with real reviews, or remove the section.</p>
+      <p class="fine">Prices in USD. Quarterly: $10.49 every 3 months. Yearly: $29.99 per year. Monthly: $4.99/mo, with $1.99 for the first month for new subscribers only (Newcomer offer). Cancel anytime: you keep Pro until the end of the period, and your logs stay in your account.</p>
     </div>
   </section>
 
@@ -736,6 +711,7 @@
       <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Can I create my own workout programs?</button><div class="faq-a"><p>Absolutely. Build routines with any exercises (Push/Pull/Legs, Upper/Lower, full body or your own split), schedule them across the week, and NorseLift handles the rotation.</p></div></div>
       <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">How do smart suggestions work?</button><div class="faq-a"><p>NorseLift looks at your recent sets for each exercise and suggests weight and reps for the next session, either building on what you did or pushing for a little more. Accept with a tap or type your own.</p></div></div>
       <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Can I log cardio?</button><div class="faq-a"><p>Yes. Log running and other cardio with time and distance. Cardio days show on your calendar and streak, and Pro adds a pace trend.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">How much is Pro?</button><div class="faq-a"><p>Pro is $4.99/month, $10.49 every 3 months, or $29.99/year (USD). New subscribers get their first month for $1.99 with the Newcomer offer, then $4.99/mo. Cancel anytime.</p></div></div>
       <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Can I cancel Pro anytime?</button><div class="faq-a"><p>Yes. No contracts. You keep Pro until the end of your billing period, then your account returns to Free. Cancelling never deletes your workouts. You can delete your account yourself at any time from settings.</p></div></div>
     </div>
   </section>
@@ -805,7 +781,7 @@
 
     // Prices mirror gym-tracker src/pages/UpgradePage.tsx; intro coupon = monthly + first subscription only (api/_lib/checkout.mjs)
     var plans = {
-      monthly:   { amount: '$1.99', struck: '$4.99', sub: 'Billed monthly', note: 'First month for new subscribers, then $4.99/mo', cta: 'Start Pro, $1.99 first month' },
+      monthly:   { amount: '$1.99', struck: '$4.99', sub: 'Billed monthly', note: 'First month for new subscribers (Newcomer offer), then $4.99/mo', cta: 'Start Pro, $1.99 first month' },
       quarterly: { amount: '$3.49', struck: null, sub: 'Billed every 3 months', note: '$10.49 every 3 months', cta: 'Start Pro, $10.49/quarter' },
       yearly:    { amount: '$2.49', struck: null, sub: 'Billed yearly', note: '$29.99 per year: best value', cta: 'Start Pro, $29.99/year' }
     };

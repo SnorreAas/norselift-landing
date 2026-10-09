@@ -1,6 +1,6 @@
 # NorseLift
 
-> NorseLift is a free workout tracker built as a Progressive Web App (PWA). It helps lifters track workouts, build custom programs, monitor progress, and crush personal records — on any device, with no app store download required.
+> NorseLift is a free workout tracker built as a Progressive Web App (PWA). It helps lifters track workouts, build custom programs, monitor progress, and crush personal records — on any device, installed straight from the browser.
 
 ## Overview
 
@@ -20,12 +20,12 @@ NorseLift is a gym and strength training tracker designed for serious lifters wh
 - **Warm-up sets**: Mark sets as warm-up to exclude them from volume and PR calculations
 - **Cloud sync**: Data syncs across all your devices
 - **Offline support**: Works without an internet connection
-- **PWA**: Install to home screen, no app store needed
+- **PWA**: Install to your home screen or desktop straight from the browser
 
 ## Pricing
 
 - **Free tier**: Up to 3 programs, 1 scheduled routine, full workout history (editing limited to the last 7 days), exercise library, smart suggestions, rest timer, PR celebrations, body weight, cardio, training blocks, cloud sync
-- **Pro Monthly**: $4.99/month (intro: $1.99 first month)
+- **Pro Monthly**: $4.99/month ($1.99 first month for new subscribers only, via the Newcomer offer)
 - **Pro Quarterly**: $10.49/quarter ($3.49/month)
 - **Pro Yearly**: $29.99/year ($2.49/month)
 
