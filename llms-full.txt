@@ -6,7 +6,7 @@
 
 NorseLift is a workout tracking application designed with a Norse-inspired aesthetic and a focus on simplicity. Unlike large fitness platforms that try to be everything — social network, meal planner, video library — NorseLift focuses on what matters in the gym: logging your work, tracking your progress, and getting stronger.
 
-The app runs entirely in the browser as a Progressive Web App. Users can install it to their phone's home screen and use it like a native app, including offline. No app store download is required, and it works on iOS, Android, and desktop.
+The app runs entirely in the browser as a Progressive Web App. Users can install it to their phone's home screen and use it like a native app, including offline. It installs straight from the browser and works on phones, tablets and desktop computers.
 
 ## Detailed Feature Breakdown
 
@@ -19,7 +19,7 @@ Users can create their own workout programs with custom exercise ordering. Commo
 During a workout, users log sets with reps and weight. The interface is optimized for quick entry between sets. Previous performance is shown for reference so users know what to beat.
 
 **Rest Timer**
-A built-in rest timer counts down between sets. It includes haptic feedback (vibration) when the rest period ends, so users can put their phone down and focus. The timer duration is customizable.
+A built-in rest timer counts down between sets. On supported Android devices it vibrates when the rest period ends (iOS browsers do not support web vibration). The timer duration is customizable.
 
 **Exercise Library**
 A searchable library of exercises organized by muscle group. Users can browse or search to find exercises and add them to their programs.
@@ -27,8 +27,8 @@ A searchable library of exercises organized by muscle group. Users can browse or
 **Cloud Sync**
 All data syncs to the cloud via Firebase, so workouts are accessible from any device. Start a workout on your phone at the gym, review your stats on your laptop at home.
 
-**7-Day Workout History**
-Free users can view their last 7 days of workout history, including exercises performed, sets, reps, and weights.
+**Full Workout History**
+Free users can view their complete workout history. Sessions from the last 7 days can be edited or deleted; older sessions are read-only on Free.
 
 **1 Scheduled Routine**
 Free users can schedule one recurring workout routine.
@@ -38,38 +38,26 @@ Free users can schedule one recurring workout routine.
 **Unlimited Programs**
 No limit on the number of workout programs. Create programs for different training phases, goals, or seasons.
 
-**Full Workout History**
-Access your complete workout history with no time limit. Review workouts from weeks, months, or years ago.
+**Edit Any Session & Backfill**
+Edit or delete any past session, and backfill workouts you forgot to log.
 
 **Unlimited Scheduled Routines**
 Schedule as many recurring workout routines as needed.
 
-**Progress Stats & Charts**
-Visual charts showing volume trends, frequency, and strength progression over time. See how your lifts are trending across weeks and months.
+**Progress Insights**
+Exercise progression charts (estimated 1RM, top set, volume) with next-session targets, weekly volume per muscle group, strength details, monthly recap and cardio trend.
 
-**Personal Records Tracking**
-Automatic detection and recording of personal records (PRs) for every exercise. When you hit a new PR, it's celebrated and logged.
+**Records Collection**
+A Records view collecting every personal record. (PR detection and the post-workout PR celebration are free.)
 
-**Training Cycle Planning**
-Plan and manage training cycles/blocks. Schedule deload weeks, progression phases, and periodization.
+**Training Block History**
+Creating training blocks (bulk, cut, peak) is free; Pro adds block history and comparisons.
 
-**Edit & Delete Sessions**
-Full editing capability for past workout sessions. Fix mistakes or add notes after the fact.
+**Duplicate Routines**
+Copy an existing routine as a starting point for a new one.
 
-### Intro Pricing
-New Pro subscribers get their first month for $1.99 (regular price $4.99/month). This applies to monthly billing only.
-
-## Comparison with Alternatives
-
-| Feature | NorseLift | Strong | JEFIT | Hevy |
-|---------|-----------|--------|-------|------|
-| Free tier | Yes | Limited | Yes (ads) | Yes |
-| No ads | Yes | Yes | No | Yes |
-| PWA (no download) | Yes | No | No | No |
-| Offline support | Yes | Yes | Yes | Yes |
-| Custom programs | Yes | Yes | Yes | Yes |
-| Works on any device | Yes | Mobile only | Mobile only | Mobile + Web |
-| Price (monthly) | $4.99 | $9.99 | $12.99 | $8.99 |
+### Newcomer Offer
+New subscribers only: the first month of a monthly Pro subscription is $1.99 (the "Newcomer offer"), then $4.99/month. The Newcomer offer applies to the monthly plan only.
 
 ## Use Cases
 
@@ -89,6 +77,9 @@ A: Yes. The app caches your data locally and syncs when you're back online.
 
 **Q: What devices does it support?**
 A: Any device with a modern web browser — iPhone, Android, iPad, laptop, desktop.
+
+**Q: How much is Pro?**
+A: Pro is $4.99/month, $10.49 every 3 months, or $29.99/year (USD). New subscribers get their first month for $1.99 with the Newcomer offer, then $4.99/mo. Cancel anytime.
 
 **Q: Can I cancel my Pro subscription anytime?**
 A: Yes. You can cancel anytime through the subscription management page. Your Pro features remain active until the end of your billing period.
