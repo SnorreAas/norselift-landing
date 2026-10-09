@@ -20,8 +20,20 @@
     </image:image>
   </url>
   <url>
+    <loc>https://norselift.com/terms</loc>
+    <lastmod>2026-10-09</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
     <loc>https://norselift.com/privacy</loc>
-    <lastmod>2026-06-20</lastmod>
+    <lastmod>2026-10-09</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://norselift.com/withdrawal</loc>
+    <lastmod>2026-10-09</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
