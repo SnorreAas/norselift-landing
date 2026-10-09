@@ -111,7 +111,7 @@
         "name": "Can I cancel Pro anytime?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. Cancel anytime from your account settings — no contracts, no hidden fees. You'll keep Pro access until the end of your billing period, then your account reverts to the free plan. Cancelling never deletes your workouts; you can delete your account yourself at any time."
+          "text": "Yes. Cancel anytime from Manage subscription in the app, which opens our payment provider Stripe. No contracts. Pro stays active until the end of your paid period, then your account returns to the Free plan. Cancelling never deletes your workouts."
         }
       }
     ]
@@ -135,24 +135,18 @@
   }
   </script>
 
-  <!-- Google Analytics 4 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-YJ8DCEJGHD"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-YJ8DCEJGHD');
-  </script>
 
   <!-- Favicon -->
   <link rel="icon" href="/favicon.ico" sizes="48x48" />
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <!-- Self-hosted fonts (no Google Fonts requests) -->
+  <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/crimson-pro-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/fonts/fonts.css" />
+  <!-- Analytics consent: Google Analytics loads only after "Accept" -->
+  <script src="/consent.js"></script>
 
   <!-- Prevent flash: apply saved theme before paint -->
   <script>
@@ -364,7 +358,7 @@
     .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; font-size: 14px; color: var(--text-2); }
     .footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
     .footer-links a { text-decoration: none; }
-    .footer-links a:hover { color: var(--text); }
+    .footer-links a:hover, .footer-links button:hover { color: var(--text); }
 
     /* Responsive */
     @media (max-width: 960px) {
@@ -712,7 +706,7 @@
       <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">How do smart suggestions work?</button><div class="faq-a"><p>NorseLift looks at your recent sets for each exercise and suggests weight and reps for the next session, either building on what you did or pushing for a little more. Accept with a tap or type your own.</p></div></div>
       <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Can I log cardio?</button><div class="faq-a"><p>Yes. Log running and other cardio with time and distance. Cardio days show on your calendar and streak, and Pro adds a pace trend.</p></div></div>
       <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">How much is Pro?</button><div class="faq-a"><p>Pro is $4.99/month, $10.49 every 3 months, or $29.99/year (USD). New subscribers get their first month for $1.99 with the Newcomer offer, then $4.99/mo. Cancel anytime.</p></div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Can I cancel Pro anytime?</button><div class="faq-a"><p>Yes. No contracts. You keep Pro until the end of your billing period, then your account returns to Free. Cancelling never deletes your workouts. You can delete your account yourself at any time from settings.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Can I cancel Pro anytime?</button><div class="faq-a"><p>Yes. Cancel anytime from <b>Manage subscription</b> in the app, which opens our payment provider Stripe. No contracts. Pro stays active until the end of your paid period, then your account returns to Free. Cancelling never deletes your workouts.</p></div></div>
     </div>
   </section>
 
@@ -763,6 +757,7 @@
         <a href="mailto:support@norselift.com">Support</a>
         <a href="/blog">Blog</a>
         <a href="/privacy">Privacy</a>
+        <button type="button" data-cookie-settings>Cookie settings</button>
       </nav>
     </div>
   </footer>
