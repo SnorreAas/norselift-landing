@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms of Service — NorseLift</title>
+  <meta name="description" content="NorseLift Terms of Service, including Pro subscription, payment, cancellation and refund terms." />
+  <meta name="theme-color" content="#e6eef8" id="meta-theme" />
+  <link rel="canonical" href="https://norselift.com/terms" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico" sizes="48x48" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+  <!-- Self-hosted fonts (no Google Fonts requests) -->
+  <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/crimson-pro-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/fonts/fonts.css" />
+  <!-- Analytics consent: Google Analytics loads only after "Accept" -->
+  <script src="/consent.js"></script>
+
+  <!-- Prevent flash: apply saved theme before paint -->
+  <script>
+    (function() {
+      var saved = localStorage.getItem('norselift-theme');
+      var theme = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+      var mc = document.getElementById('meta-theme');
+      if (mc) mc.setAttribute('content', theme === 'dark' ? '#0a0e1a' : '#e6eef8');
+    })();
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root, [data-theme="light"] {
+      --bg: #e6eef8;
+      --bg-end: #f2f5fa;
+      --surface: #ffffff;
+      --border: #c8d4e4;
+      --text: #1a1e30;
+      --text-secondary: #4a5268;
+      --text-muted: #7e86a0;
+      --accent: #4a90d9;
+      --accent-dark: #3670a8;
+      --nav-bg: rgba(230, 238, 248, 0.8);
+      --btn-accent-text: #fff;
+    }
+
+    [data-theme="dark"] {
+      --bg: #0a0e1a;
+      --bg-end: #0a0e1a;
+      --surface: #0f1424;
+      --border: #1e2740;
+      --text: #e4e4ef;
+      --text-secondary: #8e92a8;
+      --text-muted: #555a70;
+      --accent: #6aabef;
+      --accent-dark: #4a8ec9;
+      --nav-bg: rgba(6, 10, 20, 0.8);
+      --btn-accent-text: #0a0e1a;
+    }
+
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: linear-gradient(180deg, var(--bg) 0%, var(--bg-end) 100%);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      transition: background 0.4s, color 0.3s;
+    }
+
+    .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+
+    /* Nav */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+      background: var(--nav-bg);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 1120px; margin: 0 auto; padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 72px;
+    }
+    .logo {
+      font-family: 'Crimson Pro', serif;
+      font-size: 1.4rem; font-weight: 800;
+      display: flex; align-items: center; gap: 12px;
+      text-decoration: none; color: var(--text);
+    }
+    .logo-mark {
+      width: 40px; height: 40px; border-radius: 10px;
+      overflow: hidden;
+    }
+    .logo-mark img {
+      width: 100%; height: 100%; object-fit: cover;
+    }
+    .theme-toggle {
+      width: 38px; height: 38px; border-radius: 10px;
+      border: 1px solid var(--border); background: var(--surface);
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      transition: border-color 0.2s, background 0.3s;
+      color: var(--text-muted);
+    }
+    .theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
+    .theme-toggle .icon-sun, .theme-toggle .icon-moon { display: none; }
+    [data-theme="light"] .theme-toggle .icon-moon { display: block; }
+    [data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+
+    /* Content */
+    .content {
+      padding: 120px 0 80px;
+    }
+    .content h1 {
+      font-family: 'Crimson Pro', serif;
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+    .content .updated {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 40px;
+    }
+    .content h2 {
+      font-family: 'Crimson Pro', serif;
+      font-size: 1.2rem;
+      font-weight: 800;
+      margin-top: 36px;
+      margin-bottom: 12px;
+      color: var(--accent);
+    }
+    .content p {
+      margin-bottom: 16px;
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+    .content ul {
+      margin-bottom: 16px;
+      padding-left: 24px;
+    }
+    .content li {
+      color: var(--text-secondary);
+      margin-bottom: 8px;
+      line-height: 1.7;
+    }
+    .content a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .content a:hover {
+      text-decoration: underline;
+    }
+
+    .content h3 { font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 700; margin: 28px 0 10px; color: var(--text); }
+    .content strong { color: var(--text); }
+    .content code { font-size: 0.85em; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 1px 6px; }
+    .content .note { background: var(--surface); border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: 12px; padding: 14px 18px; margin: 0 0 28px; color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7; }
+    .content .table-wrap { overflow-x: auto; margin: 0 0 20px; border: 1px solid var(--border); border-radius: 12px; background: var(--surface); }
+    .content table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+    .content th, .content td { text-align: left; vertical-align: top; padding: 10px 14px; border-bottom: 1px solid var(--border); color: var(--text-secondary); line-height: 1.6; }
+    .content th { color: var(--text); font-weight: 600; }
+    .content tr:last-child td { border-bottom: 0; }
+    .content .form-box { background: var(--surface); border: 1px dashed var(--border); border-radius: 12px; padding: 18px 20px; margin: 0 0 20px; }
+    .content .form-box p { margin-bottom: 10px; }
+    .content .form-box .small { font-size: 0.85rem; margin: 0; }
+    .content .inline-btn { color: var(--accent); text-decoration: underline; font: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+    @media (max-width: 640px) {
+      .content .table-wrap { border: 0; background: none; overflow: visible; }
+      .content table, .content tbody, .content tr, .content td { display: block; width: 100%; }
+      .content thead { display: none; }
+      .content tr { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; padding: 6px 0; }
+      .content td { border: 0; padding: 4px 14px; }
+      .content td::before { content: attr(data-label); display: block; font-size: 0.75rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em; }
+    }
+    .content h2[id], .content h3[id] { scroll-margin-top: 96px; }
+    .content .operator { margin-top: 40px; font-size: 0.85rem; color: var(--text-muted); }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 36px 0;
+    }
+    .footer-inner {
+      max-width: 1120px; margin: 0 auto; padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    footer p { font-size: 0.75rem; color: var(--text-muted); }
+    .footer-links { display: flex; gap: 12px 20px; flex-wrap: wrap; justify-content: center; }
+    .footer-links a, .footer-links button {
+      font-size: 0.75rem; color: var(--text-muted);
+      text-decoration: none; transition: color 0.15s;
+    }
+    .footer-links a:hover, .footer-links button:hover { color: var(--accent); }
+
+    @media (max-width: 640px) {
+      .footer-inner { flex-direction: column; gap: 12px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="/" class="logo">
+        <div class="logo-mark"><img src="/norselift-icon-192.png" alt="NorseLift" /></div>
+        NorseLift
+      </a>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+        <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <div class="content">
+    <div class="container">
+      <h1>Terms of Service</h1>
+      <p class="updated">Last updated: 9 October 2026</p>
+      <p>These terms apply when you use NorseLift (the web app at app.norselift.com and the website norselift.com) and when you buy a NorseLift Pro subscription. Please read them before you subscribe.</p>
+      <div class="note">Norwegian consumer protection rules, including where applicable the Consumer Purchases Act (forbrukerkjøpsloven), the Cancellation Act (angrerettloven), the rules on digital services to consumers and the Marketing Control Act (markedsføringsloven), apply to you as a consumer. If anything in these terms conflicts with your mandatory rights under those rules, the law takes precedence and your rights are not limited.</div>
+
+      <h2 id="operator">1. Who we are</h2>
+      <p>NorseLift is provided by <strong>SNORRE AAS IT</strong>, a sole proprietorship (enkeltpersonforetak) owned by Snorre Aas.</p>
+      <ul>
+      <li>Organisation number: 924 028 556</li>
+      <li>Address: Hogstvetveien 3, 1435 Ås, Norway</li>
+      <li>Email: <a href="mailto:support@norselift.com">support@norselift.com</a></li>
+      </ul>
+      <p>"We", "us" and "our" mean SNORRE AAS IT. "You" means the person using NorseLift.</p>
+      <h2 id="account">2. Your account</h2>
+      <ul>
+      <li>You must be at least 13 years old to create an account. If you are under 18, you need permission from a parent or guardian to buy a subscription.</li>
+      <li>Give accurate information and keep your login details safe. You are responsible for activity on your account.</li>
+      <li>You can delete your account at any time in the app's Settings, or by emailing us. Deleting your account removes your account and your workout data and cancels any active Pro subscription. See the <a href="/privacy">Privacy Policy</a> for details.</li>
+      </ul>
+      <h2 id="plans">3. Free and Pro</h2>
+      <p>The Free plan costs nothing. NorseLift Pro is a paid subscription that unlocks the additional features described on our <a href="/#pricing">pricing page</a>. We may improve, change or remove features over time, but we will not materially reduce what you have paid for during a billing period you have already paid.</p>
+      <h2 id="prices">4. Prices and payment</h2>
+      <div class="table-wrap"><table>
+      <thead>
+      <tr>
+      <th>Plan</th>
+      <th>Price</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td data-label="Plan">Monthly</td>
+      <td data-label="Price">USD 4.99 per month</td>
+      </tr>
+      <tr>
+      <td data-label="Plan">Quarterly</td>
+      <td data-label="Price">USD 10.49 every 3 months</td>
+      </tr>
+      <tr>
+      <td data-label="Plan">Yearly</td>
+      <td data-label="Price">USD 29.99 per year</td>
+      </tr>
+      </tbody>
+      </table></div>
+      <ul>
+      <li><strong>Newcomer offer:</strong> first-time subscribers who choose the monthly plan pay USD 1.99 for their first month, then USD 4.99 per month. The offer applies once per customer.</li>
+      <li>Prices are in US dollars. SNORRE AAS IT is not registered in the Norwegian VAT Register (Merverdiavgiftsregisteret), so no MVA (Norwegian VAT) is charged. Your bank may charge currency conversion fees.</li>
+      <li>Payments are processed by our payment provider, Stripe. We never see or store your full card details.</li>
+      <li>You pay in advance at the start of each billing period.</li>
+      </ul>
+      <h2 id="renewal">5. Automatic renewal</h2>
+      <p>Your subscription <strong>renews automatically</strong> at the end of each billing period, at the then-current price for your plan, and your payment method is charged until you cancel. The renewal price for the monthly plan after the Newcomer offer is USD 4.99 per month.</p>
+      <h2 id="failed-payments">6. Failed payments</h2>
+      <p>If a renewal payment fails, Stripe will retry the payment for a limited period and we may ask you to update your payment method. You keep Pro while we retry. If the payment still cannot be collected, the subscription ends and your account returns to the Free plan. Your workout data is not deleted.</p>
+      <h2 id="cancellation">7. Cancellation</h2>
+      <p>You can cancel at any time from <strong>Manage subscription</strong> in the app (at <a href="https://app.norselift.com/upgrade">app.norselift.com/upgrade</a>), which opens our payment provider's subscription page, or by emailing <a href="mailto:support@norselift.com">support@norselift.com</a>.</p>
+      <p>Cancellation takes effect at the <strong>end of the current paid period</strong>. Pro stays active until then, and you are not charged again. After that your account returns to the Free plan and your workout data stays in your account.</p>
+      <h2 id="refunds">8. Right of withdrawal and refunds</h2>
+      <ul>
+      <li><strong>14-day right of withdrawal:</strong> as a consumer you have the right to withdraw from your purchase within 14 days, as described on our <a href="/withdrawal">Right of withdrawal</a> page, which also contains the withdrawal form.</li>
+      <li><strong>Immediate access:</strong> if you expressly ask us to give you Pro immediately and acknowledge that you thereby lose your right of withdrawal, the right of withdrawal lapses once Pro has been made available to you, to the extent the law allows. If the law instead gives you a right to withdraw with a deduction for the period you have used, we follow the law.</li>
+      <li><strong>No refunds for partial periods:</strong> apart from your statutory rights, payments are non-refundable and we do not refund the unused part of a billing period when you cancel.</li>
+      <li><strong>Goodwill refunds:</strong> we may, at our discretion, offer a full or partial refund in other cases. A goodwill refund in one case does not create a right to refunds in other cases.</li>
+      <li>If a payment for the current period is refunded in full, Pro for that period ends when the refund is processed.</li>
+      <li>Your rights if the service is faulty under Norwegian consumer law are not affected by this section.</li>
+      </ul>
+      <h2 id="price-changes">9. Price changes</h2>
+      <p>We may change Pro prices. We will tell you by email or in the app at least 30 days before a new price applies to your subscription. The new price applies from your next renewal after the notice period. If you do not accept the new price, you can cancel before it takes effect. Price changes never apply to a period you have already paid for.</p>
+      <h2 id="acceptable-use">10. Acceptable use</h2>
+      <p>You agree not to:</p>
+      <ul>
+      <li>break the law or other people's rights when using NorseLift;</li>
+      <li>try to access other users' data or accounts, or our systems beyond what the app allows;</li>
+      <li>disrupt, overload, scrape, reverse engineer or attack the service, except where the law allows it;</li>
+      <li>abuse the Newcomer offer, gifts or referral rewards, for example by creating multiple accounts;</li>
+      <li>resell or share Pro access commercially.</li>
+      </ul>
+      <h2 id="termination">11. Suspension and termination</h2>
+      <p>We may suspend or close an account that seriously or repeatedly breaks these terms, or where the law requires it. Unless the situation is urgent or the law prevents it, we will tell you first and give you a chance to fix the problem. If we close your account without you being at fault, we refund any prepaid amount for the remaining part of the paid period.</p>
+      <p>We may stop offering NorseLift. If we do, we will give you at least 30 days' notice where possible, refund any prepaid amount for the remaining part of the paid period, and give you a way to get a copy of your data.</p>
+      <h2 id="ip">12. Your content and our intellectual property</h2>
+      <p>Your workout logs and other content you add belong to you. You give us permission to store and process them only to provide NorseLift to you.</p>
+      <p>NorseLift, including the app, design, text, logos and code, belongs to SNORRE AAS IT or its licensors. You get a personal, non-transferable right to use NorseLift in line with these terms.</p>
+      <h2 id="health">13. Health and fitness disclaimer</h2>
+      <p>NorseLift is a tool for logging and planning training. It does not give medical advice and does not replace a doctor, physiotherapist or qualified coach. Training involves a risk of injury. Check with a health professional before starting a new programme, especially if you have a medical condition, are pregnant or are recovering from an injury, and stop if you feel pain, dizziness or discomfort. Suggestions in the app, such as weights or progression, are general and may not suit you.</p>
+      <h2 id="liability">14. Availability and liability</h2>
+      <p>We work to keep NorseLift available and your data safe, but we cannot guarantee that the service is always available or error-free. Keeping a copy of important information is a good idea.</p>
+      <p>We are liable for loss caused by our negligence in line with Norwegian law. We are not liable for indirect or unforeseeable loss, or for loss caused by circumstances outside our control. <strong>These limitations do not apply</strong> to loss caused intentionally or by gross negligence, to personal injury, or where mandatory consumer law gives you stronger rights.</p>
+      <h2 id="changes">15. Changes to these terms</h2>
+      <p>We may update these terms, for example when we change features, prices or legal requirements. For significant changes we will notify you by email or in the app at least 30 days before they take effect. If you do not accept the changes, you can cancel your subscription before they apply. The current version is always on this page.</p>
+      <h2 id="law">16. Governing law and disputes</h2>
+      <p>These terms are governed by Norwegian law. Please contact us first so we can try to solve the problem. If we cannot agree, you can contact the Norwegian Consumer Council (Forbrukerrådet), which can mediate, and the case can then be brought before the Consumer Complaints Committee (Forbrukerklageutvalget). Disputes may also be brought before the Norwegian courts. As a consumer you can bring a case before the court where you live, and you keep the protection of the mandatory rules of your country of residence.</p>
+      <h2 id="contact">17. Contact</h2>
+      <p>SNORRE AAS IT, Hogstvetveien 3, 1435 Ås, Norway. Org.nr. 924 028 556. Email: <a href="mailto:support@norselift.com">support@norselift.com</a>.</p>
+      <p class="operator">NorseLift is provided by SNORRE AAS IT (enkeltpersonforetak), org.nr. 924 028 556, Hogstvetveien 3, 1435 Ås, Norway.</p>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <p>&copy; 2026 NorseLift. Forged in Norway.</p>
+      <div class="footer-links">
+        <a href="/">Home</a>
+        <a href="https://app.norselift.com">App</a>
+        <a href="/blog">Blog</a>
+        <a href="/terms">Terms</a>
+        <a href="/privacy">Privacy</a>
+        <a href="/withdrawal">Withdrawal</a>
+        <a href="mailto:support@norselift.com">Support</a>
+        <button type="button" data-cookie-settings>Cookie settings</button>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleTheme() {
+      var html = document.documentElement;
+      var current = html.getAttribute('data-theme');
+      var next = current === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('norselift-theme', next);
+      var meta = document.getElementById('meta-theme');
+      if (meta) meta.setAttribute('content', next === 'dark' ? '#0a0e1a' : '#e6eef8');
+    }
+  </script>
+
+  <script defer src="/_vercel/insights/script.js"></script>
+
+</body>
+</html>
