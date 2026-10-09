@@ -182,6 +182,10 @@
     .content h2[id], .content h3[id] { scroll-margin-top: 96px; }
     .content .operator { margin-top: 40px; font-size: 0.85rem; color: var(--text-muted); }
 
+    .content blockquote { border-left: 3px solid var(--accent); background: var(--surface); border-radius: 0 10px 10px 0; padding: 12px 16px; margin: 0 0 16px; }
+    .content blockquote p { margin: 0; font-style: italic; color: var(--text); }
+    .content li ul { margin: 8px 0 0; }
+
     /* Footer */
     footer {
       border-top: 1px solid var(--border);
@@ -234,9 +238,11 @@
       <li><strong>Training data:</strong> everything you log in the app, such as exercises, sets, reps, weights, cardio, workouts, programs, schedules, training blocks, personal records and body weight entries.</li>
       <li><strong>Subscription data:</strong> your Stripe customer and subscription IDs, plan, status, billing period and payment history. Card details are handled by Stripe; we never see or store your full card number.</li>
       <li><strong>Gift and referral data:</strong> your referral code, who referred whom and which rewards were given, and the name and email address of a person you send a Pro gift to.</li>
+      <li><strong>Consent records:</strong> when you buy Pro, your confirmation that Pro should start immediately and that you lose the 14-day right of withdrawal: the wording and its version, the time, the plan and the checkout ID. It is stored in your account and in the metadata of your Stripe checkout and subscription.</li>
+      <li><strong>Account deletion record:</strong> when you delete your account, a minimal record of the deletion (your user ID, dates, status and the number of items deleted). It contains no name, email address or training data.</li>
       <li><strong>Support data:</strong> the emails you send us and our replies.</li>
       <li><strong>Technical data:</strong> IP address, browser and device information and server logs created when you use the website or app.</li>
-      <li><strong>Analytics data:</strong> page views and clicks on the website (Google Analytics, only if you accept), and cookieless, aggregated page-view statistics (Vercel Web Analytics).</li>
+      <li><strong>Analytics data:</strong> page views and clicks on the website (Google Analytics, only if you accept), and cookieless, aggregated page-view statistics on the website and in the app (Vercel Web Analytics).</li>
       </ul>
       <p>Body weight and training data can say something about your health. We only use it to provide the features you use, you decide what you log, and you can delete it at any time.</p>
       <h2 id="purposes">3. Why we use it, and our legal basis</h2>
@@ -265,6 +271,16 @@
       <td data-label="Legal basis (GDPR)">Legal obligation, Art. 6(1)(c) (Bookkeeping Act)</td>
       </tr>
       <tr>
+      <td data-label="Purpose">Document your consent to immediate access and the waiver of the right of withdrawal</td>
+      <td data-label="Data">Consent records</td>
+      <td data-label="Legal basis (GDPR)">Legal obligation, Art. 6(1)(c), and legitimate interests, Art. 6(1)(f) (being able to show what you agreed to)</td>
+      </tr>
+      <tr>
+      <td data-label="Purpose">Document that an account deletion was carried out</td>
+      <td data-label="Data">Account deletion record</td>
+      <td data-label="Legal basis (GDPR)">Legitimate interests, Art. 6(1)(f) (showing that we fulfilled your request)</td>
+      </tr>
+      <tr>
       <td data-label="Purpose">Pro gifts and referral rewards, including emails about them</td>
       <td data-label="Data">Gift and referral, account</td>
       <td data-label="Legal basis (GDPR)">Contract, Art. 6(1)(b), and legitimate interests, Art. 6(1)(f)</td>
@@ -280,7 +296,7 @@
       <td data-label="Legal basis (GDPR)">Legitimate interests, Art. 6(1)(f)</td>
       </tr>
       <tr>
-      <td data-label="Purpose">Aggregated, cookieless usage statistics (Vercel Web Analytics)</td>
+      <td data-label="Purpose">Aggregated, cookieless usage statistics on the website and in the app (Vercel Web Analytics)</td>
       <td data-label="Data">Technical</td>
       <td data-label="Legal basis (GDPR)">Legitimate interests, Art. 6(1)(f)</td>
       </tr>
@@ -294,8 +310,17 @@
       <p>We do not sell your data and we do not use it for advertising. We do not make decisions about you based solely on automated processing.</p>
       <h2 id="retention">4. How long we keep it</h2>
       <ul>
-      <li><strong>Account and training data:</strong> as long as you have an account. When you delete your account, your account and workout data are deleted.</li>
-      <li><strong>Subscription and payment records:</strong> for as long as the Bookkeeping Act (bokføringsloven) requires, normally 5 years after the end of the financial year, even if you delete your account.</li>
+      <li><strong>Account and training data:</strong> as long as you have an account. When you delete your account in the app, we:<ul>
+      <li>cancel any Stripe subscription that could still charge you and delete your Stripe customer profile (name, email, address and saved payment methods);</li>
+      <li>delete all your data in our database, including workouts, exercises, programs, records, body weight, training blocks, consent records, subscription and referral data, your invite codes and your entry in our weekly usage statistics;</li>
+      <li>delete your login;</li>
+      <li>clear the NorseLift data stored on the device you delete from.</li>
+      </ul>
+      </li>
+      <li><strong>Payment records:</strong> Stripe keeps invoices and payment records after your customer profile is deleted. As the seller, we must keep accounting records, including sales and payment documentation, for as long as the Bookkeeping Act (bokføringsloven) requires, normally 5 years after the end of the financial year.</li>
+      <li><strong>Consent records:</strong> as long as you have an account; the copy in the Stripe subscription metadata is kept with the payment records described above.</li>
+      <li><strong>Account deletion record:</strong> kept for up to 3 years to document the deletion.</li>
+      <li><strong>Referrals:</strong> if another user referred you, their referral list may keep your user ID as a pseudonymous reference after you delete your account. It does not include your name or email address.</li>
       <li><strong>Support emails:</strong> as long as needed to handle your request and any follow-up.</li>
       <li><strong>Server logs:</strong> a short period, as set by our hosting provider.</li>
       <li><strong>Google Analytics data:</strong> no longer than 14 months. If you withdraw consent, the cookies on your device are deleted.</li>
@@ -306,7 +331,7 @@
       <ul>
       <li><strong>Google (Firebase Authentication and Cloud Firestore)</strong>: sign-in and storage of your account and training data. <a href="https://firebase.google.com/support/privacy">Privacy</a></li>
       <li><strong>Stripe</strong>: payments and subscriptions. For some purposes, such as fraud prevention and meeting its legal obligations, Stripe acts as an independent controller. <a href="https://stripe.com/privacy">Privacy</a></li>
-      <li><strong>Vercel</strong>: hosting of the website, app and server functions, and Vercel Web Analytics (cookieless). <a href="https://vercel.com/legal/privacy-policy">Privacy</a></li>
+      <li><strong>Vercel</strong>: hosting of the website, app and server functions, and Vercel Web Analytics on the website and in the app (cookieless). <a href="https://vercel.com/legal/privacy-policy">Privacy</a></li>
       <li><strong>Resend</strong>: sending service emails, such as Pro gift and referral reward emails. <a href="https://resend.com/legal/privacy-policy">Privacy</a></li>
       <li><strong>Google Analytics 4</strong>: website analytics on norselift.com, <strong>only if you accept</strong> in the cookie banner. <a href="https://policies.google.com/privacy">Privacy</a></li>
       </ul>
@@ -376,8 +401,8 @@
       <ul>
       <li><strong>access</strong> the data we hold about you and get a copy;</li>
       <li><strong>correct</strong> inaccurate data;</li>
-      <li><strong>delete</strong> your data. You can delete your account in the app's Settings at any time. This removes your account and workout data and cancels any active Pro subscription. Payment records we must keep by law are kept as described above;</li>
-      <li><strong>data portability</strong>: request a copy of your data by emailing <a href="mailto:support@norselift.com">support@norselift.com</a>;</li>
+      <li><strong>delete</strong> your data. You can delete your account in the app's Settings at any time. Deletion is permanent and is described <a href="#retention">above</a>. Pro ends immediately and the current paid period is not refunded, unless you still have a right of withdrawal (see our <a href="/terms#refunds">Terms</a>);</li>
+      <li><strong>data portability</strong>: download your data as a JSON file with <strong>Download my data</strong> in the app's Settings, or ask us for a copy at <a href="mailto:support@norselift.com">support@norselift.com</a>;</li>
       <li><strong>restrict</strong> or <strong>object to</strong> processing based on legitimate interests;</li>
       <li><strong>withdraw your consent</strong> at any time (for Google Analytics, use Cookie settings). This does not affect processing before you withdrew it.</li>
       </ul>
