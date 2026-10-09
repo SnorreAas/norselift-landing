@@ -182,6 +182,10 @@
     .content h2[id], .content h3[id] { scroll-margin-top: 96px; }
     .content .operator { margin-top: 40px; font-size: 0.85rem; color: var(--text-muted); }
 
+    .content blockquote { border-left: 3px solid var(--accent); background: var(--surface); border-radius: 0 10px 10px 0; padding: 12px 16px; margin: 0 0 16px; }
+    .content blockquote p { margin: 0; font-style: italic; color: var(--text); }
+    .content li ul { margin: 8px 0 0; }
+
     /* Footer */
     footer {
       border-top: 1px solid var(--border);
@@ -238,7 +242,8 @@
       <ul>
       <li>You must be at least 13 years old to create an account. If you are under 18, you need permission from a parent or guardian to buy a subscription.</li>
       <li>Give accurate information and keep your login details safe. You are responsible for activity on your account.</li>
-      <li>You can delete your account at any time in the app's Settings, or by emailing us. Deleting your account removes your account and your workout data and cancels any active Pro subscription. See the <a href="/privacy">Privacy Policy</a> for details.</li>
+      <li>You can download a copy of your data at any time with <strong>Download my data</strong> in the app's Settings.</li>
+      <li>You can delete your account at any time in the app's Settings, or by emailing us. Deletion is permanent: it removes your account and your workout data and cancels any Pro subscription. <strong>Pro ends immediately when you delete your account, and the current paid period is not refunded</strong>, unless you still have a right of withdrawal (see <a href="/withdrawal">Right of withdrawal</a>) or another right under consumer law. If you only want to stop paying, cancel your subscription instead. See the <a href="/privacy#retention">Privacy Policy</a> for what is deleted and what we must keep.</li>
       </ul>
       <h2 id="plans">3. Free and Pro</h2>
       <p>The Free plan costs nothing. NorseLift Pro is a paid subscription that unlocks the additional features described on our <a href="/#pricing">pricing page</a>. We may improve, change or remove features over time, but we will not materially reduce what you have paid for during a billing period you have already paid.</p>
@@ -276,12 +281,12 @@
       <h2 id="failed-payments">6. Failed payments</h2>
       <p>If a renewal payment fails, Stripe will retry the payment for a limited period and we may ask you to update your payment method. You keep Pro while we retry. If the payment still cannot be collected, the subscription ends and your account returns to the Free plan. Your workout data is not deleted.</p>
       <h2 id="cancellation">7. Cancellation</h2>
-      <p>You can cancel at any time from <strong>Manage subscription</strong> in the app (at <a href="https://app.norselift.com/upgrade">app.norselift.com/upgrade</a>), which opens our payment provider's subscription page, or by emailing <a href="mailto:support@norselift.com">support@norselift.com</a>.</p>
+      <p>You can cancel at any time from <strong>Manage subscription</strong> in the app (in Settings, or on the Upgrade page at <a href="https://app.norselift.com/upgrade">app.norselift.com/upgrade</a>), which opens our payment provider's subscription page, or by emailing <a href="mailto:support@norselift.com">support@norselift.com</a>.</p>
       <p>Cancellation takes effect at the <strong>end of the current paid period</strong>. Pro stays active until then, and you are not charged again. After that your account returns to the Free plan and your workout data stays in your account.</p>
       <h2 id="refunds">8. Right of withdrawal and refunds</h2>
       <ul>
       <li><strong>14-day right of withdrawal:</strong> as a consumer you have the right to withdraw from your purchase within 14 days, as described on our <a href="/withdrawal">Right of withdrawal</a> page, which also contains the withdrawal form.</li>
-      <li><strong>Immediate access:</strong> if you expressly ask us to give you Pro immediately and acknowledge that you thereby lose your right of withdrawal, the right of withdrawal lapses once Pro has been made available to you, to the extent the law allows. If the law instead gives you a right to withdraw with a deduction for the period you have used, we follow the law.</li>
+      <li><strong>Immediate access:</strong> Pro starts as soon as your payment is completed. Before you can go to checkout, you must tick a box (it is never pre-ticked) confirming: <em>“I want my NorseLift Pro access to start right away, and I understand that I lose my 14-day right of withdrawal once it has started.”</em> We store the time and the version of this wording with your subscription (at our payment provider Stripe) and in your account, and you can see the record in <strong>Download my data</strong>. Because you asked for immediate access and acknowledged this, your right of withdrawal lapses once Pro has started, to the extent the law allows. If the law instead gives you a right to withdraw with a deduction for the period you have used, we follow the law.</li>
       <li><strong>No refunds for partial periods:</strong> apart from your statutory rights, payments are non-refundable and we do not refund the unused part of a billing period when you cancel.</li>
       <li><strong>Goodwill refunds:</strong> we may, at our discretion, offer a full or partial refund in other cases. A goodwill refund in one case does not create a right to refunds in other cases.</li>
       <li>If a payment for the current period is refunded in full, Pro for that period ends when the refund is processed.</li>
