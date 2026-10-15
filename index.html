@@ -483,6 +483,21 @@
     .ai-cta { margin-top: 24px; }
     .ai-note { margin-top: 12px; font-size: 14px; color: var(--muted); }
     @media (max-width: 600px) { .ai-visual { max-width: 340px; border-radius: 20px; } }
+    /* AI highlight (sparkles + gradient) */
+    @property --ai-angle { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
+    :root, [data-theme="light"] { --ai-grad: linear-gradient(90deg, #3670a8, #7c4ddb 55%, #d0337f); --ai-glow: rgba(139,92,246,.22); }
+    [data-theme="dark"] { --ai-grad: linear-gradient(90deg, #6aabef, #a78bfa 55%, #f472b6); --ai-glow: rgba(167,139,250,.28); }
+    .ai-spark { width: 18px; height: 18px; flex: none; }
+    .ai-text { background: var(--ai-grad); -webkit-background-clip: text; background-clip: text; color: transparent; font-weight: 700; }
+    .plan-list li.ai-row { padding: 8px 12px 8px 38px; margin: 0 -12px; border-radius: 12px; background: linear-gradient(90deg, rgba(74,144,217,.10), rgba(139,92,246,.10) 55%, rgba(236,72,153,.08)); }
+    .plan-list li.ai-row::before { content: none; }
+    .plan-list li.ai-row .ai-spark { position: absolute; left: 12px; top: 11px; }
+    .tile.ai-tile { position: relative; border: 1.5px solid transparent; background: linear-gradient(var(--surface), var(--surface)) padding-box, conic-gradient(from var(--ai-angle), #4a90d9, #8b5cf6, #ec4899, #8b5cf6, #4a90d9) border-box; box-shadow: 0 10px 34px -10px var(--ai-glow), var(--shadow); animation: ai-spin 6s linear infinite; }
+    .ai-tile .ub { background: linear-gradient(90deg, rgba(74,144,217,.10), rgba(139,92,246,.10) 55%, rgba(236,72,153,.08)); }
+    .ai-tile .ai-spark { width: 22px; height: 22px; }
+    .ai-tile h4 .ai-text { font-weight: inherit; }
+    @keyframes ai-spin { to { --ai-angle: 360deg; } }
+    @media (prefers-reduced-motion: reduce) { .tile.ai-tile { animation: none; } }
   </style>
 </head>
 <body>
@@ -671,7 +686,7 @@
         <div class="tile"><div class="ub" aria-hidden="true"><span class="ub-pill ok"><svg class="ub-i" viewBox="0 0 24 24"><path d="M22 7l-8.5 8.5-5-5L2 17M16 7h6v6"/></svg>Bulk · Day 23</span></div><h4>Training blocks</h4><p>Bulk, cut or maintain. Know which day you're on.</p></div>
         <div class="tile"><div class="ub" aria-hidden="true"><svg class="ub-spark" viewBox="0 0 80 28"><path class="f" d="M2 8L12 10 22 9 32 13 42 12 52 16 62 17 72 19 78 20V28H2z"/><path d="M2 8L12 10 22 9 32 13 42 12 52 16 62 17 72 19 78 20"/></svg><span class="ub-col"><b class="ub-n">82.4<small> kg</small></b><span class="ub-good">-0.6 kg</span></span></div><h4>Body weight</h4><p>Quick log with a 30-day trend.</p></div>
         <div class="tile"><div class="ub" aria-hidden="true"><span class="ub-pill ok"><svg class="ub-i" viewBox="0 0 24 24"><path d="M17.5 19H9a7 7 0 1 1 6.7-9h1.8a4.5 4.5 0 1 1 0 9z"/></svg><span>Cloud sync<span class="sm-hide"> active</span></span></span></div><h4>Cloud sync + offline</h4><p>Logs locally, syncs when you're back online.</p></div>
-        <div class="tile"><div class="ub" aria-hidden="true"><span class="ub-pro">PRO</span><span class="ub-pill ok"><svg class="ub-i" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>create_routine</span></div><h4>Connect your AI</h4><p>Let ChatGPT, Claude or Grok log workouts and build routines via MCP.</p></div>
+        <div class="tile ai-tile"><div class="ub" aria-hidden="true"><svg class="ai-spark" viewBox="0 0 24 24" aria-hidden="true"><defs><linearGradient id="aiGradTile" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4a90d9"/><stop offset=".55" stop-color="#8b5cf6"/><stop offset="1" stop-color="#ec4899"/></linearGradient></defs><path fill="url(#aiGradTile)" d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.14-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.14a.5.5 0 0 1 .96 0l1.58 6.14a2 2 0 0 0 1.44 1.44l6.14 1.58a.5.5 0 0 1 0 .96l-6.14 1.58a2 2 0 0 0-1.44 1.44l-1.58 6.14a.5.5 0 0 1-.96 0z"/><path fill="url(#aiGradTile)" d="M20 1.5l.7 1.8 1.8.7-1.8.7L20 6.5l-.7-1.8-1.8-.7 1.8-.7zM4.5 16.5l.6 1.4 1.4.6-1.4.6-.6 1.4-.6-1.4-1.4-.6 1.4-.6z"/></svg><span class="ub-pro">PRO</span><span class="ub-pill ok"><svg class="ub-i" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>create_routine</span></div><h4><span class="ai-text">Connect your AI</span></h4><p>Let ChatGPT, Claude or Grok log workouts and build routines via MCP.</p></div>
         <div class="tile"><div class="ub" aria-hidden="true"><span class="ub-sw" style="--c:#e6eef8;--d:#4a90d9"></span><span class="ub-sw" style="--c:#0a0e1a;--d:#6aabef"></span><span class="ub-sw" style="--c:#fff5f9;--d:#ff69b4"></span></div><h4>Light, dark &amp; Maiden</h4><p>Three themes. Pick your vibe.</p></div>
         <div class="tile"><div class="ub" aria-hidden="true"><span class="ub-card"><span class="ub-card-h"><b>Pull</b><span>NorseLift</span></span><span class="ub-card-s"><span><b>55</b>MIN</span><span class="sm-hide"><b>9.8</b>TONNES</span></span></span></div><h4>Share card</h4><p>Turn a finished workout into a postable image.</p></div>
         <div class="tile"><div class="ub" aria-hidden="true"><span class="ub-pro">PRO</span><span class="ub-pill ok"><span class="sm-hide">A friend joined — </span>+3d</span></div><h4>Invite friends, earn Pro</h4><p>Referral rewards built into your profile.</p></div>
@@ -786,7 +801,7 @@
           <a href="https://app.norselift.com/upgrade" class="btn btn-primary block" id="proCta" onclick="gtag('event','cta_click',{button_name:'pricing_pro'})">Start Pro, $1.99 first month</a>
           <ul class="plan-list">
             <li class="em">Everything in Free, plus:</li>
-            <li><b>Connect your AI (MCP): ChatGPT, Claude, Grok &amp; more</b></li>
+            <li class="ai-row"><svg class="ai-spark" viewBox="0 0 24 24" aria-hidden="true"><defs><linearGradient id="aiGradPrice" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4a90d9"/><stop offset=".55" stop-color="#8b5cf6"/><stop offset="1" stop-color="#ec4899"/></linearGradient></defs><path fill="url(#aiGradPrice)" d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.14-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.14a.5.5 0 0 1 .96 0l1.58 6.14a2 2 0 0 0 1.44 1.44l6.14 1.58a.5.5 0 0 1 0 .96l-6.14 1.58a2 2 0 0 0-1.44 1.44l-1.58 6.14a.5.5 0 0 1-.96 0z"/><path fill="url(#aiGradPrice)" d="M20 1.5l.7 1.8 1.8.7-1.8.7L20 6.5l-.7-1.8-1.8-.7 1.8-.7zM4.5 16.5l.6 1.4 1.4.6-1.4.6-.6 1.4-.6-1.4-1.4-.6 1.4-.6z"/></svg><span class="ai-text">Connect your AI (MCP): ChatGPT, Claude, Grok &amp; more</span></li>
             <li>Unlimited programs &amp; scheduled routines</li>
             <li>Edit &amp; delete any past session</li>
             <li>Backfill workouts you forgot to log</li>
