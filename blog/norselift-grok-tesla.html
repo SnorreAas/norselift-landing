@@ -428,6 +428,26 @@
       .where tbody th { font-size: .95rem; padding-bottom: 6px; }
       .where td::before { content: attr(data-l) ": "; font-weight: 600; color: #4a90d9; }
     }
+    .hero-anim { position: relative; container-type: inline-size; margin: 0; }
+    .hero-anim .hero-image { margin-bottom: 0; }
+    .hc { position: absolute; left: 34.14%; top: 32.15%; width: 33.6%; background: rgba(255,255,255,.96); border-radius: 1.86cqw; padding: 1.86cqw; box-shadow: 0 2cqw 5cqw -1.4cqw rgba(0,0,0,.6); color: #1a1e30; font: 1.43cqw/1.45 Inter, system-ui, sans-serif; text-align: left; }
+    .hc .hd { display: flex; align-items: center; gap: .7cqw; font-weight: 700; font-size: 1.21cqw; color: #4a5268; margin-bottom: 1.14cqw; }
+    .hc .mic { width: 2.14cqw; height: 2.14cqw; border-radius: 50%; background: linear-gradient(135deg,#2f6fb8,#4b5fc0); display: grid; place-items: center; flex: none; }
+    .hc .mic svg { width: 1.14cqw; height: 1.14cqw; fill: none; stroke: #fff; stroke-width: 2.2; stroke-linecap: round; }
+    .hc .u { background: #e6eef8; border-radius: 1.14cqw 1.14cqw .3cqw 1.14cqw; padding: .86cqw 1.14cqw; margin: 0 0 1cqw 3.57cqw; }
+    .hc .t { display: inline-flex; gap: .57cqw; align-items: center; font: 600 1.07cqw ui-monospace, Menlo, monospace; background: #edf2f9; border: 1px solid #c8d4e4; border-radius: .7cqw; padding: .43cqw .7cqw; margin-bottom: .86cqw; transition: opacity .3s; }
+    .hc .t b { color: #0b6646; } .hc .r b { color: #2f6aa8; }
+    .tw { display: grid; } .tw > * { grid-area: 1/1; } .tw .ghost { visibility: hidden; }
+    .hc.anim .t { opacity: 0; } .hc.anim .t.on { opacity: 1; }
+    .caret::after { content: ""; display: inline-block; width: 2px; height: 1em; background: #4a90d9; margin-left: 2px; vertical-align: -.15em; animation: blink .8s steps(1) infinite; }
+    @keyframes blink { 50% { opacity: 0; } }
+    @container (max-width: 560px) {
+      .hc { left: 9%; width: 82%; top: 10%; font-size: 3.3cqw; padding: 3cqw; border-radius: 3cqw; }
+      .hc .hd { display: none; }
+      .hc .u { margin: 0 0 1.8cqw 6cqw; padding: 1.6cqw 2.2cqw; border-radius: 2.2cqw 2.2cqw .6cqw 2.2cqw; }
+      .hc .t { font-size: 2.7cqw; padding: .8cqw 1.4cqw; margin-bottom: 1.6cqw; border-radius: 1.4cqw; }
+    }
+    @media (prefers-reduced-motion: reduce) { .caret::after { display: none; } }
   </style>
 </head>
 <body>
@@ -461,10 +481,46 @@
         <span>5 min read</span>
       </div>
 
-      <picture>
-        <source type="image/webp" srcset="/blog/images/grok-norselift-hero.webp" />
-        <img class="hero-image" src="/blog/images/grok-norselift-hero.jpg" alt="View from the back seat of an electric car toward the center screen, with a NorseLift answer card: today is Push, last bench session 4 × 8 at 80 kg" width="1400" height="933" fetchpriority="high" />
-      </picture>
+      <figure class="hero-anim">
+        <picture>
+          <source type="image/webp" srcset="/blog/images/grok-norselift-hero-bg.webp" />
+          <img class="hero-image" src="/blog/images/grok-norselift-hero-bg.jpg" alt="View from the back seat of an electric car toward the center screen, with a NorseLift answer card" width="1400" height="933" fetchpriority="high" />
+        </picture>
+        <div class="hc" id="hc" aria-hidden="true">
+          <div class="hd"><span class="mic"><svg viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></span>Voice assistant · NorseLift connected</div>
+          <div class="u tw"><span class="ghost">“What's my workout today, and how did bench go last time?”</span><span class="ty" data-t="“What's my workout today, and how did bench go last time?”">“What's my workout today, and how did bench go last time?”</span></div>
+          <div class="t"><b>✓</b> NorseLift · list_workouts</div>
+          <div class="r tw"><span class="ghost">Today is <b>Push</b>, 7 exercises. Last bench session: 4 × 8 at 80 kg. Try 82.5 kg today.</span><span class="ty" data-h="Today is <b>Push</b>, 7 exercises. Last bench session: 4 × 8 at 80 kg. Try 82.5 kg today.">Today is <b>Push</b>, 7 exercises. Last bench session: 4 × 8 at 80 kg. Try 82.5 kg today.</span></div>
+        </div>
+      </figure>
+      <script>
+      (function () {
+        var c = document.getElementById('hc');
+        if (!c || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        var ty = c.querySelectorAll('.ty'), chip = c.querySelector('.t'), u = ty[0], r = ty[1];
+        var full = r.getAttribute('data-h'), plain = full.replace(/<[^>]+>/g, ''), q = u.getAttribute('data-t');
+        function wait(ms) { return new Promise(function (f) { setTimeout(f, ms); }); }
+        function rich(n) { // first n visible chars of the answer, keeping <b>
+          var out = '', k = 0, i = 0;
+          while (i < full.length && k < n) { if (full[i] === '<') { var j = full.indexOf('>', i); out += full.slice(i, j + 1); i = j + 1; } else { out += full[i++]; k++; } }
+          return out + (/<b>(?!.*<\/b>)/.test(out) ? '</b>' : '');
+        }
+        async function loop() {
+          c.classList.add('anim');
+          for (;;) {
+            u.textContent = ''; r.innerHTML = ''; chip.classList.remove('on'); u.classList.add('caret');
+            await wait(700);
+            for (var i = 1; i <= q.length; i++) { u.textContent = q.slice(0, i); await wait(38); }
+            u.classList.remove('caret'); await wait(500);
+            chip.classList.add('on'); await wait(900);
+            r.classList.add('caret');
+            for (var k = 1; k <= plain.length; k++) { r.innerHTML = rich(k); await wait(28); }
+            r.classList.remove('caret'); await wait(4000);
+          }
+        }
+        loop();
+      })();
+      </script>
       <p class="sources" style="margin-top:-8px;text-align:center">Background photo: <a href="https://unsplash.com/photos/the-interior-of-a-car-with-a-laptop-on-the-dashboard-1tm9Rkp_43Q" rel="noopener">Bram Van Oost on Unsplash</a>, tinted and overlaid by NorseLift.</p>
 
       <p>Grok can talk to NorseLift. Connect it once and you can ask about your training, log a session or plan your week, whether you're on grok.com, in Grok Bot, or (with some caveats) in your car.</p>
