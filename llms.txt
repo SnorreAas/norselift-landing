@@ -22,9 +22,27 @@ NorseLift is a gym and strength training tracker designed for serious lifters wh
 - **Offline support**: Works without an internet connection
 - **PWA**: Install to your home screen or desktop straight from the browser
 
+## Connect your AI (MCP), Pro — new in v1.0.0
+
+NorseLift Pro users (paid, gifted or referral) can connect AI assistants such as ChatGPT, Claude, Grok and any other app that supports custom connectors via the Model Context Protocol (MCP).
+
+- **MCP server URL**: https://app.norselift.com/mcp
+- **Auth**: OAuth consent; you approve the connection on a NorseLift page. Manage or revoke connected apps in Settings.
+- **What an assistant can do**: log and edit workouts, read workouts and training stats, list exercises, create routines and Library workouts, schedule routines, set the active routine, and delete/restore items (deletes ask for confirmation).
+
+How to connect:
+1. In NorseLift, open Settings → Connect AI and copy the MCP URL.
+2. Claude: Settings → Connectors → Add custom connector → paste the URL → Add.
+3. ChatGPT: Settings → Apps & Connectors → turn on Developer mode → Create → paste the URL.
+4. Other MCP apps: add a custom connector / server URL and paste the URL.
+5. Approve the connection on the NorseLift sign-in page.
+
+Example: "Make me a 3-day aesthetic routine, Mon/Wed/Fri, and make it active" → the assistant calls create_routine, schedule_routine and set_active_routine.
+
 ## Pricing
 
 - **Free tier**: Up to 3 programs, 1 scheduled routine, full workout history (editing limited to the last 7 days), exercise library, smart suggestions, rest timer, PR celebrations, body weight, cardio, training blocks, cloud sync
+- **Pro** includes Connect your AI (MCP) at no extra cost
 - **Pro Monthly**: $4.99/month ($1.99 first month for new subscribers only, via the Newcomer offer)
 - **Pro Quarterly**: $10.49/quarter ($3.49/month)
 - **Pro Yearly**: $29.99/year ($2.49/month)

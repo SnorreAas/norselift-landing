@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NorseLift — Free Gym & Workout Tracker App | Log Workouts, Track PRs</title>
-  <meta name="description" content="Free workout tracker app for gym, strength training, and weightlifting. Log exercises, track personal records, build custom programs, and sync across all devices. No download needed — works on iPhone, Android, and desktop." />
+  <title>NorseLift — Free Gym & AI Workout Tracker | Works with ChatGPT & Claude</title>
+  <meta name="description" content="Free gym and workout tracker app. Log sets, track PRs and build programs on any device. Pro connects your AI assistant (ChatGPT, Claude, Grok) via MCP to log workouts and build routines for you." />
   <meta name="keywords" content="workout tracker, gym tracker, gym app, workout log, fitness tracker, strength training app, weightlifting tracker, exercise tracker, personal records tracker, workout planner, gym log app, free workout app, progressive overload tracker, workout routine builder, gym workout tracker, weight training app, fitness app free, bodybuilding tracker, powerlifting app, PWA fitness app" />
   <meta name="theme-color" content="#e6eef8" id="meta-theme" />
 
@@ -12,8 +12,8 @@
   <link rel="canonical" href="https://norselift.com" />
 
   <!-- Open Graph -->
-  <meta property="og:title" content="NorseLift — Free Gym & Workout Tracker App" />
-  <meta property="og:description" content="Free workout tracker for gym, strength training, and weightlifting. Log exercises, track PRs, build custom programs. Works on any device — no download needed." />
+  <meta property="og:title" content="NorseLift — Free Gym & AI Workout Tracker" />
+  <meta property="og:description" content="Log workouts, track PRs and build programs on any device. Pro lets ChatGPT, Claude and other AI assistants log workouts and build routines for you via MCP." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://norselift.com" />
   <meta property="og:image" content="https://norselift.com/og-image.png" />
@@ -23,8 +23,8 @@
 
   <!-- Twitter/X -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="NorseLift — Free Gym & Workout Tracker App" />
-  <meta name="twitter:description" content="Free workout tracker for gym, strength training, and weightlifting. Log exercises, track PRs, build custom programs. Works on any device — no download needed." />
+  <meta name="twitter:title" content="NorseLift — Free Gym & AI Workout Tracker" />
+  <meta name="twitter:description" content="Log workouts, track PRs and build programs on any device. Pro lets ChatGPT, Claude and other AI assistants log workouts and build routines for you via MCP." />
   <meta name="twitter:image" content="https://norselift.com/og-image.png" />
 
   <!-- Structured Data -->
@@ -41,7 +41,7 @@
     "url": "https://norselift.com",
     "description": "Free gym and workout tracker app. Log exercises, track personal records, build custom workout programs, and sync across all devices. Works on iPhone, Android, and desktop — no download required.",
     "screenshot": ["https://norselift.com/og-image.png", "https://norselift.com/app-screenshot.png", "https://norselift.com/screenshot-desktop-dark.png"],
-    "featureList": "Workout logging, Smart weight and rep suggestions, Rest timer, Personal record detection, Custom workout programs, Workout scheduling, Training blocks, Cardio logging, Body weight tracking, Streak calendar, Exercise progression charts, Weekly volume, Workout sharing, Warm-up sets, Cloud sync, Offline support, Desktop layout",
+    "featureList": "AI assistant integration via MCP server (ChatGPT, Claude, Grok and other MCP clients; Pro), Workout logging, Smart weight and rep suggestions, Rest timer, Personal record detection, Custom workout programs, Workout scheduling, Training blocks, Cardio logging, Body weight tracking, Streak calendar, Exercise progression charts, Weekly volume, Workout sharing, Warm-up sets, Cloud sync, Offline support, Desktop layout",
     "offers": [
       { "@type": "Offer", "price": "0", "priceCurrency": "USD", "name": "Free" },
       { "@type": "Offer", "price": "4.99", "priceCurrency": "USD", "name": "Pro Monthly", "description": "$1.99 first month for new subscribers (Newcomer offer), then $4.99/mo" },
@@ -60,10 +60,42 @@
     "mainEntity": [
       {
         "@type": "Question",
+        "name": "Can I use NorseLift with ChatGPT or Claude?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. NorseLift Pro includes Connect your AI: add NorseLift as a custom connector in ChatGPT, Claude, Grok or any AI app that supports MCP, sign in to NorseLift to approve, and your assistant can log and edit workouts, read your stats and create and schedule routines."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the NorseLift MCP server?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "MCP (Model Context Protocol) is an open standard that lets AI assistants use tools in other apps. The NorseLift MCP server at https://app.norselift.com/mcp gives your assistant secure, OAuth-approved access to your own training data. You can see and revoke connected apps in Settings at any time."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is AI access included in Pro?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Connect your AI is included in every active Pro plan, whether paid, gifted or earned through a referral. There is no extra AI fee."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I connect my AI assistant?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "In NorseLift, open Settings → Connect AI and copy the URL https://app.norselift.com/mcp. In Claude go to Settings → Connectors → Add custom connector; in ChatGPT go to Settings → Apps & Connectors, turn on Developer mode and create a connector. Paste the URL, then approve the connection on the NorseLift page that opens."
+        }
+      },
+      {
+        "@type": "Question",
         "name": "Is NorseLift really free?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. Free includes up to 3 programs, 1 scheduled routine, your full workout history, smart suggestions, the rest timer, PR celebrations, streaks, body weight, cardio and cloud sync. No credit card needed. Pro adds unlimited programs, editing of older sessions, backfill and deeper insights like exercise progression, records and weekly volume."
+          "text": "Yes. Free includes up to 3 programs, 1 scheduled routine, your full workout history, smart suggestions, the rest timer, PR celebrations, streaks, body weight, cardio and cloud sync. No credit card needed. Pro adds unlimited programs, editing of older sessions, backfill and the deeper insights (exercise progression, records, weekly volume and more)."
         }
       },
       {
@@ -71,15 +103,15 @@
         "name": "Do I need to download anything?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Nope. NorseLift is a Progressive Web App (PWA) — open it in your browser and add it to your home screen for a native app experience. It works offline, loads instantly, and doesn't take up storage like traditional apps."
+          "text": "No. NorseLift is a Progressive Web App. Open app.norselift.com and add it to your home screen (Safari: Share → Add to Home Screen; Chrome: Install app). It launches full-screen and works offline."
         }
       },
       {
         "@type": "Question",
-        "name": "What devices does NorseLift work on?",
+        "name": "Does it work on desktop?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Any device with a modern browser — iPhone, Android, iPad, laptop, desktop (with a dedicated desktop layout). Your data syncs automatically across all of them via cloud sync, so you can log a workout on your phone and review your progress on your laptop."
+          "text": "Yes. On a laptop or desktop NorseLift switches to a full desktop layout with a sidebar. Your data syncs between all your devices."
         }
       },
       {
@@ -87,15 +119,23 @@
         "name": "Can I create my own workout programs?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Absolutely. Build custom routines with any exercises you want — Push/Pull/Legs, Upper/Lower, full body, or your own split. Add rest days, schedule them across the week, and NorseLift handles the rotation automatically."
+          "text": "Absolutely. Build routines with any exercises (Push/Pull/Legs, Upper/Lower, full body or your own split), schedule them across the week, and NorseLift handles the rotation."
         }
       },
       {
         "@type": "Question",
-        "name": "How does the smart suggestion feature work?",
+        "name": "How do smart suggestions work?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "NorseLift looks at your recent performance for each exercise and suggests weight and reps for your next set. It factors in your consistency to recommend either building on what you've done or pushing for more. You can accept the suggestion with one tap or enter your own numbers."
+          "text": "NorseLift looks at your recent sets for each exercise and suggests weight and reps for the next session, either building on what you did or pushing for a little more. Accept with a tap or type your own."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I log cardio?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Log running and other cardio with time and distance. Cardio days show on your calendar and streak, and Pro adds a pace trend."
         }
       },
       {
@@ -111,7 +151,7 @@
         "name": "Can I cancel Pro anytime?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. Cancel anytime from Manage subscription in the app, which opens our payment provider Stripe. No contracts. Pro stays active until the end of your paid period, then your account returns to the Free plan. Cancelling never deletes your workouts."
+          "text": "Yes. Cancel anytime from Manage subscription in the app, which opens our payment provider Stripe. No contracts. Pro stays active until the end of your paid period, then your account returns to Free. Cancelling never deletes your workouts."
         }
       }
     ]
@@ -435,6 +475,14 @@
       .billing-toggle button { padding: 9px 12px; }
     }
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .btn, .blog-card { transition: none; } }
+    /* Connect your AI */
+    .ai-visual { margin: 0 auto; max-width: 1100px; border-radius: 24px; overflow: hidden; box-shadow: var(--shadow-lg); }
+    .ai-visual img { width: 100%; }
+    .ai-cap { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px 28px; margin-top: 32px; font-size: 15px; color: var(--text-2); list-style: none; }
+    .ai-cap li::before { content: '✓'; color: var(--green); font-weight: 700; margin-right: 6px; }
+    .ai-cta { margin-top: 24px; }
+    .ai-note { margin-top: 12px; font-size: 14px; color: var(--muted); }
+    @media (max-width: 600px) { .ai-visual { max-width: 340px; border-radius: 20px; } }
   </style>
 </head>
 <body>
@@ -445,7 +493,7 @@
       <a href="/" class="logo"><img src="/norselift-icon-192.png" alt="" width="30" height="30" />NorseLift</a>
       <div class="nav-links">
         <a href="#features">Features</a>
-        <a href="#desktop">Desktop</a>
+        <a href="#connect-ai">Connect AI</a>
         <a href="#pricing">Pricing</a>
         <a href="#faq">FAQ</a>
         <a href="/blog">Blog</a>
@@ -466,7 +514,7 @@
     <div class="hero-glow" aria-hidden="true"></div>
     <div class="container hero-inner">
       <div class="hero-text">
-        <a href="#desktop" class="pill-new"><span>New</span> Desktop layout, cardio &amp; training blocks →</a>
+        <a href="#connect-ai" class="pill-new"><span>New</span> Connect ChatGPT, Claude &amp; more to NorseLift →</a>
         <h1 class="norse">Forge your<br/><span class="accent">strength.</span></h1>
         <p class="hero-sub">The workout tracker for people who train with purpose. Log sets in seconds, see what to beat next time, and watch every lift move up. No noise, no ads.</p>
         <div class="hero-actions">
@@ -623,7 +671,7 @@
         <div class="tile"><div class="ub" aria-hidden="true"><span class="ub-pill ok"><svg class="ub-i" viewBox="0 0 24 24"><path d="M22 7l-8.5 8.5-5-5L2 17M16 7h6v6"/></svg>Bulk · Day 23</span></div><h4>Training blocks</h4><p>Bulk, cut or maintain. Know which day you're on.</p></div>
         <div class="tile"><div class="ub" aria-hidden="true"><svg class="ub-spark" viewBox="0 0 80 28"><path class="f" d="M2 8L12 10 22 9 32 13 42 12 52 16 62 17 72 19 78 20V28H2z"/><path d="M2 8L12 10 22 9 32 13 42 12 52 16 62 17 72 19 78 20"/></svg><span class="ub-col"><b class="ub-n">82.4<small> kg</small></b><span class="ub-good">-0.6 kg</span></span></div><h4>Body weight</h4><p>Quick log with a 30-day trend.</p></div>
         <div class="tile"><div class="ub" aria-hidden="true"><span class="ub-pill ok"><svg class="ub-i" viewBox="0 0 24 24"><path d="M17.5 19H9a7 7 0 1 1 6.7-9h1.8a4.5 4.5 0 1 1 0 9z"/></svg><span>Cloud sync<span class="sm-hide"> active</span></span></span></div><h4>Cloud sync + offline</h4><p>Logs locally, syncs when you're back online.</p></div>
-        <div class="tile"><div class="ub" aria-hidden="true"><span class="ub-desk"><i class="side"></i><i></i><i></i><i class="wide"></i></span></div><h4>Desktop layout</h4><p>A full sidebar layout for planning on a big screen.</p></div>
+        <div class="tile"><div class="ub" aria-hidden="true"><span class="ub-pro">PRO</span><span class="ub-pill ok"><svg class="ub-i" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>create_routine</span></div><h4>Connect your AI</h4><p>Let ChatGPT, Claude or Grok log workouts and build routines via MCP.</p></div>
         <div class="tile"><div class="ub" aria-hidden="true"><span class="ub-sw" style="--c:#e6eef8;--d:#4a90d9"></span><span class="ub-sw" style="--c:#0a0e1a;--d:#6aabef"></span><span class="ub-sw" style="--c:#fff5f9;--d:#ff69b4"></span></div><h4>Light, dark &amp; Maiden</h4><p>Three themes. Pick your vibe.</p></div>
         <div class="tile"><div class="ub" aria-hidden="true"><span class="ub-card"><span class="ub-card-h"><b>Pull</b><span>NorseLift</span></span><span class="ub-card-s"><span><b>55</b>MIN</span><span class="sm-hide"><b>9.8</b>TONNES</span></span></span></div><h4>Share card</h4><p>Turn a finished workout into a postable image.</p></div>
         <div class="tile"><div class="ub" aria-hidden="true"><span class="ub-pro">PRO</span><span class="ub-pill ok"><span class="sm-hide">A friend joined — </span>+3d</span></div><h4>Invite friends, earn Pro</h4><p>Referral rewards built into your profile.</p></div>
@@ -643,6 +691,30 @@
         <div class="browser-bar" aria-hidden="true"><i></i><i></i><i></i><span>app.norselift.com</span></div>
         <img class="screenshot-dark" src="/screenshot-desktop-dark.png" alt="NorseLift desktop layout: sidebar navigation and profile dashboard" width="1440" height="900" loading="lazy" />
         <img class="screenshot-light" src="/screenshot-desktop-light.png" alt="NorseLift desktop layout in light mode: sidebar navigation and profile dashboard" width="1440" height="900" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONNECT YOUR AI ============ -->
+  <section class="ai" id="connect-ai" aria-labelledby="connect-ai-h">
+    <div class="container">
+      <div class="section-head center">
+        <p class="eyebrow">New in v1.0 · <span class="pro-pill">PRO</span></p>
+        <h2 class="norse" id="connect-ai-h">Connect your AI. <span class="accent">Let it do the logging.</span></h2>
+        <p class="lead">Connect ChatGPT, Claude, Grok or any other MCP-compatible assistant to NorseLift. Ask it to log a workout, check your stats or build a routine, and it shows up in the app instantly.</p>
+      </div>
+      <figure class="ai-visual">
+        <picture>
+          <source media="(max-width: 600px)" type="image/webp" srcset="/ai-hero-visual-mobile.webp" width="620" height="1112" />
+          <source media="(max-width: 600px)" srcset="/ai-hero-visual-mobile.png" width="620" height="1112" />
+          <source type="image/webp" srcset="/ai-hero-visual.webp" />
+          <img src="/ai-hero-visual.png" width="2048" height="1152" loading="lazy" decoding="async" alt="Claude on an iPhone asked to make a 3-day aesthetic routine for Monday, Wednesday and Friday calls the NorseLift MCP tools create_routine, schedule_routine and set_active_routine; next to it, NorseLift on a laptop shows Aesthetic 3-Day as the active routine." />
+        </picture>
+      </figure>
+      <ul class="ai-cap"><li>Log &amp; edit workouts</li><li>Read your stats</li><li>Create &amp; schedule routines</li></ul>
+      <div class="center ai-cta">
+        <a href="https://app.norselift.com" class="btn btn-primary" onclick="gtag('event','cta_click',{button_name:'connect_ai'})">Connect in Settings</a>
+        <p class="ai-note">Pro feature · Settings → Connect AI · Works with any MCP client</p>
       </div>
     </div>
   </section>
@@ -679,7 +751,7 @@
       <div class="section-head center">
         <p class="eyebrow">Pricing</p>
         <h2 class="norse">Free to train. Pro to go deeper.</h2>
-        <p class="lead">Free has everything you need to log and stay consistent. Pro unlocks the insights. It costs less than a protein shake.</p>
+        <p class="lead">Free has everything you need to log and stay consistent. Pro unlocks the insights and connects your AI assistant. It costs less than a protein shake.</p>
       </div>
 
       <div class="billing-toggle" id="billingToggle" role="tablist" aria-label="Billing period">
@@ -714,6 +786,7 @@
           <a href="https://app.norselift.com/upgrade" class="btn btn-primary block" id="proCta" onclick="gtag('event','cta_click',{button_name:'pricing_pro'})">Start Pro, $1.99 first month</a>
           <ul class="plan-list">
             <li class="em">Everything in Free, plus:</li>
+            <li><b>Connect your AI (MCP): ChatGPT, Claude, Grok &amp; more</b></li>
             <li>Unlimited programs &amp; scheduled routines</li>
             <li>Edit &amp; delete any past session</li>
             <li>Backfill workouts you forgot to log</li>
@@ -737,6 +810,10 @@
         <p class="eyebrow">FAQ</p>
         <h2 class="norse">Frequently asked</h2>
       </div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Can I use NorseLift with ChatGPT or Claude?</button><div class="faq-a"><p>Yes. NorseLift Pro includes Connect your AI: add NorseLift as a custom connector in ChatGPT, Claude, Grok or any AI app that supports MCP, sign in to NorseLift to approve, and your assistant can log and edit workouts, read your stats and create and schedule routines.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">What is the NorseLift MCP server?</button><div class="faq-a"><p>MCP (Model Context Protocol) is an open standard that lets AI assistants use tools in other apps. The NorseLift MCP server at https://app.norselift.com/mcp gives your assistant secure, OAuth-approved access to your own training data. You can see and revoke connected apps in Settings at any time.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Is AI access included in Pro?</button><div class="faq-a"><p>Yes. Connect your AI is included in every active Pro plan, whether paid, gifted or earned through a referral. There is no extra AI fee.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">How do I connect my AI assistant?</button><div class="faq-a"><p>In NorseLift, open Settings → Connect AI and copy the URL https://app.norselift.com/mcp. In Claude go to Settings → Connectors → Add custom connector; in ChatGPT go to Settings → Apps & Connectors, turn on Developer mode and create a connector. Paste the URL, then approve the connection on the NorseLift page that opens.</p></div></div>
       <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Is NorseLift really free?</button><div class="faq-a"><p>Yes. Free includes up to 3 programs, 1 scheduled routine, your full workout history, smart suggestions, the rest timer, PR celebrations, streaks, body weight, cardio and cloud sync. No credit card needed. Pro adds unlimited programs, editing of older sessions, backfill and the deeper insights (exercise progression, records, weekly volume and more).</p></div></div>
       <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Do I need to download anything?</button><div class="faq-a"><p>No. NorseLift is a Progressive Web App. Open app.norselift.com and add it to your home screen (Safari: Share → Add to Home Screen; Chrome: Install app). It launches full-screen and works offline.</p></div></div>
       <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Does it work on desktop?</button><div class="faq-a"><p>Yes. On a laptop or desktop NorseLift switches to a full desktop layout with a sidebar. Your data syncs between all your devices.</p></div></div>
@@ -790,6 +867,7 @@
       <nav class="footer-links" aria-label="Footer">
         <a href="https://app.norselift.com">App</a>
         <a href="#features">Features</a>
+        <a href="#connect-ai">Connect AI</a>
         <a href="#pricing">Pricing</a>
         <a href="#faq">FAQ</a>
         <a href="mailto:support@norselift.com">Support</a>
