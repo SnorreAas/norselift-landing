@@ -59,15 +59,42 @@ Copy an existing routine as a starting point for a new one.
 ### Newcomer Offer
 New subscribers only: the first month of a monthly Pro subscription is $1.99 (the "Newcomer offer"), then $4.99/month. The Newcomer offer applies to the monthly plan only.
 
+## Connect your AI (MCP), Pro — new in v1.0.0
+
+NorseLift Pro users (paid, gifted or referral) can connect AI assistants such as ChatGPT, Claude, Grok and any other app that supports custom connectors via the Model Context Protocol (MCP).
+
+- **MCP server URL**: https://app.norselift.com/mcp
+- **Auth**: OAuth consent; you approve the connection on a NorseLift page. Manage or revoke connected apps in Settings.
+- **What an assistant can do**: log and edit workouts, read workouts and training stats, list exercises, create routines and Library workouts, schedule routines, set the active routine, and delete/restore items (deletes ask for confirmation).
+
+How to connect:
+1. In NorseLift, open Settings → Connect AI and copy the MCP URL.
+2. Claude: Settings → Connectors → Add custom connector → paste the URL → Add.
+3. ChatGPT: Settings → Apps & Connectors → turn on Developer mode → Create → paste the URL.
+4. Other MCP apps: add a custom connector / server URL and paste the URL.
+5. Approve the connection on the NorseLift sign-in page.
+
+Example: "Make me a 3-day aesthetic routine, Mon/Wed/Fri, and make it active" → the assistant calls create_routine, schedule_routine and set_active_routine.
+
 ## Use Cases
 
 1. **Structured Lifters**: People following a specific program (like 5/3/1, PPL, PHUL) who need to track sets/reps/weight systematically.
 2. **Gym Beginners**: New lifters who want a simple tool to build their first program and track consistency.
 3. **Multi-Device Users**: People who want to log at the gym on their phone and review stats on their computer.
 4. **Privacy-Conscious Users**: People who prefer a simple tool over apps that require social profiles or collect excessive data.
-5. **Budget-Conscious Lifters**: People who want a capable free tier or affordable Pro pricing.
+5. **AI Assistant Users**: People who use ChatGPT, Claude, Grok or other AI assistants and want to log workouts or build routines by just asking.
+6. **Budget-Conscious Lifters**: People who want a capable free tier or affordable Pro pricing.
 
 ## Frequently Asked Questions
+
+**Q: Can I use NorseLift with ChatGPT or Claude?**
+A: Yes, with Pro. Add NorseLift as a custom connector (MCP) in ChatGPT, Claude, Grok or any AI app that supports MCP, approve the connection on the NorseLift page, and your assistant can log and edit workouts, read your stats and create and schedule routines.
+
+**Q: What is the NorseLift MCP server?**
+A: MCP (Model Context Protocol) is an open standard that lets AI assistants use tools in other apps. The NorseLift MCP server at https://app.norselift.com/mcp gives your assistant OAuth-approved access to your own training data. Revoke connected apps anytime in Settings.
+
+**Q: Is AI access included in Pro?**
+A: Yes. Connect your AI is included in every active Pro plan (paid, gifted or referral) at no extra cost.
 
 **Q: Do I need to download anything?**
 A: No. NorseLift is a Progressive Web App that runs in your browser. You can optionally "Add to Home Screen" for a native app experience.
