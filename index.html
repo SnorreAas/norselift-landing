@@ -483,6 +483,26 @@
     .ai-cap li::before { content: '✓'; color: var(--green); font-weight: 700; margin-right: 6px; }
     .ai-cta { margin-top: 24px; }
     .ai-note { margin-top: 12px; font-size: 14px; color: var(--muted); }
+    .ai-visual { position: relative; }
+    .aiv-live { display: none; position: absolute; left: 6.934%; top: 17.882%; width: 23.4375%; height: 60.59%; container-type: inline-size; background: #faf9f5; transition: opacity .6s; }
+    .aiv-live.on { display: block; }
+    .aiv-live.out { opacity: 0; }
+    .aiv-live .m { position: absolute; inset: 0; color: #1f1e1d; font-family: Inter, sans-serif; }
+    .aiv-live .u { position: absolute; right: 5.83cqw; top: 33.83cqw; width: 70.66cqw; min-height: 26.59cqw; background: #efebe2; padding: 3.33cqw 5cqw; border-radius: 6.67cqw; font-size: 4.58cqw; line-height: 1.45; }
+    .aiv-live .tl { position: absolute; left: 5.83cqw; top: 64.17cqw; width: 88.33cqw; border: 1px solid #e8e4da; border-radius: 4.17cqw; background: #f5f3ee; overflow: hidden; opacity: 0; transition: opacity .3s; }
+    .aiv-live .tl.v { opacity: 1; }
+    .aiv-live .t { display: flex; align-items: center; gap: 2.5cqw; height: 10.14cqw; padding: 0 3.75cqw; font-size: 3.96cqw; font-weight: 500; color: #5d5b55; border-top: 1px solid #e8e4da; opacity: 0; transition: opacity .25s; }
+    .aiv-live .t:first-child { border-top: 0; }
+    .aiv-live .t.v { opacity: 1; }
+    .aiv-live .t code { font: 500 3.96cqw ui-monospace, Menlo, monospace; color: #1f1e1d; }
+    .aiv-live .t .ck { margin-left: auto; color: #2f7d4f; font-weight: 700; opacity: 0; transition: opacity .2s; }
+    .aiv-live .t .sp { margin-left: auto; width: 3.4cqw; height: 3.4cqw; border: 1.5px solid #c9c5bb; border-top-color: #d97757; border-radius: 50%; animation: aivspin .7s linear infinite; }
+    .aiv-live .t.done .ck { opacity: 1; } .aiv-live .t.done .sp { display: none; }
+    .aiv-live .rep { position: absolute; left: 5.83cqw; top: 99.17cqw; width: 88.33cqw; font: 5.2cqw/1.5 Georgia, serif; opacity: 0; transition: opacity .5s; }
+    .aiv-live .rep.v { opacity: 1; }
+    @keyframes aivspin { to { transform: rotate(360deg); } }
+    @media (max-width: 600px) { .aiv-live { left: 11.29%; top: 16.727%; width: 77.419%; height: 62.77%; } }
+    @media (prefers-reduced-motion: reduce) { .aiv-live { display: none !important; } }
     @media (max-width: 600px) { .ai-visual { max-width: 340px; border-radius: 20px; } }
     /* AI highlight (sparkles + gradient) */
     @property --ai-angle { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
@@ -730,6 +750,11 @@
           <source type="image/webp" srcset="/ai-hero-visual.webp" />
           <img src="/ai-hero-visual.png" width="2048" height="1152" loading="lazy" decoding="async" alt="Claude on an iPhone asked to make a 3-day aesthetic routine for Monday, Wednesday and Friday calls the NorseLift MCP tools create_routine, schedule_routine and set_active_routine; next to it, NorseLift on a laptop shows Aesthetic 3-Day as the active routine." />
         </picture>
+        <div class="aiv-live" id="aivLive" aria-hidden="true"><div class="m">
+          <div class="u"><span class="ty"></span></div>
+          <div class="tl"><div class="t">NorseLift · <code>create_routine</code><span class="sp"></span><span class="ck">✓</span></div><div class="t">NorseLift · <code>schedule_routine</code><span class="sp"></span><span class="ck">✓</span></div><div class="t">NorseLift · <code>set_active_routine</code><span class="sp"></span><span class="ck">✓</span></div></div>
+          <div class="rep">Done! <b>Aesthetic 3-Day</b> is now your active routine: Anterior Upper Mon, Posterior Upper Wed, Legs + Core Fri.</div>
+        </div></div>
       </figure>
       <ul class="ai-cap"><li>Log &amp; edit workouts</li><li>Read your stats</li><li>Create &amp; schedule routines</li></ul>
       <div class="center ai-cta">
@@ -947,5 +972,30 @@
   </script>
 
   <script defer src="/_vercel/insights/script.js"></script>
+  <script>
+  (function () {
+    var L = document.getElementById('aivLive');
+    if (!L || !('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var q = 'Make me a 3-day aesthetic routine, Mon/Wed/Fri, and make it active', ty = L.querySelector('.ty'),
+        tl = L.querySelector('.tl'), rows = L.querySelectorAll('.t'), rep = L.querySelector('.rep'), vis = false, running = false;
+    function w(ms) { return new Promise(function (f) { setTimeout(f, ms); }); }
+    function idle() { return new Promise(function (f) { (function c() { vis ? f() : setTimeout(c, 300); })(); }); }
+    async function run() {
+      running = true; L.classList.add('on');
+      for (;;) {
+        await idle();
+        ty.textContent = ''; tl.classList.remove('v'); rep.classList.remove('v');
+        rows.forEach(function (r) { r.classList.remove('v', 'done'); });
+        L.classList.remove('out'); await w(700);
+        for (var i = 1; i <= q.length; i++) { ty.textContent = q.slice(0, i); await w(34); }
+        await w(500); tl.classList.add('v');
+        for (var k = 0; k < rows.length; k++) { rows[k].classList.add('v'); await w(700); rows[k].classList.add('done'); await w(250); }
+        await w(300); rep.classList.add('v'); await w(1200);
+        L.classList.add('out'); await w(5000);
+      }
+    }
+    new IntersectionObserver(function (e) { vis = e[0].isIntersecting; if (vis && !running) run(); }, { threshold: 0.4 }).observe(L.parentNode);
+  })();
+  </script>
 </body>
 </html>
