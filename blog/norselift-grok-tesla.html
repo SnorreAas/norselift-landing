@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How to Use NorseLift with Grok, Grok Bot and in Your Tesla — NorseLift</title>
+  <meta name="description" content="Add NorseLift as a custom MCP connector in Grok, use it from Grok Bot, and what Tesla says about Grok connectors in the car. Step-by-step guide with sources." />
+  <meta name="theme-color" content="#e6eef8" id="meta-theme" />
+  <link rel="canonical" href="https://norselift.com/blog/norselift-grok-tesla" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="How to Use NorseLift with Grok, Grok Bot and in Your Tesla" />
+  <meta property="og:description" content="Use NorseLift with Grok: custom MCP connector on grok.com, Grok Bot, and Grok in your Tesla." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://norselift.com/blog/norselift-grok-tesla" />
+  <meta property="og:image" content="https://norselift.com/blog/images/grok-norselift-hero.jpg" />
+  <meta property="og:image:width" content="1400" />
+  <meta property="og:image:height" content="933" />
+  <meta property="og:site_name" content="NorseLift" />
+  <meta property="article:published_time" content="2026-10-15" />
+
+  <!-- Twitter/X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="How to Use NorseLift with Grok, Grok Bot and in Your Tesla" />
+  <meta name="twitter:description" content="Use NorseLift with Grok: custom MCP connector on grok.com, Grok Bot, and Grok in your Tesla." />
+  <meta name="twitter:image" content="https://norselift.com/blog/images/grok-norselift-hero.jpg" />
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "How to Use NorseLift with Grok, Grok Bot and in Your Tesla",
+    "description": "Add NorseLift as a custom MCP connector in Grok, use it from Grok Bot, and what Tesla says about Grok connectors in the car. Step-by-step guide with sources.",
+    "image": "https://norselift.com/blog/images/grok-norselift-hero.jpg",
+    "author": {
+      "@type": "Organization",
+      "name": "NorseLift"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "NorseLift",
+      "url": "https://norselift.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://norselift.com/norselift-icon-192.png"
+      }
+    },
+    "datePublished": "2026-10-15",
+    "dateModified": "2026-10-15",
+    "mainEntityOfPage": "https://norselift.com/blog/norselift-grok-tesla",
+    "url": "https://norselift.com/blog/norselift-grok-tesla"
+  }
+  </script>
+
+
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico" sizes="48x48" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+  <!-- Self-hosted fonts (no Google Fonts requests) -->
+  <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/crimson-pro-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/fonts/fonts.css" />
+  <!-- Analytics consent: Google Analytics loads only after "Accept" -->
+  <script src="/consent.js"></script>
+
+  <!-- Prevent flash: apply saved theme before paint -->
+  <script>
+    (function() {
+      var saved = localStorage.getItem('norselift-theme');
+      var theme = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+      var mc = document.getElementById('meta-theme');
+      if (mc) mc.setAttribute('content', theme === 'dark' ? '#0a0e1a' : '#e6eef8');
+    })();
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root, [data-theme="light"] {
+      --bg: #e6eef8;
+      --bg-end: #f2f5fa;
+      --surface: #ffffff;
+      --border: #c8d4e4;
+      --text: #1a1e30;
+      --text-secondary: #4a5268;
+      --text-muted: #7e86a0;
+      --accent: #4a90d9;
+      --accent-dark: #3670a8;
+      --accent-glow-strong: rgba(74, 144, 217, 0.22);
+      --nav-bg: rgba(230, 238, 248, 0.8);
+      --btn-accent-text: #fff;
+    }
+
+    [data-theme="dark"] {
+      --bg: #0a0e1a;
+      --bg-end: #0a0e1a;
+      --surface: #0f1424;
+      --border: #1e2740;
+      --text: #e4e4ef;
+      --text-secondary: #8e92a8;
+      --text-muted: #555a70;
+      --accent: #6aabef;
+      --accent-dark: #4a8ec9;
+      --accent-glow-strong: rgba(106, 171, 239, 0.25);
+      --nav-bg: rgba(6, 10, 20, 0.8);
+      --btn-accent-text: #0a0e1a;
+    }
+
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: linear-gradient(180deg, var(--bg) 0%, var(--bg-end) 100%);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      transition: background 0.4s, color 0.3s;
+    }
+
+    .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+
+    /* Nav */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+      background: var(--nav-bg);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 1120px; margin: 0 auto; padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 72px;
+    }
+    .nav-left {
+      display: flex; align-items: center; gap: 24px;
+    }
+    .logo {
+      font-family: 'Crimson Pro', serif;
+      font-size: 1.4rem; font-weight: 800;
+      display: flex; align-items: center; gap: 12px;
+      text-decoration: none; color: var(--text);
+    }
+    .logo-mark {
+      width: 40px; height: 40px; border-radius: 10px;
+      overflow: hidden;
+    }
+    .logo-mark img {
+      width: 100%; height: 100%; object-fit: cover;
+    }
+    .nav-link {
+      font-size: 0.9rem; font-weight: 500;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .nav-link:hover { color: var(--accent); }
+    .theme-toggle {
+      width: 38px; height: 38px; border-radius: 10px;
+      border: 1px solid var(--border); background: var(--surface);
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      transition: border-color 0.2s, background 0.3s;
+      color: var(--text-muted);
+    }
+    .theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
+    .theme-toggle .icon-sun, .theme-toggle .icon-moon { display: none; }
+    [data-theme="light"] .theme-toggle .icon-moon { display: block; }
+    [data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+
+    /* Content */
+    .content {
+      padding: 120px 0 80px;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--accent);
+      text-decoration: none;
+      margin-bottom: 24px;
+      transition: opacity 0.15s;
+    }
+    .back-link:hover { opacity: 0.8; }
+    .content h1 {
+      font-family: 'Crimson Pro', serif;
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+    .blog-meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 40px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .blog-meta span {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .hero-image {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 3 / 2;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      margin-bottom: 40px;
+      display: block;
+    }
+
+    .content h2 {
+      font-family: 'Crimson Pro', serif;
+      font-size: 1.3rem;
+      font-weight: 800;
+      margin-top: 40px;
+      margin-bottom: 14px;
+      color: var(--accent);
+    }
+    .content h3 {
+      font-family: 'Crimson Pro', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-top: 32px;
+      margin-bottom: 10px;
+      color: var(--text);
+    }
+    .content p {
+      margin-bottom: 16px;
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+    .content ul, .content ol {
+      margin-bottom: 16px;
+      padding-left: 24px;
+    }
+    .content li {
+      color: var(--text-secondary);
+      margin-bottom: 8px;
+      line-height: 1.7;
+    }
+    .content a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .content a:hover {
+      text-decoration: underline;
+    }
+    .content strong {
+      color: var(--text);
+    }
+
+    /* Progress Table */
+    .progress-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0 8px;
+      font-size: 0.85rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .progress-table th {
+      text-align: left;
+      padding: 12px 14px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--text);
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .progress-table td {
+      padding: 10px 14px;
+      color: var(--text-secondary);
+      border-bottom: 1px solid var(--border);
+    }
+    .progress-table tr:last-child td { border-bottom: none; }
+    .progress-table td:first-child { font-weight: 600; color: var(--text); }
+    .progress-table .bump { color: var(--accent); font-weight: 600; }
+    @media (max-width: 640px) {
+      .progress-table th, .progress-table td { padding: 8px 10px; font-size: 0.8rem; }
+    }
+
+    /* Bar Chart */
+    .bar-chart {
+      display: flex;
+      align-items: flex-end;
+      gap: 8px;
+      height: 120px;
+      margin: 24px 0;
+      padding: 0 4px;
+    }
+    .bar-col {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      height: 100%;
+      justify-content: flex-end;
+    }
+    .bar {
+      width: 100%;
+      max-width: 48px;
+      border-radius: 6px 6px 0 0;
+      background: var(--accent);
+      opacity: 0.7;
+      transition: opacity 0.2s;
+      position: relative;
+    }
+    .bar:hover { opacity: 1; }
+    .bar-val {
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .bar-label {
+      font-size: 0.65rem;
+      color: var(--text-muted);
+    }
+
+    /* CTA Box */
+    .cta-box {
+      margin-top: 48px;
+      padding: 32px;
+      background: var(--surface);
+      border: 1px solid var(--accent);
+      border-radius: 16px;
+      text-align: center;
+    }
+    .cta-box h3 {
+      font-family: 'Crimson Pro', serif;
+      font-size: 1.3rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+      margin-top: 0;
+      color: var(--text);
+    }
+    .cta-box p {
+      font-size: 0.95rem;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 32px;
+      border-radius: 12px;
+      background: #f0f4f8;
+      color: #1a1e30;
+      border: 1px solid #c8d4e4;
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform 0.15s, box-shadow 0.2s;
+    }
+    [data-theme="dark"] .cta-btn {
+      background: #1a2236;
+      color: #e4e4ef;
+      border-color: #2a3654;
+    }
+    .cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+      text-decoration: none;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 36px 0;
+    }
+    .footer-inner {
+      max-width: 1120px; margin: 0 auto; padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    footer p { font-size: 0.75rem; color: var(--text-muted); }
+    .footer-links { display: flex; gap: 12px 20px; flex-wrap: wrap; justify-content: center; }
+    .footer-links a, .footer-links button {
+      font-size: 0.75rem; color: var(--text-muted);
+      text-decoration: none; transition: color 0.15s;
+    }
+    .footer-links a:hover, .footer-links button:hover { color: var(--accent); }
+
+    @media (max-width: 640px) {
+      .footer-inner { flex-direction: column; gap: 12px; text-align: center; }
+    }
+    .post-figure { margin: 28px 0; }
+    .post-figure img { width: 100%; height: auto; border-radius: 14px; border: 1px solid var(--border); display: block; }
+    .post-figure figcaption { font-size: 0.8rem; color: var(--text-secondary, #6b7390); margin-top: 8px; text-align: center; }
+    .content code { font-family: ui-monospace, Menlo, monospace; font-size: 0.9em; background: rgba(74,144,217,.12); padding: 2px 6px; border-radius: 6px; }
+    .note { border-left: 3px solid #4a90d9; background: rgba(74,144,217,.08); padding: 14px 18px; border-radius: 0 12px 12px 0; margin: 22px 0; }
+    .sources { font-size: 0.85rem; }
+    .scenario { background: linear-gradient(135deg, rgba(74,144,217,.10), rgba(139,92,246,.08)); border: 1px solid var(--border); border-radius: 16px; padding: 20px 22px; margin: 24px 0; }
+    .scenario .lbl { font-size: .75rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #4a90d9; margin-bottom: 10px; }
+    .bubble { border-radius: 14px; padding: 10px 14px; margin: 8px 0; max-width: 88%; line-height: 1.5; }
+    .bubble.you { background: #4a90d9; color: #fff; margin-left: auto; border-bottom-right-radius: 4px; width: fit-content; }
+    .bubble.grok { background: var(--card-bg, rgba(255,255,255,.7)); border: 1px solid var(--border); border-bottom-left-radius: 4px; }
+    .scenario small { display: block; margin-top: 10px; color: var(--text-secondary, #6b7390); font-size: .8rem; }
+    .try { border: 1px solid var(--border); border-radius: 16px; padding: 18px 22px; margin: 24px 0; background: var(--card-bg, rgba(255,255,255,.6)); }
+    .try h3 { margin: 0 0 12px; font-size: 1.05rem; display: flex; align-items: center; gap: 8px; }
+    .try ul { list-style: none; padding: 0 !important; margin: 0; display: grid; gap: 8px; }
+    .try li { background: rgba(74,144,217,.10); border-radius: 999px; padding: 8px 14px; font-size: .95rem; margin: 0 !important; }
+    .try li::before { content: "“"; color: #4a90d9; font-weight: 700; } .try li::after { content: "”"; color: #4a90d9; font-weight: 700; }
+    .where { width: 100%; border-collapse: collapse; font-size: .9rem; margin: 20px 0; }
+    .where th, .where td { border-bottom: 1px solid var(--border); padding: 10px 8px; text-align: left; vertical-align: top; }
+    .where thead th { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #4a90d9; }
+    .where tbody th { font-weight: 600; width: 26%; }
+    .ok { color: #0b8a5a; font-weight: 600; } .maybe { color: #b7791f; font-weight: 600; }
+    @media (max-width: 640px) {
+      .where thead { display: none; }
+      .where, .where tbody, .where tr, .where th, .where td { display: block; width: 100% !important; }
+      .where tr { border: 1px solid var(--border); border-radius: 12px; padding: 8px 12px; margin-bottom: 10px; }
+      .where th, .where td { border: 0; padding: 4px 0; }
+      .where tbody th { font-size: .95rem; padding-bottom: 6px; }
+      .where td::before { content: attr(data-l) ": "; font-weight: 600; color: #4a90d9; }
+    }
+    .hero-anim { position: relative; container-type: inline-size; margin: 0; }
+    .hero-anim .hero-image { margin-bottom: 0; }
+    .hc { position: absolute; left: 34.14%; top: 32.15%; width: 33.6%; background: rgba(255,255,255,.96); border-radius: 1.86cqw; padding: 1.86cqw; box-shadow: 0 2cqw 5cqw -1.4cqw rgba(0,0,0,.6); color: #1a1e30; font: 1.43cqw/1.45 Inter, system-ui, sans-serif; text-align: left; }
+    .hc .hd { display: flex; align-items: center; gap: .7cqw; font-weight: 700; font-size: 1.21cqw; color: #4a5268; margin-bottom: 1.14cqw; }
+    .hc .mic { width: 2.14cqw; height: 2.14cqw; border-radius: 50%; background: linear-gradient(135deg,#2f6fb8,#4b5fc0); display: grid; place-items: center; flex: none; }
+    .hc .mic svg { width: 1.14cqw; height: 1.14cqw; fill: none; stroke: #fff; stroke-width: 2.2; stroke-linecap: round; }
+    .hc .u { background: #e6eef8; border-radius: 1.14cqw 1.14cqw .3cqw 1.14cqw; padding: .86cqw 1.14cqw; margin: 0 0 1cqw 3.57cqw; }
+    .hc .t { display: inline-flex; gap: .57cqw; align-items: center; font: 600 1.07cqw ui-monospace, Menlo, monospace; background: #edf2f9; border: 1px solid #c8d4e4; border-radius: .7cqw; padding: .43cqw .7cqw; margin-bottom: .86cqw; transition: opacity .3s; }
+    .hc .t b { color: #0b6646; } .hc .r b { color: #2f6aa8; }
+    .tw { display: grid; } .tw > * { grid-area: 1/1; } .tw .ghost { visibility: hidden; }
+    .hc.anim .t { opacity: 0; } .hc.anim .t.on { opacity: 1; }
+    .caret::after { content: ""; display: inline-block; width: 2px; height: 1em; background: #4a90d9; margin-left: 2px; vertical-align: -.15em; animation: blink .8s steps(1) infinite; }
+    @keyframes blink { 50% { opacity: 0; } }
+    @container (max-width: 560px) {
+      .hc { left: 9%; width: 82%; top: 10%; font-size: 3.3cqw; padding: 3cqw; border-radius: 3cqw; }
+      .hc .hd { display: none; }
+      .hc .u { margin: 0 0 1.8cqw 6cqw; padding: 1.6cqw 2.2cqw; border-radius: 2.2cqw 2.2cqw .6cqw 2.2cqw; }
+      .hc .t { font-size: 2.7cqw; padding: .8cqw 1.4cqw; margin-bottom: 1.6cqw; border-radius: 1.4cqw; }
+    }
+    @media (prefers-reduced-motion: reduce) { .caret::after { display: none; } }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <div class="nav-left">
+        <a href="/" class="logo">
+          <div class="logo-mark"><img src="/norselift-icon-192.png" alt="NorseLift" /></div>
+          NorseLift
+        </a>
+        <a href="/blog" class="nav-link">Blog</a>
+      </div>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+        <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <div class="content">
+    <div class="container">
+      <a href="/blog" class="back-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Back to blog
+      </a>
+
+      <h1>How to Use NorseLift with Grok, Grok Bot and in Your Tesla</h1>
+      <div class="blog-meta">
+        <span>October 15, 2026</span>
+        <span>5 min read</span>
+      </div>
+
+      <figure class="hero-anim">
+        <picture>
+          <source type="image/webp" srcset="/blog/images/grok-norselift-hero-bg.webp" />
+          <img class="hero-image" src="/blog/images/grok-norselift-hero-bg.jpg" alt="View from the back seat of an electric car toward the center screen, with a NorseLift answer card" width="1400" height="933" fetchpriority="high" />
+        </picture>
+        <div class="hc" id="hc" aria-hidden="true">
+          <div class="hd"><span class="mic"><svg viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></span>Voice assistant · NorseLift connected</div>
+          <div class="u tw"><span class="ghost">“What's my workout today, and how did bench go last time?”</span><span class="ty" data-t="“What's my workout today, and how did bench go last time?”">“What's my workout today, and how did bench go last time?”</span></div>
+          <div class="t"><b>✓</b> NorseLift · list_workouts</div>
+          <div class="r tw"><span class="ghost">Today is <b>Push</b>, 7 exercises. Last bench session: 4 × 8 at 80 kg. Try 82.5 kg today.</span><span class="ty" data-h="Today is <b>Push</b>, 7 exercises. Last bench session: 4 × 8 at 80 kg. Try 82.5 kg today.">Today is <b>Push</b>, 7 exercises. Last bench session: 4 × 8 at 80 kg. Try 82.5 kg today.</span></div>
+        </div>
+      </figure>
+      <script>
+      (function () {
+        var c = document.getElementById('hc');
+        if (!c || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        var ty = c.querySelectorAll('.ty'), chip = c.querySelector('.t'), u = ty[0], r = ty[1];
+        var full = r.getAttribute('data-h'), plain = full.replace(/<[^>]+>/g, ''), q = u.getAttribute('data-t');
+        function wait(ms) { return new Promise(function (f) { setTimeout(f, ms); }); }
+        function rich(n) { // first n visible chars of the answer, keeping <b>
+          var out = '', k = 0, i = 0;
+          while (i < full.length && k < n) { if (full[i] === '<') { var j = full.indexOf('>', i); out += full.slice(i, j + 1); i = j + 1; } else { out += full[i++]; k++; } }
+          return out + (/<b>(?!.*<\/b>)/.test(out) ? '</b>' : '');
+        }
+        async function loop() {
+          c.classList.add('anim');
+          for (;;) {
+            u.textContent = ''; r.innerHTML = ''; chip.classList.remove('on'); u.classList.add('caret');
+            await wait(700);
+            for (var i = 1; i <= q.length; i++) { u.textContent = q.slice(0, i); await wait(38); }
+            u.classList.remove('caret'); await wait(500);
+            chip.classList.add('on'); await wait(900);
+            r.classList.add('caret');
+            for (var k = 1; k <= plain.length; k++) { r.innerHTML = rich(k); await wait(28); }
+            r.classList.remove('caret'); await wait(4000);
+          }
+        }
+        loop();
+      })();
+      </script>
+      <p class="sources" style="margin-top:-8px;text-align:center">Background photo: <a href="https://unsplash.com/photos/the-interior-of-a-car-with-a-laptop-on-the-dashboard-1tm9Rkp_43Q" rel="noopener">Bram Van Oost on Unsplash</a>, tinted and overlaid by NorseLift.</p>
+
+      <p>Grok can talk to NorseLift. Connect it once and you can ask about your training, log a session or plan your week, whether you're on grok.com, in Grok Bot, or (with some caveats) in your car.</p>
+
+
+      <div class="scenario">
+        <div class="lbl">Picture this</div>
+        <p style="margin:0 0 6px">It's Wednesday morning and you're driving to the gym.</p>
+        <div class="bubble you">Hey Grok, what's my workout today?</div>
+        <div class="bubble grok">Today is <strong>Posterior Upper</strong> in your Aesthetic 3-Day routine: barbell rows, lat pulldowns, seated cable rows, face pulls and tricep pushdowns. Last time you rowed 3 × 10 at 70 kg, so try 72.5 kg today.</div>
+        <small>Illustrative example using the demo routine "Aesthetic 3-Day". Grok reads your NorseLift routine and history through the connector; exact wording will vary.</small>
+      </div>
+
+      <p>You need <strong>NorseLift Pro</strong> (paid, gifted or referral) for Connect your AI, and the NorseLift MCP server URL: <code>https://app.norselift.com/mcp</code>. New to MCP? Start with <a href="/blog/connect-ai-to-norselift">how to connect your AI to NorseLift</a>.</p>
+
+      <h2>Option 1: Add NorseLift as a custom connector on grok.com</h2>
+
+      <p>Grok supports custom MCP servers as connectors. According to xAI's Grok documentation, connectors are available to all Grok users, and you add a custom MCP server like this:</p>
+
+      <ol>
+        <li>Go to <strong>grok.com/connectors</strong>.</li>
+        <li>Click <strong>New Connector</strong>, then <strong>Custom</strong>.</li>
+        <li>Paste <code>https://app.norselift.com/mcp</code> and complete the sign-in. NorseLift opens its own page where you approve the connection.</li>
+        <li>Start a new chat and ask something NorseLift can answer, like "What did I train this week?"</li>
+      </ol>
+
+      <p>Grok discovers the tools the server exposes and uses them when your question needs them. On Grok Business and Enterprise plans, an admin has to add connectors for the team first.</p>
+
+      <h2>Option 2: Use NorseLift from Grok Bot</h2>
+
+      <p>Grok Bot is xAI's assistant app that runs multi-step tasks for you. It can use MCP connectors too: add NorseLift as a custom connector (in our Connect AI card the steps are simply "Add a custom connector" and "Paste the URL"), sign in to NorseLift when asked, and then use it in a chat. Third-party guides describe asking Grok Bot in a chat to add the server, approving it, and attaching it with <code>@</code>. Check your Grok plan: some guides note that certain connector and Grok Bot features need a paid subscription.</p>
+
+      <p>Grok Bot is handy for multi-step requests: "Look at my last four weeks, then build me a 3-day routine that brings up my back, schedule it Mon/Wed/Fri and make it active."</p>
+
+      <h2>Option 3: Grok in your Tesla</h2>
+
+      <p>Grok is available in supported Tesla vehicles. Tesla's support page says:</p>
+
+      <ul>
+        <li>Connectors need vehicle software <strong>2026.26 or later</strong> and a <strong>signed-in Grok account</strong> in the car (plus an AMD processor and Premium Connectivity or Wi-Fi for Grok itself).</li>
+        <li>Connectors are set up from your <strong>phone or computer</strong>, not the touchscreen. Sign the car in with the <strong>same Grok account</strong> you use on your phone, and Grok uses your connectors automatically.</li>
+        <li>Grok Bot in the car needs a SuperGrok subscription.</li>
+      </ul>
+
+      <p>So the expected setup is: add NorseLift as a custom connector on grok.com (Option 1), then sign in to Grok in the car with the same account. Then ask by voice: "What's my workout today?" or "Log 30 minutes of cycling."</p>
+
+      <div class="note"><strong>Honest caveat:</strong> Tesla's examples use built-in connectors like Gmail and Google Calendar. We haven't seen official confirmation that <em>custom</em> MCP connectors work in the car exactly the same way, so treat in-car NorseLift as something to try rather than a guarantee. And please keep it hands-free: don't log sets while driving.</div>
+
+      <p class="sources"><em>The hero image is an illustration: a NorseLift answer overlaid on a stock photo of a car interior. It is not a screenshot of the in-car Grok interface.</em></p>
+
+
+      <h2>What works where</h2>
+
+      <table class="where">
+        <thead><tr><th></th><th>grok.com / Grok app</th><th>Grok Bot</th><th>Grok in Tesla</th></tr></thead>
+        <tbody>
+          <tr><th>Set up</th><td data-l="grok.com">grok.com/connectors → Custom</td><td data-l="Grok Bot">Add a custom connector in Grok Bot</td><td data-l="Tesla">On phone or computer; same Grok account in the car</td></tr>
+          <tr><th>Voice</th><td data-l="grok.com">Voice mode in the Grok app</td><td data-l="Grok Bot">Chat (voice depends on app)</td><td data-l="Tesla">Yes, hands-free</td></tr>
+          <tr><th>Log / edit workouts</th><td data-l="grok.com"><span class="ok">Yes</span></td><td data-l="Grok Bot"><span class="ok">Yes</span></td><td data-l="Tesla"><span class="maybe">Expected</span></td></tr>
+          <tr><th>Routines &amp; scheduling</th><td data-l="grok.com"><span class="ok">Yes</span></td><td data-l="Grok Bot"><span class="ok">Yes</span>, incl. multi-step plans</td><td data-l="Tesla"><span class="maybe">Expected</span></td></tr>
+          <tr><th>Status</th><td data-l="grok.com"><span class="ok">Supported</span> (custom MCP connectors)</td><td data-l="Grok Bot"><span class="ok">Supported</span> (check your plan)</td><td data-l="Tesla"><span class="maybe">Unconfirmed</span> for custom connectors; built-in connectors are documented</td></tr>
+        </tbody>
+      </table>
+
+      <div class="try">
+        <h3><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4a90d9" stroke-width="2.2" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>Try saying</h3>
+        <ul>
+          <li>What's my workout today?</li>
+          <li>Log a 30-minute run for this morning.</li>
+          <li>How did my bench press progress this month?</li>
+          <li>My last squat set was 90 kg, not 100. Fix it.</li>
+          <li>Add an extra rest day before leg day in my routine.</li>
+          <li>Make me a 3-day routine starting Monday and make it active.</li>
+        </ul>
+      </div>
+
+      <h2>Sources</h2>
+
+      <ul class="sources">
+        <li><a href="https://docs.x.ai/grok/connectors" rel="noopener">xAI Grok docs: Connectors (custom MCP connectors)</a></li>
+        <li><a href="https://docs.x.ai/grok/connector-management" rel="noopener">xAI Grok docs: Connector management (Business/Enterprise)</a></li>
+        <li><a href="https://www.tesla.com/support/grok" rel="noopener">Tesla Support: Grok (Connectors, Grok Bot, sign-in)</a></li>
+      </ul>
+
+      <div class="cta-box">
+        <h3>Bring NorseLift to Grok</h3>
+        <p>Connect your AI is included in NorseLift Pro. Copy the MCP URL from Settings → Connect AI and add it as a custom connector.</p>
+        <a href="https://app.norselift.com" class="cta-btn">
+          Open NorseLift
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <p>&copy; 2026 NorseLift. Forged in Norway.</p>
+      <div class="footer-links">
+        <a href="/">Home</a>
+        <a href="https://app.norselift.com">App</a>
+        <a href="/blog">Blog</a>
+        <a href="/terms">Terms</a>
+        <a href="/privacy">Privacy</a>
+        <a href="/withdrawal">Withdrawal</a>
+        <a href="mailto:support@norselift.com">Support</a>
+        <button type="button" data-cookie-settings>Cookie settings</button>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleTheme() {
+      var html = document.documentElement;
+      var current = html.getAttribute('data-theme');
+      var next = current === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('norselift-theme', next);
+      var meta = document.getElementById('meta-theme');
+      if (meta) meta.setAttribute('content', next === 'dark' ? '#0a0e1a' : '#e6eef8');
+    }
+  </script>
+
+  <script defer src="/_vercel/insights/script.js"></script>
+
+</body>
+</html>

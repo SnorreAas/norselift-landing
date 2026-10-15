@@ -39,9 +39,15 @@
   </url>
   <url>
     <loc>https://norselift.com/blog</loc>
-    <lastmod>2026-07-29</lastmod>
+    <lastmod>2026-10-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://norselift.com/blog/images/connect-ai-thumb.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://norselift.com/blog/images/grok-norselift-thumb.jpg</image:loc>
+    </image:image>
     <image:image>
       <image:loc>https://norselift.com/blog/images/best-workout-app-thumb.jpg</image:loc>
       <image:caption>Pink flat-lay of workout gear with a phone showing the NorseLift workout tracker app</image:caption>
@@ -83,6 +89,26 @@
     <image:image>
       <image:loc>https://norselift.com/blog/images/progressive-overload-hero.jpg</image:loc>
       <image:caption>Loaded barbell plate on a gym floor next to a spare weight plate, representing progressive overload training</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://norselift.com/blog/connect-ai-to-norselift</loc>
+    <lastmod>2026-10-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://norselift.com/blog/images/connect-ai-hero.jpg</image:loc>
+      <image:caption>Claude on a phone using NorseLift MCP tools to create and schedule a routine</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://norselift.com/blog/norselift-grok-tesla</loc>
+    <lastmod>2026-10-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://norselift.com/blog/images/grok-norselift-hero.jpg</image:loc>
+      <image:caption>Back-seat view of a car dashboard with a NorseLift workout answer card</image:caption>
     </image:image>
   </url>
 </urlset>

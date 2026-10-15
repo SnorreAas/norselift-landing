@@ -68,3 +68,11 @@ NorseLift is for gym-goers and strength athletes who want a simple, focused work
 ## Company
 
 NorseLift is an independent product built in Norway.
+
+## Blog
+
+- [How to Connect Claude or ChatGPT to NorseLift](https://norselift.com/blog/connect-ai-to-norselift): Pro members can connect any MCP-capable AI assistant via https://app.norselift.com/mcp to log and edit workouts, read stats, and create, schedule and activate routines.
+- [How to Use NorseLift with Grok, Grok Bot and in Your Tesla](https://norselift.com/blog/norselift-grok-tesla): add NorseLift as a custom MCP connector in Grok, use it from Grok Bot, and Grok connectors in Tesla vehicles.
+- [The 5 Best Free Workout Tracker Apps in 2026](https://norselift.com/blog/best-free-workout-tracker-app)
+- [The Complete Push Pull Legs (PPL) Routine Guide](https://norselift.com/blog/push-pull-legs-routine-guide)
+- [Progressive Overload Guide](https://norselift.com/blog/progressive-overload-guide)
