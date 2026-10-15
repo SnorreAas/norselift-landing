@@ -1,6 +1,6 @@
 # NorseLift — Full Documentation
 
-> NorseLift is a free Progressive Web App (PWA) for tracking gym workouts, building custom training programs, and monitoring strength progress. Built for serious lifters who want simplicity over bloat.
+> NorseLift is a free Progressive Web App (PWA) for tracking gym workouts, building custom workouts and routines, and monitoring strength progress. Built for serious lifters who want simplicity over bloat.
 
 ## Product Description
 
@@ -12,8 +12,8 @@ The app runs entirely in the browser as a Progressive Web App. Users can install
 
 ### Free Features
 
-**Custom Workout Programs (up to 3)**
-Users can create their own workout programs with custom exercise ordering. Common splits include Push/Pull/Legs, Upper/Lower, Full Body, or any custom arrangement. Each program defines which exercises to perform and in what order.
+**Custom Workouts (up to 3)**
+Users can create their own workouts with custom exercise ordering and combine them into routines. Common splits include Push/Pull/Legs, Upper/Lower, Full Body, or any custom arrangement. Each workout defines which exercises to perform and in what order.
 
 **Workout Logging**
 During a workout, users log sets with reps and weight. The interface is optimized for quick entry between sets. Previous performance is shown for reference so users know what to beat.
@@ -22,7 +22,7 @@ During a workout, users log sets with reps and weight. The interface is optimize
 A built-in rest timer counts down between sets. On supported Android devices it vibrates when the rest period ends (iOS browsers do not support web vibration). The timer duration is customizable.
 
 **Exercise Library**
-A searchable library of exercises organized by muscle group. Users can browse or search to find exercises and add them to their programs.
+A searchable library of exercises organized by muscle group. Users can browse or search to find exercises and add them to their workouts.
 
 **Cloud Sync**
 All data syncs to the cloud via Firebase, so workouts are accessible from any device. Start a workout on your phone at the gym, review your stats on your laptop at home.
@@ -35,14 +35,17 @@ Free users can schedule one recurring workout routine.
 
 ### Pro Features ($4.99/month, $10.49/quarter, or $29.99/year)
 
-**Unlimited Programs**
-No limit on the number of workout programs. Create programs for different training phases, goals, or seasons.
+**Unlimited Workouts & Routines**
+No limit on custom workouts or routines. Create them for different training phases, goals, or seasons.
 
 **Edit Any Session & Backfill**
 Edit or delete any past session, and backfill workouts you forgot to log.
 
 **Unlimited Scheduled Routines**
 Schedule as many recurring workout routines as needed.
+
+**Connect your AI (MCP)**
+Connect ChatGPT, Claude, Grok or any MCP-compatible assistant (see the Connect your AI section).
 
 **Progress Insights**
 Exercise progression charts (estimated 1RM, top set, volume) with next-session targets, weekly volume per muscle group, strength details, monthly recap and cardio trend.

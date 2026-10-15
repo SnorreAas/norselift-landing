@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NorseLift — Free Gym & AI Workout Tracker | Works with ChatGPT & Claude</title>
-  <meta name="description" content="Free gym and workout tracker app. Log sets, track PRs and build programs on any device. Pro connects your AI assistant (ChatGPT, Claude, Grok) via MCP to log workouts and build routines for you." />
+  <meta name="description" content="Free gym and workout tracker app. Log sets, track PRs and build routines on any device. Pro connects your AI assistant (ChatGPT, Claude, Grok) via MCP to log workouts and build routines for you." />
   <meta name="keywords" content="workout tracker, gym tracker, gym app, workout log, fitness tracker, strength training app, weightlifting tracker, exercise tracker, personal records tracker, workout planner, gym log app, free workout app, progressive overload tracker, workout routine builder, gym workout tracker, weight training app, fitness app free, bodybuilding tracker, powerlifting app, PWA fitness app" />
   <meta name="theme-color" content="#e6eef8" id="meta-theme" />
 
@@ -13,7 +13,7 @@
 
   <!-- Open Graph -->
   <meta property="og:title" content="NorseLift — Free Gym & AI Workout Tracker" />
-  <meta property="og:description" content="Log workouts, track PRs and build programs on any device. Pro lets ChatGPT, Claude and other AI assistants log workouts and build routines for you via MCP." />
+  <meta property="og:description" content="Log workouts, track PRs and build routines on any device. Pro lets ChatGPT, Claude and other AI assistants log workouts and build routines for you via MCP." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://norselift.com" />
   <meta property="og:image" content="https://norselift.com/og-image.png" />
@@ -24,7 +24,7 @@
   <!-- Twitter/X -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="NorseLift — Free Gym & AI Workout Tracker" />
-  <meta name="twitter:description" content="Log workouts, track PRs and build programs on any device. Pro lets ChatGPT, Claude and other AI assistants log workouts and build routines for you via MCP." />
+  <meta name="twitter:description" content="Log workouts, track PRs and build routines on any device. Pro lets ChatGPT, Claude and other AI assistants log workouts and build routines for you via MCP." />
   <meta name="twitter:image" content="https://norselift.com/og-image.png" />
 
   <!-- Structured Data -->
@@ -39,7 +39,7 @@
     "browserRequirements": "Requires a modern web browser with JavaScript enabled",
     "installUrl": "https://app.norselift.com",
     "url": "https://norselift.com",
-    "description": "Free gym and workout tracker app. Log exercises, track personal records, build custom workout programs, and sync across all devices. Works on iPhone, Android, and desktop — no download required.",
+    "description": "Free gym and workout tracker app. Log exercises, track personal records, build custom workouts and routines, and sync across all devices. Works on iPhone, Android, and desktop — no download required.",
     "screenshot": ["https://norselift.com/og-image.png", "https://norselift.com/app-screenshot.png", "https://norselift.com/screenshot-desktop-dark.png"],
     "featureList": "AI assistant integration via MCP server (ChatGPT, Claude, Grok and other MCP clients; Pro), Workout logging, Smart weight and rep suggestions, Rest timer, Personal record detection, Custom workout programs, Workout scheduling, Training blocks, Cardio logging, Body weight tracking, Streak calendar, Exercise progression charts, Weekly volume, Workout sharing, Warm-up sets, Cloud sync, Offline support, Desktop layout",
     "offers": [
@@ -95,7 +95,7 @@
         "name": "Is NorseLift really free?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. Free includes up to 3 programs, 1 scheduled routine, your full workout history, smart suggestions, the rest timer, PR celebrations, streaks, body weight, cardio and cloud sync. No credit card needed. Pro adds unlimited programs, editing of older sessions, backfill and the deeper insights (exercise progression, records, weekly volume and more)."
+          "text": "Yes. Free includes up to 3 custom workouts, 1 scheduled routine, your full workout history, smart suggestions, the rest timer, PR celebrations, streaks, body weight, cardio and cloud sync. No credit card needed. Pro adds unlimited workouts and routines, editing of older sessions, backfill and the deeper insights (exercise progression, records, weekly volume and more)."
         }
       },
       {
@@ -116,7 +116,7 @@
       },
       {
         "@type": "Question",
-        "name": "Can I create my own workout programs?",
+        "name": "Can I create my own workouts and routines?",
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "Absolutely. Build routines with any exercises (Push/Pull/Legs, Upper/Lower, full body or your own split), schedule them across the week, and NorseLift handles the rotation."
@@ -167,7 +167,7 @@
     "alternateName": "NorseLift Workout Tracker",
     "url": "https://norselift.com",
     "logo": "https://norselift.com/norselift-icon-192.png",
-    "description": "NorseLift is a free workout and gym tracker app for logging exercises, tracking personal records, and building custom training programs.",
+    "description": "NorseLift is a free workout and gym tracker app for logging exercises, tracking personal records, and building custom workouts and routines.",
     "sameAs": [
       "https://x.com/NorseLift",
       "https://www.instagram.com/norselift/"
@@ -288,6 +288,7 @@
     .hero-visual { position: relative; height: 640px; }
     .phone { position: relative; border-radius: 46px; padding: 9px; background: var(--frame); box-shadow: var(--shadow-lg), inset 0 0 0 1.5px rgba(255,255,255,.08); }
     .phone img { border-radius: 38px; width: 100%; }
+    picture.screenshot-dark, picture.screenshot-light { display: block; }
     .phone::after { content: ''; position: absolute; top: 19px; left: 50%; transform: translateX(-50%); width: 30%; height: 3.4%; max-height: 30px; background: #000; border-radius: 999px; }
     .hero-visual .phone { position: absolute; width: 290px; }
     .phone-front { right: 150px; top: 0; z-index: 2; }
@@ -498,6 +499,10 @@
     .ai-tile h4 .ai-text { font-weight: inherit; }
     @keyframes ai-spin { to { --ai-angle: 360deg; } }
     @media (prefers-reduced-motion: reduce) { .tile.ai-tile { animation: none; } }
+    .ub-themes { gap: 12px; }
+    .ub-th { display: inline-flex; align-items: center; gap: 6px; font-weight: 600; font-size: 12px; }
+    .ub-th .ub-sw { width: 22px; height: 22px; }
+    @media (max-width: 480px) { .ub-themes { gap: 8px; } .ub-th { font-size: 0; gap: 0; } .ub-th .ub-sw { width: 26px; height: 26px; } }
   </style>
 </head>
 <body>
@@ -553,12 +558,12 @@
       </div>
       <div class="hero-visual">
         <div class="phone phone-back">
-          <img class="screenshot-dark" src="/screenshot-progress-dark.png" alt="" width="393" height="852" />
-          <img class="screenshot-light" src="/screenshot-progress-light.png" alt="" width="393" height="852" />
+          <picture class="screenshot-dark"><source type="image/webp" srcset="/screenshot-progress-dark.webp" /><img src="/screenshot-progress-dark.png" alt="" width="393" height="852" /></picture>
+          <picture class="screenshot-light"><source type="image/webp" srcset="/screenshot-progress-light.webp" /><img src="/screenshot-progress-light.png" alt="" width="393" height="852" /></picture>
         </div>
         <div class="phone phone-front">
-          <img class="screenshot-dark" src="/app-screenshot.png" alt="NorseLift home screen: weekly schedule, strength trend and today's workout" width="393" height="852" />
-          <img class="screenshot-light" src="/app-screenshot-light.png" alt="NorseLift home screen in light mode: weekly schedule, strength trend and today's workout" width="393" height="852" />
+          <picture class="screenshot-dark"><source type="image/webp" srcset="/app-screenshot.webp" /><img src="/app-screenshot.png" alt="NorseLift home screen: weekly schedule, strength trend and today's workout" width="393" height="852" /></picture>
+          <picture class="screenshot-light"><source type="image/webp" srcset="/app-screenshot-light.webp" /><img src="/app-screenshot-light.png" alt="NorseLift home screen in light mode: weekly schedule, strength trend and today's workout" width="393" height="852" /></picture>
         </div>
         <div class="float-chip chip-pr" aria-hidden="true"><span class="chip-ico">🏆</span><span><b>New PR</b><small>Bench Press · 85 kg × 6</small></span></div>
         <div class="float-chip chip-streak" aria-hidden="true"><span class="chip-ico flame">🔥</span><span><b>6 weeks</b><small>training streak</small></span></div>
@@ -600,8 +605,8 @@
         </div>
         <div class="row-visual">
           <div class="phone">
-            <img class="screenshot-dark" src="/screenshot-workout-dark.png" alt="Active workout: Bench Press sets with rest timer running" width="393" height="852" loading="lazy" />
-            <img class="screenshot-light" src="/screenshot-workout-light.png" alt="Active workout in light mode: Bench Press sets with rest timer running" width="393" height="852" loading="lazy" />
+            <picture class="screenshot-dark"><source type="image/webp" srcset="/screenshot-workout-dark.webp" /><img src="/screenshot-workout-dark.png" alt="Active workout: Bench Press sets with rest timer running" width="393" height="852" loading="lazy" /></picture>
+            <picture class="screenshot-light"><source type="image/webp" srcset="/screenshot-workout-light.webp" /><img src="/screenshot-workout-light.png" alt="Active workout in light mode: Bench Press sets with rest timer running" width="393" height="852" loading="lazy" /></picture>
           </div>
         </div>
       </div>
@@ -612,15 +617,15 @@
           <h3>Your week, on rails.</h3>
           <p>Build your own routines (Push/Pull/Legs, Upper/Lower, full body or anything else) and schedule them across the week. NorseLift handles the rotation, so “what am I doing today?” is always one tap away.</p>
           <ul class="ticks">
-            <li><b>Custom programs</b> with any exercises from a 100+ library, or your own</li>
+            <li><b>Custom workouts</b> with any exercises from a 100+ library, or your own</li>
             <li><b>Training blocks</b>: label a bulk, cut or maintain phase and track how it's going</li>
             <li><b>Cardio too</b>: log runs, rides and more next to your lifts</li>
           </ul>
         </div>
         <div class="row-visual">
           <div class="phone">
-            <img class="screenshot-dark" src="/screenshot-schedule-dark.png" alt="Training schedule calendar for October" width="393" height="852" loading="lazy" />
-            <img class="screenshot-light" src="/screenshot-schedule-light.png" alt="Training schedule calendar for October in light mode" width="393" height="852" loading="lazy" />
+            <picture class="screenshot-dark"><source type="image/webp" srcset="/screenshot-schedule-dark.webp" /><img src="/screenshot-schedule-dark.png" alt="Training schedule calendar for October" width="393" height="852" loading="lazy" /></picture>
+            <picture class="screenshot-light"><source type="image/webp" srcset="/screenshot-schedule-light.webp" /><img src="/screenshot-schedule-light.png" alt="Training schedule calendar for October in light mode" width="393" height="852" loading="lazy" /></picture>
           </div>
         </div>
       </div>
@@ -639,8 +644,8 @@
         </div>
         <div class="row-visual">
           <div class="phone">
-            <img class="screenshot-dark" src="/screenshot-progress-dark.png" alt="Profile dashboard with streak, calendar, body weight and strength tiles" width="393" height="852" loading="lazy" />
-            <img class="screenshot-light" src="/screenshot-progress-light.png" alt="Profile dashboard in light mode with streak, calendar, body weight and strength tiles" width="393" height="852" loading="lazy" />
+            <picture class="screenshot-dark"><source type="image/webp" srcset="/screenshot-progress-dark.webp" /><img src="/screenshot-progress-dark.png" alt="Profile dashboard with streak, calendar, body weight and strength tiles" width="393" height="852" loading="lazy" /></picture>
+            <picture class="screenshot-light"><source type="image/webp" srcset="/screenshot-progress-light.webp" /><img src="/screenshot-progress-light.png" alt="Profile dashboard in light mode with streak, calendar, body weight and strength tiles" width="393" height="852" loading="lazy" /></picture>
           </div>
         </div>
       </div>
@@ -658,12 +663,12 @@
         </div>
         <div class="row-visual duo">
           <div class="phone">
-            <img class="screenshot-dark" src="/screenshot-charts-dark.png" alt="Exercise progression chart for Bench Press" width="393" height="852" loading="lazy" />
-            <img class="screenshot-light" src="/screenshot-charts-light.png" alt="Exercise progression chart for Bench Press in light mode" width="393" height="852" loading="lazy" />
+            <picture class="screenshot-dark"><source type="image/webp" srcset="/screenshot-charts-dark.webp" /><img src="/screenshot-charts-dark.png" alt="Exercise progression chart for Bench Press" width="393" height="852" loading="lazy" /></picture>
+            <picture class="screenshot-light"><source type="image/webp" srcset="/screenshot-charts-light.webp" /><img src="/screenshot-charts-light.png" alt="Exercise progression chart for Bench Press in light mode" width="393" height="852" loading="lazy" /></picture>
           </div>
           <div class="phone">
-            <img class="screenshot-dark" src="/screenshot-records-dark.png" alt="Records list with recent personal records" width="393" height="852" loading="lazy" />
-            <img class="screenshot-light" src="/screenshot-records-light.png" alt="Records list with recent personal records in light mode" width="393" height="852" loading="lazy" />
+            <picture class="screenshot-dark"><source type="image/webp" srcset="/screenshot-records-dark.webp" /><img src="/screenshot-records-dark.png" alt="Records list with recent personal records" width="393" height="852" loading="lazy" /></picture>
+            <picture class="screenshot-light"><source type="image/webp" srcset="/screenshot-records-light.webp" /><img src="/screenshot-records-light.png" alt="Records list with recent personal records in light mode" width="393" height="852" loading="lazy" /></picture>
           </div>
         </div>
       </div>
@@ -687,7 +692,7 @@
         <div class="tile"><div class="ub" aria-hidden="true"><span class="ub-pill ok"><svg class="ub-i" viewBox="0 0 24 24"><path d="M22 7l-8.5 8.5-5-5L2 17M16 7h6v6"/></svg>Bulk · Day 23</span></div><h4>Training blocks</h4><p>Bulk, cut or maintain. Know which day you're on.</p></div>
         <div class="tile"><div class="ub" aria-hidden="true"><svg class="ub-spark" viewBox="0 0 80 28"><path class="f" d="M2 8L12 10 22 9 32 13 42 12 52 16 62 17 72 19 78 20V28H2z"/><path d="M2 8L12 10 22 9 32 13 42 12 52 16 62 17 72 19 78 20"/></svg><span class="ub-col"><b class="ub-n">82.4<small> kg</small></b><span class="ub-good">-0.6 kg</span></span></div><h4>Body weight</h4><p>Quick log with a 30-day trend.</p></div>
         <div class="tile"><div class="ub" aria-hidden="true"><span class="ub-pill ok"><svg class="ub-i" viewBox="0 0 24 24"><path d="M17.5 19H9a7 7 0 1 1 6.7-9h1.8a4.5 4.5 0 1 1 0 9z"/></svg><span>Cloud sync<span class="sm-hide"> active</span></span></span></div><h4>Cloud sync + offline</h4><p>Logs locally, syncs when you're back online.</p></div>
-        <div class="tile"><div class="ub" aria-hidden="true"><span class="ub-sw" style="--c:#e6eef8;--d:#4a90d9"></span><span class="ub-sw" style="--c:#0a0e1a;--d:#6aabef"></span><span class="ub-sw" style="--c:#fff5f9;--d:#ff69b4"></span></div><h4>Light, dark &amp; Maiden</h4><p>Three themes. Pick your vibe.</p></div>
+        <div class="tile"><div class="ub ub-themes" aria-hidden="true"><span class="ub-th"><span class="ub-sw" style="--c:#0a0e1a;--d:#6aabef"></span>Dark</span><span class="ub-th"><span class="ub-sw" style="--c:#e6eef8;--d:#4a90d9"></span>Light</span><span class="ub-th"><span class="ub-sw" style="--c:#fff5f9;--d:#ff69b4"></span>Maiden</span></div><h4>Dark, Light &amp; Maiden</h4><p>Three themes. Maiden makes it pink.</p></div>
         <div class="tile"><div class="ub" aria-hidden="true"><span class="ub-card"><span class="ub-card-h"><b>Pull</b><span>NorseLift</span></span><span class="ub-card-s"><span><b>55</b>MIN</span><span class="sm-hide"><b>9.8</b>TONNES</span></span></span></div><h4>Share card</h4><p>Turn a finished workout into a postable image.</p></div>
         <div class="tile"><div class="ub" aria-hidden="true"><span class="ub-pro">PRO</span><span class="ub-pill ok"><span class="sm-hide">A friend joined — </span>+3d</span></div><h4>Invite friends, earn Pro</h4><p>Referral rewards built into your profile.</p></div>
       </div>
@@ -698,14 +703,14 @@
   <section class="desktop" id="desktop">
     <div class="container">
       <div class="section-head center">
-        <p class="eyebrow">New · October 2026</p>
+        <p class="eyebrow">Desktop</p>
         <h2 class="norse">Log on your phone. Plan on your desktop.</h2>
         <p class="lead">Open NorseLift on a laptop and you get a full desktop layout with a sidebar and a wide dashboard. Same account, same data, synced automatically.</p>
       </div>
       <div class="browser">
         <div class="browser-bar" aria-hidden="true"><i></i><i></i><i></i><span>app.norselift.com</span></div>
-        <img class="screenshot-dark" src="/screenshot-desktop-dark.png" alt="NorseLift desktop layout: sidebar navigation and profile dashboard" width="1440" height="900" loading="lazy" />
-        <img class="screenshot-light" src="/screenshot-desktop-light.png" alt="NorseLift desktop layout in light mode: sidebar navigation and profile dashboard" width="1440" height="900" loading="lazy" />
+        <picture class="screenshot-dark"><source type="image/webp" srcset="/screenshot-desktop-dark.webp" /><img src="/screenshot-desktop-dark.png" alt="NorseLift desktop layout: sidebar navigation and profile dashboard" width="1440" height="900" loading="lazy" /></picture>
+        <picture class="screenshot-light"><source type="image/webp" srcset="/screenshot-desktop-light.webp" /><img src="/screenshot-desktop-light.png" alt="NorseLift desktop layout in light mode: sidebar navigation and profile dashboard" width="1440" height="900" loading="lazy" /></picture>
       </div>
     </div>
   </section>
@@ -782,7 +787,7 @@
           <div class="price"><b>$0</b></div>
           <a href="https://app.norselift.com" class="btn btn-ghost block" onclick="gtag('event','cta_click',{button_name:'pricing_free'})" data-ph-cta="pricing">Start free</a>
           <ul class="plan-list">
-            <li>Up to 3 programs, 1 scheduled routine</li>
+            <li>Up to 3 custom workouts, 1 scheduled routine</li>
             <li>Full workout history</li>
             <li>Edit sessions from the last 7 days</li>
             <li>Smart suggestions &amp; rest timer</li>
@@ -802,7 +807,7 @@
           <ul class="plan-list">
             <li class="em">Everything in Free, plus:</li>
             <li class="ai-row"><svg class="ai-spark" viewBox="0 0 24 24" aria-hidden="true"><defs><linearGradient id="aiGradPrice" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4a90d9"/><stop offset=".55" stop-color="#8b5cf6"/><stop offset="1" stop-color="#ec4899"/></linearGradient></defs><path fill="url(#aiGradPrice)" d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.14-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.14a.5.5 0 0 1 .96 0l1.58 6.14a2 2 0 0 0 1.44 1.44l6.14 1.58a.5.5 0 0 1 0 .96l-6.14 1.58a2 2 0 0 0-1.44 1.44l-1.58 6.14a.5.5 0 0 1-.96 0z"/><path fill="url(#aiGradPrice)" d="M20 1.5l.7 1.8 1.8.7-1.8.7L20 6.5l-.7-1.8-1.8-.7 1.8-.7zM4.5 16.5l.6 1.4 1.4.6-1.4.6-.6 1.4-.6-1.4-1.4-.6 1.4-.6z"/></svg><span class="ai-text">Connect your AI (MCP): ChatGPT, Claude, Grok &amp; more</span></li>
-            <li>Unlimited programs &amp; scheduled routines</li>
+            <li>Unlimited workouts, routines &amp; schedules</li>
             <li>Edit &amp; delete any past session</li>
             <li>Backfill workouts you forgot to log</li>
             <li>Exercise progression with next-session targets</li>
@@ -829,10 +834,10 @@
       <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">What is the NorseLift MCP server?</button><div class="faq-a"><p>MCP (Model Context Protocol) is an open standard that lets AI assistants use tools in other apps. The NorseLift MCP server at https://app.norselift.com/mcp gives your assistant secure, OAuth-approved access to your own training data. You can see and revoke connected apps in Settings at any time.</p></div></div>
       <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Is AI access included in Pro?</button><div class="faq-a"><p>Yes. Connect your AI is included in every active Pro plan, whether paid, gifted or earned through a referral. There is no extra AI fee.</p></div></div>
       <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">How do I connect my AI assistant?</button><div class="faq-a"><p>In NorseLift, open Settings → Connect AI and copy the URL https://app.norselift.com/mcp. In Claude go to Settings → Connectors → Add custom connector; in ChatGPT go to Settings → Apps & Connectors, turn on Developer mode and create a connector. Paste the URL, then approve the connection on the NorseLift page that opens.</p></div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Is NorseLift really free?</button><div class="faq-a"><p>Yes. Free includes up to 3 programs, 1 scheduled routine, your full workout history, smart suggestions, the rest timer, PR celebrations, streaks, body weight, cardio and cloud sync. No credit card needed. Pro adds unlimited programs, editing of older sessions, backfill and the deeper insights (exercise progression, records, weekly volume and more).</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Is NorseLift really free?</button><div class="faq-a"><p>Yes. Free includes up to 3 custom workouts, 1 scheduled routine, your full workout history, smart suggestions, the rest timer, PR celebrations, streaks, body weight, cardio and cloud sync. No credit card needed. Pro adds unlimited workouts and routines, editing of older sessions, backfill and the deeper insights (exercise progression, records, weekly volume and more).</p></div></div>
       <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Do I need to download anything?</button><div class="faq-a"><p>No. NorseLift is a Progressive Web App. Open app.norselift.com and add it to your home screen (Safari: Share → Add to Home Screen; Chrome: Install app). It launches full-screen and works offline.</p></div></div>
       <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Does it work on desktop?</button><div class="faq-a"><p>Yes. On a laptop or desktop NorseLift switches to a full desktop layout with a sidebar. Your data syncs between all your devices.</p></div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Can I create my own workout programs?</button><div class="faq-a"><p>Absolutely. Build routines with any exercises (Push/Pull/Legs, Upper/Lower, full body or your own split), schedule them across the week, and NorseLift handles the rotation.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Can I create my own workouts and routines?</button><div class="faq-a"><p>Absolutely. Build routines with any exercises (Push/Pull/Legs, Upper/Lower, full body or your own split), schedule them across the week, and NorseLift handles the rotation.</p></div></div>
       <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">How do smart suggestions work?</button><div class="faq-a"><p>NorseLift looks at your recent sets for each exercise and suggests weight and reps for the next session, either building on what you did or pushing for a little more. Accept with a tap or type your own.</p></div></div>
       <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Can I log cardio?</button><div class="faq-a"><p>Yes. Log running and other cardio with time and distance. Cardio days show on your calendar and streak, and Pro adds a pace trend.</p></div></div>
       <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">How much is Pro?</button><div class="faq-a"><p>Pro is $4.99/month, $10.49 every 3 months, or $29.99/year (USD). New subscribers get their first month for $1.99 with the Newcomer offer, then $4.99/mo. Cancel anytime.</p></div></div>
