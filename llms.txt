@@ -1,6 +1,6 @@
 # NorseLift
 
-> NorseLift is a free workout tracker built as a Progressive Web App (PWA). It helps lifters track workouts, build custom programs, monitor progress, and crush personal records â€” on any device, installed straight from the browser.
+> NorseLift is a free workout tracker built as a Progressive Web App (PWA). It helps lifters track workouts, build custom workouts and routines, monitor progress, and crush personal records â€” on any device, installed straight from the browser.
 
 ## Overview
 
@@ -8,12 +8,12 @@ NorseLift is a gym and strength training tracker designed for serious lifters wh
 
 ## Key Features
 
-- **Custom workout programs**: Build your own training split (Push/Pull/Legs, Upper/Lower, or custom)
+- **Custom workouts & routines**: Build your own workouts and combine them into a routine (Push/Pull/Legs, Upper/Lower, or custom). Free: up to 3 custom workouts and 1 scheduled routine
 - **Workout logging**: Log sets, reps, and weight during your session with a clean interface
 - **Rest timer**: Starts automatically when you complete a set (vibration on supported Android devices)
-- **Progress stats & charts**: Track volume, frequency, and strength over time (Pro)
-- **Personal records**: Automatic PR detection for every exercise (Pro)
-- **Training cycle planning**: Schedule and rotate through training blocks (Pro)
+- **Progress dashboard**: Streak calendar, body weight, cardio and strength trend (free); Exercise Progression charts with next-session targets, per-muscle strength breakdown, weekly volume, monthly recap and cardio trend (Pro)
+- **Personal records**: Automatic PR detection and a PR celebration after every workout (free); the full Personal Records list (Pro)
+- **Routine scheduling & training blocks**: Schedule a routine across the week and label bulk/cut/maintain blocks (free); block-scoped stats and block history (Pro)
 - **Exercise library**: 100+ built-in exercises, browse and search by muscle group
 - **Body weight tracking**: Log body weight, see trends and charts over time
 - **Workout sharing**: Generate branded share cards after completing a workout
@@ -41,7 +41,7 @@ Example: "Make me a 3-day aesthetic routine, Mon/Wed/Fri, and make it active" â†
 
 ## Pricing
 
-- **Free tier**: Up to 3 programs, 1 scheduled routine, full workout history (editing limited to the last 7 days), exercise library, smart suggestions, rest timer, PR celebrations, body weight, cardio, training blocks, cloud sync
+- **Free tier**: Up to 3 custom workouts, 1 scheduled routine, full workout history (editing limited to the last 7 days), exercise library, smart suggestions, rest timer, PR celebrations, body weight, cardio, training blocks, cloud sync
 - **Pro** includes Connect your AI (MCP) at no extra cost
 - **Pro Monthly**: $4.99/month ($1.99 first month for new subscribers only, via the Newcomer offer)
 - **Pro Quarterly**: $10.49/quarter ($3.49/month)
@@ -63,7 +63,7 @@ Example: "Make me a 3-day aesthetic routine, Mon/Wed/Fri, and make it active" â†
 
 ## Target Audience
 
-NorseLift is for gym-goers and strength athletes who want a simple, focused workout tracker. It's especially suited for people who follow structured programs (like PPL, Upper/Lower, or custom splits) and want to track their progress over time without the bloat of larger fitness apps.
+NorseLift is for gym-goers and strength athletes who want a simple, focused workout tracker. It's especially suited for people who follow structured routines (like PPL, Upper/Lower, or custom splits) and want to track their progress over time without the bloat of larger fitness apps.
 
 ## Company
 
