@@ -404,6 +404,30 @@
     .content code { font-family: ui-monospace, Menlo, monospace; font-size: 0.9em; background: rgba(74,144,217,.12); padding: 2px 6px; border-radius: 6px; }
     .note { border-left: 3px solid #4a90d9; background: rgba(74,144,217,.08); padding: 14px 18px; border-radius: 0 12px 12px 0; margin: 22px 0; }
     .sources { font-size: 0.85rem; }
+    .scenario { background: linear-gradient(135deg, rgba(74,144,217,.10), rgba(139,92,246,.08)); border: 1px solid var(--border); border-radius: 16px; padding: 20px 22px; margin: 24px 0; }
+    .scenario .lbl { font-size: .75rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #4a90d9; margin-bottom: 10px; }
+    .bubble { border-radius: 14px; padding: 10px 14px; margin: 8px 0; max-width: 88%; line-height: 1.5; }
+    .bubble.you { background: #4a90d9; color: #fff; margin-left: auto; border-bottom-right-radius: 4px; width: fit-content; }
+    .bubble.grok { background: var(--card-bg, rgba(255,255,255,.7)); border: 1px solid var(--border); border-bottom-left-radius: 4px; }
+    .scenario small { display: block; margin-top: 10px; color: var(--text-secondary, #6b7390); font-size: .8rem; }
+    .try { border: 1px solid var(--border); border-radius: 16px; padding: 18px 22px; margin: 24px 0; background: var(--card-bg, rgba(255,255,255,.6)); }
+    .try h3 { margin: 0 0 12px; font-size: 1.05rem; display: flex; align-items: center; gap: 8px; }
+    .try ul { list-style: none; padding: 0 !important; margin: 0; display: grid; gap: 8px; }
+    .try li { background: rgba(74,144,217,.10); border-radius: 999px; padding: 8px 14px; font-size: .95rem; margin: 0 !important; }
+    .try li::before { content: "“"; color: #4a90d9; font-weight: 700; } .try li::after { content: "”"; color: #4a90d9; font-weight: 700; }
+    .where { width: 100%; border-collapse: collapse; font-size: .9rem; margin: 20px 0; }
+    .where th, .where td { border-bottom: 1px solid var(--border); padding: 10px 8px; text-align: left; vertical-align: top; }
+    .where thead th { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #4a90d9; }
+    .where tbody th { font-weight: 600; width: 26%; }
+    .ok { color: #0b8a5a; font-weight: 600; } .maybe { color: #b7791f; font-weight: 600; }
+    @media (max-width: 640px) {
+      .where thead { display: none; }
+      .where, .where tbody, .where tr, .where th, .where td { display: block; width: 100% !important; }
+      .where tr { border: 1px solid var(--border); border-radius: 12px; padding: 8px 12px; margin-bottom: 10px; }
+      .where th, .where td { border: 0; padding: 4px 0; }
+      .where tbody th { font-size: .95rem; padding-bottom: 6px; }
+      .where td::before { content: attr(data-l) ": "; font-weight: 600; color: #4a90d9; }
+    }
   </style>
 </head>
 <body>
@@ -445,6 +469,15 @@
 
       <p>Grok can talk to NorseLift. Connect it once and you can ask about your training, log a session or plan your week, whether you're on grok.com, in Grok Bot, or (with some caveats) in your car.</p>
 
+
+      <div class="scenario">
+        <div class="lbl">Picture this</div>
+        <p style="margin:0 0 6px">It's Wednesday morning and you're driving to the gym.</p>
+        <div class="bubble you">Hey Grok, what's my workout today?</div>
+        <div class="bubble grok">Today is <strong>Posterior Upper</strong> in your Aesthetic 3-Day routine: barbell rows, lat pulldowns, seated cable rows, face pulls and tricep pushdowns. Last time you rowed 3 × 10 at 70 kg, so try 72.5 kg today.</div>
+        <small>Illustrative example using the demo routine "Aesthetic 3-Day". Grok reads your NorseLift routine and history through the connector; exact wording will vary.</small>
+      </div>
+
       <p>You need <strong>NorseLift Pro</strong> (paid, gifted or referral) for Connect your AI, and the NorseLift MCP server URL: <code>https://app.norselift.com/mcp</code>. New to MCP? Start with <a href="/blog/connect-ai-to-norselift">how to connect your AI to NorseLift</a>.</p>
 
       <h2>Option 1: Add NorseLift as a custom connector on grok.com</h2>
@@ -482,14 +515,31 @@
 
       <p class="sources"><em>The hero image is an illustration: a NorseLift answer overlaid on a stock photo of a car interior. It is not a screenshot of the in-car Grok interface.</em></p>
 
-      <h2>Things to try</h2>
 
-      <ul>
-        <li>"What's my workout today, and what did I lift last time?"</li>
-        <li>"Log my run: 5 km in 26 minutes."</li>
-        <li>"How many workouts have I done this month?"</li>
-        <li>"Make next week a deload: same routine, lighter weights."</li>
-      </ul>
+      <h2>What works where</h2>
+
+      <table class="where">
+        <thead><tr><th></th><th>grok.com / Grok app</th><th>Grok Bot</th><th>Grok in Tesla</th></tr></thead>
+        <tbody>
+          <tr><th>Set up</th><td data-l="grok.com">grok.com/connectors → Custom</td><td data-l="Grok Bot">Add a custom connector in Grok Bot</td><td data-l="Tesla">On phone or computer; same Grok account in the car</td></tr>
+          <tr><th>Voice</th><td data-l="grok.com">Voice mode in the Grok app</td><td data-l="Grok Bot">Chat (voice depends on app)</td><td data-l="Tesla">Yes, hands-free</td></tr>
+          <tr><th>Log / edit workouts</th><td data-l="grok.com"><span class="ok">Yes</span></td><td data-l="Grok Bot"><span class="ok">Yes</span></td><td data-l="Tesla"><span class="maybe">Expected</span></td></tr>
+          <tr><th>Routines &amp; scheduling</th><td data-l="grok.com"><span class="ok">Yes</span></td><td data-l="Grok Bot"><span class="ok">Yes</span>, incl. multi-step plans</td><td data-l="Tesla"><span class="maybe">Expected</span></td></tr>
+          <tr><th>Status</th><td data-l="grok.com"><span class="ok">Supported</span> (custom MCP connectors)</td><td data-l="Grok Bot"><span class="ok">Supported</span> (check your plan)</td><td data-l="Tesla"><span class="maybe">Unconfirmed</span> for custom connectors; built-in connectors are documented</td></tr>
+        </tbody>
+      </table>
+
+      <div class="try">
+        <h3><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4a90d9" stroke-width="2.2" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>Try saying</h3>
+        <ul>
+          <li>What's my workout today?</li>
+          <li>Log a 30-minute run for this morning.</li>
+          <li>How did my bench press progress this month?</li>
+          <li>My last squat set was 90 kg, not 100. Fix it.</li>
+          <li>Add an extra rest day before leg day in my routine.</li>
+          <li>Make me a 3-day routine starting Monday and make it active.</li>
+        </ul>
+      </div>
 
       <h2>Sources</h2>
 
