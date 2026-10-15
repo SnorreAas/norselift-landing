@@ -500,6 +500,9 @@
     .aiv-live .t.done .ck { opacity: 1; } .aiv-live .t.done .sp { display: none; }
     .aiv-live .rep { position: absolute; left: 5.83cqw; top: 99.17cqw; width: 88.33cqw; font: 5.2cqw/1.5 Georgia, serif; opacity: 0; transition: opacity .5s; }
     .aiv-live .rep.v { opacity: 1; }
+    .aiv-live .rep { white-space: nowrap; }
+    .aiv-live .u { transition: opacity .2s; }
+    .aiv-live .u:has(.ty:empty) { opacity: 0; }
     @keyframes aivspin { to { transform: rotate(360deg); } }
     @media (max-width: 600px) { .aiv-live { left: 11.29%; top: 16.727%; width: 77.419%; height: 62.77%; } }
     @media (prefers-reduced-motion: reduce) { .aiv-live { display: none !important; } }
@@ -753,7 +756,7 @@
         <div class="aiv-live" id="aivLive" aria-hidden="true"><div class="m">
           <div class="u"><span class="ty"></span></div>
           <div class="tl"><div class="t">NorseLift · <code>create_routine</code><span class="sp"></span><span class="ck">✓</span></div><div class="t">NorseLift · <code>schedule_routine</code><span class="sp"></span><span class="ck">✓</span></div><div class="t">NorseLift · <code>set_active_routine</code><span class="sp"></span><span class="ck">✓</span></div></div>
-          <div class="rep">Done! <b>Aesthetic 3-Day</b> is now your active routine: Anterior Upper Mon, Posterior Upper Wed, Legs + Core Fri.</div>
+          <div class="rep">Done! <b>Aesthetic 3-Day</b> is now your<br>active routine: Anterior Upper<br>Mon, Posterior Upper Wed, Legs +<br>Core Fri.</div>
         </div></div>
       </figure>
       <ul class="ai-cap"><li>Log &amp; edit workouts</li><li>Read your stats</li><li>Create &amp; schedule routines</li></ul>
