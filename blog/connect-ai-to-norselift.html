@@ -47,7 +47,7 @@
       }
     },
     "datePublished": "2026-10-15",
-    "dateModified": "2026-10-15",
+    "dateModified": "2026-10-20",
     "mainEntityOfPage": "https://norselift.com/blog/connect-ai-to-norselift",
     "url": "https://norselift.com/blog/connect-ai-to-norselift"
   }
@@ -435,7 +435,7 @@
         <span class="cat ai"><svg class="ai-spark" viewBox="0 0 24 24" aria-hidden="true"><defs><linearGradient id="aiCat5" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4a90d9"/><stop offset=".55" stop-color="#8b5cf6"/><stop offset="1" stop-color="#ec4899"/></linearGradient></defs><path fill="url(#aiCat5)" d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.14-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.14a.5.5 0 0 1 .96 0l1.58 6.14a2 2 0 0 0 1.44 1.44l6.14 1.58a.5.5 0 0 1 0 .96l-6.14 1.58a2 2 0 0 0-1.44 1.44l-1.58 6.14a.5.5 0 0 1-.96 0z"/><path fill="url(#aiCat5)" d="M20 1.5l.7 1.8 1.8.7-1.8.7L20 6.5l-.7-1.8-1.8-.7 1.8-.7zM4.5 16.5l.6 1.4 1.4.6-1.4.6-.6 1.4-.6-1.4-1.4-.6 1.4-.6z"/></svg><span class="t">Connect AI</span></span>
         <h1>How to Connect Claude or ChatGPT to NorseLift (MCP Guide)</h1>
         <p class="dek">Log workouts, check stats and build, schedule and activate routines just by asking your AI. Step-by-step setup with the NorseLift MCP server.</p>
-        <div class="byline"><img src="/norselift-icon-192.png" alt="" width="28" height="28" /><span>By <b>NorseLift</b></span><span class="dot"></span><time datetime="2026-10-15">October 15, 2026</time><span class="dot"></span><span>6 min read</span></div>
+        <div class="byline"><img src="/norselift-icon-192.png" alt="" width="28" height="28" /><span>By <b>NorseLift</b></span><span class="dot"></span><time datetime="2026-10-15">October 15, 2026</time><span class="dot"></span><span>Updated <time datetime="2026-10-20">October 20, 2026</time></span><span class="dot"></span><span>6 min read</span></div>
       </header>
 
       <div class="post-hero">
@@ -457,16 +457,16 @@
 
       <p><code>https://app.norselift.com/mcp</code></p>
 
-      <p>When you add that URL to an AI app as a <em>custom connector</em>, the app asks you to sign in to NorseLift and approve the connection on a NorseLift page. From then on, the assistant can read and update <em>your</em> training data, and nothing else. You can see and revoke connected apps any time in NorseLift under Settings.</p>
+      <p>When you add that URL to an AI app as a <em>custom connector</em>, the app asks you to sign in to NorseLift and approve the connection on a NorseLift page. From then on, the assistant can read and update <em>your</em> training data, and nothing else. You can see connected apps and disconnect them any time in NorseLift under <strong>Profile → Settings → AI assistants</strong>.</p>
 
       <h2 id="what-can-your-ai-do-in-norselift">What can your AI do in NorseLift?</h2>
 
       <ul>
-        <li><strong>Log and edit workouts:</strong> "Log today: bench 4×8 at 80 kg, rows 3×10 at 60 kg." Fix a set, add an exercise, or remove one.</li>
-        <li><strong>Read your history and stats:</strong> recent sessions, a specific workout, and training stats.</li>
+        <li><strong>Log and edit workouts:</strong> "Log today: bench 4×8 at 80 kg, rows 3×10 at 60 kg." Fix a set, add an exercise, or remove one. You can also log a session you forgot, up to 30 days back.</li>
+        <li><strong>Read your history and stats:</strong> recent sessions, a specific workout, personal records, weekly volume and progress on a single lift.</li>
         <li><strong>Create workouts and routines:</strong> build workouts in your Library and combine them into a routine.</li>
         <li><strong>Schedule and activate routines:</strong> put a routine on Mon/Wed/Fri and make it your active one.</li>
-        <li><strong>Undo mistakes:</strong> recently deleted workouts, exercises and sets can be restored.</li>
+        <li><strong>Undo mistakes:</strong> anything the assistant deleted in the last 7 days (workouts, sets, routines, Library workouts and custom exercises) can be restored. Deletes always ask for your confirmation first.</li>
       </ul>
 
       <h2 id="who-can-use-it">Who can use it?</h2>
@@ -474,14 +474,14 @@
       <p>Connect your AI is a <strong>Pro</strong> feature. It's included in every active Pro plan, whether paid, gifted or earned through a referral, at no extra cost. You also need an AI app that supports custom MCP connectors.</p>
 
       <figure class="post-figure" style="max-width:360px;margin-left:auto;margin-right:auto">
-        <img src="/blog/images/connect-ai-settings.webp" alt="NorseLift Settings showing the Connect your AI card with the MCP URL https://app.norselift.com/mcp and a copy button" width="1179" height="1230" loading="lazy" />
-        <figcaption>Settings → Connect AI in NorseLift, with the URL ready to copy.</figcaption>
+        <img src="/blog/images/connect-ai-settings.webp" alt="NorseLift Settings, AI assistants section, showing the Connect your AI card with the MCP URL https://app.norselift.com/mcp and a copy button" width="1179" height="1230" loading="lazy" />
+        <figcaption>Profile → Settings → AI assistants in NorseLift, with the URL ready to copy.</figcaption>
       </figure>
 
       <h2 id="how-to-connect-claude">How to connect Claude</h2>
 
       <ol>
-        <li>In NorseLift, open <strong>Settings → Connect AI</strong> and copy <code>https://app.norselift.com/mcp</code>.</li>
+        <li>In <a href="https://app.norselift.com">NorseLift</a>, open <strong>Profile → Settings → AI assistants</strong> and copy <code>https://app.norselift.com/mcp</code>.</li>
         <li>In Claude, go to <strong>Settings → Connectors → Add custom connector</strong>.</li>
         <li>Paste the URL and click <strong>Add</strong>.</li>
         <li>Sign in to NorseLift on the page that opens and approve the connection.</li>
@@ -491,9 +491,9 @@
       <h2 id="how-to-connect-chatgpt">How to connect ChatGPT</h2>
 
       <ol>
-        <li>Copy <code>https://app.norselift.com/mcp</code> from NorseLift <strong>Settings → Connect AI</strong>.</li>
-        <li>In ChatGPT, open <strong>Settings → Apps &amp; Connectors</strong> and turn on <strong>Developer mode</strong>.</li>
-        <li>Choose <strong>Create</strong>, paste the URL and save.</li>
+        <li>Copy <code>https://app.norselift.com/mcp</code> from NorseLift <strong>Profile → Settings → AI assistants</strong>.</li>
+        <li>In ChatGPT, open <strong>Settings → Apps</strong> (called <em>Apps &amp; Connectors</em> in older versions), go to <strong>Advanced settings</strong> and turn on <strong>Developer mode</strong>. Availability depends on your ChatGPT plan and workspace settings.</li>
+        <li>Back in <strong>Apps</strong>, choose <strong>Create</strong>, paste the URL and save.</li>
         <li>Approve the connection on the NorseLift sign-in page.</li>
       </ol>
 
@@ -506,7 +506,7 @@
         <li>"Log today's push workout: bench 4×8 at 80 kg, overhead press 3×8 at 45 kg, lateral raises 3×15 at 10 kg."</li>
         <li>"I logged 100 kg on my last squat set by mistake, it was 90. Fix it."</li>
         <li>"How has my bench press progressed over the last two months?"</li>
-        <li>"Swap Wednesday and Friday in my routine for next week."</li>
+        <li>"Swap the Wednesday and Friday workouts in my routine."</li>
       </ul>
 
       <div class="note">Tip: be specific about sets, reps and weight. The assistant shows which NorseLift tools it used, and the change appears in the app straight away.</div>
@@ -518,7 +518,7 @@
       <section class="post-cta ai-ring" aria-label="Get NorseLift">
         <svg class="ai-spark" viewBox="0 0 24 24" aria-hidden="true"><defs><linearGradient id="aiGradCta" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4a90d9"/><stop offset=".55" stop-color="#8b5cf6"/><stop offset="1" stop-color="#ec4899"/></linearGradient></defs><path fill="url(#aiGradCta)" d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.14-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.14a.5.5 0 0 1 .96 0l1.58 6.14a2 2 0 0 0 1.44 1.44l6.14 1.58a.5.5 0 0 1 0 .96l-6.14 1.58a2 2 0 0 0-1.44 1.44l-1.58 6.14a.5.5 0 0 1-.96 0z"/><path fill="url(#aiGradCta)" d="M20 1.5l.7 1.8 1.8.7-1.8.7L20 6.5l-.7-1.8-1.8-.7 1.8-.7zM4.5 16.5l.6 1.4 1.4.6-1.4.6-.6 1.4-.6-1.4-1.4-.6 1.4-.6z"/></svg>
         <h2>Connect your AI to NorseLift</h2>
-        <p>Included in NorseLift Pro. Open Settings → Connect AI, copy the URL, and paste it into Claude, ChatGPT or any MCP app.</p>
+        <p>Included in NorseLift Pro. Open Profile → Settings → AI assistants, copy the URL, and paste it into Claude, ChatGPT or any MCP app.</p>
         <div class="actions">
           <a href="https://app.norselift.com" class="btn btn-primary" onclick="gtag('event','cta_click',{button_name:'blog_start_free'})">Start free <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
           <a href="https://app.norselift.com/upgrade" class="btn btn-ghost" onclick="gtag('event','cta_click',{button_name:'blog_go_pro'})">Get Pro <span class="pro-pill">PRO</span></a>
