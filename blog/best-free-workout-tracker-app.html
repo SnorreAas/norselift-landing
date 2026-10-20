@@ -360,38 +360,40 @@
       .footer-inner { flex-direction: column; gap: 12px; text-align: center; }
     }
   </style>
+  <link rel="stylesheet" href="/blog/blog.css" />
 </head>
 <body>
 
-  <nav>
+  <nav class="nav">
     <div class="nav-inner">
-      <div class="nav-left">
-        <a href="/" class="logo">
-          <div class="logo-mark"><img src="/norselift-icon-192.png" alt="NorseLift" /></div>
-          NorseLift
-        </a>
-        <a href="/blog" class="nav-link">Blog</a>
+      <a href="/" class="logo"><img src="/norselift-icon-192.png" alt="NorseLift" width="30" height="30" />NorseLift</a>
+      <div class="nav-links">
+        <a href="/#features">Features</a>
+        <a href="/#connect-ai">Connect AI</a>
+        <a href="/#pricing">Pricing</a>
+        <a href="/blog" aria-current="page">Blog</a>
       </div>
-      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
-        <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-        <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-      </button>
+      <div class="nav-right">
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+          <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <a href="https://app.norselift.com" class="btn btn-primary btn-sm" onclick="gtag('event','cta_click',{button_name:'blog_nav_open_app'})">Open App</a>
+      </div>
     </div>
   </nav>
 
-  <div class="content">
-    <div class="container">
-      <a href="/blog" class="back-link">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-        Back to blog
-      </a>
+  <main class="content post">
+    <div class="post-wrap">
+      <header class="post-header">
+        <div class="crumbs"><a href="/blog" class="back-link-new">Blog</a><span aria-hidden="true">/</span><span>App tips</span></div>
+        <span class="cat">App tips</span>
+        <h1>The 5 Best Free Workout Tracker Apps in 2026</h1>
+        <p class="dek">An honest comparison of NorseLift, Strong, Hevy, JEFIT, and FitNotes. What each does well, where they fall short, and which one is actually free.</p>
+        <div class="byline"><img src="/norselift-icon-192.png" alt="" width="28" height="28" /><span>By <b>NorseLift</b></span><span class="dot"></span><time datetime="2026-07-02">July 2, 2026</time><span class="dot"></span><span>8 min read</span></div>
+      </header>
 
-      <h1>The 5 Best Free Workout Tracker Apps in 2026</h1>
-      <div class="blog-meta">
-        <span>July 2, 2026</span>
-        <span>8 min read</span>
-      </div>
-
+      <div class="post-hero">
       <img
         class="hero-image"
         src="/blog/images/best-workout-app-hero.jpg"
@@ -400,12 +402,27 @@
         height="934"
         fetchpriority="high"
       />
+      </div>
 
+      <div class="post-layout has-toc">
+        <nav class="toc" aria-label="Table of contents">
+          <div class="toc-title">On this page</div>
+          <ol>
+            <li><a href="#1-norselift">1. NorseLift</a></li>
+            <li><a href="#2-strong">2. Strong</a></li>
+            <li><a href="#3-hevy">3. Hevy</a></li>
+            <li><a href="#4-jefit">4. JEFIT</a></li>
+            <li><a href="#5-fitnotes">5. FitNotes</a></li>
+            <li><a href="#quick-comparison">Quick Comparison</a></li>
+            <li><a href="#the-verdict">The Verdict</a></li>
+          </ol>
+        </nav>
+        <article class="post-body">
       <p>If you've spent any time looking for a workout tracker, you know the landscape is crowded. Most apps claim to be "free" but hit you with paywalls the moment you try to do anything useful. Others drown you in social features you never asked for.</p>
 
       <p>I've used all five of these apps in real training sessions. Here's an honest breakdown of what each one does well, where they fall short, and what they actually cost.</p>
 
-      <h2>1. NorseLift</h2>
+      <h2 id="1-norselift">1. NorseLift</h2>
 
       <p>NorseLift is a Progressive Web App (PWA), which means it runs in your browser and works on any device without downloading anything. You can add it to your home screen and it behaves like a native app, including offline support.</p>
 
@@ -428,7 +445,7 @@
 
       <p><strong>Pricing:</strong> Free forever. Pro is $4.99/mo ($1.99 first month for new subscribers via the Newcomer offer), $10.49 every 3 months, or $29.99/year, for unlimited programs, editing any past session, exercise progression, records and weekly volume.</p>
 
-      <h2>2. Strong</h2>
+      <h2 id="2-strong">2. Strong</h2>
 
       <p>Strong has been around for years and has earned its reputation as a reliable workout tracker. The interface is polished and the workout logging experience is smooth. It's a native iOS and Android app with a large exercise database.</p>
 
@@ -450,7 +467,7 @@
 
       <p><strong>Pricing:</strong> Limited free tier. Pro costs $4.99-$9.99/month depending on the plan.</p>
 
-      <h2>3. Hevy</h2>
+      <h2 id="3-hevy">3. Hevy</h2>
 
       <p>Hevy has grown quickly by combining workout tracking with social features. If you want to follow friends, share workouts, and browse what other people are doing, Hevy is built for that. The workout logging itself is decent, though the social feed can feel distracting when you're mid-set.</p>
 
@@ -472,7 +489,7 @@
 
       <p><strong>Pricing:</strong> Free with ads. Pro at $8.99/month removes ads and unlocks advanced analytics.</p>
 
-      <h2>4. JEFIT</h2>
+      <h2 id="4-jefit">4. JEFIT</h2>
 
       <p>JEFIT has been around since the early days of fitness apps. It has a massive exercise database with animated demonstrations, and it's popular with bodybuilders who like detailed workout plans. The interface feels dated compared to newer apps, but it's functional.</p>
 
@@ -494,7 +511,7 @@
 
       <p><strong>Pricing:</strong> Free with ads. Elite at $6.99/month or $39.99/year.</p>
 
-      <h2>5. FitNotes</h2>
+      <h2 id="5-fitnotes">5. FitNotes</h2>
 
       <p>FitNotes is the minimalist's choice. It's Android-only, completely free, and has no ads. If you want a straightforward tool to log sets and reps without any fluff, FitNotes delivers. The tradeoff is that it doesn't have cloud sync, progress analytics, or a large exercise library.</p>
 
@@ -516,7 +533,7 @@
 
       <p><strong>Pricing:</strong> Completely free.</p>
 
-      <h2>Quick Comparison</h2>
+      <h2 id="quick-comparison">Quick Comparison</h2>
 
       <div class="compare-table-wrap">
       <table class="compare-table">
@@ -569,7 +586,7 @@
       </table>
       </div>
 
-      <h2>The Verdict</h2>
+      <h2 id="the-verdict">The Verdict</h2>
 
       <p>If you want a workout tracker that's genuinely free, works on every device, and doesn't try to sell you something every time you open it, NorseLift is the strongest option. Cloud sync on the free tier is a big deal since most competitors charge for it, and the PWA approach means you can use the same app on your phone, tablet, and laptop.</p>
 
@@ -577,16 +594,55 @@
 
       <p>The best app is the one you'll actually use consistently. Try a few and stick with whatever makes logging your workouts feel effortless.</p>
 
-      <div class="cta-box">
-        <h3>Try NorseLift — it's free</h3>
+      <section class="post-cta" aria-label="Get NorseLift">
+        <span class="runes" aria-hidden="true">&#5765; &#5768; &#5792;</span>
+        <h2>Try NorseLift — it's free</h2>
         <p>No download required. Open it in your browser and start tracking your workouts in seconds.</p>
-        <a href="https://app.norselift.com" class="cta-btn">
-          Start Tracking
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
+        <div class="actions">
+          <a href="https://app.norselift.com" class="btn btn-primary" onclick="gtag('event','cta_click',{button_name:'blog_start_free'})">Start free <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          <a href="https://app.norselift.com/upgrade" class="btn btn-ghost" onclick="gtag('event','cta_click',{button_name:'blog_go_pro'})">Get Pro <span class="pro-pill">PRO</span></a>
+        </div>
+        <p class="fine">Free, in your browser, in ten seconds.</p>
+      </section>
+        </article>
       </div>
     </div>
-  </div>
+
+    <section class="related" aria-labelledby="related-h">
+      <div class="wrap">
+        <h2 id="related-h">Keep reading</h2>
+        <div class="related-grid">
+        <a href="/blog/norselift-grok-tesla" class="post-card">
+          <img class="thumb" src="/blog/images/grok-norselift-thumb.jpg" alt="View from the back seat toward the dashboard with a NorseLift workout answer card" width="700" height="466" loading="lazy" />
+          <div class="body">
+            <div><span class="cat ai"><svg class="ai-spark" viewBox="0 0 24 24" aria-hidden="true"><defs><linearGradient id="aiCat7" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4a90d9"/><stop offset=".55" stop-color="#8b5cf6"/><stop offset="1" stop-color="#ec4899"/></linearGradient></defs><path fill="url(#aiCat7)" d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.14-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.14a.5.5 0 0 1 .96 0l1.58 6.14a2 2 0 0 0 1.44 1.44l6.14 1.58a.5.5 0 0 1 0 .96l-6.14 1.58a2 2 0 0 0-1.44 1.44l-1.58 6.14a.5.5 0 0 1-.96 0z"/><path fill="url(#aiCat7)" d="M20 1.5l.7 1.8 1.8.7-1.8.7L20 6.5l-.7-1.8-1.8-.7 1.8-.7zM4.5 16.5l.6 1.4 1.4.6-1.4.6-.6 1.4-.6-1.4-1.4-.6 1.4-.6z"/></svg><span class="t">Connect AI</span></span></div>
+            <h3>How to Use NorseLift with Grok, Grok Bot and in Your Tesla</h3>
+            <p>Add NorseLift as a custom MCP connector in Grok, use it from Grok Bot, and what Tesla says about Grok connectors in the car.</p>
+            <div class="meta-row"><time datetime="2026-10-15">October 15, 2026</time><span class="dot"></span><span>5 min read</span></div>
+          </div>
+        </a>
+        <a href="/blog/connect-ai-to-norselift" class="post-card">
+          <img class="thumb" src="/blog/images/connect-ai-thumb.jpg" alt="Claude on a phone creating a NorseLift routine, with NorseLift open on a laptop" width="700" height="466" loading="lazy" />
+          <div class="body">
+            <div><span class="cat ai"><svg class="ai-spark" viewBox="0 0 24 24" aria-hidden="true"><defs><linearGradient id="aiCat8" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4a90d9"/><stop offset=".55" stop-color="#8b5cf6"/><stop offset="1" stop-color="#ec4899"/></linearGradient></defs><path fill="url(#aiCat8)" d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.14-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.14a.5.5 0 0 1 .96 0l1.58 6.14a2 2 0 0 0 1.44 1.44l6.14 1.58a.5.5 0 0 1 0 .96l-6.14 1.58a2 2 0 0 0-1.44 1.44l-1.58 6.14a.5.5 0 0 1-.96 0z"/><path fill="url(#aiCat8)" d="M20 1.5l.7 1.8 1.8.7-1.8.7L20 6.5l-.7-1.8-1.8-.7 1.8-.7zM4.5 16.5l.6 1.4 1.4.6-1.4.6-.6 1.4-.6-1.4-1.4-.6 1.4-.6z"/></svg><span class="t">Connect AI</span></span></div>
+            <h3>How to Connect Claude or ChatGPT to NorseLift</h3>
+            <p>Log workouts, check stats and build, schedule and activate routines just by asking your AI. Step-by-step setup with the NorseLift MCP server.</p>
+            <div class="meta-row"><time datetime="2026-10-15">October 15, 2026</time><span class="dot"></span><span>6 min read</span></div>
+          </div>
+        </a>
+        <a href="/blog/push-pull-legs-routine-guide" class="post-card">
+          <img class="thumb" src="/blog/images/push-pull-legs-thumb.jpg" alt="Lifter gripping a loaded barbell in a deadlift setup, part of a push pull legs (PPL) routine" width="700" height="466" loading="lazy" />
+          <div class="body">
+            <div><span class="cat">Training guide</span></div>
+            <h3>The Complete Push Pull Legs (PPL) Routine Guide for 2026</h3>
+            <p>Everything you need to know about the PPL split: who it's for, a sample 6-day program, exercise selection, and how to progress over time.</p>
+            <div class="meta-row"><time datetime="2026-07-02">July 2, 2026</time><span class="dot"></span><span>10 min read</span></div>
+          </div>
+        </a>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <footer>
     <div class="footer-inner">
@@ -614,6 +670,15 @@
       var meta = document.getElementById('meta-theme');
       if (meta) meta.setAttribute('content', next === 'dark' ? '#0a0e1a' : '#e6eef8');
     }
+  </script>
+
+  <script>
+    (function () {
+      var links = document.querySelectorAll('.toc a'); if (!links.length || !('IntersectionObserver' in window)) return;
+      var map = {}; links.forEach(function (a) { map[a.getAttribute('href').slice(1)] = a; });
+      var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { links.forEach(function (a) { a.classList.remove('active'); }); var a = map[e.target.id]; if (a) a.classList.add('active'); } }); }, { rootMargin: '-80px 0px -70% 0px' });
+      Object.keys(map).forEach(function (id) { var h = document.getElementById(id); if (h) io.observe(h); });
+    })();
   </script>
 
   <script defer src="/_vercel/insights/script.js"></script>

@@ -405,48 +405,53 @@
     .note { border-left: 3px solid #4a90d9; background: rgba(74,144,217,.08); padding: 14px 18px; border-radius: 0 12px 12px 0; margin: 22px 0; }
     .sources { font-size: 0.85rem; }
   </style>
+  <link rel="stylesheet" href="/blog/blog.css" />
 </head>
 <body>
 
-  <nav>
+  <nav class="nav">
     <div class="nav-inner">
-      <div class="nav-left">
-        <a href="/" class="logo">
-          <div class="logo-mark"><img src="/norselift-icon-192.png" alt="NorseLift" /></div>
-          NorseLift
-        </a>
-        <a href="/blog" class="nav-link">Blog</a>
+      <a href="/" class="logo"><img src="/norselift-icon-192.png" alt="NorseLift" width="30" height="30" />NorseLift</a>
+      <div class="nav-links">
+        <a href="/#features">Features</a>
+        <a href="/#connect-ai">Connect AI</a>
+        <a href="/#pricing">Pricing</a>
+        <a href="/blog" aria-current="page">Blog</a>
       </div>
-      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
-        <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-        <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-      </button>
+      <div class="nav-right">
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+          <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <a href="https://app.norselift.com" class="btn btn-primary btn-sm" onclick="gtag('event','cta_click',{button_name:'blog_nav_open_app'})">Open App</a>
+      </div>
     </div>
   </nav>
 
-  <div class="content">
-    <div class="container">
-      <a href="/blog" class="back-link">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-        Back to blog
-      </a>
+  <main class="content post">
+    <div class="post-wrap">
+      <header class="post-header">
+        <div class="crumbs"><a href="/blog" class="back-link-new">Blog</a><span aria-hidden="true">/</span><span>Connect AI</span></div>
+        <span class="cat ai"><svg class="ai-spark" viewBox="0 0 24 24" aria-hidden="true"><defs><linearGradient id="aiCat5" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4a90d9"/><stop offset=".55" stop-color="#8b5cf6"/><stop offset="1" stop-color="#ec4899"/></linearGradient></defs><path fill="url(#aiCat5)" d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.14-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.14a.5.5 0 0 1 .96 0l1.58 6.14a2 2 0 0 0 1.44 1.44l6.14 1.58a.5.5 0 0 1 0 .96l-6.14 1.58a2 2 0 0 0-1.44 1.44l-1.58 6.14a.5.5 0 0 1-.96 0z"/><path fill="url(#aiCat5)" d="M20 1.5l.7 1.8 1.8.7-1.8.7L20 6.5l-.7-1.8-1.8-.7 1.8-.7zM4.5 16.5l.6 1.4 1.4.6-1.4.6-.6 1.4-.6-1.4-1.4-.6 1.4-.6z"/></svg><span class="t">Connect AI</span></span>
+        <h1>How to Connect Claude or ChatGPT to NorseLift (MCP Guide)</h1>
+        <p class="dek">Log workouts, check stats and build, schedule and activate routines just by asking your AI. Step-by-step setup with the NorseLift MCP server.</p>
+        <div class="byline"><img src="/norselift-icon-192.png" alt="" width="28" height="28" /><span>By <b>NorseLift</b></span><span class="dot"></span><time datetime="2026-10-15">October 15, 2026</time><span class="dot"></span><span>6 min read</span></div>
+      </header>
 
-      <h1>How to Connect Claude or ChatGPT to NorseLift (MCP Guide)</h1>
-      <div class="blog-meta">
-        <span>October 15, 2026</span>
-        <span>6 min read</span>
-      </div>
-
+      <div class="post-hero">
       <picture>
         <source type="image/webp" srcset="/blog/images/connect-ai-hero.webp" />
         <img class="hero-image" src="/blog/images/connect-ai-hero.jpg" alt="Claude on an iPhone calling NorseLift MCP tools to create, schedule and activate the Aesthetic 3-Day routine, with NorseLift on a laptop showing it active" width="1400" height="933" fetchpriority="high" />
       </picture>
+      </div>
 
+      <div class="post-layout">
+        <article class="post-body">
       <p>Logging a workout shouldn't need ten taps. NorseLift Pro members can connect an AI assistant such as Claude or ChatGPT to their NorseLift account and just ask: log today's session, fix a typo in last week's squats, or build a new routine and put it on the calendar.</p>
 
       <p>This guide covers what the NorseLift MCP server is, what an assistant can do with it, and how to connect Claude and ChatGPT step by step.</p>
 
-      <h2>What is the NorseLift MCP server?</h2>
+      <h2 id="what-is-the-norselift-mcp-server">What is the NorseLift MCP server?</h2>
 
       <p><strong>MCP (Model Context Protocol)</strong> is an open standard that lets AI assistants use tools in other apps. NorseLift runs an MCP server at:</p>
 
@@ -454,7 +459,7 @@
 
       <p>When you add that URL to an AI app as a <em>custom connector</em>, the app asks you to sign in to NorseLift and approve the connection on a NorseLift page. From then on, the assistant can read and update <em>your</em> training data, and nothing else. You can see and revoke connected apps any time in NorseLift under Settings.</p>
 
-      <h2>What can your AI do in NorseLift?</h2>
+      <h2 id="what-can-your-ai-do-in-norselift">What can your AI do in NorseLift?</h2>
 
       <ul>
         <li><strong>Log and edit workouts:</strong> "Log today: bench 4×8 at 80 kg, rows 3×10 at 60 kg." Fix a set, add an exercise, or remove one.</li>
@@ -464,7 +469,7 @@
         <li><strong>Undo mistakes:</strong> recently deleted workouts, exercises and sets can be restored.</li>
       </ul>
 
-      <h2>Who can use it?</h2>
+      <h2 id="who-can-use-it">Who can use it?</h2>
 
       <p>Connect your AI is a <strong>Pro</strong> feature. It's included in every active Pro plan, whether paid, gifted or earned through a referral, at no extra cost. You also need an AI app that supports custom MCP connectors.</p>
 
@@ -473,7 +478,7 @@
         <figcaption>Settings → Connect AI in NorseLift, with the URL ready to copy.</figcaption>
       </figure>
 
-      <h2>How to connect Claude</h2>
+      <h2 id="how-to-connect-claude">How to connect Claude</h2>
 
       <ol>
         <li>In NorseLift, open <strong>Settings → Connect AI</strong> and copy <code>https://app.norselift.com/mcp</code>.</li>
@@ -483,7 +488,7 @@
         <li>Start a new chat and ask for something, for example "What did I train this week?"</li>
       </ol>
 
-      <h2>How to connect ChatGPT</h2>
+      <h2 id="how-to-connect-chatgpt">How to connect ChatGPT</h2>
 
       <ol>
         <li>Copy <code>https://app.norselift.com/mcp</code> from NorseLift <strong>Settings → Connect AI</strong>.</li>
@@ -494,7 +499,7 @@
 
       <p>Other assistants work the same way: anywhere an app asks for a connector or MCP server URL, paste the NorseLift URL and sign in. Menu names in AI apps change often, so if a step looks different, look for "connectors" or "MCP" in the app's settings. Using Grok? See <a href="/blog/norselift-grok-tesla">how to use NorseLift with Grok, Grok Bot and in your Tesla</a>.</p>
 
-      <h2>Example prompts</h2>
+      <h2 id="example-prompts">Example prompts</h2>
 
       <ul>
         <li>"Make me a 3-day aesthetic routine, Mon/Wed/Fri, and make it active."</li>
@@ -506,20 +511,59 @@
 
       <div class="note">Tip: be specific about sets, reps and weight. The assistant shows which NorseLift tools it used, and the change appears in the app straight away.</div>
 
-      <h2>Privacy and control</h2>
+      <h2 id="privacy-and-control">Privacy and control</h2>
 
       <p>The connection uses OAuth: you approve it on a NorseLift page, and the assistant never sees your password. It only gets access to your own NorseLift data. Remove a connected app in NorseLift Settings at any time, and access stops.</p>
 
-      <div class="cta-box">
-        <h3>Connect your AI to NorseLift</h3>
+      <section class="post-cta ai-ring" aria-label="Get NorseLift">
+        <svg class="ai-spark" viewBox="0 0 24 24" aria-hidden="true"><defs><linearGradient id="aiGradCta" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4a90d9"/><stop offset=".55" stop-color="#8b5cf6"/><stop offset="1" stop-color="#ec4899"/></linearGradient></defs><path fill="url(#aiGradCta)" d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.14-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.14a.5.5 0 0 1 .96 0l1.58 6.14a2 2 0 0 0 1.44 1.44l6.14 1.58a.5.5 0 0 1 0 .96l-6.14 1.58a2 2 0 0 0-1.44 1.44l-1.58 6.14a.5.5 0 0 1-.96 0z"/><path fill="url(#aiGradCta)" d="M20 1.5l.7 1.8 1.8.7-1.8.7L20 6.5l-.7-1.8-1.8-.7 1.8-.7zM4.5 16.5l.6 1.4 1.4.6-1.4.6-.6 1.4-.6-1.4-1.4-.6 1.4-.6z"/></svg>
+        <h2>Connect your AI to NorseLift</h2>
         <p>Included in NorseLift Pro. Open Settings → Connect AI, copy the URL, and paste it into Claude, ChatGPT or any MCP app.</p>
-        <a href="https://app.norselift.com" class="cta-btn">
-          Open NorseLift
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
+        <div class="actions">
+          <a href="https://app.norselift.com" class="btn btn-primary" onclick="gtag('event','cta_click',{button_name:'blog_start_free'})">Start free <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          <a href="https://app.norselift.com/upgrade" class="btn btn-ghost" onclick="gtag('event','cta_click',{button_name:'blog_go_pro'})">Get Pro <span class="pro-pill">PRO</span></a>
+        </div>
+        <p class="fine">Free, in your browser, in ten seconds.</p>
+      </section>
+        </article>
       </div>
     </div>
-  </div>
+
+    <section class="related" aria-labelledby="related-h">
+      <div class="wrap">
+        <h2 id="related-h">Keep reading</h2>
+        <div class="related-grid">
+        <a href="/blog/norselift-grok-tesla" class="post-card">
+          <img class="thumb" src="/blog/images/grok-norselift-thumb.jpg" alt="View from the back seat toward the dashboard with a NorseLift workout answer card" width="700" height="466" loading="lazy" />
+          <div class="body">
+            <div><span class="cat ai"><svg class="ai-spark" viewBox="0 0 24 24" aria-hidden="true"><defs><linearGradient id="aiCat6" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4a90d9"/><stop offset=".55" stop-color="#8b5cf6"/><stop offset="1" stop-color="#ec4899"/></linearGradient></defs><path fill="url(#aiCat6)" d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.14-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.14a.5.5 0 0 1 .96 0l1.58 6.14a2 2 0 0 0 1.44 1.44l6.14 1.58a.5.5 0 0 1 0 .96l-6.14 1.58a2 2 0 0 0-1.44 1.44l-1.58 6.14a.5.5 0 0 1-.96 0z"/><path fill="url(#aiCat6)" d="M20 1.5l.7 1.8 1.8.7-1.8.7L20 6.5l-.7-1.8-1.8-.7 1.8-.7zM4.5 16.5l.6 1.4 1.4.6-1.4.6-.6 1.4-.6-1.4-1.4-.6 1.4-.6z"/></svg><span class="t">Connect AI</span></span></div>
+            <h3>How to Use NorseLift with Grok, Grok Bot and in Your Tesla</h3>
+            <p>Add NorseLift as a custom MCP connector in Grok, use it from Grok Bot, and what Tesla says about Grok connectors in the car.</p>
+            <div class="meta-row"><time datetime="2026-10-15">October 15, 2026</time><span class="dot"></span><span>5 min read</span></div>
+          </div>
+        </a>
+        <a href="/blog/best-free-workout-tracker-app" class="post-card">
+          <img class="thumb" src="/blog/images/best-workout-app-thumb.jpg" alt="Pink flat-lay of workout gear with a phone showing the NorseLift workout tracker app" width="700" height="467" loading="lazy" />
+          <div class="body">
+            <div><span class="cat">App tips</span></div>
+            <h3>The 5 Best Free Workout Tracker Apps in 2026</h3>
+            <p>An honest comparison of NorseLift, Strong, Hevy, JEFIT, and FitNotes. What each does well, where they fall short, and which one is actually free.</p>
+            <div class="meta-row"><time datetime="2026-07-02">July 2, 2026</time><span class="dot"></span><span>8 min read</span></div>
+          </div>
+        </a>
+        <a href="/blog/push-pull-legs-routine-guide" class="post-card">
+          <img class="thumb" src="/blog/images/push-pull-legs-thumb.jpg" alt="Lifter gripping a loaded barbell in a deadlift setup, part of a push pull legs (PPL) routine" width="700" height="466" loading="lazy" />
+          <div class="body">
+            <div><span class="cat">Training guide</span></div>
+            <h3>The Complete Push Pull Legs (PPL) Routine Guide for 2026</h3>
+            <p>Everything you need to know about the PPL split: who it's for, a sample 6-day program, exercise selection, and how to progress over time.</p>
+            <div class="meta-row"><time datetime="2026-07-02">July 2, 2026</time><span class="dot"></span><span>10 min read</span></div>
+          </div>
+        </a>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <footer>
     <div class="footer-inner">
