@@ -31,7 +31,7 @@ NorseLift Pro users (paid, gifted or referral) can connect AI assistants such as
 - **What an assistant can do**: log and edit workouts, read workouts and training stats, list exercises, create routines and Library workouts, schedule routines, set the active routine, and delete/restore items (deletes ask for confirmation).
 
 How to connect:
-1. In NorseLift, open Settings → Connect AI and copy the MCP URL.
+1. In NorseLift, open Settings → AI assistants and copy the MCP URL.
 2. Claude: Settings → Connectors → Add custom connector → paste the URL → Add.
 3. ChatGPT: Settings → Apps & Connectors → turn on Developer mode → Create → paste the URL.
 4. Other MCP apps: add a custom connector / server URL and paste the URL.
