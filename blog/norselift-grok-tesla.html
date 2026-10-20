@@ -453,38 +453,40 @@
     }
     @media (prefers-reduced-motion: reduce) { .caret::after { display: none; } }
   </style>
+  <link rel="stylesheet" href="/blog/blog.css" />
 </head>
 <body>
 
-  <nav>
+  <nav class="nav">
     <div class="nav-inner">
-      <div class="nav-left">
-        <a href="/" class="logo">
-          <div class="logo-mark"><img src="/norselift-icon-192.png" alt="NorseLift" /></div>
-          NorseLift
-        </a>
-        <a href="/blog" class="nav-link">Blog</a>
+      <a href="/" class="logo"><img src="/norselift-icon-192.png" alt="NorseLift" width="30" height="30" />NorseLift</a>
+      <div class="nav-links">
+        <a href="/#features">Features</a>
+        <a href="/#connect-ai">Connect AI</a>
+        <a href="/#pricing">Pricing</a>
+        <a href="/blog" aria-current="page">Blog</a>
       </div>
-      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
-        <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-        <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-      </button>
+      <div class="nav-right">
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+          <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <a href="https://app.norselift.com" class="btn btn-primary btn-sm" onclick="gtag('event','cta_click',{button_name:'blog_nav_open_app'})">Open App</a>
+      </div>
     </div>
   </nav>
 
-  <div class="content">
-    <div class="container">
-      <a href="/blog" class="back-link">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-        Back to blog
-      </a>
+  <main class="content post">
+    <div class="post-wrap">
+      <header class="post-header">
+        <div class="crumbs"><a href="/blog" class="back-link-new">Blog</a><span aria-hidden="true">/</span><span>Connect AI</span></div>
+        <span class="cat ai"><svg class="ai-spark" viewBox="0 0 24 24" aria-hidden="true"><defs><linearGradient id="aiCat3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4a90d9"/><stop offset=".55" stop-color="#8b5cf6"/><stop offset="1" stop-color="#ec4899"/></linearGradient></defs><path fill="url(#aiCat3)" d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.14-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.14a.5.5 0 0 1 .96 0l1.58 6.14a2 2 0 0 0 1.44 1.44l6.14 1.58a.5.5 0 0 1 0 .96l-6.14 1.58a2 2 0 0 0-1.44 1.44l-1.58 6.14a.5.5 0 0 1-.96 0z"/><path fill="url(#aiCat3)" d="M20 1.5l.7 1.8 1.8.7-1.8.7L20 6.5l-.7-1.8-1.8-.7 1.8-.7zM4.5 16.5l.6 1.4 1.4.6-1.4.6-.6 1.4-.6-1.4-1.4-.6 1.4-.6z"/></svg><span class="t">Connect AI</span></span>
+        <h1>How to Use NorseLift with Grok, Grok Bot and in Your Tesla</h1>
+        <p class="dek">Add NorseLift as a custom MCP connector in Grok, use it from Grok Bot, and what Tesla says about Grok connectors in the car.</p>
+        <div class="byline"><img src="/norselift-icon-192.png" alt="" width="28" height="28" /><span>By <b>NorseLift</b></span><span class="dot"></span><time datetime="2026-10-15">October 15, 2026</time><span class="dot"></span><span>5 min read</span></div>
+      </header>
 
-      <h1>How to Use NorseLift with Grok, Grok Bot and in Your Tesla</h1>
-      <div class="blog-meta">
-        <span>October 15, 2026</span>
-        <span>5 min read</span>
-      </div>
-
+      <div class="post-hero">
       <figure class="hero-anim">
         <picture>
           <source type="image/webp" srcset="/blog/images/grok-norselift-hero-bg.webp" />
@@ -526,7 +528,10 @@
       })();
       </script>
       <p class="sources" style="margin-top:-8px;text-align:center">Background photo: <a href="https://unsplash.com/photos/the-interior-of-a-car-with-a-laptop-on-the-dashboard-1tm9Rkp_43Q" rel="noopener">Bram Van Oost on Unsplash</a>, tinted and overlaid by NorseLift.</p>
+      </div>
 
+      <div class="post-layout">
+        <article class="post-body">
       <p>Grok can talk to NorseLift. Connect it once and you can ask about your training, log a session or plan your week, whether you're on grok.com, in Grok Bot, or (with some caveats) in your car.</p>
 
 
@@ -540,7 +545,7 @@
 
       <p>You need <strong>NorseLift Pro</strong> (paid, gifted or referral) for Connect your AI, and the NorseLift MCP server URL: <code>https://app.norselift.com/mcp</code>. New to MCP? Start with <a href="/blog/connect-ai-to-norselift">how to connect your AI to NorseLift</a>.</p>
 
-      <h2>Option 1: Add NorseLift as a custom connector on grok.com</h2>
+      <h2 id="option-1-add-norselift-as-a-custom-connector-on-grok-com">Option 1: Add NorseLift as a custom connector on grok.com</h2>
 
       <p>Grok supports custom MCP servers as connectors. According to xAI's Grok documentation, connectors are available to all Grok users, and you add a custom MCP server like this:</p>
 
@@ -553,13 +558,13 @@
 
       <p>Grok discovers the tools the server exposes and uses them when your question needs them. On Grok Business and Enterprise plans, an admin has to add connectors for the team first.</p>
 
-      <h2>Option 2: Use NorseLift from Grok Bot</h2>
+      <h2 id="option-2-use-norselift-from-grok-bot">Option 2: Use NorseLift from Grok Bot</h2>
 
       <p>Grok Bot is xAI's assistant app that runs multi-step tasks for you. It can use MCP connectors too: add NorseLift as a custom connector (in our Connect AI card the steps are simply "Add a custom connector" and "Paste the URL"), sign in to NorseLift when asked, and then use it in a chat. Third-party guides describe asking Grok Bot in a chat to add the server, approving it, and attaching it with <code>@</code>. Check your Grok plan: some guides note that certain connector and Grok Bot features need a paid subscription.</p>
 
       <p>Grok Bot is handy for multi-step requests: "Look at my last four weeks, then build me a 3-day routine that brings up my back, schedule it Mon/Wed/Fri and make it active."</p>
 
-      <h2>Option 3: Grok in your Tesla</h2>
+      <h2 id="option-3-grok-in-your-tesla">Option 3: Grok in your Tesla</h2>
 
       <p>Grok is available in supported Tesla vehicles. Tesla's support page says:</p>
 
@@ -576,7 +581,7 @@
       <p class="sources"><em>The hero image is an illustration: a NorseLift answer overlaid on a stock photo of a car interior. It is not a screenshot of the in-car Grok interface.</em></p>
 
 
-      <h2>What works where</h2>
+      <h2 id="what-works-where">What works where</h2>
 
       <table class="where">
         <thead><tr><th></th><th>grok.com / Grok app</th><th>Grok Bot</th><th>Grok in Tesla</th></tr></thead>
@@ -601,7 +606,7 @@
         </ul>
       </div>
 
-      <h2>Sources</h2>
+      <h2 id="sources">Sources</h2>
 
       <ul class="sources">
         <li><a href="https://docs.x.ai/grok/connectors" rel="noopener">xAI Grok docs: Connectors (custom MCP connectors)</a></li>
@@ -609,16 +614,55 @@
         <li><a href="https://www.tesla.com/support/grok" rel="noopener">Tesla Support: Grok (Connectors, Grok Bot, sign-in)</a></li>
       </ul>
 
-      <div class="cta-box">
-        <h3>Bring NorseLift to Grok</h3>
+      <section class="post-cta ai-ring" aria-label="Get NorseLift">
+        <svg class="ai-spark" viewBox="0 0 24 24" aria-hidden="true"><defs><linearGradient id="aiGradCta" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4a90d9"/><stop offset=".55" stop-color="#8b5cf6"/><stop offset="1" stop-color="#ec4899"/></linearGradient></defs><path fill="url(#aiGradCta)" d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.14-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.14a.5.5 0 0 1 .96 0l1.58 6.14a2 2 0 0 0 1.44 1.44l6.14 1.58a.5.5 0 0 1 0 .96l-6.14 1.58a2 2 0 0 0-1.44 1.44l-1.58 6.14a.5.5 0 0 1-.96 0z"/><path fill="url(#aiGradCta)" d="M20 1.5l.7 1.8 1.8.7-1.8.7L20 6.5l-.7-1.8-1.8-.7 1.8-.7zM4.5 16.5l.6 1.4 1.4.6-1.4.6-.6 1.4-.6-1.4-1.4-.6 1.4-.6z"/></svg>
+        <h2>Bring NorseLift to Grok</h2>
         <p>Connect your AI is included in NorseLift Pro. Copy the MCP URL from Settings → Connect AI and add it as a custom connector.</p>
-        <a href="https://app.norselift.com" class="cta-btn">
-          Open NorseLift
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
+        <div class="actions">
+          <a href="https://app.norselift.com" class="btn btn-primary" onclick="gtag('event','cta_click',{button_name:'blog_start_free'})">Start free <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          <a href="https://app.norselift.com/upgrade" class="btn btn-ghost" onclick="gtag('event','cta_click',{button_name:'blog_go_pro'})">Get Pro <span class="pro-pill">PRO</span></a>
+        </div>
+        <p class="fine">Free, in your browser, in ten seconds.</p>
+      </section>
+        </article>
       </div>
     </div>
-  </div>
+
+    <section class="related" aria-labelledby="related-h">
+      <div class="wrap">
+        <h2 id="related-h">Keep reading</h2>
+        <div class="related-grid">
+        <a href="/blog/connect-ai-to-norselift" class="post-card">
+          <img class="thumb" src="/blog/images/connect-ai-thumb.jpg" alt="Claude on a phone creating a NorseLift routine, with NorseLift open on a laptop" width="700" height="466" loading="lazy" />
+          <div class="body">
+            <div><span class="cat ai"><svg class="ai-spark" viewBox="0 0 24 24" aria-hidden="true"><defs><linearGradient id="aiCat4" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4a90d9"/><stop offset=".55" stop-color="#8b5cf6"/><stop offset="1" stop-color="#ec4899"/></linearGradient></defs><path fill="url(#aiCat4)" d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.14-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.14a.5.5 0 0 1 .96 0l1.58 6.14a2 2 0 0 0 1.44 1.44l6.14 1.58a.5.5 0 0 1 0 .96l-6.14 1.58a2 2 0 0 0-1.44 1.44l-1.58 6.14a.5.5 0 0 1-.96 0z"/><path fill="url(#aiCat4)" d="M20 1.5l.7 1.8 1.8.7-1.8.7L20 6.5l-.7-1.8-1.8-.7 1.8-.7zM4.5 16.5l.6 1.4 1.4.6-1.4.6-.6 1.4-.6-1.4-1.4-.6 1.4-.6z"/></svg><span class="t">Connect AI</span></span></div>
+            <h3>How to Connect Claude or ChatGPT to NorseLift</h3>
+            <p>Log workouts, check stats and build, schedule and activate routines just by asking your AI. Step-by-step setup with the NorseLift MCP server.</p>
+            <div class="meta-row"><time datetime="2026-10-15">October 15, 2026</time><span class="dot"></span><span>6 min read</span></div>
+          </div>
+        </a>
+        <a href="/blog/best-free-workout-tracker-app" class="post-card">
+          <img class="thumb" src="/blog/images/best-workout-app-thumb.jpg" alt="Pink flat-lay of workout gear with a phone showing the NorseLift workout tracker app" width="700" height="467" loading="lazy" />
+          <div class="body">
+            <div><span class="cat">App tips</span></div>
+            <h3>The 5 Best Free Workout Tracker Apps in 2026</h3>
+            <p>An honest comparison of NorseLift, Strong, Hevy, JEFIT, and FitNotes. What each does well, where they fall short, and which one is actually free.</p>
+            <div class="meta-row"><time datetime="2026-07-02">July 2, 2026</time><span class="dot"></span><span>8 min read</span></div>
+          </div>
+        </a>
+        <a href="/blog/push-pull-legs-routine-guide" class="post-card">
+          <img class="thumb" src="/blog/images/push-pull-legs-thumb.jpg" alt="Lifter gripping a loaded barbell in a deadlift setup, part of a push pull legs (PPL) routine" width="700" height="466" loading="lazy" />
+          <div class="body">
+            <div><span class="cat">Training guide</span></div>
+            <h3>The Complete Push Pull Legs (PPL) Routine Guide for 2026</h3>
+            <p>Everything you need to know about the PPL split: who it's for, a sample 6-day program, exercise selection, and how to progress over time.</p>
+            <div class="meta-row"><time datetime="2026-07-02">July 2, 2026</time><span class="dot"></span><span>10 min read</span></div>
+          </div>
+        </a>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <footer>
     <div class="footer-inner">

@@ -404,38 +404,40 @@
       .footer-inner { flex-direction: column; gap: 12px; text-align: center; }
     }
   </style>
+  <link rel="stylesheet" href="/blog/blog.css" />
 </head>
 <body>
 
-  <nav>
+  <nav class="nav">
     <div class="nav-inner">
-      <div class="nav-left">
-        <a href="/" class="logo">
-          <div class="logo-mark"><img src="/norselift-icon-192.png" alt="NorseLift" /></div>
-          NorseLift
-        </a>
-        <a href="/blog" class="nav-link">Blog</a>
+      <a href="/" class="logo"><img src="/norselift-icon-192.png" alt="NorseLift" width="30" height="30" />NorseLift</a>
+      <div class="nav-links">
+        <a href="/#features">Features</a>
+        <a href="/#connect-ai">Connect AI</a>
+        <a href="/#pricing">Pricing</a>
+        <a href="/blog" aria-current="page">Blog</a>
       </div>
-      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
-        <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-        <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-      </button>
+      <div class="nav-right">
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+          <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <a href="https://app.norselift.com" class="btn btn-primary btn-sm" onclick="gtag('event','cta_click',{button_name:'blog_nav_open_app'})">Open App</a>
+      </div>
     </div>
   </nav>
 
-  <div class="content">
-    <div class="container">
-      <a href="/blog" class="back-link">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-        Back to blog
-      </a>
+  <main class="content post">
+    <div class="post-wrap">
+      <header class="post-header">
+        <div class="crumbs"><a href="/blog" class="back-link-new">Blog</a><span aria-hidden="true">/</span><span>Training guide</span></div>
+        <span class="cat">Training guide</span>
+        <h1>The Complete Push Pull Legs (PPL) Routine Guide for 2026</h1>
+        <p class="dek">Everything you need to know about the PPL split: who it's for, a sample 6-day program, exercise selection, and how to progress over time.</p>
+        <div class="byline"><img src="/norselift-icon-192.png" alt="" width="28" height="28" /><span>By <b>NorseLift</b></span><span class="dot"></span><time datetime="2026-07-02">July 2, 2026</time><span class="dot"></span><span>10 min read</span></div>
+      </header>
 
-      <h1>The Complete Push Pull Legs (PPL) Routine Guide for 2026</h1>
-      <div class="blog-meta">
-        <span>July 2, 2026</span>
-        <span>10 min read</span>
-      </div>
-
+      <div class="post-hero">
       <img
         class="hero-image"
         src="/blog/images/push-pull-legs-hero.jpg"
@@ -444,10 +446,25 @@
         height="933"
         fetchpriority="high"
       />
+      </div>
 
+      <div class="post-layout has-toc">
+        <nav class="toc" aria-label="Table of contents">
+          <div class="toc-title">On this page</div>
+          <ol>
+            <li><a href="#what-is-push-pull-legs">What Is Push Pull Legs?</a></li>
+            <li><a href="#who-is-ppl-for">Who Is PPL For?</a></li>
+            <li><a href="#the-6-day-ppl-program">The 6-Day PPL Program</a></li>
+            <li><a href="#exercise-selection-tips">Exercise Selection Tips</a></li>
+            <li><a href="#how-to-progress">How to Progress</a></li>
+            <li><a href="#common-mistakes">Common Mistakes</a></li>
+            <li><a href="#when-to-change-programs">When to Change Programs</a></li>
+          </ol>
+        </nav>
+        <article class="post-body">
       <p>Push Pull Legs is one of the most popular training splits for a reason: it works. It organizes your training around movement patterns instead of individual muscles, which means less overlap, better recovery, and more efficient workouts. Whether you're an intermediate lifter looking for structure or an advanced trainee wanting to increase frequency, PPL is worth understanding.</p>
 
-      <h2>What Is Push Pull Legs?</h2>
+      <h2 id="what-is-push-pull-legs">What Is Push Pull Legs?</h2>
 
       <p>PPL divides all your exercises into three categories based on the primary movement:</p>
 
@@ -459,7 +476,7 @@
 
       <p>The beauty of this split is its simplicity. Every muscle gets trained without overlap between sessions, so you can train hard and recover properly.</p>
 
-      <h2>Who Is PPL For?</h2>
+      <h2 id="who-is-ppl-for">Who Is PPL For?</h2>
 
       <p>PPL works best for people who can train at least 3 days per week, ideally 6. Here's how to think about it:</p>
 
@@ -482,7 +499,7 @@
         <div class="week-day rest"><div class="day-label">Sun</div><div class="day-type">Rest</div><div class="day-focus"></div></div>
       </div>
 
-      <h2>The 6-Day PPL Program</h2>
+      <h2 id="the-6-day-ppl-program">The 6-Day PPL Program</h2>
 
       <p>Here's a solid PPL split you can start running this week. The first rotation (days 1-3) emphasizes heavier compound work. The second rotation (days 4-6) shifts toward higher reps and more isolation work. This gives you the best of both strength and hypertrophy training.</p>
 
@@ -562,7 +579,7 @@
 
       <p><strong>Day 7 — Rest.</strong> Stretch, walk, eat well, and recover. Growth happens outside the gym.</p>
 
-      <h2>Exercise Selection Tips</h2>
+      <h2 id="exercise-selection-tips">Exercise Selection Tips</h2>
 
       <p>This program is a template, not gospel. Feel free to swap exercises based on your equipment and preferences. A few principles to keep in mind:</p>
 
@@ -573,7 +590,7 @@
         <li><strong>Swap freely within categories.</strong> Dumbbell bench instead of barbell? Fine. Chin-ups instead of lat pulldowns? Even better. The movement pattern matters more than the specific exercise.</li>
       </ul>
 
-      <h2>How to Progress</h2>
+      <h2 id="how-to-progress">How to Progress</h2>
 
       <p>The program only works if you're progressing over time. Here's a simple approach:</p>
 
@@ -585,7 +602,7 @@
 
       <p>Tracking your weights and reps is essential here. If you're not writing it down, you're guessing. NorseLift has a built-in PPL template you can load and start using immediately, and it tracks your progression automatically so you always know what to aim for next session.</p>
 
-      <h2>Common Mistakes</h2>
+      <h2 id="common-mistakes">Common Mistakes</h2>
 
       <ul>
         <li><strong>Too much volume too soon.</strong> Start with the sets listed above. If you're recovering well after 4-6 weeks, add a set to one or two exercises. Don't start at maximum volume.</li>
@@ -594,7 +611,7 @@
         <li><strong>Ego lifting.</strong> Use weights you can control through a full range of motion. A 60kg bench press with perfect form builds more muscle than a 100kg quarter rep.</li>
       </ul>
 
-      <h2>When to Change Programs</h2>
+      <h2 id="when-to-change-programs">When to Change Programs</h2>
 
       <p>PPL can work for months or even years if you keep progressing. But consider switching if:</p>
 
@@ -606,16 +623,55 @@
 
       <p>For most lifters, PPL is a program you can always return to. It's simple, effective, and endlessly customizable.</p>
 
-      <div class="cta-box">
-        <h3>Start your PPL routine with NorseLift</h3>
+      <section class="post-cta" aria-label="Get NorseLift">
+        <span class="runes" aria-hidden="true">&#5765; &#5768; &#5792;</span>
+        <h2>Start your PPL routine with NorseLift</h2>
         <p>Load the built-in PPL template, schedule it across your week, and let NorseLift track your progression automatically. Free to start.</p>
-        <a href="https://app.norselift.com" class="cta-btn">
-          Get Started Free
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
+        <div class="actions">
+          <a href="https://app.norselift.com" class="btn btn-primary" onclick="gtag('event','cta_click',{button_name:'blog_start_free'})">Start free <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          <a href="https://app.norselift.com/upgrade" class="btn btn-ghost" onclick="gtag('event','cta_click',{button_name:'blog_go_pro'})">Get Pro <span class="pro-pill">PRO</span></a>
+        </div>
+        <p class="fine">Free, in your browser, in ten seconds.</p>
+      </section>
+        </article>
       </div>
     </div>
-  </div>
+
+    <section class="related" aria-labelledby="related-h">
+      <div class="wrap">
+        <h2 id="related-h">Keep reading</h2>
+        <div class="related-grid">
+        <a href="/blog/progressive-overload-guide" class="post-card">
+          <img class="thumb" src="/blog/images/progressive-overload-thumb.jpg" alt="Loaded barbell plate on a gym floor next to a spare weight plate, representing progressive overload training" width="700" height="466" loading="lazy" />
+          <div class="body">
+            <div><span class="cat">Training guide</span></div>
+            <h3>Progressive Overload: The Only Rule You Need to Build Muscle</h3>
+            <p>What progressive overload actually means, the different ways to apply it, common mistakes, and how tracking your workouts makes it automatic.</p>
+            <div class="meta-row"><time datetime="2026-07-02">July 2, 2026</time><span class="dot"></span><span>9 min read</span></div>
+          </div>
+        </a>
+        <a href="/blog/norselift-grok-tesla" class="post-card">
+          <img class="thumb" src="/blog/images/grok-norselift-thumb.jpg" alt="View from the back seat toward the dashboard with a NorseLift workout answer card" width="700" height="466" loading="lazy" />
+          <div class="body">
+            <div><span class="cat ai"><svg class="ai-spark" viewBox="0 0 24 24" aria-hidden="true"><defs><linearGradient id="aiCat9" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4a90d9"/><stop offset=".55" stop-color="#8b5cf6"/><stop offset="1" stop-color="#ec4899"/></linearGradient></defs><path fill="url(#aiCat9)" d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.14-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.14a.5.5 0 0 1 .96 0l1.58 6.14a2 2 0 0 0 1.44 1.44l6.14 1.58a.5.5 0 0 1 0 .96l-6.14 1.58a2 2 0 0 0-1.44 1.44l-1.58 6.14a.5.5 0 0 1-.96 0z"/><path fill="url(#aiCat9)" d="M20 1.5l.7 1.8 1.8.7-1.8.7L20 6.5l-.7-1.8-1.8-.7 1.8-.7zM4.5 16.5l.6 1.4 1.4.6-1.4.6-.6 1.4-.6-1.4-1.4-.6 1.4-.6z"/></svg><span class="t">Connect AI</span></span></div>
+            <h3>How to Use NorseLift with Grok, Grok Bot and in Your Tesla</h3>
+            <p>Add NorseLift as a custom MCP connector in Grok, use it from Grok Bot, and what Tesla says about Grok connectors in the car.</p>
+            <div class="meta-row"><time datetime="2026-10-15">October 15, 2026</time><span class="dot"></span><span>5 min read</span></div>
+          </div>
+        </a>
+        <a href="/blog/connect-ai-to-norselift" class="post-card">
+          <img class="thumb" src="/blog/images/connect-ai-thumb.jpg" alt="Claude on a phone creating a NorseLift routine, with NorseLift open on a laptop" width="700" height="466" loading="lazy" />
+          <div class="body">
+            <div><span class="cat ai"><svg class="ai-spark" viewBox="0 0 24 24" aria-hidden="true"><defs><linearGradient id="aiCat10" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4a90d9"/><stop offset=".55" stop-color="#8b5cf6"/><stop offset="1" stop-color="#ec4899"/></linearGradient></defs><path fill="url(#aiCat10)" d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.14-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.14a.5.5 0 0 1 .96 0l1.58 6.14a2 2 0 0 0 1.44 1.44l6.14 1.58a.5.5 0 0 1 0 .96l-6.14 1.58a2 2 0 0 0-1.44 1.44l-1.58 6.14a.5.5 0 0 1-.96 0z"/><path fill="url(#aiCat10)" d="M20 1.5l.7 1.8 1.8.7-1.8.7L20 6.5l-.7-1.8-1.8-.7 1.8-.7zM4.5 16.5l.6 1.4 1.4.6-1.4.6-.6 1.4-.6-1.4-1.4-.6 1.4-.6z"/></svg><span class="t">Connect AI</span></span></div>
+            <h3>How to Connect Claude or ChatGPT to NorseLift</h3>
+            <p>Log workouts, check stats and build, schedule and activate routines just by asking your AI. Step-by-step setup with the NorseLift MCP server.</p>
+            <div class="meta-row"><time datetime="2026-10-15">October 15, 2026</time><span class="dot"></span><span>6 min read</span></div>
+          </div>
+        </a>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <footer>
     <div class="footer-inner">
@@ -643,6 +699,15 @@
       var meta = document.getElementById('meta-theme');
       if (meta) meta.setAttribute('content', next === 'dark' ? '#0a0e1a' : '#e6eef8');
     }
+  </script>
+
+  <script>
+    (function () {
+      var links = document.querySelectorAll('.toc a'); if (!links.length || !('IntersectionObserver' in window)) return;
+      var map = {}; links.forEach(function (a) { map[a.getAttribute('href').slice(1)] = a; });
+      var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { links.forEach(function (a) { a.classList.remove('active'); }); var a = map[e.target.id]; if (a) a.classList.add('active'); } }); }, { rootMargin: '-80px 0px -70% 0px' });
+      Object.keys(map).forEach(function (id) { var h = document.getElementById(id); if (h) io.observe(h); });
+    })();
   </script>
 
   <script defer src="/_vercel/insights/script.js"></script>

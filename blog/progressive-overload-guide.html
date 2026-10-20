@@ -392,38 +392,40 @@
       .footer-inner { flex-direction: column; gap: 12px; text-align: center; }
     }
   </style>
+  <link rel="stylesheet" href="/blog/blog.css" />
 </head>
 <body>
 
-  <nav>
+  <nav class="nav">
     <div class="nav-inner">
-      <div class="nav-left">
-        <a href="/" class="logo">
-          <div class="logo-mark"><img src="/norselift-icon-192.png" alt="NorseLift" /></div>
-          NorseLift
-        </a>
-        <a href="/blog" class="nav-link">Blog</a>
+      <a href="/" class="logo"><img src="/norselift-icon-192.png" alt="NorseLift" width="30" height="30" />NorseLift</a>
+      <div class="nav-links">
+        <a href="/#features">Features</a>
+        <a href="/#connect-ai">Connect AI</a>
+        <a href="/#pricing">Pricing</a>
+        <a href="/blog" aria-current="page">Blog</a>
       </div>
-      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
-        <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-        <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-      </button>
+      <div class="nav-right">
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+          <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <a href="https://app.norselift.com" class="btn btn-primary btn-sm" onclick="gtag('event','cta_click',{button_name:'blog_nav_open_app'})">Open App</a>
+      </div>
     </div>
   </nav>
 
-  <div class="content">
-    <div class="container">
-      <a href="/blog" class="back-link">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-        Back to blog
-      </a>
+  <main class="content post">
+    <div class="post-wrap">
+      <header class="post-header">
+        <div class="crumbs"><a href="/blog" class="back-link-new">Blog</a><span aria-hidden="true">/</span><span>Training guide</span></div>
+        <span class="cat">Training guide</span>
+        <h1>Progressive Overload: The Only Rule You Need to Build Muscle</h1>
+        <p class="dek">What progressive overload actually means, the different ways to apply it, common mistakes, and how tracking your workouts makes it automatic.</p>
+        <div class="byline"><img src="/norselift-icon-192.png" alt="" width="28" height="28" /><span>By <b>NorseLift</b></span><span class="dot"></span><time datetime="2026-07-02">July 2, 2026</time><span class="dot"></span><span>9 min read</span></div>
+      </header>
 
-      <h1>Progressive Overload: The Only Rule You Need to Build Muscle</h1>
-      <div class="blog-meta">
-        <span>July 2, 2026</span>
-        <span>9 min read</span>
-      </div>
-
+      <div class="post-hero">
       <img
         class="hero-image"
         src="/blog/images/progressive-overload-hero.jpg"
@@ -432,18 +434,33 @@
         height="933"
         fetchpriority="high"
       />
+      </div>
 
+      <div class="post-layout has-toc">
+        <nav class="toc" aria-label="Table of contents">
+          <div class="toc-title">On this page</div>
+          <ol>
+            <li><a href="#what-is-progressive-overload">What Is Progressive Overload?</a></li>
+            <li><a href="#the-5-methods-of-progressive-overload">The 5 Methods of Progressive Overload</a></li>
+            <li><a href="#how-to-track-progressive-overload">How to Track Progressive Overload</a></li>
+            <li><a href="#a-practical-example">A Practical Example</a></li>
+            <li><a href="#common-mistakes">Common Mistakes</a></li>
+            <li><a href="#when-to-deload">When to Deload</a></li>
+            <li><a href="#the-bottom-line">The Bottom Line</a></li>
+          </ol>
+        </nav>
+        <article class="post-body">
       <p>There are thousands of workout programs, diet plans, and supplement stacks out there. Most of them overcomplicate things. If you strip training down to its most fundamental principle, you're left with one concept: progressive overload.</p>
 
       <p>It's the single most important factor in building muscle and getting stronger. Everything else is details.</p>
 
-      <h2>What Is Progressive Overload?</h2>
+      <h2 id="what-is-progressive-overload">What Is Progressive Overload?</h2>
 
       <p>Progressive overload means gradually increasing the demands you place on your muscles over time. Your body adapts to stress, so if you keep doing the same weight for the same reps, you stop growing. To build muscle, you need to consistently give your body a reason to adapt by making your workouts slightly harder than before.</p>
 
       <p>This doesn't mean you need to add weight every single session. It means that over weeks and months, the trend should be upward. Your training needs to get progressively harder for your body to keep responding.</p>
 
-      <h2>The 5 Methods of Progressive Overload</h2>
+      <h2 id="the-5-methods-of-progressive-overload">The 5 Methods of Progressive Overload</h2>
 
       <p>Adding weight to the bar is the most obvious form of progressive overload, but it's not the only one. Here are all the levers you can pull:</p>
 
@@ -475,7 +492,7 @@
 
       <p>A 70kg squat with proper depth and control builds more muscle than a 100kg half-squat. Never sacrifice form for numbers.</p>
 
-      <h2>How to Track Progressive Overload</h2>
+      <h2 id="how-to-track-progressive-overload">How to Track Progressive Overload</h2>
 
       <p>Here's the uncomfortable truth: if you're not tracking your workouts, you're not doing progressive overload. You're guessing. And guessing leads to stagnation.</p>
 
@@ -485,7 +502,7 @@
 
       <p>This is where a workout tracker like NorseLift makes a real difference. It shows your last performance for every exercise right on the logging screen, and the smart suggestion feature automatically calculates what you should aim for based on your history. Instead of flipping through a notebook or trying to remember what you did last Tuesday, the target is right there waiting for you.</p>
 
-      <h2>A Practical Example</h2>
+      <h2 id="a-practical-example">A Practical Example</h2>
 
       <p>Here's what progressive overload looks like in practice over 6 weeks for a single exercise, say the barbell bench press:</p>
 
@@ -516,7 +533,7 @@
 
       <p>Notice the pattern: build reps within a range, then add weight and reset the reps. The dip in week 4 is expected — you traded reps for heavier weight. By week 6 you've surpassed your previous best volume at a higher load. This is sometimes called "double progression" and it works incredibly well for most lifters.</p>
 
-      <h2>Common Mistakes</h2>
+      <h2 id="common-mistakes">Common Mistakes</h2>
 
       <h3>Adding weight too fast</h3>
       <p>Adding 5kg per week sounds great until your form breaks down in week three and you tweak your shoulder. Small increments (1-2.5kg) applied consistently lead to massive gains over months. You don't need to rush.</p>
@@ -533,7 +550,7 @@
       <h3>Expecting linear progress forever</h3>
       <p>Beginners can add weight almost every session. Intermediate lifters might progress every week or two. Advanced lifters might need a month to add 2.5kg to a lift. As you get stronger, progress slows. That's normal, not a sign something is wrong.</p>
 
-      <h2>When to Deload</h2>
+      <h2 id="when-to-deload">When to Deload</h2>
 
       <p>A deload is a planned reduction in training intensity or volume, usually lasting one week. It gives your body time to fully recover and often leads to a performance boost when you return to normal training.</p>
 
@@ -548,22 +565,61 @@
 
       <p>During a deload, reduce your working weight by about 40-50% and cut volume in half. Keep showing up to the gym, but treat it as active recovery. Most lifters find they come back stronger after a deload.</p>
 
-      <h2>The Bottom Line</h2>
+      <h2 id="the-bottom-line">The Bottom Line</h2>
 
       <p>Progressive overload isn't complicated. Do a little more than last time. Track what you do so you know what "last time" was. Recover enough to actually adapt. Repeat for months and years.</p>
 
       <p>There's no secret program, no magic exercise, no shortcut. Just consistent effort, applied progressively, over time. That's the entire recipe for building muscle.</p>
 
-      <div class="cta-box">
-        <h3>Track your progressive overload with NorseLift</h3>
+      <section class="post-cta" aria-label="Get NorseLift">
+        <span class="runes" aria-hidden="true">&#5765; &#5768; &#5792;</span>
+        <h2>Track your progressive overload with NorseLift</h2>
         <p>See your last performance, get smart suggestions, and track your PRs automatically. Free to use, no download required.</p>
-        <a href="https://app.norselift.com" class="cta-btn">
-          Start Tracking Free
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
+        <div class="actions">
+          <a href="https://app.norselift.com" class="btn btn-primary" onclick="gtag('event','cta_click',{button_name:'blog_start_free'})">Start free <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          <a href="https://app.norselift.com/upgrade" class="btn btn-ghost" onclick="gtag('event','cta_click',{button_name:'blog_go_pro'})">Get Pro <span class="pro-pill">PRO</span></a>
+        </div>
+        <p class="fine">Free, in your browser, in ten seconds.</p>
+      </section>
+        </article>
       </div>
     </div>
-  </div>
+
+    <section class="related" aria-labelledby="related-h">
+      <div class="wrap">
+        <h2 id="related-h">Keep reading</h2>
+        <div class="related-grid">
+        <a href="/blog/push-pull-legs-routine-guide" class="post-card">
+          <img class="thumb" src="/blog/images/push-pull-legs-thumb.jpg" alt="Lifter gripping a loaded barbell in a deadlift setup, part of a push pull legs (PPL) routine" width="700" height="466" loading="lazy" />
+          <div class="body">
+            <div><span class="cat">Training guide</span></div>
+            <h3>The Complete Push Pull Legs (PPL) Routine Guide for 2026</h3>
+            <p>Everything you need to know about the PPL split: who it's for, a sample 6-day program, exercise selection, and how to progress over time.</p>
+            <div class="meta-row"><time datetime="2026-07-02">July 2, 2026</time><span class="dot"></span><span>10 min read</span></div>
+          </div>
+        </a>
+        <a href="/blog/norselift-grok-tesla" class="post-card">
+          <img class="thumb" src="/blog/images/grok-norselift-thumb.jpg" alt="View from the back seat toward the dashboard with a NorseLift workout answer card" width="700" height="466" loading="lazy" />
+          <div class="body">
+            <div><span class="cat ai"><svg class="ai-spark" viewBox="0 0 24 24" aria-hidden="true"><defs><linearGradient id="aiCat11" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4a90d9"/><stop offset=".55" stop-color="#8b5cf6"/><stop offset="1" stop-color="#ec4899"/></linearGradient></defs><path fill="url(#aiCat11)" d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.14-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.14a.5.5 0 0 1 .96 0l1.58 6.14a2 2 0 0 0 1.44 1.44l6.14 1.58a.5.5 0 0 1 0 .96l-6.14 1.58a2 2 0 0 0-1.44 1.44l-1.58 6.14a.5.5 0 0 1-.96 0z"/><path fill="url(#aiCat11)" d="M20 1.5l.7 1.8 1.8.7-1.8.7L20 6.5l-.7-1.8-1.8-.7 1.8-.7zM4.5 16.5l.6 1.4 1.4.6-1.4.6-.6 1.4-.6-1.4-1.4-.6 1.4-.6z"/></svg><span class="t">Connect AI</span></span></div>
+            <h3>How to Use NorseLift with Grok, Grok Bot and in Your Tesla</h3>
+            <p>Add NorseLift as a custom MCP connector in Grok, use it from Grok Bot, and what Tesla says about Grok connectors in the car.</p>
+            <div class="meta-row"><time datetime="2026-10-15">October 15, 2026</time><span class="dot"></span><span>5 min read</span></div>
+          </div>
+        </a>
+        <a href="/blog/connect-ai-to-norselift" class="post-card">
+          <img class="thumb" src="/blog/images/connect-ai-thumb.jpg" alt="Claude on a phone creating a NorseLift routine, with NorseLift open on a laptop" width="700" height="466" loading="lazy" />
+          <div class="body">
+            <div><span class="cat ai"><svg class="ai-spark" viewBox="0 0 24 24" aria-hidden="true"><defs><linearGradient id="aiCat12" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4a90d9"/><stop offset=".55" stop-color="#8b5cf6"/><stop offset="1" stop-color="#ec4899"/></linearGradient></defs><path fill="url(#aiCat12)" d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.14-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.14a.5.5 0 0 1 .96 0l1.58 6.14a2 2 0 0 0 1.44 1.44l6.14 1.58a.5.5 0 0 1 0 .96l-6.14 1.58a2 2 0 0 0-1.44 1.44l-1.58 6.14a.5.5 0 0 1-.96 0z"/><path fill="url(#aiCat12)" d="M20 1.5l.7 1.8 1.8.7-1.8.7L20 6.5l-.7-1.8-1.8-.7 1.8-.7zM4.5 16.5l.6 1.4 1.4.6-1.4.6-.6 1.4-.6-1.4-1.4-.6 1.4-.6z"/></svg><span class="t">Connect AI</span></span></div>
+            <h3>How to Connect Claude or ChatGPT to NorseLift</h3>
+            <p>Log workouts, check stats and build, schedule and activate routines just by asking your AI. Step-by-step setup with the NorseLift MCP server.</p>
+            <div class="meta-row"><time datetime="2026-10-15">October 15, 2026</time><span class="dot"></span><span>6 min read</span></div>
+          </div>
+        </a>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <footer>
     <div class="footer-inner">
@@ -591,6 +647,15 @@
       var meta = document.getElementById('meta-theme');
       if (meta) meta.setAttribute('content', next === 'dark' ? '#0a0e1a' : '#e6eef8');
     }
+  </script>
+
+  <script>
+    (function () {
+      var links = document.querySelectorAll('.toc a'); if (!links.length || !('IntersectionObserver' in window)) return;
+      var map = {}; links.forEach(function (a) { map[a.getAttribute('href').slice(1)] = a; });
+      var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { links.forEach(function (a) { a.classList.remove('active'); }); var a = map[e.target.id]; if (a) a.classList.add('active'); } }); }, { rootMargin: '-80px 0px -70% 0px' });
+      Object.keys(map).forEach(function (id) { var h = document.getElementById(id); if (h) io.observe(h); });
+    })();
   </script>
 
   <script defer src="/_vercel/insights/script.js"></script>
