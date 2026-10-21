@@ -1,7 +1,12 @@
 # Cloudflare Workers (static assets) hosting
 
-This branch adds config to serve the site from Cloudflare Workers static assets
-instead of Vercel. Nothing here affects the live Vercel deployment.
+norselift.com is served from Cloudflare Workers static assets (Worker `norselift-landing`)
+instead of Vercel.
+
+**Cutover done (21 October 2026, Europe/Oslo):** the norselift.com zone became active on
+Cloudflare at 10:48, and the site moved to the Worker (custom domain + www 308 redirect rule)
+at 11:06. `app.norselift.com` stays on Vercel (DNS-only A record). Mail records (Porkbun
+forwarding MX/SPF, Resend DKIM and `send` MX/SPF) were copied unchanged.
 
 | Vercel (vercel.json)                     | Cloudflare equivalent                                   |
 |------------------------------------------|---------------------------------------------------------|
