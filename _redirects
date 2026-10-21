@@ -1,0 +1,15 @@
+# Match Vercel cleanUrls: permanent (308) redirects from .html/index URLs to clean URLs.
+# html_handling=drop-trailing-slash serves /terms from terms.html and /blog from blog/index.html.
+/index.html / 308
+/index / 308
+/blog/index.html /blog 308
+/blog/index /blog 308
+/og-image.html /og-image 308
+/privacy.html /privacy 308
+/terms.html /terms 308
+/withdrawal.html /withdrawal 308
+/blog/best-free-workout-tracker-app.html /blog/best-free-workout-tracker-app 308
+/blog/connect-ai-to-norselift.html /blog/connect-ai-to-norselift 308
+/blog/norselift-grok-tesla.html /blog/norselift-grok-tesla 308
+/blog/progressive-overload-guide.html /blog/progressive-overload-guide 308
+/blog/push-pull-legs-routine-guide.html /blog/push-pull-legs-routine-guide 308
