@@ -1,0 +1,16 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "norselift-landing",
+  "compatibility_date": "2026-10-01",
+  // Static-only site: no Worker script, Cloudflare serves the repo root as assets.
+  "assets": {
+    "directory": ".",
+    // Same canonical URLs as Vercel cleanUrls: /terms (terms.html), /blog (blog/index.html)
+    "html_handling": "drop-trailing-slash",
+    "not_found_handling": "404-page"
+  },
+  "workers_dev": true,
+  "preview_urls": false
+  // Custom domains (norselift.com, www.norselift.com) are added only at cutover time.
+  // www -> apex 308 redirect is done with a zone Redirect Rule (see CLOUDFLARE_MIGRATION.md).
+}
