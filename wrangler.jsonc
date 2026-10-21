@@ -10,7 +10,7 @@
     "not_found_handling": "404-page"
   },
   "workers_dev": true,
-  "preview_urls": false,
+  "preview_urls": true,
   // Apex is served by this Worker as a Custom Domain (attached at cutover, 21 Oct 2026).
   // Declared here so `wrangler deploy` (Workers Builds) keeps it attached.
   // www -> apex 308 redirect is a zone Redirect Rule (see CLOUDFLARE_MIGRATION.md), not a route.

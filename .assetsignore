@@ -9,3 +9,4 @@ package-lock.json
 vercel.json
 wrangler.jsonc
 CLOUDFLARE_MIGRATION.md
+bun.lock
