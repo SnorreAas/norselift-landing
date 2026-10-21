@@ -13,9 +13,8 @@ instead of Vercel. Nothing here affects the live Vercel deployment.
 Deploy manually: `npx wrangler deploy` (serves the repo root as assets, no build step).
 
 Known differences from Vercel:
-- `/_vercel/insights/script.js` (Vercel Web Analytics) does not exist on Cloudflare -> 404.
-  Remove the `<script>` tags or swap to Cloudflare Web Analytics, and update privacy.html.
+- Vercel Web Analytics script tags removed (the `/_vercel/insights` endpoint does not exist on Cloudflare);
+  privacy.html and llms.txt updated: website on Cloudflare, app (app.norselift.com) still on Vercel.
 - `/terms/` (trailing slash) redirects 307 to `/terms` instead of serving a duplicate 200.
 - Unknown `*.html` paths return 404 directly instead of 308 -> 404.
-- 404 body is empty (Vercel: plain-text "The page could not be found"). Add `404.html` +
-  `not_found_handling: "404-page"` if a branded 404 is wanted.
+- Unknown paths serve the branded `404.html` (status 404) via `not_found_handling: "404-page"`.

@@ -7,7 +7,7 @@
     "directory": ".",
     // Same canonical URLs as Vercel cleanUrls: /terms (terms.html), /blog (blog/index.html)
     "html_handling": "drop-trailing-slash",
-    "not_found_handling": "none"
+    "not_found_handling": "404-page"
   },
   "workers_dev": true,
   "preview_urls": false
