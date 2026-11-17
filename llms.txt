@@ -58,7 +58,7 @@ Example: "Make me a 3-day aesthetic routine, Mon/Wed/Fri, and make it active" â†
 - Built with React, TypeScript, and Vite
 - Firebase for authentication and cloud sync
 - Stripe for subscription billing
-- Website (norselift.com) hosted on Cloudflare; app (app.norselift.com) hosted on Vercel
+- Website (norselift.com) and app (app.norselift.com) hosted on Cloudflare
 - Progressive Web App with service worker for offline use
 
 ## Target Audience
